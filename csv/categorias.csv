@@ -1,0 +1,46 @@
+id_categoria;nombre;descripcion
+1;Altavoces;Altavoces para ordenadores
+2;Consumibles;Articulos consumibles como tinta, cds o papel
+3;Cámaras;Cámaras de fotos
+4;Discos Duros;Discos duros rígidos, sólidos y externos
+5;Escaners;
+6;Fuentes alimentacion;Fuentes de alimentación para sobremesa
+7;DVD;
+8;GPS;Localizadores GPS
+9;Impresoras;Impresoras láser, inyección de tinta y multifunción
+10;Juegos;Videojuegos de ordenador y videoconsolas
+11;Ebooks;Libros electrónicos
+12;Marcos Digitales;Marcos digitales de diferentes pulgadas
+13;Memorias RAM;Memorias RAM para sobremesa y portatil
+14;Memorias Flash;Pendrives y tarjetas de memoria
+15;Micrófono Auricular;Micrófonos y auriculares con y sin micrófono
+16;MP3;Reproductores MP3 y MP4
+17;Modding;Articulos de personalización de Pcs
+18;Monitores;Monitores de varios tamaños y tecnologias
+19;Multifunciones;Impresoras con escáner y fax
+20;Multilectores;Lectores de dispositivos externos
+21;Ordenadores;Ordenadores de sobremesa y servidores
+22;Portátiles;Ordenadores portátiles y netbooks
+23;Placas Base Intel;Placas Base Intel para ordenadores de sobremesa
+24;Placas Base AMD;Placas Base AMD para ordenadores de sobremesa
+25;Procesadores;Procesadores para ordenadores de sobremesa
+26;Proyectores;Proyectores y accesorios para proyectores
+27;Ratones;Ratones ópticos y demás
+28;Redes;Routers, hubs, cables...
+29;Reproductores Domésticos;Reproductores multimedia domésticos
+30;Sais;
+31;Salud Deporte;Artículos relacionados con la salud y el deporte
+32;Software;Productos software
+33;Sonido;Tarjetas de sonido y articulos relacionados
+34;Tablet;Tabletas digitales Android, iOS y Firefox OS
+35;Tabletas Digitales;Tabletas para capturar movimientos manuales
+36;Tarjetas Gráficas;Tarjetas gráficas para sobremesa y portatil
+37;Tarjetas TV TDT;Tarjetas de Televisión y aparatos TDT
+38;Teclados;Teclados de distintos tipos
+39;Televisores;Televisores de distintas tecnologias y tamaños
+40;Telefonía;Teléfonos móviles y accesorios
+41;Tintas;Tintas y tóners para impresoras
+42;Torres;Cajas para ordenadores de sobremesa
+43;TPVs;Terminales de Punto de Venta
+44;Ventiladores;Refrigeracion para sobremesa y portatil
+45;Webcam;Cámaras web

@@ -1,0 +1,119 @@
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+#include <unordered_map>
+
+#define CANTIDAD 100
+
+using namespace std;
+
+class producto{
+    
+    int id_producto;
+    string nombre;
+    string descripcion;
+
+    public:
+    
+    producto(int id_producto, string nombre, string descripcion){
+        this->id_producto=id_producto;
+        this->nombre=nombre;
+        this->descripcion=descripcion;       
+    }
+    ~producto(){
+        this->id_producto=999;
+        this->nombre="DEFAULT";
+        this->descripcion="DEFAULT";       
+    }
+
+    void print(){
+        std::cout << "ID: " << id_producto << endl;
+        std::cout << "NOMBRE: " << nombre << endl;
+        std::cout << "DESCRIPCION: " << descripcion << endl;
+    }
+};
+
+
+
+int main(){
+
+cout << "Pequeño script para llenar tablas SQL" << endl;
+
+while(true){
+	cout << "======== MENU PRINCIPAL =======" << endl;
+	cout << "1 - LLENAR TABLA PRODUCTO" << endl;
+	cout << "2 - LLENAR TABLA ALMACEN" << endl;
+	cout << "3 - LLENAR TABLA UBICACION" << endl;
+	cout << "0 - SALIR" << endl;
+
+	int seleccion;
+	cin >> seleccion;
+
+	if(seleccion==0) break;
+
+    switch(seleccion){
+        case 1://PRODUCTOS
+        {
+            cout << "Generando " << cantidad << " productos..." << endl;
+
+            int cont=0;
+
+// Leemos el fichero con los nombres de los productos
+            ifstream fent;
+            fent.open("./datos/nomprod.txt");
+            if(fent==NULL){
+                cout << "Error abriendo el fichero de entrada" << endl;
+                break;
+            }                      
+
+            unordered_map<int,string> ht_nomprod;      
+            int i=0;
+            while(!fent.eof()){
+                ht_nomprod.emplace(i, fent.getline());
+                i++;
+            }
+            fent.close();
+
+// Escribimos el fichero con los insert de productos
+            ofstream fsal;
+            fsal.open("./sql/llenado_productos.sql");
+            if(fsal==NULL){
+                cout << "Error creando el fichero de salida" << endl;
+                break;
+            }                
+            srand(time(NULL));
+            
+            while(cont<CANTIDAD){
+                file << "INSERT INTO PRODUCTO(id_producto, nombre, descripcion) VALUES (" << cont << ", '" 
+                            << ht_nomprod[random()%sizeof(ht_nomprod)] << "');" << endl;
+                cont++;
+            }
+        
+            fsal.close();
+            cout << "Productos generados." << endl;
+            break;
+        }
+        case 2://PROVEEDORES
+        {
+     	   cout << "Generando proveedores..." << endl;
+    
+            cout << "Proveedores generados." << endl;
+            break;    
+        }
+        case 3://CLIENTES
+        {
+            cout << "Generando clientes..." << endl;
+            string nombres[7] = {"Carlos", "Juan", "Angel", "Paula", "Raul", "Cristina", "Marta"};
+            string apellido1[7] = {" García", " López", " Domenech", " Ruiz", " Gonzalez", " Zapatero"," Rajoy"};
+//            string apellido2[5] = [López, García, Calatayud, Del Hierro, Sánchez];
+            cout << "Clientes generados." << endl;
+            break;
+        }
+        default: "Opcion incorrecta";
+    
+    }
+}
+
+return 0;
+
+}

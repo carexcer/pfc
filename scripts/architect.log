@@ -1,0 +1,479 @@
+0    [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ArchitectUtils  - Log4J configured successfully
+509  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+776  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+777  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+920  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+19673 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19677 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19677 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19677 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19677 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19695 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19698 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19698 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19698 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19698 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19701 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19710 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19710 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19710 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19710 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19720 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19720 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19720 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19720 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19723 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19723 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19723 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19724 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19726 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19734 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19734 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19734 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19734 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19737 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19737 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19737 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19737 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19744 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19752 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19752 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19752 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19812 [Thread-5] INFO  ca.sqlpower.architect.swingui.PlayPenComponent  - TablePane: Producto (TABLE) is adding ca.sqlpower.architect.swingui.PlayPen[Play Pen,0,0,0x0,invalid,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=java.awt.Dimension[width=1,height=1],preferredSize=]
+19815 [Thread-5] INFO  ca.sqlpower.architect.swingui.PlayPenComponent  - TablePane: Ubicacion (TABLE) is adding ca.sqlpower.architect.swingui.PlayPen[Play Pen,0,0,0x0,invalid,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=java.awt.Dimension[width=1,height=1],preferredSize=]
+19817 [Thread-5] INFO  ca.sqlpower.architect.swingui.PlayPenComponent  - TablePane: Almacen (TABLE) is adding ca.sqlpower.architect.swingui.PlayPen[Play Pen,0,0,0x0,invalid,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=java.awt.Dimension[width=1,height=1],preferredSize=]
+19819 [Thread-5] INFO  ca.sqlpower.architect.swingui.PlayPenComponent  - TablePane: Marca (TABLE) is adding ca.sqlpower.architect.swingui.PlayPen[Play Pen,0,0,0x0,invalid,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=java.awt.Dimension[width=1,height=1],preferredSize=]
+19821 [Thread-5] INFO  ca.sqlpower.architect.swingui.PlayPenComponent  - TablePane: Proveedor (TABLE) is adding ca.sqlpower.architect.swingui.PlayPen[Play Pen,0,0,0x0,invalid,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=java.awt.Dimension[width=1,height=1],preferredSize=]
+19823 [Thread-5] INFO  ca.sqlpower.architect.swingui.PlayPenComponent  - TablePane: Lote_recibido (TABLE) is adding ca.sqlpower.architect.swingui.PlayPen[Play Pen,0,0,0x0,invalid,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=java.awt.Dimension[width=1,height=1],preferredSize=]
+19824 [Thread-5] INFO  ca.sqlpower.architect.swingui.PlayPenComponent  - TablePane: Categoria (TABLE) is adding ca.sqlpower.architect.swingui.PlayPen[Play Pen,0,0,0x0,invalid,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=java.awt.Dimension[width=1,height=1],preferredSize=]
+19825 [Thread-5] INFO  ca.sqlpower.architect.swingui.PlayPenComponent  - TablePane: Nivel_stock (TABLE) is adding ca.sqlpower.architect.swingui.PlayPen[Play Pen,0,0,0x0,invalid,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=java.awt.Dimension[width=1,height=1],preferredSize=]
+19827 [Thread-5] INFO  ca.sqlpower.architect.swingui.PlayPenComponent  - TablePane: Ubicacion_producto (TABLE) is adding ca.sqlpower.architect.swingui.PlayPen[Play Pen,0,0,0x0,invalid,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=java.awt.Dimension[width=1,height=1],preferredSize=]
+19842 [Thread-5] INFO  ca.sqlpower.architect.swingui.PlayPenComponent  - Relationship: Almacen_Ubicacion_fk is adding ca.sqlpower.architect.swingui.PlayPen[Play Pen,0,0,0x0,invalid,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=java.awt.Dimension[width=1,height=1],preferredSize=]
+19848 [Thread-5] INFO  ca.sqlpower.architect.swingui.PlayPenComponent  - Relationship: Marca_Producto_fk is adding ca.sqlpower.architect.swingui.PlayPen[Play Pen,0,0,0x0,invalid,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=java.awt.Dimension[width=1,height=1],preferredSize=]
+19853 [Thread-5] INFO  ca.sqlpower.architect.swingui.PlayPenComponent  - Relationship: Producto_Proveedor-producto_fk is adding ca.sqlpower.architect.swingui.PlayPen[Play Pen,0,0,0x0,invalid,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=java.awt.Dimension[width=1,height=1],preferredSize=]
+19858 [Thread-5] INFO  ca.sqlpower.architect.swingui.PlayPenComponent  - Relationship: Proveedor_Proveedor-producto_fk is adding ca.sqlpower.architect.swingui.PlayPen[Play Pen,0,0,0x0,invalid,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=java.awt.Dimension[width=1,height=1],preferredSize=]
+19862 [Thread-5] INFO  ca.sqlpower.architect.swingui.PlayPenComponent  - Relationship: Categoria_Producto_fk is adding ca.sqlpower.architect.swingui.PlayPen[Play Pen,0,0,0x0,invalid,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=java.awt.Dimension[width=1,height=1],preferredSize=]
+19868 [Thread-5] INFO  ca.sqlpower.architect.swingui.PlayPenComponent  - Relationship: Ubicacion_Ubicacion_producto_fk is adding ca.sqlpower.architect.swingui.PlayPen[Play Pen,0,0,0x0,invalid,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=java.awt.Dimension[width=1,height=1],preferredSize=]
+19872 [Thread-5] INFO  ca.sqlpower.architect.swingui.PlayPenComponent  - Relationship: Producto_Ubicacion_producto_fk is adding ca.sqlpower.architect.swingui.PlayPen[Play Pen,0,0,0x0,invalid,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=java.awt.Dimension[width=1,height=1],preferredSize=]
+19876 [Thread-5] INFO  ca.sqlpower.architect.swingui.PlayPenComponent  - Relationship: Nivel_stock_Producto_fk is adding ca.sqlpower.architect.swingui.PlayPen[Play Pen,0,0,0x0,invalid,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=java.awt.Dimension[width=1,height=1],preferredSize=]
+19953 [Thread-5] WARN  ca.sqlpower.architect.swingui.dbtree.DBTreeModel  - Not refiring because this is not the EDT. You will need to call refreshTreeStructure() at some point in the future.
+19963 [Thread-5] INFO  ca.sqlpower.architect.swingui.PlayPenComponent  - CubePane: New Cube 1 is adding ca.sqlpower.architect.swingui.PlayPen[Play Pen,0,0,0x0,invalid,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=java.awt.Dimension[width=1,height=1],preferredSize=]
+19966 [Thread-5] INFO  ca.sqlpower.architect.swingui.PlayPenComponent  - DimensionPane: Dimension: name = New Dimension 1, type = StandardDimension, caption = null, usagePrefix = null [inherited CubeDimension: name = null, caption = null, foreignKey = null] is adding ca.sqlpower.architect.swingui.PlayPen[Play Pen,0,0,0x0,invalid,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=java.awt.Dimension[width=1,height=1],preferredSize=]
+19966 [Thread-5] INFO  ca.sqlpower.architect.swingui.PlayPenComponent  - DimensionPane: Dimension: name = New Dimension 2, type = StandardDimension, caption = null, usagePrefix = null [inherited CubeDimension: name = null, caption = null, foreignKey = null] is adding ca.sqlpower.architect.swingui.PlayPen[Play Pen,0,0,0x0,invalid,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=java.awt.Dimension[width=1,height=1],preferredSize=]
+19967 [Thread-5] INFO  ca.sqlpower.architect.swingui.PlayPenComponent  - DimensionPane: Dimension: name = New Dimension 3, type = TimeDimension, caption = null, usagePrefix = null [inherited CubeDimension: name = null, caption = null, foreignKey = null] is adding ca.sqlpower.architect.swingui.PlayPen[Play Pen,0,0,0x0,invalid,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=java.awt.Dimension[width=1,height=1],preferredSize=]
+19969 [Thread-5] INFO  ca.sqlpower.architect.swingui.PlayPenComponent  - ca.sqlpower.architect.swingui.olap.UsageComponent@3963e366, New Dimension 3:59329cc2-94bc-4354-991b-2340adf05ea1 is adding ca.sqlpower.architect.swingui.PlayPen[Play Pen,0,0,0x0,invalid,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=java.awt.Dimension[width=1,height=1],preferredSize=]
+19970 [Thread-5] INFO  ca.sqlpower.architect.swingui.PlayPenComponent  - ca.sqlpower.architect.swingui.olap.UsageComponent@bc6fc9a5, New Dimension 1:b3b4bc04-6ee1-4339-bc2d-59406e5dc39b is adding ca.sqlpower.architect.swingui.PlayPen[Play Pen,0,0,0x0,invalid,layout=java.awt.FlowLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=java.awt.Dimension[width=1,height=1],preferredSize=]
+20061 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+20063 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(50)
+20064 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+20065 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_compra_unitario: FLOAT
+20066 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_venta_unitario: FLOAT
+20066 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Peso: FLOAT
+20066 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Volumen: FLOAT
+20066 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fragil: BOOLEAN
+20067 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Marca: INTEGER
+20067 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Categoria: INTEGER
+20067 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Nivel_Stock: INTEGER
+20068 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Ubicacion: INTEGER
+20068 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Almacen: INTEGER
+20068 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Zona: VARCHAR(6)
+20068 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Estante: INTEGER
+20068 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fila: INTEGER
+20069 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Columna: INTEGER
+20069 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Almacen: INTEGER
+20069 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(50)
+20069 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Ciudad: VARCHAR(128)
+20069 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Direccion: VARCHAR(256)
+20070 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+20070 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Marca: INTEGER
+20070 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre_comercial: VARCHAR(50)
+20070 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre_completo: VARCHAR(128)
+20070 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+20071 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Proveedor: INTEGER
+20071 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column NIF: VARCHAR(9)
+20071 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(128)
+20071 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Telefono: VARCHAR(30)
+20071 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Email: VARCHAR(50)
+20071 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Direccion: VARCHAR(256)
+20072 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Proveedor: INTEGER
+20072 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+20072 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fecha_recepcion: DATE
+20072 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Cantidad_recibida: INTEGER
+20073 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_pagado: FLOAT
+20073 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Plazo_entrega: INTEGER
+20073 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Categoria: INTEGER
+20073 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+20073 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Nivel_Stock: INTEGER
+20073 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Cantidad: INTEGER
+20074 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Valor_monetario: FLOAT
+20074 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Ubicacion: INTEGER
+20074 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+20074 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Detalles: VARCHAR(256)
+26300 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+26300 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(50)
+26300 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+26300 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_compra_unitario: FLOAT
+26300 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_venta_unitario: FLOAT
+26300 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Peso: FLOAT
+26300 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Volumen: FLOAT
+26301 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fragil: BOOLEAN
+26301 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Marca: INTEGER
+26301 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Categoria: INTEGER
+26301 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Nivel_Stock: INTEGER
+26301 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Ubicacion: INTEGER
+26301 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Almacen: INTEGER
+26301 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Zona: VARCHAR(6)
+26302 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Estante: INTEGER
+26302 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fila: INTEGER
+26302 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Columna: INTEGER
+26302 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Almacen: INTEGER
+26302 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(50)
+26302 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Ciudad: VARCHAR(128)
+26302 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Direccion: VARCHAR(256)
+26303 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+26303 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Marca: INTEGER
+26303 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre_comercial: VARCHAR(50)
+26303 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre_completo: VARCHAR(128)
+26303 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+26303 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Proveedor: INTEGER
+26304 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column NIF: VARCHAR(9)
+26304 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(128)
+26304 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Telefono: VARCHAR(30)
+26304 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Email: VARCHAR(50)
+26304 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Direccion: VARCHAR(256)
+26304 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Proveedor: INTEGER
+26304 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+26305 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fecha_recepcion: DATE
+26305 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Cantidad_recibida: INTEGER
+26305 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_pagado: FLOAT
+26305 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Plazo_entrega: INTEGER
+26305 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Categoria: INTEGER
+26305 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+26305 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Nivel_Stock: INTEGER
+26306 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Cantidad: INTEGER
+26306 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Valor_monetario: FLOAT
+26306 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Ubicacion: INTEGER
+26306 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+26306 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Detalles: VARCHAR(256)
+26398 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+26398 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(50)
+26399 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+26399 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_compra_unitario: FLOAT
+26399 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_venta_unitario: FLOAT
+26400 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Peso: FLOAT
+26400 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Volumen: FLOAT
+26400 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fragil: BOOLEAN
+26401 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Marca: INTEGER
+26401 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Categoria: INTEGER
+26401 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Nivel_Stock: INTEGER
+26402 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Ubicacion: INTEGER
+26403 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Almacen: INTEGER
+26403 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Zona: VARCHAR(6)
+26403 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Estante: INTEGER
+26404 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fila: INTEGER
+26404 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Columna: INTEGER
+26405 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Almacen: INTEGER
+26405 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(50)
+26405 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Ciudad: VARCHAR(128)
+26406 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Direccion: VARCHAR(256)
+26406 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+26406 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Marca: INTEGER
+26406 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre_comercial: VARCHAR(50)
+26406 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre_completo: VARCHAR(128)
+26406 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+26407 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Proveedor: INTEGER
+26407 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column NIF: VARCHAR(9)
+26407 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(128)
+26407 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Telefono: VARCHAR(30)
+26407 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Email: VARCHAR(50)
+26407 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Direccion: VARCHAR(256)
+26407 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Proveedor: INTEGER
+26408 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+26408 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fecha_recepcion: DATE
+26408 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Cantidad_recibida: INTEGER
+26408 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_pagado: FLOAT
+26408 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Plazo_entrega: INTEGER
+26408 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Categoria: INTEGER
+26408 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+26409 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Nivel_Stock: INTEGER
+26409 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Cantidad: INTEGER
+26409 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Valor_monetario: FLOAT
+26409 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Ubicacion: INTEGER
+26409 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+26409 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Detalles: VARCHAR(256)
+26879 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+26879 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(50)
+26879 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+26879 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_compra_unitario: FLOAT
+26879 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_venta_unitario: FLOAT
+26879 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Peso: FLOAT
+26879 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Volumen: FLOAT
+26880 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fragil: BOOLEAN
+26880 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Marca: INTEGER
+26880 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Categoria: INTEGER
+26880 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Nivel_Stock: INTEGER
+26880 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Ubicacion: INTEGER
+26880 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Almacen: INTEGER
+26880 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Zona: VARCHAR(6)
+26881 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Estante: INTEGER
+26881 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fila: INTEGER
+26881 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Columna: INTEGER
+26881 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Almacen: INTEGER
+26881 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(50)
+26881 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Ciudad: VARCHAR(128)
+26881 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Direccion: VARCHAR(256)
+26882 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+26882 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Marca: INTEGER
+26882 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre_comercial: VARCHAR(50)
+26882 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre_completo: VARCHAR(128)
+26882 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+26882 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Proveedor: INTEGER
+26883 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column NIF: VARCHAR(9)
+26883 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(128)
+26883 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Telefono: VARCHAR(30)
+26883 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Email: VARCHAR(50)
+26883 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Direccion: VARCHAR(256)
+26883 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Proveedor: INTEGER
+26883 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+26884 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fecha_recepcion: DATE
+26884 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Cantidad_recibida: INTEGER
+26884 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_pagado: FLOAT
+26884 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Plazo_entrega: INTEGER
+26884 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Categoria: INTEGER
+26884 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+26884 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Nivel_Stock: INTEGER
+26885 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Cantidad: INTEGER
+26885 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Valor_monetario: FLOAT
+26885 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Ubicacion: INTEGER
+26885 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+26885 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Detalles: VARCHAR(256)
+27007 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+27007 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(50)
+27008 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+27008 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_compra_unitario: FLOAT
+27009 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_venta_unitario: FLOAT
+27009 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Peso: FLOAT
+27009 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Volumen: FLOAT
+27010 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fragil: BOOLEAN
+27010 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Marca: INTEGER
+27010 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Categoria: INTEGER
+27010 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Nivel_Stock: INTEGER
+27010 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Ubicacion: INTEGER
+27010 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Almacen: INTEGER
+27011 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Zona: VARCHAR(6)
+27011 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Estante: INTEGER
+27011 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fila: INTEGER
+27011 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Columna: INTEGER
+27011 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Almacen: INTEGER
+27011 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(50)
+27011 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Ciudad: VARCHAR(128)
+27011 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Direccion: VARCHAR(256)
+27012 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+27012 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Marca: INTEGER
+27012 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre_comercial: VARCHAR(50)
+27012 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre_completo: VARCHAR(128)
+27012 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+27013 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Proveedor: INTEGER
+27013 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column NIF: VARCHAR(9)
+27013 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(128)
+27013 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Telefono: VARCHAR(30)
+27013 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Email: VARCHAR(50)
+27013 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Direccion: VARCHAR(256)
+27013 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Proveedor: INTEGER
+27014 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+27014 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fecha_recepcion: DATE
+27014 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Cantidad_recibida: INTEGER
+27014 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_pagado: FLOAT
+27014 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Plazo_entrega: INTEGER
+27014 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Categoria: INTEGER
+27014 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+27015 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Nivel_Stock: INTEGER
+27015 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Cantidad: INTEGER
+27015 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Valor_monetario: FLOAT
+27015 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Ubicacion: INTEGER
+27015 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+27015 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Detalles: VARCHAR(256)
+27263 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+27263 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(50)
+27263 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+27263 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_compra_unitario: FLOAT
+27263 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_venta_unitario: FLOAT
+27264 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Peso: FLOAT
+27264 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Volumen: FLOAT
+27264 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fragil: BOOLEAN
+27264 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Marca: INTEGER
+27264 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Categoria: INTEGER
+27264 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Nivel_Stock: INTEGER
+27264 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Ubicacion: INTEGER
+27265 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Almacen: INTEGER
+27265 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Zona: VARCHAR(6)
+27265 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Estante: INTEGER
+27265 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fila: INTEGER
+27265 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Columna: INTEGER
+27265 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Almacen: INTEGER
+27265 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(50)
+27265 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Ciudad: VARCHAR(128)
+27266 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Direccion: VARCHAR(256)
+27266 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+27266 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Marca: INTEGER
+27266 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre_comercial: VARCHAR(50)
+27266 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre_completo: VARCHAR(128)
+27266 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+27266 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Proveedor: INTEGER
+27267 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column NIF: VARCHAR(9)
+27267 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(128)
+27267 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Telefono: VARCHAR(30)
+27267 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Email: VARCHAR(50)
+27267 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Direccion: VARCHAR(256)
+27267 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Proveedor: INTEGER
+27267 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+27268 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fecha_recepcion: DATE
+27268 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Cantidad_recibida: INTEGER
+27268 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_pagado: FLOAT
+27268 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Plazo_entrega: INTEGER
+27268 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Categoria: INTEGER
+27268 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+27268 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Nivel_Stock: INTEGER
+27269 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Cantidad: INTEGER
+27269 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Valor_monetario: FLOAT
+27269 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Ubicacion: INTEGER
+27269 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+27269 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Detalles: VARCHAR(256)
+27425 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+27425 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(50)
+27425 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+27426 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_compra_unitario: FLOAT
+27426 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_venta_unitario: FLOAT
+27426 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Peso: FLOAT
+27426 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Volumen: FLOAT
+27426 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fragil: BOOLEAN
+27426 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Marca: INTEGER
+27426 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Categoria: INTEGER
+27426 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Nivel_Stock: INTEGER
+27427 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Ubicacion: INTEGER
+27427 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Almacen: INTEGER
+27427 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Zona: VARCHAR(6)
+27427 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Estante: INTEGER
+27427 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fila: INTEGER
+27427 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Columna: INTEGER
+27428 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Almacen: INTEGER
+27428 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(50)
+27428 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Ciudad: VARCHAR(128)
+27428 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Direccion: VARCHAR(256)
+27428 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+27428 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Marca: INTEGER
+27428 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre_comercial: VARCHAR(50)
+27429 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre_completo: VARCHAR(128)
+27429 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+27429 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Proveedor: INTEGER
+27429 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column NIF: VARCHAR(9)
+27429 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(128)
+27429 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Telefono: VARCHAR(30)
+27429 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Email: VARCHAR(50)
+27430 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Direccion: VARCHAR(256)
+27430 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Proveedor: INTEGER
+27430 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+27430 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fecha_recepcion: DATE
+27430 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Cantidad_recibida: INTEGER
+27430 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_pagado: FLOAT
+27430 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Plazo_entrega: INTEGER
+27431 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Categoria: INTEGER
+27431 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+27431 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Nivel_Stock: INTEGER
+27431 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Cantidad: INTEGER
+27431 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Valor_monetario: FLOAT
+27431 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Ubicacion: INTEGER
+27431 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+27432 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Detalles: VARCHAR(256)
+27958 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+27958 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(50)
+27959 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+27959 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_compra_unitario: FLOAT
+27959 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_venta_unitario: FLOAT
+27959 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Peso: FLOAT
+27959 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Volumen: FLOAT
+27959 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fragil: BOOLEAN
+27959 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Marca: INTEGER
+27959 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Categoria: INTEGER
+27959 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Nivel_Stock: INTEGER
+27960 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Ubicacion: INTEGER
+27960 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Almacen: INTEGER
+27960 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Zona: VARCHAR(6)
+27960 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Estante: INTEGER
+27960 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fila: INTEGER
+27960 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Columna: INTEGER
+27960 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Almacen: INTEGER
+27961 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(50)
+27961 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Ciudad: VARCHAR(128)
+27961 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Direccion: VARCHAR(256)
+27961 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+27961 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Marca: INTEGER
+27961 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre_comercial: VARCHAR(50)
+27961 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre_completo: VARCHAR(128)
+27962 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+27962 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Proveedor: INTEGER
+27962 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column NIF: VARCHAR(9)
+27962 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(128)
+27962 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Telefono: VARCHAR(30)
+27962 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Email: VARCHAR(50)
+27962 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Direccion: VARCHAR(256)
+27963 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Proveedor: INTEGER
+27963 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+27963 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fecha_recepcion: DATE
+27963 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Cantidad_recibida: INTEGER
+27963 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_pagado: FLOAT
+27963 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Plazo_entrega: INTEGER
+27963 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Categoria: INTEGER
+27963 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+27964 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Nivel_Stock: INTEGER
+27964 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Cantidad: INTEGER
+27964 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Valor_monetario: FLOAT
+27964 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Ubicacion: INTEGER
+27964 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+27964 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Detalles: VARCHAR(256)
+28066 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+28066 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(50)
+28066 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+28066 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_compra_unitario: FLOAT
+28066 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_venta_unitario: FLOAT
+28066 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Peso: FLOAT
+28066 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Volumen: FLOAT
+28067 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fragil: BOOLEAN
+28067 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Marca: INTEGER
+28067 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Categoria: INTEGER
+28067 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Nivel_Stock: INTEGER
+28067 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Ubicacion: INTEGER
+28067 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Almacen: INTEGER
+28067 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Zona: VARCHAR(6)
+28068 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Estante: INTEGER
+28068 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fila: INTEGER
+28068 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Columna: INTEGER
+28068 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Almacen: INTEGER
+28068 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(50)
+28068 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Ciudad: VARCHAR(128)
+28068 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Direccion: VARCHAR(256)
+28068 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+28069 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Marca: INTEGER
+28069 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre_comercial: VARCHAR(50)
+28069 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre_completo: VARCHAR(128)
+28069 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+28069 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Proveedor: INTEGER
+28069 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column NIF: VARCHAR(9)
+28070 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Nombre: VARCHAR(128)
+28070 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Telefono: VARCHAR(30)
+28070 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Email: VARCHAR(50)
+28070 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Direccion: VARCHAR(256)
+28070 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Proveedor: INTEGER
+28070 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+28070 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Fecha_recepcion: DATE
+28071 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Cantidad_recibida: INTEGER
+28071 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Precio_pagado: FLOAT
+28071 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Plazo_entrega: INTEGER
+28071 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Categoria: INTEGER
+28071 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Descripcion: VARCHAR(256)
+28071 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Nivel_Stock: INTEGER
+28071 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Cantidad: INTEGER
+28072 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Valor_monetario: FLOAT
+28072 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Ubicacion: INTEGER
+28072 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Id_Producto: INTEGER
+28072 [AWT-EventQueue-0] DEBUG ca.sqlpower.architect.swingui.TablePane  - Checking column Detalles: VARCHAR(256)

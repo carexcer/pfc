@@ -1,0 +1,31 @@
+Pendrive Kingston 4GB;Pendrive USB 3.0
+Pendrive Kingston 8GB;Pendrive USB 3.0
+Pendrive Kingston 16GB;Pendrive USB 3.0
+Disco Duro 500GB;Disco duro de 3.5" a 5400rpm
+Disco Duro 640GB;Disco duro de 3.5" a 7200rpm
+Disco Duro SSD 128GB;Disco duro solido
+Cable HDMI;3 metros de largo
+Cable Ethernet;1.5 metros de largo
+Cable USB;Cable usb macho-hembra de 50 cm de largo
+Monitor Asus A22;Pantalla LED con HDMI y DVI de 22"
+Monitor Asus A23;Pantalla LED con HDMI de 23"
+Monitor Asus A24;Pantalla LED con HDMI, DVI, Smart TV y 3D de 24"
+Monitor Asus A28;Pantalla LED Smart TV de 28"
+Monitor Asus A32;Pantalla LED Smart TV de 32"
+Monitor Sony LCD 22"
+Monitor Sony LED 23.6"
+Portatil 15.6" Sony Vaio
+Portatil HP 13"
+NVIDIA GeForce 9500
+NVIDIA GeForce 9600
+NVIDIA GeForce 9600GT
+Impresora Laser Brother BX1
+Impresora Multifuncion Canon Pixma P255
+Lavadora Zanussi Z300
+LG Optimus Black Negro
+Apple MacBook Pro 13"
+Apple Ipod Touch 4G
+Apple Iphone 4GS
+Samsung Galaxy S4
+Samsung Galaxy Tab 7"
+

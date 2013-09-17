@@ -2,55 +2,37 @@ package java_project;
 
 public class Marca {
 
-	Integer IdMarca;
-	String NombreComercial;
-	String NombreCompleto;
-	String Descripcion;
+	private Integer idMarca;
+	private String nombreMarca;
 	
 	public Marca(){
-		IdMarca = null;
-		NombreComercial = null;
-		NombreCompleto = null;
-		Descripcion = null;
+		idMarca = null;
+		nombreMarca = null;
 	}
-	public Marca(Integer idMarca, String nombreComercial,
-			String nombreCompleto, String descripcion) {
+	public Marca(Integer idMarca,
+			String nombre, String descripcion) {
 		super();
-		IdMarca = idMarca;
-		NombreComercial = nombreComercial;
-		NombreCompleto = nombreCompleto;
-		Descripcion = descripcion;
+		this.idMarca = idMarca;
+		nombreMarca = nombre;
 	}
 	public Integer getIdMarca() {
-		return IdMarca;
+		return idMarca;
 	}
 	public void setIdMarca(Integer idMarca) {
-		IdMarca = idMarca;
+		this.idMarca = idMarca;
 	}
-	public String getNombreComercial() {
-		return NombreComercial;
+	public String getNombre() {
+		return nombreMarca;
 	}
-	public void setNombreComercial(String nombreComercial) {
-		NombreComercial = nombreComercial;
-	}
-	public String getNombreCompleto() {
-		return NombreCompleto;
-	}
-	public void setNombreCompleto(String nombreCompleto) {
-		NombreCompleto = nombreCompleto;
-	}
-	public String getDescripcion() {
-		return Descripcion;
-	}
-	public void setDescripcion(String descripcion) {
-		Descripcion = descripcion;
+	public void setNombre(String nombre) {
+		nombreMarca = nombre;
 	}
 	public void printInsertSQL(){
-		System.out.println("INSERT INTO MARCA (id_marca, nombre_comercial, nombre_completo, descripcion) VALUES ("
-							+ IdMarca + ",'" + NombreComercial + "','" + NombreCompleto + "','" + Descripcion + "');");
+		System.out.println("INSERT INTO MARCA (id_marca, nombre_marca) VALUES ("
+							+ idMarca + ",'" + nombreMarca  + "');");
 	}
 	public String getInsertSQL(){
-		return "INSERT INTO MARCA (id_marca, nombre_comercial, nombre_completo, descripcion) VALUES ("
-							+ IdMarca + ",'" + NombreComercial + "','" + NombreCompleto + "','" + Descripcion + "');\n";
+		return "INSERT INTO MARCA (id_marca, nombre_marca) VALUES ("
+							+ idMarca + ",'" + nombreMarca + "');\n";
 	}
 }

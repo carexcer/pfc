@@ -2,89 +2,104 @@ package java_project;
 
 public class Proveedor {
 	
-	Integer IdProveedor;
-	String NIF;
-	String Nombre;
-	String Telefono;
-	String Email;
-	String Direccion;
+	Integer idProveedor;
+	String nif;
+	String nombreProveedor;
+	String telefono;
+	String email;
+	String direccion;
 	
 	public Proveedor(){
-		IdProveedor = null;
-		NIF = null;
-		Nombre = null;
-		Telefono = null;
-		Email = null;
-		Direccion = null;
+		idProveedor = null;
+		nif = null;
+		nombreProveedor = null;
+		telefono = null;
+		email = null;
+		direccion = null;
 	}
-
-	public Proveedor(Integer idProveedor, String nIF, String nombre,
+	
+	
+	public Proveedor(Integer idProveedor, String nif, String nombreProveedor,
 			String telefono, String email, String direccion) {
 		super();
-		IdProveedor = idProveedor;
-		NIF = nIF;
-		Nombre = nombre;
-		Telefono = telefono;
-		Email = email;
-		Direccion = direccion;
+		this.idProveedor = idProveedor;
+		this.nif = nif;
+		this.nombreProveedor = nombreProveedor;
+		this.telefono = telefono;
+		this.email = email;
+		this.direccion = direccion;
 	}
+
 
 	public Integer getIdProveedor() {
-		return IdProveedor;
+		return idProveedor;
 	}
+
 
 	public void setIdProveedor(Integer idProveedor) {
-		IdProveedor = idProveedor;
+		this.idProveedor = idProveedor;
 	}
 
-	public String getNIF() {
-		return NIF;
+
+	public String getNif() {
+		return nif;
 	}
 
-	public void setNIF(String nIF) {
-		NIF = nIF;
+
+	public void setNif(String nif) {
+		this.nif = nif;
 	}
 
-	public String getNombre() {
-		return Nombre;
+
+	public String getNombreProveedor() {
+		return nombreProveedor;
 	}
 
-	public void setNombre(String nombre) {
-		Nombre = nombre;
+
+	public void setNombreProveedor(String nombreProveedor) {
+		this.nombreProveedor = nombreProveedor;
 	}
+
 
 	public String getTelefono() {
-		return Telefono;
+		return telefono;
 	}
+
 
 	public void setTelefono(String telefono) {
-		Telefono = telefono;
+		this.telefono = telefono;
 	}
+
 
 	public String getEmail() {
-		return Email;
+		return email;
 	}
+
 
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
+
 
 	public String getDireccion() {
-		return Direccion;
+		return direccion;
 	}
 
+
 	public void setDireccion(String direccion) {
-		Direccion = direccion;
+		this.direccion = direccion;
 	}
+
+
 	public void printInsertSQL(){
-		System.out.println("INSERT INTO PROVEEDOR (id_proveedor, NIF, nombre, telefono, email, direccion) VALUES ("
-							+ IdProveedor + ",'" + NIF + "','" + Nombre + "','" + Telefono + "','" + Email +  
-							"','" + Direccion+ "');\n");
+		System.out.println("INSERT INTO PROVEEDOR (id_proveedor, NIF, nombre_proveedor, telefono, email, direccion) VALUES ("
+							+ idProveedor + ",'" + nif + "','" + nombreProveedor + "','" + telefono + "','" + email +  
+							"','" + direccion+ "');\n");
 	}
 	public String getInsertSQL(){
-		return "INSERT INTO PROVEEDOR (id_proveedor, NIF, nombre, telefono, email, direccion) VALUES ("
-							+ IdProveedor + ",'" + NIF + "','" + Nombre + "','" + Telefono + "','" + Email +  
-							"','" + Direccion+ "');\n";
+		return "INSERT INTO PROVEEDOR (id_proveedor, NIF, nombre_proveedor, telefono, email, direccion) VALUES ("
+							+ idProveedor + ",'" + nif + "','" + nombreProveedor + "','" + telefono + "','" + email +  
+							"','" + direccion+ "');\n";
 	}
 
 }

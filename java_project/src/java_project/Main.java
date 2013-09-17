@@ -22,7 +22,7 @@ public class Main {
 		System.out.println(bienvenida);
 		System.out.println("1 - LLENAR TABLA MARCA");
 		System.out.println("2 - LLENAR TABLA PROVEEDOR");
-		System.out.println("3 - LLENAR TABLA PRODUCTO");
+		System.out.println("3 - CAMBIAR NOMBRE POR ID CATEGORIA EN TABLA PRODUCTO");
 		System.out.println("0 - SALIR");
 
 		System.out.println("Selecciona la opcion que desees:");
@@ -39,9 +39,7 @@ public class Main {
 				Marca m1 = new Marca();
 				for(int i=0; i<20; i++){			
 					m1.setIdMarca(i);
-					m1.setNombreComercial("NombreComercial"+i);
-					m1.setNombreCompleto("nombreCompleto"+i);
-					m1.setDescripcion("Descripcion"+i);
+					m1.setNombre("Nombre"+i);
 					listaMarcas.add(m1);
 				}
 				File file = new File(ruta+"poblar_marcas.sql");
@@ -60,7 +58,8 @@ public class Main {
 			}
 			case (int) '3':///////////////////PRODUCTO
 			{
-
+				GeneradorCSV gen = new GeneradorCSV();
+				gen.NombrePorIdCategoria(null);
 				break;
 			}
 			default:

@@ -10,18 +10,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class GeneradorSQL {
-
-	String ruta = "/home/carlos/pfc/pfc/sql/";
 	
-	public void generarMarcas(int cantidad) throws IOException{
+	public void generarMarcas(int cantidad, String ruta) throws IOException{
 		
 		ArrayList<Marca> listaMarcas = new ArrayList<Marca>();
 		for(int i=0; i<cantidad; i++){			
 			Marca m1 = new Marca();
 			m1.setIdMarca(i);
-			m1.setNombreComercial("NombreComercial"+i);
-			m1.setNombreCompleto("nombreCompleto"+i);
-			m1.setDescripcion("Descripcion"+i);
+			m1.setNombre("Nombre"+i);
 			listaMarcas.add(m1);
 		}
 		File file = new File(ruta+"poblar_marcas.sql");
@@ -32,14 +28,14 @@ public class GeneradorSQL {
 			w.write(listaMarcas.get(j).getInsertSQL());
 		w.close();
 	}
-	public void generarProveedores(int cantidad) throws IOException{
+	public void generarProveedores(int cantidad, String ruta) throws IOException{
 		
 		ArrayList<Proveedor> listaProveedores = new ArrayList<Proveedor>();
 		for(int i=0; i<cantidad; i++){			
 			Proveedor p1 = new Proveedor();
 			p1.setIdProveedor(i);
-			p1.setNIF(i+i+i+i+"E");
-			p1.setNombre("nomproveedor"+i);
+			p1.setNif(i+i+i+i+"E");
+			p1.setNombreProveedor("nomproveedor"+i);
 			p1.setTelefono("telfproveedor"+i);
 			p1.setEmail("info" + "@" + "nomproveedir" + i + ".com");
 			p1.setDireccion("DirecProveedor num. "+i);
@@ -53,15 +49,13 @@ public class GeneradorSQL {
 			w.write(listaProveedores.get(j).getInsertSQL());
 		w.close();
 	}
-	public void generarProductos(int cantidad) throws IOException{
+	public void generarProductos(int cantidad, String ruta) throws IOException{
 		
 		ArrayList<Marca> listaMarcas = new ArrayList<Marca>();
 		Marca m1 = new Marca();
 		for(int i=0; i<cantidad; i++){			
 			m1.setIdMarca(i);
-			m1.setNombreComercial("NombreComercial"+i);
-			m1.setNombreCompleto("nombreCompleto"+i);
-			m1.setDescripcion("Descripcion"+i);
+			m1.setNombre("Nombre"+i);
 			listaMarcas.add(m1);
 		}
 		File file = new File(ruta+"poblar_marcas.sql");

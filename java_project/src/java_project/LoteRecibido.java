@@ -1,13 +1,13 @@
 package java_project;
 
-import java.sql.Date;
+import java.util.Calendar;
 
 public class LoteRecibido {
 	
 	private Integer IdLoteRecibido;
 	private Integer IdProveedor;
 	private Integer IdProducto;
-	private Date FechaRecepcion;
+	private Calendar FechaRecepcion;
 	private Integer CantidadRecibida;
 	private Float PrecioPagado;
 	
@@ -16,7 +16,7 @@ public class LoteRecibido {
 	}
 	
 	public LoteRecibido(Integer idLoteRecibido, Integer idProveedor,
-			Integer idProducto, Date fechaRecepcion, Integer cantidadRecibida,
+			Integer idProducto, Calendar fechaRecepcion, Integer cantidadRecibida,
 			Float precioPagado) {
 		super();
 		IdLoteRecibido = idLoteRecibido;
@@ -51,11 +51,11 @@ public class LoteRecibido {
 		IdProducto = idProducto;
 	}
 
-	public Date getFechaRecepcion() {
+	public Calendar getFechaRecepcion() {
 		return FechaRecepcion;
 	}
 
-	public void setFechaRecepcion(Date fechaRecepcion) {
+	public void setFechaRecepcion(Calendar fechaRecepcion) {
 		FechaRecepcion = fechaRecepcion;
 	}
 

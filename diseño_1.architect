@@ -163,10 +163,10 @@
     <index id="IDX36" populated="true" UUID="b847b6be-acb7-40fb-bdbb-9cef1a3a38f4" clustered="false" name="Marca_PK" physicalName="marca_pk" primaryKeyIndex="true" unique="false" >
      <index-column id="IDC37" populated="true" UUID="e928a3ad-339f-471a-bef0-ccebefbcc659" ascendingOrDescending="UNSPECIFIED" column-ref="COL34" name="Id_Marca" physicalName="Id_Marca" />
     </index>
-    <index id="IDX38" populated="true" UUID="2a354e3c-0518-4d20-8e2e-87c65c8a0378" clustered="false" index-type="BTREE" name="Nombre_Marca_idx" physicalName="Nombre_Marca_idx" primaryKeyIndex="false" unique="false" >
+    <index id="IDX38" populated="true" UUID="2a354e3c-0518-4d20-8e2e-87c65c8a0378" clustered="false" index-type="BTREE" name="Nombre_Marca_idx" physicalName="nombre_marca_idx" primaryKeyIndex="false" unique="false" >
      <index-column id="IDC39" populated="true" UUID="1b93518f-506a-41eb-b7f6-e2e652b0b5e3" ascendingOrDescending="UNSPECIFIED" column-ref="COL35" name="Nombre_Marca" physicalName="Nombre_Marca" />
     </index>
-    <index id="IDX40" populated="true" UUID="c47c17c0-1316-4e0d-b876-55fa2a21d615" clustered="false" index-type="BTREE" name="Marca_idx1" physicalName="Marca_idx1" primaryKeyIndex="false" unique="false" >
+    <index id="IDX40" populated="true" UUID="c47c17c0-1316-4e0d-b876-55fa2a21d615" clustered="false" index-type="BTREE" name="Marca_idx1" physicalName="marca_idx1" primaryKeyIndex="false" unique="false" >
      <index-column id="IDC41" populated="true" UUID="04091e79-5641-4bc8-86c9-9d3ed6af4b80" ascendingOrDescending="UNSPECIFIED" column-ref="COL34" name="Id_Marca" physicalName="Id_Marca" />
     </index>
    </folder>
@@ -224,7 +224,7 @@
     <column id="COL57" populated="true" UUID="8bef18c3-c00d-4da4-b48b-ea1985bcd63c" autoIncrement="false" autoIncrementSequenceName="Lote_recibido_Cantidad_recibida_seq" defaultValue="" name="Cantidad_recibida" nullable="0" physicalName="Cantidad_recibida" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL58" populated="true" UUID="8cbdd8fd-268d-4ec2-90ff-f1f4630b192f" autoIncrement="false" autoIncrementSequenceName="Lote_recibido_Precio_pagado_seq" defaultValue="" name="Precio_pagado" nullable="0" physicalName="Precio_pagado" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
+    <column id="COL58" populated="true" UUID="8cbdd8fd-268d-4ec2-90ff-f1f4630b192f" autoIncrement="false" autoIncrementSequenceName="Lote_recibido_Precio_compra_unitario_seq" defaultValue="" name="Precio_compra_unitario" nullable="0" physicalName="Precio_compra_unitario" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
      <remarks></remarks>
     </column>
     </folder>
@@ -502,8 +502,8 @@
      <dimension-pane id="DP1" model-ref="2" x="468" y="83"/>
      <dimension-pane id="DP2" model-ref="5" x="213" y="488"/>
      <dimension-pane id="DP3" model-ref="8" x="100" y="250"/>
-     <usage-comp model-ref="15" pane1-ref="DP1" pane2-ref="CP0"/>
      <usage-comp model-ref="16" pane1-ref="DP3" pane2-ref="CP0"/>
+     <usage-comp model-ref="15" pane1-ref="DP1" pane2-ref="CP0"/>
     </play-pen>
    </olap-edit-session>
   </olap-gui>

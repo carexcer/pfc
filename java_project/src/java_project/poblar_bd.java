@@ -28,6 +28,7 @@ import java.io.IOException;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JScrollPane;
 
 public class poblar_bd {
 
@@ -68,49 +69,13 @@ public class poblar_bd {
 		frmPobladorDeTablas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPobladorDeTablas.getContentPane().setLayout(null);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(23, 248, 553, 220);
+		frmPobladorDeTablas.getContentPane().add(scrollPane);
+		
 		final JTextArea textArea = new JTextArea();
-		textArea.setBounds(23, 291, 402, 137);
-		frmPobladorDeTablas.getContentPane().add(textArea);
-		
-		JButton btnGenerarMarcas = new JButton("Generar Marcas");
-		btnGenerarMarcas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				GeneradorSQL generador = new GeneradorSQL();
-				textArea.append("Se han generado las marcas correctamente.\n");
-				try {
-					generador.generarMarcas(300, ruta);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		});
-		btnGenerarMarcas.setBounds(23, 6, 208, 27);
-		frmPobladorDeTablas.getContentPane().add(btnGenerarMarcas);
-		
-		JButton btnGenerarProveedores = new JButton("Generar Proveedores");
-		btnGenerarProveedores.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				GeneradorSQL generador = new GeneradorSQL();
-				try {
-					generador.generarProveedores(150, ruta);
-					textArea.append("Se han generado los proveedores correctamente.\n");
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
-		btnGenerarProveedores.setBounds(23, 45, 208, 27);
-		frmPobladorDeTablas.getContentPane().add(btnGenerarProveedores);
-		
-		JButton btnGenerarProductos = new JButton("Generar Productos");
-		btnGenerarProductos.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnGenerarProductos.setBounds(23, 84, 208, 27);
-		frmPobladorDeTablas.getContentPane().add(btnGenerarProductos);
+		scrollPane.setViewportView(textArea);
+		textArea.setAutoscrolls(true);
 		
 		JLabel lblRuta = new JLabel("Ruta");
 		lblRuta.setBounds(414, 12, 60, 15);
@@ -132,36 +97,56 @@ public class poblar_bd {
 		btnGuardarRuta.setBounds(414, 66, 151, 27);
 		frmPobladorDeTablas.getContentPane().add(btnGuardarRuta);
 		
-		JButton btnNomcatPorIdcat = new JButton("NomCat por IdCat en Producto");
-		btnNomcatPorIdcat.addActionListener(new ActionListener() {
+		JButton btnLeerProductos = new JButton("GENERAR PRODUCTOS");
+		btnLeerProductos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(frmPobladorDeTablas, "El producto con id=10 de categoria accesorios LG Optimus L5 II hay que introducirlo manualmente.", "Atencion",0);
-
 				GeneradorCSV gen = new GeneradorCSV();
 				try {
-					gen.NombrePorIdCategoria(null);
+					textArea.append("Leyendo productos...\n");
+					gen.leerProductos(null);
+					textArea.append("Generando precios de venta...\n");
+					gen.generarPreciosVenta();
+					textArea.append("Generando cantidades de stock...\n");
+					gen.generarCantidadStock();
+					textArea.append("Escribiendo productos...\n");
+					gen.escribirProductos(null);
+					textArea.append("****** Terminado. Productos generados. ******\n");
+					
+				}
+				catch (IOException e1) {
+					System.out.println("Error al leer productos");
+					e1.printStackTrace();
+				}
+				try {
+					
+					gen.escribirProductos(null);
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
+					System.out.println("Error al escribir productos");
 					e.printStackTrace();
 				}
 			}
 		});
-		btnNomcatPorIdcat.setBounds(27, 154, 251, 27);
-		frmPobladorDeTablas.getContentPane().add(btnNomcatPorIdcat);
+		btnLeerProductos.setBounds(23, 22, 185, 27);
+		frmPobladorDeTablas.getContentPane().add(btnLeerProductos);
 		
-		JButton btnNommarcaPorIdmarca = new JButton("NomMarca por IdMarca en Producto");
-		btnNommarcaPorIdmarca.addActionListener(new ActionListener() {
+		JButton btnPruebas = new JButton("Pruebas");
+		btnPruebas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				GeneradorCSV gen = new GeneradorCSV();
 				try {
-					gen.NombrePorIdMarca(null);
+					gen.GenerarLotesRecibidos(null);
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 		});
-		btnNommarcaPorIdmarca.setBounds(23, 191, 251, 27);
-		frmPobladorDeTablas.getContentPane().add(btnNommarcaPorIdmarca);
+		btnPruebas.setBounds(414, 105, 100, 27);
+		frmPobladorDeTablas.getContentPane().add(btnPruebas);
+		
+	
 	}
 }

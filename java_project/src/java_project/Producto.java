@@ -6,8 +6,8 @@ public class Producto {
 	private Integer idCategoria;
 	private Integer idMarca;
 	private String nombreProducto;
-	private Float precioCompraUnitario;
-	private Float precioVentaUnitario;
+	private Float precioMedioCompraUnitario;
+	private Float precioMedioVentaUnitario;
 	private String stock;
 	private Integer cantidadStock;
 	private Float peso;
@@ -19,16 +19,16 @@ public class Producto {
 	}
 
 	public Producto(Integer idProducto, Integer idCategoria, Integer idMarca,
-			String nombreProducto, Float precioCompraUnitario,
-			Float precioVentaUnitario, String stock, Integer cantidadStock,
+			String nombreProducto, Float precioMedioCompraUnitario,
+			Float precioMedioVentaUnitario, String stock, Integer cantidadStock,
 			Float peso, String nombreCategoria, String nombreMarca) {
 		super();
 		this.idProducto = idProducto;
 		this.idCategoria = idCategoria;
 		this.idMarca = idMarca;
 		this.nombreProducto = nombreProducto;
-		this.precioCompraUnitario = precioCompraUnitario;
-		this.precioVentaUnitario = precioVentaUnitario;
+		this.precioMedioCompraUnitario = precioMedioCompraUnitario;
+		this.precioMedioVentaUnitario = precioMedioVentaUnitario;
 		this.stock = stock;
 		this.cantidadStock = cantidadStock;
 		this.peso = peso;
@@ -68,20 +68,20 @@ public class Producto {
 		this.nombreProducto = nombreProducto;
 	}
 
-	public Float getPrecioCompraUnitario() {
-		return precioCompraUnitario;
+	public Float getPrecioMedioCompraUnitario() {
+		return precioMedioCompraUnitario;
 	}
 
-	public void setPrecioCompraUnitario(Float precioCompraUnitario) {
-		this.precioCompraUnitario = precioCompraUnitario;
+	public void setPrecioMedioCompraUnitario(Float precioMedioCompraUnitario) {
+		this.precioMedioCompraUnitario = precioMedioCompraUnitario;
 	}
 
-	public Float getPrecioVentaUnitario() {
-		return precioVentaUnitario;
+	public Float getPrecioMedioVentaUnitario() {
+		return precioMedioVentaUnitario;
 	}
 
-	public void setPrecioVentaUnitario(Float precioVentaUnitario) {
-		this.precioVentaUnitario = precioVentaUnitario;
+	public void setPrecioMedioVentaUnitario(Float precioMedioVentaUnitario) {
+		this.precioMedioVentaUnitario = precioMedioVentaUnitario;
 	}
 
 	public String getStock() {

@@ -7,6 +7,7 @@ public class Proveedor {
 	String nombreProveedor;
 	String telefono;
 	String email;
+	String contacto;
 	String direccion;
 	
 	public Proveedor(){
@@ -15,18 +16,20 @@ public class Proveedor {
 		nombreProveedor = null;
 		telefono = null;
 		email = null;
+		contacto = null;
 		direccion = null;
 	}
 	
 	
 	public Proveedor(Integer idProveedor, String nif, String nombreProveedor,
-			String telefono, String email, String direccion) {
+			String telefono, String email, String contacto, String direccion) {
 		super();
 		this.idProveedor = idProveedor;
 		this.nif = nif;
 		this.nombreProveedor = nombreProveedor;
 		this.telefono = telefono;
 		this.email = email;
+		this.contacto = contacto;
 		this.direccion = direccion;
 	}
 
@@ -78,6 +81,16 @@ public class Proveedor {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+
+	public String getContacto() {
+		return contacto;
+	}
+
+
+	public void setContacto(String contacto) {
+		this.contacto = contacto;
 	}
 
 

@@ -1,20 +1,40 @@
 package java_project;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Random;
 
 public class Fecha {
 
 	private Integer año;
 	private Integer mes;
 	private Integer dia;
+	private ArrayList<Integer> probabilidades;
 	
 	public Fecha(){
 		
+		probabilidades = new ArrayList<Integer>(100);
+		int pEnero = 11;
+		int pFebrero = 7;
+		int pMarzo = 7;
+		int pAbril = 6;
+		int pMayo = 7;
+		int pJunio = 7;
+		int pJulio = 8;
+		int pAgosto = 10;
+		int pSeptiembre = 7;
+		int pOctubre = 8;
+		int pNoviembre = 9;
+		int pDiciembre = 13;
+		for(int i=0; i<pEnero; i++){
+			
+		}
 	}
 	
 	
 	
-	public static Calendar generarFechaAleatoriaCalendar(Integer añoMin, Integer añoMax){
+	
+	public Calendar generarFechaAleatoriaCalendar(Integer añoMin, Integer añoMax){
 		
 		Calendar calendario = Calendar.getInstance();
 		Integer año, mes;
@@ -36,6 +56,10 @@ public class Fecha {
                 dia = (int) Math.random();
             }
         }
+        calendario.set(Calendar.YEAR, año);
+        calendario.set(Calendar.MONTH, mes);
+        calendario.set(Calendar.DAY_OF_MONTH, dia);
+        
         return calendario;
 		
 		

@@ -17,6 +17,20 @@ public class Producto {
 	public Producto(){
 		
 	}
+	/**Constructor de copia*/
+	public Producto(Producto p){
+		this.idProducto = p.getIdProducto();
+		this.idCategoria = p.getIdCategoria();
+		this.idMarca = p.getIdMarca();
+		this.nombreProducto = p.getNombreProducto();
+		this.precioMedioCompraUnitario = p.getPrecioMedioCompraUnitario();
+		this.precioMedioVentaUnitario = p.getPrecioMedioVentaUnitario();
+		this.stock = p.getStock();
+		this.cantidadStock = p.getCantidadStock();
+		this.peso = p.getPeso();
+		this.nombreCategoria = p.getNombreCategoria();
+		this.nombreMarca = p.getNombreMarca();
+	}
 
 	public Producto(Integer idProducto, Integer idCategoria, Integer idMarca,
 			String nombreProducto, Float precioMedioCompraUnitario,

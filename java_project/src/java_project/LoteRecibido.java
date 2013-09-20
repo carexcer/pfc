@@ -4,75 +4,76 @@ import java.util.Calendar;
 
 public class LoteRecibido {
 	
-	private Integer IdLoteRecibido;
-	private Integer IdProveedor;
-	private Integer IdProducto;
-	private Calendar FechaRecepcion;
-	private Integer CantidadRecibida;
-	private Float PrecioPagado;
+	private Integer idLoteRecibido;
+	private Integer idProveedor;
+	private Integer idProducto;
+	private Calendar fechaRecepcion;
+	private Integer cantidadRecibida;
+	private Float precioCompraUnitario;
 	
 	public LoteRecibido(){
 		
 	}
-	
+
 	public LoteRecibido(Integer idLoteRecibido, Integer idProveedor,
-			Integer idProducto, Calendar fechaRecepcion, Integer cantidadRecibida,
-			Float precioPagado) {
+			Integer idProducto, Calendar fechaRecepcion,
+			Integer cantidadRecibida, Float precioCompraUnitario) {
 		super();
-		IdLoteRecibido = idLoteRecibido;
-		IdProveedor = idProveedor;
-		IdProducto = idProducto;
-		FechaRecepcion = fechaRecepcion;
-		CantidadRecibida = cantidadRecibida;
-		PrecioPagado = precioPagado;
+		this.idLoteRecibido = idLoteRecibido;
+		this.idProveedor = idProveedor;
+		this.idProducto = idProducto;
+		this.fechaRecepcion = fechaRecepcion;
+		this.cantidadRecibida = cantidadRecibida;
+		this.precioCompraUnitario = precioCompraUnitario;
 	}
 
 	public Integer getIdLoteRecibido() {
-		return IdLoteRecibido;
+		return idLoteRecibido;
 	}
 
 	public void setIdLoteRecibido(Integer idLoteRecibido) {
-		IdLoteRecibido = idLoteRecibido;
+		this.idLoteRecibido = idLoteRecibido;
 	}
 
 	public Integer getIdProveedor() {
-		return IdProveedor;
+		return idProveedor;
 	}
 
 	public void setIdProveedor(Integer idProveedor) {
-		IdProveedor = idProveedor;
+		this.idProveedor = idProveedor;
 	}
 
 	public Integer getIdProducto() {
-		return IdProducto;
+		return idProducto;
 	}
 
 	public void setIdProducto(Integer idProducto) {
-		IdProducto = idProducto;
+		this.idProducto = idProducto;
 	}
 
 	public Calendar getFechaRecepcion() {
-		return FechaRecepcion;
+		return fechaRecepcion;
 	}
 
 	public void setFechaRecepcion(Calendar fechaRecepcion) {
-		FechaRecepcion = fechaRecepcion;
+		this.fechaRecepcion = fechaRecepcion;
 	}
 
 	public Integer getCantidadRecibida() {
-		return CantidadRecibida;
+		return cantidadRecibida;
 	}
 
 	public void setCantidadRecibida(Integer cantidadRecibida) {
-		CantidadRecibida = cantidadRecibida;
+		this.cantidadRecibida = cantidadRecibida;
 	}
 
-	public Float getPrecioPagado() {
-		return PrecioPagado;
+	public Float getPrecioCompraUnitario() {
+		return precioCompraUnitario;
 	}
 
-	public void setPrecioPagado(Float precioPagado) {
-		PrecioPagado = precioPagado;
+	public void setPrecioCompraUnitario(Float precioCompraUnitario) {
+		this.precioCompraUnitario = precioCompraUnitario;
 	}
+	
 
 }

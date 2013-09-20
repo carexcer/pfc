@@ -33,8 +33,10 @@ import javax.swing.JScrollPane;
 public class poblar_bd {
 
 	private JFrame frmPobladorDeTablas;
-	private JTextField textFieldRuta;
-	private String ruta = "/home/carlos/pfc/pfc/sql/";
+	private JTextField textFieldRutaEntrada;
+	private String rutaEntrada = "/home/carlos/pfc/pfc/entradas_app/";
+	private String rutaSalida = "/home/carlos/pfc/pfc/salidas_app/";
+	private JTextField textFieldRutaSalida;
 
 	/**
 	 * Launch the application.
@@ -65,36 +67,47 @@ public class poblar_bd {
 	private void initialize() {
 		frmPobladorDeTablas = new JFrame();
 		frmPobladorDeTablas.setTitle("Poblador de Base de Datos");
-		frmPobladorDeTablas.setBounds(100, 100, 600, 500);
+		frmPobladorDeTablas.setBounds(100, 100, 801, 536);
 		frmPobladorDeTablas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmPobladorDeTablas.getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(23, 248, 553, 220);
+		scrollPane.setBounds(6, 270, 785, 234);
 		frmPobladorDeTablas.getContentPane().add(scrollPane);
 		
 		final JTextArea textArea = new JTextArea();
 		scrollPane.setViewportView(textArea);
 		textArea.setAutoscrolls(true);
 		
-		JLabel lblRuta = new JLabel("Ruta");
-		lblRuta.setBounds(414, 12, 60, 15);
-		frmPobladorDeTablas.getContentPane().add(lblRuta);
+		JLabel lblRutaEnt = new JLabel("Ruta entrada");
+		lblRutaEnt.setBounds(536, 22, 100, 15);
+		frmPobladorDeTablas.getContentPane().add(lblRutaEnt);
 		
-		textFieldRuta = new JTextField();
-		textFieldRuta.setBounds(322, 39, 243, 27);
-		frmPobladorDeTablas.getContentPane().add(textFieldRuta);
-		textFieldRuta.setColumns(10);
-		textFieldRuta.setText(ruta);
+		textFieldRutaEntrada = new JTextField();
+		textFieldRutaEntrada.setBounds(536, 37, 243, 27);
+		frmPobladorDeTablas.getContentPane().add(textFieldRutaEntrada);
+		textFieldRutaEntrada.setColumns(10);
+		textFieldRutaEntrada.setText(rutaEntrada);
+		
+		JLabel lblRutaSal = new JLabel("Ruta salida");
+		lblRutaSal.setBounds(536, 66, 100, 15);
+		frmPobladorDeTablas.getContentPane().add(lblRutaSal);
+		
+		textFieldRutaSalida = new JTextField();
+		textFieldRutaSalida.setBounds(536, 86, 243, 27);
+		frmPobladorDeTablas.getContentPane().add(textFieldRutaSalida);
+		textFieldRutaSalida.setColumns(10);
+		textFieldRutaSalida.setText(rutaSalida);
 		
 		JButton btnGuardarRuta = new JButton("Guardar Ruta");
 		btnGuardarRuta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ruta = textFieldRuta.getText();
-				textArea.append("Guardada nueva ruta: " + ruta + "\n");
+				rutaEntrada = textFieldRutaEntrada.getText();
+				rutaSalida = textFieldRutaSalida.getText();
+				textArea.append("Guardadas nuevas rutas:\n" + "Entrada: " + rutaEntrada + "\n" + "Salida: " + rutaSalida + "\n");
 			}
 		});
-		btnGuardarRuta.setBounds(414, 66, 151, 27);
+		btnGuardarRuta.setBounds(628, 125, 151, 27);
 		frmPobladorDeTablas.getContentPane().add(btnGuardarRuta);
 		
 		JButton btnLeerProductos = new JButton("GENERAR PRODUCTOS");
@@ -103,13 +116,17 @@ public class poblar_bd {
 				GeneradorCSV gen = new GeneradorCSV();
 				try {
 					textArea.append("Leyendo productos...\n");
-					gen.leerProductos(null);
+					int numProdLeidos = gen.leerProductos(null);
+					textArea.append("Leidos " + numProdLeidos + " productos.\n");
 					textArea.append("Generando precios de venta...\n");
-					gen.generarPreciosVenta();
+					int numPreciosVentaGenerados = gen.generarPreciosVenta();					
+					textArea.append("Numero de precios generados: " + numPreciosVentaGenerados + " (1 por producto).\n");
 					textArea.append("Generando cantidades de stock...\n");
-					gen.generarCantidadStock();
+					int cantidadTotalStock = gen.generarCantidadStock();
+					textArea.append("Cantidad total de stock generada: " + cantidadTotalStock + "\n");
 					textArea.append("Escribiendo productos...\n");
-					gen.escribirProductos(null);
+					int numProdEscritos = gen.escribirProductos(null);
+					textArea.append("Escritos " + numProdEscritos + " productos.\n");
 					textArea.append("****** Terminado. Productos generados. ******\n");
 					
 				}
@@ -126,7 +143,7 @@ public class poblar_bd {
 				}
 			}
 		});
-		btnLeerProductos.setBounds(23, 22, 185, 27);
+		btnLeerProductos.setBounds(16, 10, 185, 27);
 		frmPobladorDeTablas.getContentPane().add(btnLeerProductos);
 		
 		JButton btnPruebas = new JButton("Pruebas");
@@ -144,8 +161,10 @@ public class poblar_bd {
 				}
 			}
 		});
-		btnPruebas.setBounds(414, 105, 100, 27);
+		btnPruebas.setBounds(679, 231, 100, 27);
 		frmPobladorDeTablas.getContentPane().add(btnPruebas);
+		
+		
 		
 	
 	}

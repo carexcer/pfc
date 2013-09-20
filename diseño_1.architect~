@@ -61,10 +61,10 @@
     <column id="COL9" populated="true" UUID="fe17af29-6f4d-4e67-ad43-da7d76fbe308" autoIncrement="false" autoIncrementSequenceName="Producto_Nombre_Producto_seq" defaultValue="" name="Nombre_Producto" nullable="0" physicalName="Nombre_Producto" precision="128" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
-    <column id="COL10" populated="true" UUID="a1ee38f8-63da-4984-b0a8-c329ca8b773e" autoIncrement="false" autoIncrementSequenceName="Producto_Precio_compra_unitario_seq" defaultValue="" name="Precio_compra_unitario" nullable="1" physicalName="Precio_compra_unitario" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
+    <column id="COL10" populated="true" UUID="a1ee38f8-63da-4984-b0a8-c329ca8b773e" autoIncrement="false" autoIncrementSequenceName="Producto_Precio_medio_compra_unitario_seq" defaultValue="" name="Precio_medio_compra_unitario" nullable="1" physicalName="Precio_medio_compra_unitario" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
      <remarks></remarks>
     </column>
-    <column id="COL11" populated="true" UUID="a7251d5e-dbf9-4381-be3b-4f096c8e4053" autoIncrement="false" autoIncrementSequenceName="Producto_Precio_venta_unitario_seq" defaultValue="" name="Precio_venta_unitario" nullable="0" physicalName="Precio_venta_unitario" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
+    <column id="COL11" populated="true" UUID="a7251d5e-dbf9-4381-be3b-4f096c8e4053" autoIncrement="false" autoIncrementSequenceName="Producto_Precio_medio_venta_unitario_seq" defaultValue="" name="Precio_medio_venta_unitario" nullable="0" physicalName="Precio_medio_venta_unitario" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
      <remarks></remarks>
     </column>
     <column id="COL12" populated="true" UUID="e1f34a99-49fa-4c34-a9e5-c9fc8ffbf970" autoIncrement="false" autoIncrementSequenceName="Producto_Stock_seq" defaultValue="" name="Stock" nullable="0" physicalName="Stock" precision="2" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
@@ -224,7 +224,7 @@
     <column id="COL57" populated="true" UUID="8bef18c3-c00d-4da4-b48b-ea1985bcd63c" autoIncrement="false" autoIncrementSequenceName="Lote_recibido_Cantidad_recibida_seq" defaultValue="" name="Cantidad_recibida" nullable="0" physicalName="Cantidad_recibida" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL58" populated="true" UUID="8cbdd8fd-268d-4ec2-90ff-f1f4630b192f" autoIncrement="false" autoIncrementSequenceName="Lote_recibido_Precio_pagado_seq" defaultValue="" name="Precio_pagado" nullable="0" physicalName="Precio_pagado" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
+    <column id="COL58" populated="true" UUID="8cbdd8fd-268d-4ec2-90ff-f1f4630b192f" autoIncrement="false" autoIncrementSequenceName="Lote_recibido_Precio_compra_unitario_seq" defaultValue="" name="Precio_compra_unitario" nullable="0" physicalName="Precio_compra_unitario" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="6" userDefinedTypeUUID="7e55bcd0-7606-4153-b749-9c397f12c4d8" >
      <remarks></remarks>
     </column>
     </folder>
@@ -392,7 +392,7 @@
  <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="true" target-schema="public"> </ddl-generator>
  <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
- <play-pen zoom="0.8408964152537146" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
+ <play-pen zoom="0.8408964152537146" viewportX="0" viewportY="6" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
   <table-pane table-ref="TAB5" x="350" y="453" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB17" x="705" y="701" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB25" x="418" y="694" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>

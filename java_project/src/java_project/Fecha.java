@@ -9,13 +9,20 @@ public class Fecha {
 	private Integer año;
 	private Integer mes;
 	private Integer dia;
-	private ArrayList<Integer> probabilidades;
+	private ArrayList<Integer> probabilidadesMes;
+	private ArrayList<Integer> probabilidadesDia;
+	private Random randMes;
+	private Random randDia;
 	
+	// Enero es el mes 1, y Diciembre es el mes 12
 	public Fecha(){
-		
-		probabilidades = new ArrayList<Integer>(100);
-		int pEnero = 11;
-		int pFebrero = 7;
+
+		randMes = new Random();
+		randDia = new Random();
+		probabilidadesMes = new ArrayList<Integer>(100);
+		probabilidadesDia = new ArrayList<Integer>(100);
+		int pEnero = 11; //11% de probabilidades de Enero
+		int pFebrero = 7; ///7% de probabilidades de Febrero
 		int pMarzo = 7;
 		int pAbril = 6;
 		int pMayo = 7;
@@ -26,11 +33,69 @@ public class Fecha {
 		int pOctubre = 8;
 		int pNoviembre = 9;
 		int pDiciembre = 13;
-		for(int i=0; i<pEnero; i++){
-			
-		}
+		for(int i=0; i<pEnero; i++)
+			probabilidadesMes.add(1);
+		for(int i=0; i<pFebrero; i++)
+			probabilidadesMes.add(2);
+		for(int i=0; i<pMarzo; i++)
+			probabilidadesMes.add(3);
+		for(int i=0; i<pAbril; i++)
+			probabilidadesMes.add(4);
+		for(int i=0; i<pMayo; i++)
+			probabilidadesMes.add(5);
+		for(int i=0; i<pJunio; i++)
+			probabilidadesMes.add(6);
+		for(int i=0; i<pJulio; i++)
+			probabilidadesMes.add(7);
+		for(int i=0; i<pAgosto; i++)
+			probabilidadesMes.add(8);
+		for(int i=0; i<pSeptiembre; i++)
+			probabilidadesMes.add(9);
+		for(int i=0; i<pOctubre; i++)
+			probabilidadesMes.add(10);
+		for(int i=0; i<pNoviembre; i++)
+			probabilidadesMes.add(11);
+		for(int i=0; i<pDiciembre; i++)
+			probabilidadesMes.add(12);
+		
 	}
 	
+	/**Devuelve un entero entre 1 y 12 que representa el mes, siguiendo la distribución de probabilidad creada en el constructor.*/
+	public int obtenerMesAleatorioPonderado(){
+		
+		if(probabilidadesMes==null)
+			return (-1);
+		
+		return probabilidadesMes.get(randMes.nextInt(100));
+		
+	}
+	
+	public int obtenerDiaAleatorio(Integer anyo){
+		
+		int año;
+		int dia;
+		int mes = randMes.nextInt(12);
+		if(anyo==null)
+			año=2012;
+		else
+			año = anyo;
+		if (mes == 2) {//Mes de febrero
+            if (año % 400 == 0 || año % 4 == 0) {//es bisiesto
+                dia = randDia.nextInt(28)+1;
+            } else {//No es año bisiesto
+                dia = randDia.nextInt(27)+1;
+            }
+        } else {
+            if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
+                //Mes de 31 días
+                dia = randDia.nextInt(31)+1;
+            } else {//Mes de 30 días
+                dia = randDia.nextInt(30)+1;
+            }
+        }
+		return dia;
+		
+	}
 	
 	
 	

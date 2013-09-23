@@ -1,34 +1,17 @@
 package java_project;
 
-import java.awt.Dialog;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-
-import java.awt.BorderLayout;
-
-import javax.swing.JPanel;
-
-import java.awt.GridLayout;
-
-import javax.swing.JOptionPane;
-import javax.swing.JSplitPane;
-import javax.swing.JButton;
-import javax.swing.JRadioButton;
-import javax.swing.JComboBox;
-import javax.swing.JTextArea;
-
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 public class poblar_bd {
 
@@ -37,6 +20,7 @@ public class poblar_bd {
 	private String rutaEntrada = "/home/carlos/pfc/pfc/entradas_app/";
 	private String rutaSalida = "/home/carlos/pfc/pfc/salidas_app/";
 	private JTextField textFieldRutaSalida;
+	static JTextArea textArea;
 
 	/**
 	 * Launch the application.
@@ -131,15 +115,8 @@ public class poblar_bd {
 					
 				}
 				catch (IOException e1) {
-					System.out.println("Error al leer productos");
+					System.out.println("Error al leer/escribir productos");
 					e1.printStackTrace();
-				}
-				try {
-					
-					gen.escribirProductos(null);
-				} catch (IOException e) {
-					System.out.println("Error al escribir productos");
-					e.printStackTrace();
 				}
 			}
 		});
@@ -149,18 +126,34 @@ public class poblar_bd {
 		JButton btnPruebas = new JButton("Pruebas");
 		btnPruebas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				GeneradorCSV gen = new GeneradorCSV();
-				try {
-					gen.GenerarLotesRecibidos(null);
-				} catch (NumberFormatException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				
+				Thread hilo = new Thread(new Runnable() {
+					
+					@Override
+					public void run() {
+						try{
+						GeneradorCSV gen = new GeneradorCSV();
+						textArea.append("Generando lotes recibidos...\n" );
+						int numLotesGenerados = 0;
+						numLotesGenerados = gen.GenerarLotesRecibidos(null);
+						textArea.append("Número de lotes generados: " + numLotesGenerados + "\n");
+						int numLotesEscritos = 0;
+						numLotesEscritos = gen.escribirLotesRecibidos(null);
+						textArea.append("Escribiendo lotes recibidos...\n");
+						textArea.append("Número de lotes escritos: " + numLotesEscritos + "\n");
+						textArea.append("Generación de lotes completada.\n" );
+						}catch(IOException e){
+							System.out.println("Error ejecutando en prueba.");
+						}
+					}
+				});			
+				hilo.start();
+				
 			}
-		});
+
+
+		
+	});
 		btnPruebas.setBounds(679, 231, 100, 27);
 		frmPobladorDeTablas.getContentPane().add(btnPruebas);
 		

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
+
+import javax.swing.JTextArea;
 
 public class GeneradorCSV {
 
@@ -204,7 +207,7 @@ public class GeneradorCSV {
 		return suma;
 	}
 	
-	public void GenerarLotesRecibidos(String ruta) throws NumberFormatException, IOException{
+	public int GenerarLotesRecibidos(String ruta) throws NumberFormatException, IOException{
 	
 		if(ruta==null)
 			ruta = rutaDefectoSalida+"lotes_recibidos_salida.csv";
@@ -216,9 +219,10 @@ public class GeneradorCSV {
 			leerProveedores(null);
 		
 		int numProductos = listaProductos.size();
-		int numLotesPorProducto = 40;
+		int numLotesPorProducto = 52;
 		int numProveedores = listaProveedores.size();
 		int numLotes = 0;	//se actualiza luego cuando se han añadido todos los lotes
+		Fecha fecha = new Fecha();			
 		
 		Random randCantidad = new Random();
 		Random randPorcentaje = new Random();
@@ -226,8 +230,10 @@ public class GeneradorCSV {
 		
 		for(int i=0; i < numProductos; i++){ //Para cada producto			
 			
-			System.out.println("Porcentaje completado: " + i + " de " + numProductos + "\n");
-			
+			if(i%60==0){
+				float x = (float) i/numProductos;
+				System.out.println("Completado un " + x*100 + "%\n");
+			}
 			float precioCompraMedio = listaProductos.get(i).getPrecioMedioCompraUnitario(); //Leo el precio medio de compra unitario
 			int cantidadTotalRecibidaProducto = 0;
 			
@@ -254,6 +260,13 @@ public class GeneradorCSV {
 				int indexProveedor = randProveedor.nextInt(numProveedores);
 				lote.setIdProveedor(listaProveedores.get(indexProveedor).getIdProveedor());
 				lote.setIdProducto(listaProductos.get(i).getIdProducto());
+				Calendar fechaRecepcion = Calendar.getInstance();
+				int anyo=2012;
+				if(Math.random()<0.48){	//48% de probabilidad de que el año sea 2011 y 52% de que sea 2012. Así, la evolución es creciente en un 4%  
+					anyo=2011;
+				}
+				fechaRecepcion.set(anyo, fecha.obtenerMesAleatorioPonderado()-1, fecha.obtenerDiaAleatorio(anyo)); //OJO, EL MES EN CALENDAR VA DE 0 A 11
+				lote.setFechaRecepcion(fechaRecepcion);
 				lote.setCantidadRecibida(cantidad); //Guardo la cantidad generada para el lote
 				float precioCompraAux = listaProductos.get(i).getPrecioMedioCompraUnitario()*porcent; //Aplica el porcentaje de variabilidad al precio
 				precioCompraAux = (float) (Math.rint(precioCompraAux*100)/100); //Formatea el precio a 2 decimales
@@ -274,19 +287,42 @@ public class GeneradorCSV {
 								"PrecioCompraUnitario: " + listaLotesRecibidos.get(i).getPrecioCompraUnitario() + " ; "
 								);
 		}
-		
+		return numLotes;		
 		/*-------------- ATENCIÓN: EL MES EN CALENDAR VA DEL 0=ENERO AL 11=DICIEMBRE -----------------*/
-		
-//		Calendar calendario = Calendar.getInstance();
-//		calendario.set(2013, 0, 1);
-//		System.out.println("**** LOTES RECIBIDOS ****");
-//		System.out.println("Dia del año: " + calendario.get(Calendar.DAY_OF_YEAR));
-//		System.out.println(calendario.get(calendario.YEAR) + "-" + calendario.get(calendario.MONTH)+ "-" + calendario.get(calendario.DAY_OF_MONTH));
-//		calendario.set(2013, 11, 31);
-//		System.out.println("**** LOTES RECIBIDOS ****");
-//		System.out.println("Dia del año: " + calendario.get(Calendar.DAY_OF_YEAR));
-//		System.out.println(calendario.get(calendario.YEAR) + "-" + calendario.get(calendario.MONTH)+ "-" + calendario.get(calendario.DAY_OF_MONTH));
 	}
+	
+	/**@param ruta del fichero de salida que se abrirá para escritura
+	 * @return numero de lotes que se han escrito en el fichero de salida*/
+	public int escribirLotesRecibidos(String ruta) throws IOException{
+		
+		if(ruta==null)
+			ruta = rutaDefectoSalida+"lotes_recibidos_salida.csv" ;
+		int numLotesEscritos=0;
+		File file = new File(ruta);
+		FileOutputStream fsal = new FileOutputStream(file);
+		OutputStreamWriter osw = new OutputStreamWriter(fsal);
+		Writer w = new BufferedWriter(osw);
+		int numLotes = listaLotesRecibidos.size();
+		for(int i=0; i<numLotes;i++){
+			Calendar fechaAux = listaLotesRecibidos.get(i).getFechaRecepcion();
+			int dia = fechaAux.get(Calendar.DAY_OF_MONTH);
+			int mes = fechaAux.get(Calendar.MONTH)+1;
+			int año = fechaAux.get(Calendar.YEAR);
+			w.write(listaLotesRecibidos.get(i).getIdLoteRecibido() + ";"
+					+ listaLotesRecibidos.get(i).getIdProveedor() + ";"
+					+ listaLotesRecibidos.get(i).getIdProducto() + ";" 
+					+ dia + "-" + mes +"-" + año + ";"
+					+ listaLotesRecibidos.get(i).getCantidadRecibida() + ";"
+					+ listaLotesRecibidos.get(i).getPrecioCompraUnitario() + "\n"
+			);
+			numLotesEscritos++;
+		}
+		w.close();
+		return numLotesEscritos;
+		
+	}
+	
+	
 	/*---------------------------------------PROVEEDORES------------------------------------------------------------*/
 	/**@return numero de proveedores que se han leido del fichero de entrada*/
 	public int leerProveedores(String ruta) throws IOException{

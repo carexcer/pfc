@@ -392,7 +392,7 @@
  <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="true" target-schema="public"> </ddl-generator>
  <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
- <play-pen zoom="0.8408964152537146" viewportX="0" viewportY="6" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
+ <play-pen zoom="0.8408964152537146" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
   <table-pane table-ref="TAB5" x="350" y="453" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB17" x="705" y="701" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB25" x="418" y="694" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
@@ -502,8 +502,8 @@
      <dimension-pane id="DP1" model-ref="2" x="468" y="83"/>
      <dimension-pane id="DP2" model-ref="5" x="213" y="488"/>
      <dimension-pane id="DP3" model-ref="8" x="100" y="250"/>
-     <usage-comp model-ref="16" pane1-ref="DP3" pane2-ref="CP0"/>
      <usage-comp model-ref="15" pane1-ref="DP1" pane2-ref="CP0"/>
+     <usage-comp model-ref="16" pane1-ref="DP3" pane2-ref="CP0"/>
     </play-pen>
    </olap-edit-session>
   </olap-gui>

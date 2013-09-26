@@ -13,6 +13,7 @@ public class Producto {
 	private Float peso;
 	private String nombreCategoria;
 	private String nombreMarca;
+	private boolean primario;
 	
 	public Producto(){
 		
@@ -30,12 +31,13 @@ public class Producto {
 		this.peso = p.getPeso();
 		this.nombreCategoria = p.getNombreCategoria();
 		this.nombreMarca = p.getNombreMarca();
+		this.primario = p.primario;
 	}
 
 	public Producto(Integer idProducto, Integer idCategoria, Integer idMarca,
 			String nombreProducto, Float precioMedioCompraUnitario,
 			Float precioMedioVentaUnitario, String stock, Integer cantidadStock,
-			Float peso, String nombreCategoria, String nombreMarca) {
+			Float peso, String nombreCategoria, String nombreMarca, boolean primario) {
 		super();
 		this.idProducto = idProducto;
 		this.idCategoria = idCategoria;
@@ -48,6 +50,7 @@ public class Producto {
 		this.peso = peso;
 		this.nombreCategoria = nombreCategoria;
 		this.nombreMarca = nombreMarca;
+		this.primario = primario;
 	}
 
 	public Integer getIdProducto() {
@@ -136,6 +139,12 @@ public class Producto {
 
 	public void setNombreMarca(String nombreMarca) {
 		this.nombreMarca = nombreMarca;
+	}
+	public boolean isPrimario() {
+		return primario;
+	}
+	public void setPrimario(boolean primario) {
+		this.primario = primario;
 	}
 		
 	

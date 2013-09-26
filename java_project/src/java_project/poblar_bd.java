@@ -11,7 +11,10 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SpinnerDateModel;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingUtilities;
+import javax.swing.JSpinner;
 
 public class poblar_bd {
 
@@ -83,6 +86,11 @@ public class poblar_bd {
 		textFieldRutaSalida.setColumns(10);
 		textFieldRutaSalida.setText(rutaSalida);
 		
+		final JSpinner spinnerLotes = new JSpinner(new SpinnerNumberModel(40, 1, 90, 1));		
+		spinnerLotes.setBounds(256, 54, 40, 26);
+		frmPobladorDeTablas.getContentPane().add(spinnerLotes);
+		
+		
 		JButton btnGuardarRuta = new JButton("Guardar Ruta");
 		btnGuardarRuta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -127,27 +135,7 @@ public class poblar_bd {
 		btnPruebas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				Thread hilo = new Thread(new Runnable() {
-					
-					@Override
-					public void run() {
-						try{
-						GeneradorCSV gen = new GeneradorCSV();
-						textArea.append("Generando lotes recibidos...\n" );
-						int numLotesGenerados = 0;
-						numLotesGenerados = gen.GenerarLotesRecibidos(null);
-						textArea.append("Número de lotes generados: " + numLotesGenerados + "\n");
-						int numLotesEscritos = 0;
-						numLotesEscritos = gen.escribirLotesRecibidos(null);
-						textArea.append("Escribiendo lotes recibidos...\n");
-						textArea.append("Número de lotes escritos: " + numLotesEscritos + "\n");
-						textArea.append("Generación de lotes completada.\n" );
-						}catch(IOException e){
-							System.out.println("Error ejecutando en prueba.");
-						}
-					}
-				});			
-				hilo.start();
+				
 				
 			}
 
@@ -156,6 +144,43 @@ public class poblar_bd {
 	});
 		btnPruebas.setBounds(679, 231, 100, 27);
 		frmPobladorDeTablas.getContentPane().add(btnPruebas);
+		
+		JButton btnGenerarLotesRecibidos = new JButton("Generar Lotes Recibidos");
+		btnGenerarLotesRecibidos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				final int numLotes = (int) spinnerLotes.getValue();
+				textArea.append("Lotes por producto/año: " + numLotes + "\n");				
+
+				Thread hilo = new Thread(new Runnable() {
+
+					@Override
+					public void run() {
+						try{
+
+							GeneradorCSV gen = new GeneradorCSV();
+							textArea.append("Generando lotes recibidos...\n" );
+							int numLotesGenerados = 0;
+							numLotesGenerados = gen.GenerarLotesRecibidos(numLotes);
+							textArea.append("Número de lotes generados: " + numLotesGenerados + "\n");
+							int numLotesEscritos = 0;
+							numLotesEscritos = gen.escribirLotesRecibidos(null);
+							textArea.append("Escribiendo lotes recibidos...\n");
+							textArea.append("Número de lotes escritos: " + numLotesEscritos + "\n");
+							textArea.append("**************Generación de lotes completada.**************\n" );
+						}catch(IOException e){
+							System.out.println("Error ejecutando en prueba.");
+						}
+					}
+				});			
+				hilo.start();
+			}
+
+		});
+		btnGenerarLotesRecibidos.setBounds(26, 54, 218, 27);
+		frmPobladorDeTablas.getContentPane().add(btnGenerarLotesRecibidos);
+		
+		
 		
 		
 		

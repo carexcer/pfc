@@ -39,13 +39,20 @@ public class GeneradorCSV {
 		this.listaVentas = new ArrayList<Venta>();
 
 	}
+	
+	/**Aplica el principio de pareto o regla del 20-80. El 20% de las veces devuelve true y el 80% false*/
+	public boolean aplicarPareto(){
+		if(Math.random() <= 0.2)
+			return true;
+		else return false;
+	}
 	/******************************PRODUCTOS************************************************************************/
 	
-	public void GenerarProductos(String ruta) throws IOException{
-		leerProductos(ruta);
-		generarPreciosVenta();
+	public void GenerarProductos() throws IOException{
+		leerProductos(null);
+		generarPreciosVentaProducto();
 		generarCantidadStock();
-		escribirProductos(ruta);
+		escribirProductos(null);
 	}
 	
 	/**@param ruta del fichero de entrada que se abrirá para lectura
@@ -84,6 +91,7 @@ public class GeneradorCSV {
 //				p.setCantidadStock(999);
 //			}
 			p.setPeso(Float.valueOf(campos[8]));
+			p.setPrimario(aplicarPareto());
 			listaProductos.add(p);			
 			numProdLeidos++;
 		}
@@ -98,7 +106,7 @@ public class GeneradorCSV {
 		if(ruta==null)
 			ruta = rutaDefectoSalida+"productos_salida.csv" ;
 		int numProdEscritos=0;
-		generarPreciosVenta();
+		generarPreciosVentaProducto();
 		File file = new File(ruta);
 		FileOutputStream fsal = new FileOutputStream(file);
 		OutputStreamWriter osw = new OutputStreamWriter(fsal);
@@ -123,7 +131,7 @@ public class GeneradorCSV {
 	}
 	
 	/**@return devuelve el número de precios generados, es decir, uno por cada producto*/
-	public int generarPreciosVenta(){
+	public int generarPreciosVentaProducto(){
 
 		int numPreciosGenerados = 0;
 		int numProd = listaProductos.size();
@@ -196,21 +204,10 @@ public class GeneradorCSV {
 		return suma;
 	}
 	
-	public Integer obtenerTotalCantidadVendida(){
-		
-		Integer suma=0;
-		int numVentas = listaVentas.size();
-		
-		for(int i=0; i<numVentas; i++)
-			suma += listaVentas.get(i).getCantidadVendida();
-		
-		return suma;
-	}
-	
-	public int GenerarLotesRecibidos(String ruta) throws NumberFormatException, IOException{
-	
-		if(ruta==null)
-			ruta = rutaDefectoSalida+"lotes_recibidos_salida.csv";
+	/**Genera los lotes_recibidos (no los escribe en ningún fichero)
+	 * @param Recibe el numero de lotes recibidos al año por cada producto
+	 * @return Devuelve el numero de lotes_recibidos generados en total (para todos los productos y años)*/
+	public int GenerarLotesRecibidos(Integer lotesPorProductoAlAño) throws NumberFormatException, IOException{
 		
 		if(listaProductos.size()==0){
 			leerProductos(null);
@@ -219,7 +216,15 @@ public class GeneradorCSV {
 			leerProveedores(null);
 		
 		int numProductos = listaProductos.size();
-		int numLotesPorProducto = 52;
+		int numLotesPorProducto;
+		if(lotesPorProductoAlAño==null)
+			numLotesPorProducto = 40;	//Numero de lotes por producto/año por defecto
+		else numLotesPorProducto = lotesPorProductoAlAño;
+		int numLotesPorProductoPrimario = (int) Math.round(numLotesPorProducto*0.8);
+		int numLotesPorProductoSecundario = numLotesPorProducto - numLotesPorProductoPrimario;
+		int numLotesTotalPrimario = 0;
+		int numLotesTotalSecundario = 0;
+		
 		int numProveedores = listaProveedores.size();
 		int numLotes = 0;	//se actualiza luego cuando se han añadido todos los lotes
 		Fecha fecha = new Fecha();			
@@ -227,54 +232,89 @@ public class GeneradorCSV {
 		Random randCantidad = new Random();
 		Random randPorcentaje = new Random();
 		Random randProveedor = new Random();
+
+		int numPrimarios = 0;
+		int numSecundarios = 0;
 		
 		for(int i=0; i < numProductos; i++){ //Para cada producto			
 			
-			if(i%60==0){
-				float x = (float) i/numProductos;
-				System.out.println("Completado un " + x*100 + "%\n");
-			}
-			float precioCompraMedio = listaProductos.get(i).getPrecioMedioCompraUnitario(); //Leo el precio medio de compra unitario
-			int cantidadTotalRecibidaProducto = 0;
-			
-			for(int j=0; j < numLotesPorProducto; j++){ 
+			if(listaProductos.get(i).isPrimario()){ /////SI EL PRODUCTO ES PRIMARIO, ES DECIR, ES DEL 20% DE LOS IMPORTANTES
 				
-				
-				int cantidad = randCantidad.nextInt(10)+10;//Genero una cantidad entre 10 y 20 para cada lote
-				LoteRecibido lote = new LoteRecibido();
-				float ajuste = randPorcentaje.nextInt(11)+1;
-				ajuste = (float) (ajuste * 0.01);
-				float porcent = (float) (0.94 + ajuste); // +/- 5% de variabilidad en el precio de compra unitario
+				numPrimarios++;
+				numLotesTotalPrimario+=numLotesPorProductoPrimario;
+				for(int j=0; j < numLotesPorProductoPrimario; j++){ 
 
-				if(porcent == 1.05){
-					System.out.println("");
-				}
-				if(porcent== 1.04){
-					System.out.println("");
-				}
-				if(porcent== 0.95){
-					System.out.println("");
-				}
-				//FALTA AÑADIR EL RESTO DE ATRIBUTOS
-				//el idLoteRecibido se generará luego
-				int indexProveedor = randProveedor.nextInt(numProveedores);
-				lote.setIdProveedor(listaProveedores.get(indexProveedor).getIdProveedor());
-				lote.setIdProducto(listaProductos.get(i).getIdProducto());
-				Calendar fechaRecepcion = Calendar.getInstance();
-				int anyo=2012;
-				if(Math.random()<0.48){	//48% de probabilidad de que el año sea 2011 y 52% de que sea 2012. Así, la evolución es creciente en un 4%  
-					anyo=2011;
-				}
-				fechaRecepcion.set(anyo, fecha.obtenerMesAleatorioPonderado()-1, fecha.obtenerDiaAleatorio(anyo)); //OJO, EL MES EN CALENDAR VA DE 0 A 11
-				lote.setFechaRecepcion(fechaRecepcion);
-				lote.setCantidadRecibida(cantidad); //Guardo la cantidad generada para el lote
-				float precioCompraAux = listaProductos.get(i).getPrecioMedioCompraUnitario()*porcent; //Aplica el porcentaje de variabilidad al precio
-				precioCompraAux = (float) (Math.rint(precioCompraAux*100)/100); //Formatea el precio a 2 decimales
-				lote.setPrecioCompraUnitario(precioCompraAux);
-				listaLotesRecibidos.add(lote);
-				cantidadTotalRecibidaProducto += cantidad;//Acumulo la cantidad al total de cantidad recibida de ese producto	
-			}			
-			
+					int cantidad = randCantidad.nextInt(11)+10;//Genero una cantidad entre 10 y 20 para cada lote
+					LoteRecibido lote = new LoteRecibido();
+					float ajuste = randPorcentaje.nextInt(11)+1;
+					ajuste = (float) (ajuste * 0.01);
+					float porcent = (float) (0.94 + ajuste); // +/- 5% de variabilidad en el precio de compra unitario
+
+					//el idLoteRecibido se generará luego
+					int indexProveedor = randProveedor.nextInt(numProveedores);
+					lote.setIdProveedor(listaProveedores.get(indexProveedor).getIdProveedor());
+					lote.setIdProducto(listaProductos.get(i).getIdProducto());
+					Calendar fechaRecepcion = Calendar.getInstance();
+
+					int anyo;
+					double probabilidadAnyo = Math.random();
+					if(probabilidadAnyo <0.39){	//38% de probabilidad de que sea un lote del año 2011  
+						anyo=2011;
+						fechaRecepcion.set(anyo, fecha.obtenerMesAleatorioPonderado()-1, fecha.obtenerDiaAleatorio(anyo)); //OJO, EL MES EN CALENDAR VA DE 0 A 11
+					}else if(probabilidadAnyo >= 0.39 && probabilidadAnyo < 0.79){ //40% de probabilidad de que el lote sea de 2012
+						anyo=2012;
+						fechaRecepcion.set(anyo, fecha.obtenerMesAleatorioPonderado()-1, fecha.obtenerDiaAleatorio(anyo)); //OJO, EL MES EN CALENDAR VA DE 0 A 11
+					}else{//22% de probabilidad de que sea un lote del año 2013
+						anyo=2013;
+						fechaRecepcion.set(anyo, fecha.obtenerMesAleatorioPonderado(6)-1, fecha.obtenerDiaAleatorio(anyo)); //OJO, EL MES EN CALENDAR VA DE 0 A 11
+					}
+
+					lote.setFechaRecepcion(fechaRecepcion);
+					lote.setCantidadRecibida(cantidad); //Guardo la cantidad generada para el lote
+					float precioCompraAux = listaProductos.get(i).getPrecioMedioCompraUnitario()*porcent; //Aplica el porcentaje de variabilidad al precio
+					precioCompraAux = (float) (Math.rint(precioCompraAux*100)/100); //Formatea el precio a 2 decimales
+					lote.setPrecioCompraUnitario(precioCompraAux);
+					listaLotesRecibidos.add(lote);
+				}			
+			}else{////////////////SI EL PRODUCTO NO ES PRIMARIO, ES DECIR, ES DEL 80% DE LOS NO-IMPORTANTES
+				
+				numSecundarios++;
+				numLotesTotalSecundario+=numLotesPorProductoSecundario;
+				for(int j=0; j < numLotesPorProductoSecundario; j++){ 
+
+					int cantidad = randCantidad.nextInt(11)+10;//Genero una cantidad entre 10 y 20 para cada lote
+					LoteRecibido lote = new LoteRecibido();
+					float ajuste = randPorcentaje.nextInt(11)+1;
+					ajuste = (float) (ajuste * 0.01);
+					float porcent = (float) (0.94 + ajuste); // +/- 5% de variabilidad en el precio de compra unitario
+
+					//el idLoteRecibido se generará luego
+					int indexProveedor = randProveedor.nextInt(numProveedores);
+					lote.setIdProveedor(listaProveedores.get(indexProveedor).getIdProveedor());
+					lote.setIdProducto(listaProductos.get(i).getIdProducto());
+					Calendar fechaRecepcion = Calendar.getInstance();
+
+					int anyo;
+					double probabilidadAnyo = Math.random();
+					if(probabilidadAnyo <0.39){	//38% de probabilidad de que sea un lote del año 2011  
+						anyo=2011;
+						fechaRecepcion.set(anyo, fecha.obtenerMesAleatorioPonderado()-1, fecha.obtenerDiaAleatorio(anyo)); //OJO, EL MES EN CALENDAR VA DE 0 A 11
+					}else if(probabilidadAnyo >= 0.39 && probabilidadAnyo < 0.79){ //40% de probabilidad de que el lote sea de 2012
+						anyo=2012;
+						fechaRecepcion.set(anyo, fecha.obtenerMesAleatorioPonderado()-1, fecha.obtenerDiaAleatorio(anyo)); //OJO, EL MES EN CALENDAR VA DE 0 A 11
+					}else{//22% de probabilidad de que sea un lote del año 2013
+						anyo=2013;
+						fechaRecepcion.set(anyo, fecha.obtenerMesAleatorioPonderado(6)-1, fecha.obtenerDiaAleatorio(anyo)); //OJO, EL MES EN CALENDAR VA DE 0 A 11
+					}
+
+					lote.setFechaRecepcion(fechaRecepcion);
+					lote.setCantidadRecibida(cantidad); //Guardo la cantidad generada para el lote
+					float precioCompraAux = listaProductos.get(i).getPrecioMedioCompraUnitario()*porcent; //Aplica el porcentaje de variabilidad al precio
+					precioCompraAux = (float) (Math.rint(precioCompraAux*100)/100); //Formatea el precio a 2 decimales
+					lote.setPrecioCompraUnitario(precioCompraAux);
+					listaLotesRecibidos.add(lote);
+				}	
+			}
 		}
 		System.out.println("========LOTES RECIBIDOS=========");
 		numLotes = listaLotesRecibidos.size();
@@ -287,6 +327,10 @@ public class GeneradorCSV {
 								"PrecioCompraUnitario: " + listaLotesRecibidos.get(i).getPrecioCompraUnitario() + " ; "
 								);
 		}
+		System.out.println("Numero de productos primarios: " + numPrimarios);
+		System.out.println("Numero de productos secundarios: " + numSecundarios);
+		System.out.println("Numero de lotes primarios: " + numLotesTotalPrimario);
+		System.out.println("Numero de lotes secundarios: " + numLotesTotalSecundario);
 		return numLotes;		
 		/*-------------- ATENCIÓN: EL MES EN CALENDAR VA DEL 0=ENERO AL 11=DICIEMBRE -----------------*/
 	}
@@ -356,7 +400,114 @@ public class GeneradorCSV {
 		
 	}
 	
-	/****************************************************************************************************************/
+	/*------------------------------------------------VENTAS--------------------------------------------------------*/
+	public int leerLotesRecibidos(String ruta) throws IOException{
+		
+		if(ruta==null)
+			ruta=rutaDefectoSalida+"lotes_recibidos_salida.csv"; //Leemos de la ruta por defecto de salida
+		
+		int numLotesLeidos=0;
+		File file = new File(ruta);
+		FileInputStream fent = new FileInputStream(file);
+		InputStreamReader isr = new InputStreamReader(fent);
+		BufferedReader r = new BufferedReader(isr);
+		String linea;
+		
+		while((linea = r.readLine()) != null){			
+			String[] campos = linea.split(";");			
+			System.out.println("Campo[0]: " + campos[0] + "; Campo[1]: " + campos[1]);
+			LoteRecibido lote = new LoteRecibido();
+			lote.setIdLoteRecibido(Integer.valueOf(campos[0]));
+			lote.setIdProveedor(Integer.valueOf(campos[1]));			
+			lote.setIdProducto(Integer.valueOf(campos[2]));
+			lote.setFechaRecepcion(Fecha.stringToCalendar(campos[3]));
+			lote.setCantidadRecibida(Integer.valueOf(campos[4]));
+			lote.setPrecioCompraUnitario(Float.valueOf(campos[5]));
+			listaLotesRecibidos.add(lote);			
+			numLotesLeidos++;
+		}
+		r.close();
+		return numLotesLeidos;
+				
+	}
+	public int generarCantidadesVendidas(){
+		
+		int numCantidadesGeneradas=0;
+		
+		
+		return numCantidadesGeneradas;		
+	}
+	
+	public int generarPreciosVenta(){
+	
+		int numPreciosGenerados=0;
+		
+		return numPreciosGenerados;
+	}
+	
+	public int generarFechasVenta(){
+	
+		int numFechasGeneradas=0;
+		
+		return numFechasGeneradas;
+	}
+	
+	public int generarVentas() throws IOException{
+		
+		if(listaLotesRecibidos==null || listaLotesRecibidos.size()==0)
+			leerLotesRecibidos(null);
+		
+		int numVentasGeneradas = 0;
+		
+		generarCantidadesVendidas();
+		generarPreciosVenta();
+		generarFechasVenta();
+		
+		return numVentasGeneradas;
+	} 
+	
+	public Integer obtenerTotalCantidadVendida(){
+		
+		Integer suma=0;
+		int numVentas = listaVentas.size();
+		
+		for(int i=0; i<numVentas; i++)
+			suma += listaVentas.get(i).getCantidadVendida();
+		return suma;
+	}
+	/**Escribe las ventas en un fichero de salida en la ruta dada
+	 * @param ruta del fichero de salida
+	 * @return numero de ventas escritas en el fichero de salida*/
+	public int escribirVentas(String ruta) throws IOException{
+		
+		if(ruta==null)
+			ruta = rutaDefectoSalida+"ventas_salida.csv" ;
+		int numVentasEscritas=0;
+		File file = new File(ruta);
+		FileOutputStream fsal = new FileOutputStream(file);
+		OutputStreamWriter osw = new OutputStreamWriter(fsal);
+		Writer w = new BufferedWriter(osw);
+		int numVentas = listaVentas.size();
+		for(int i=0; i<numVentas;i++){
+			Calendar fechaAux = listaVentas.get(i).getFechaVenta();
+			int dia = fechaAux.get(Calendar.DAY_OF_MONTH);
+			int mes = fechaAux.get(Calendar.MONTH)+1;
+			int año = fechaAux.get(Calendar.YEAR);
+			w.write(listaVentas.get(i).getIdVenta() + ";"
+					+ listaVentas.get(i).getIdProducto() + ";"
+					+ listaVentas.get(i).getCantidadVendida() + ";" 
+					+ listaVentas.get(i).getPrecioVentaUnitario() + ";"
+					+ dia + "-" + mes +"-" + año + ";"
+					+ listaVentas.get(i).getDetalles() + "\n"
+			);
+			numVentasEscritas++;
+		}
+		w.close();
+		return numVentasEscritas;
+		
+		
+	}
+	/*------------------------------------------------OTROS----------------------------------------------------------*/
 	public void leerMarcas(String ruta) throws IOException{
 		
 		if(ruta==null)

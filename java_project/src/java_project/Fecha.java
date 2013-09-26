@@ -60,7 +60,7 @@ public class Fecha {
 		
 	}
 	
-	/**Devuelve un entero entre 1 y 12 que representa el mes, siguiendo la distribución de probabilidad creada en el constructor.*/
+	/**@return Devuelve un entero entre 1 y 12 que representa el mes, siguiendo la distribución de probabilidad creada en el constructor.*/
 	public int obtenerMesAleatorioPonderado(){
 		
 		if(probabilidadesMes==null)
@@ -69,7 +69,16 @@ public class Fecha {
 		return probabilidadesMes.get(randMes.nextInt(100));
 		
 	}
-	
+	/**@return Devuelve un entero entre 1 y maxMes (inclusive) que representa el mes, siguiendo la distribución de probabilidad creada en el constructor*/
+	public int obtenerMesAleatorioPonderado(Integer maxMes){
+		if(probabilidadesMes==null)
+			return (-1);
+		int ret;
+		do{
+			ret = probabilidadesMes.get(randMes.nextInt(100));
+		}while(ret > maxMes);		
+		return ret;
+	}
 	public int obtenerDiaAleatorio(Integer anyo){
 		
 		int año;
@@ -97,8 +106,6 @@ public class Fecha {
 		
 	}
 	
-	
-	
 	public Calendar generarFechaAleatoriaCalendar(Integer añoMin, Integer añoMax){
 		
 		Calendar calendario = Calendar.getInstance();
@@ -125,9 +132,18 @@ public class Fecha {
         calendario.set(Calendar.MONTH, mes);
         calendario.set(Calendar.DAY_OF_MONTH, dia);
         
-        return calendario;
+        return calendario;		
 		
+	}
+	static Calendar stringToCalendar(String cadena){
 		
+		Calendar cal = Calendar.getInstance();
+		String[] campos = cadena.split("-");
+		cal.set(Calendar.DAY_OF_MONTH, Integer.valueOf(campos[0]));
+		cal.set(Calendar.MONTH, Integer.valueOf(campos[1]));
+		cal.set(Calendar.YEAR, Integer.valueOf(campos[2]));
+		
+		return cal;
 	}
 	
 }

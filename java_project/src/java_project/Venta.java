@@ -9,21 +9,19 @@ public class Venta {
 	private Integer cantidadVendida;
 	private Float precioVentaUnitario;
 	private Calendar fechaVenta;
-	private String detalles;
 
 	public Venta(){
 		
 	}
 
 	public Venta(Integer idVenta, Integer idProducto, Integer cantidadVendida,
-			Float precioVentaUnitario, Calendar fechaVenta, String detalles) {
+			Float precioVentaUnitario, Calendar fechaVenta) {
 		super();
 		this.idVenta = idVenta;
 		this.idProducto = idProducto;
 		this.cantidadVendida = cantidadVendida;
 		this.precioVentaUnitario = precioVentaUnitario;
 		this.fechaVenta = fechaVenta;
-		this.detalles = detalles;
 	}
 
 	public Integer getIdVenta() {
@@ -56,14 +54,6 @@ public class Venta {
 
 	public void setFechaVenta(Calendar fechaVenta) {
 		this.fechaVenta = fechaVenta;
-	}
-
-	public String getDetalles() {
-		return detalles;
-	}
-
-	public void setDetalles(String detalles) {
-		this.detalles = detalles;
 	}
 
 	public Integer getCantidadVendida() {

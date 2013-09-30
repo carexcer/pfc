@@ -1,0 +1,2 @@
+﻿select * from venta v where id_producto in 
+	(select id_producto from producto where nombre_producto='Grand Theft Auto V Xbox 360') order by fecha_venta

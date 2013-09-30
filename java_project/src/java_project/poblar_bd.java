@@ -15,6 +15,10 @@ import javax.swing.SpinnerDateModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingUtilities;
 import javax.swing.JSpinner;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+import javax.swing.JPanel;
+import javax.swing.border.BevelBorder;
 
 public class poblar_bd {
 
@@ -86,8 +90,45 @@ public class poblar_bd {
 		textFieldRutaSalida.setColumns(10);
 		textFieldRutaSalida.setText(rutaSalida);
 		
-		final JSpinner spinnerLotes = new JSpinner(new SpinnerNumberModel(40, 1, 90, 1));		
-		spinnerLotes.setBounds(256, 54, 40, 26);
+		final JSpinner spinnerCantMin = new JSpinner();
+		spinnerCantMin.setModel(new SpinnerNumberModel(10, 10, 50, 10));
+		spinnerCantMin.setBounds(258, 122, 54, 26);
+		frmPobladorDeTablas.getContentPane().add(spinnerCantMin);
+		
+		final JSpinner spinnerCantMax = new JSpinner();
+		spinnerCantMax.setModel(new SpinnerNumberModel(50, 10, 50, 10));
+		spinnerCantMax.setBounds(330, 122, 54, 26);
+		frmPobladorDeTablas.getContentPane().add(spinnerCantMax);
+
+		final JSpinner spinnerMaxCantVenta = new JSpinner();
+		spinnerMaxCantVenta.setModel(new SpinnerNumberModel(4, 1, 20, 1));
+		spinnerMaxCantVenta.setBounds(182, 224, 54, 26);
+		frmPobladorDeTablas.getContentPane().add(spinnerMaxCantVenta);
+		
+		JLabel lblMaxDasVendindose = new JLabel("Max. Días vendiéndose");
+		lblMaxDasVendindose.setBounds(182, 191, 151, 15);
+		frmPobladorDeTablas.getContentPane().add(lblMaxDasVendindose);
+		
+		final JSpinner spinnerMaxDiasVendiendose = new JSpinner();
+		spinnerMaxDiasVendiendose.setModel(new SpinnerNumberModel(90, 30, 180, 1));
+		spinnerMaxDiasVendiendose.setBounds(330, 185, 54, 26);
+		frmPobladorDeTablas.getContentPane().add(spinnerMaxDiasVendiendose);
+		
+		
+		JLabel lblMaxCantVenta = new JLabel("Max. Cant./Venta");
+		lblMaxCantVenta.setBounds(28, 230, 151, 15);
+		frmPobladorDeTablas.getContentPane().add(lblMaxCantVenta);
+		
+		JLabel lblCantMin = new JLabel("Cant. Min");
+		lblCantMin.setBounds(258, 102, 60, 15);
+		frmPobladorDeTablas.getContentPane().add(lblCantMin);
+		
+		JLabel lblCantMax = new JLabel("Cant. Max");
+		lblCantMax.setBounds(330, 102, 66, 15);
+		frmPobladorDeTablas.getContentPane().add(lblCantMax);
+		
+		final JSpinner spinnerLotes = new JSpinner(new SpinnerNumberModel(20, 1, 90, 1));		
+		spinnerLotes.setBounds(182, 122, 54, 26);
 		frmPobladorDeTablas.getContentPane().add(spinnerLotes);
 		
 		
@@ -102,7 +143,7 @@ public class poblar_bd {
 		btnGuardarRuta.setBounds(628, 125, 151, 27);
 		frmPobladorDeTablas.getContentPane().add(btnGuardarRuta);
 		
-		JButton btnLeerProductos = new JButton("GENERAR PRODUCTOS");
+		JButton btnLeerProductos = new JButton("Generar productos");
 		btnLeerProductos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				GeneradorCSV gen = new GeneradorCSV();
@@ -111,7 +152,7 @@ public class poblar_bd {
 					int numProdLeidos = gen.leerProductos(null);
 					textArea.append("Leidos " + numProdLeidos + " productos.\n");
 					textArea.append("Generando precios de venta...\n");
-					int numPreciosVentaGenerados = gen.generarPreciosVenta();					
+					int numPreciosVentaGenerados = gen.generarPreciosVentaProducto();					
 					textArea.append("Numero de precios generados: " + numPreciosVentaGenerados + " (1 por producto).\n");
 					textArea.append("Generando cantidades de stock...\n");
 					int cantidadTotalStock = gen.generarCantidadStock();
@@ -128,7 +169,7 @@ public class poblar_bd {
 				}
 			}
 		});
-		btnLeerProductos.setBounds(16, 10, 185, 27);
+		btnLeerProductos.setBounds(18, 10, 218, 27);
 		frmPobladorDeTablas.getContentPane().add(btnLeerProductos);
 		
 		JButton btnPruebas = new JButton("Pruebas");
@@ -157,11 +198,11 @@ public class poblar_bd {
 					@Override
 					public void run() {
 						try{
-
+							
 							GeneradorCSV gen = new GeneradorCSV();
 							textArea.append("Generando lotes recibidos...\n" );
 							int numLotesGenerados = 0;
-							numLotesGenerados = gen.GenerarLotesRecibidos(numLotes);
+							numLotesGenerados = gen.GenerarLotesRecibidos(numLotes, (int)spinnerCantMin.getValue(), (int)spinnerCantMax.getValue());
 							textArea.append("Número de lotes generados: " + numLotesGenerados + "\n");
 							int numLotesEscritos = 0;
 							numLotesEscritos = gen.escribirLotesRecibidos(null);
@@ -177,8 +218,67 @@ public class poblar_bd {
 			}
 
 		});
-		btnGenerarLotesRecibidos.setBounds(26, 54, 218, 27);
+		btnGenerarLotesRecibidos.setBounds(18, 90, 199, 27);
 		frmPobladorDeTablas.getContentPane().add(btnGenerarLotesRecibidos);
+		
+		JLabel lblNumLotesAnuales = new JLabel("Num. Lotes anuales");
+		lblNumLotesAnuales.setBounds(28, 128, 142, 15);
+		frmPobladorDeTablas.getContentPane().add(lblNumLotesAnuales);
+		
+		JSeparator separatorProductos = new JSeparator();
+		separatorProductos.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		separatorProductos.setBounds(6, 6, 251, 75);
+		frmPobladorDeTablas.getContentPane().add(separatorProductos);		
+		
+		JSeparator separatorLotes = new JSeparator();
+		separatorLotes.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		separatorLotes.setBounds(6, 86, 518, 81);
+		frmPobladorDeTablas.getContentPane().add(separatorLotes);
+		
+		JButton btnGenerarVentas = new JButton("Generar Ventas");
+		btnGenerarVentas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				final int maxCantVenta = (int) spinnerMaxCantVenta.getValue();
+				textArea.append("Máxima cantidad por venta: " + maxCantVenta + "\n");
+				
+				final int maxDiasVendiendose = (int) spinnerMaxDiasVendiendose.getValue();
+				textArea.append("Máx. días vendiéndose: " + maxDiasVendiendose + "\n");	
+				
+				Thread hilo = new Thread(new Runnable() {
+
+					@Override
+					public void run() {
+						try{
+
+							GeneradorCSV gen = new GeneradorCSV();
+							textArea.append("Generando ventas... este proceso puede tardar unos minutos...\n" );
+							int numVentasGeneradas = 0;
+							numVentasGeneradas = gen.generarVentas(maxCantVenta,maxDiasVendiendose);
+							textArea.append("Número de ventas generadas: " + numVentasGeneradas + "\n");
+							int numVentasEscritas = 0;
+							numVentasEscritas = gen.escribirVentas(null);
+							textArea.append("Escribiendo ventas...\n");
+							textArea.append("Número de ventas escritas: " + numVentasEscritas + "\n");
+							textArea.append("**************Generación de ventas completada.**************\n" );
+						}catch(IOException e){
+							System.out.println("Error ejecutando generar ventas.");
+						}
+					}
+				});			
+				hilo.start();
+				
+			}
+		});
+		btnGenerarVentas.setBounds(18, 185, 152, 27);
+		frmPobladorDeTablas.getContentPane().add(btnGenerarVentas);
+		
+		
+		
+		JSeparator separatorVentas = new JSeparator();
+		separatorVentas.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		separatorVentas.setBounds(6, 179, 518, 81);
+		frmPobladorDeTablas.getContentPane().add(separatorVentas);
 		
 		
 		

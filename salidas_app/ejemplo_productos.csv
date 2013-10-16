@@ -1,0 +1,56 @@
+id_producto;id_categoria;id_marca;nombre_producto;precio_compra;precio_venta;stock;cantidad_stock;peso
+59252;218;206;Sony Xperia J Negro T-Mobile Libre;139.67;175.0;Si;8;0.5
+58676;1;31;Bq Funda protectora Aquaris 4.5 Verde;5.74;8.0;Si;16;0.2
+59076;185;113;Lenovo IdeaPad Y500 i5-3230M/4GB/16GB SSD+1TB/GT750M/15.6;731.4;878.0;No;0;5.0
+43577;138;74;G.Skill Sniper DDR3 1866 PC3-14900 8GB 2x4GB CL9;56.2;70.0;Si;12;0.3
+52969;246;92;HP CE402A Amarillo Laserjet 507A;160.33;192.0;Si;25;2.0
+53470;154;51;Dell UltraSharp U2412M 24 LED IPS Plata;214.05;257.0;No;0;9.0
+56959;158;92;HP Compaq CQ2906ES i3-2120T/4GB/1TB/W8;321.49;386.0;Si;15;11.0
+50409;101;152;Funda Universal para Tablet PC 9.7 con soporte;8.22;11.0;Si;16;0.4
+45262;94;201;Sharkoon Hub USB2.0 4 Puertos Interno 3.5;6.57;9.0;Si;24;0.4
+56024;109;116;LG DH3120S DVD Home Theater 5.1 300W;73.55;92.0;Si;18;10.0
+57612;185;17;Asus S56CB-XX340H i7-3537/6GB/750GB+24GB/GT 740M/15.6;648.76;779.0;No;0;5.0
+57247;238;121;Logitech Gaming Keyboard G105s;43.8;57.0;Si;2;2.5
+34044;81;242;WD Scorpio Black 2.5 320GB 7200RPM SATA;45.45;59.0;Si;17;0.5
+53424;136;43;Corsair Value Select DDR3 1333 4GB CL9;31.4;41.0;Si;17;0.3
+56194;81;198;Seagate Laptop SSHD Hybrid 2.5 500GB;56.16;70.0;Si;23;0.3
+51445;38;78;Logilink Spray Limpiador de Aire a Presión 400ml;5.74;8.0;Si;13;0.8
+38108;215;19;AVermedia AVerTV Volar HD Pro;19.01;25.0;Si;3;0.5
+44443;108;165;Testeador de Red RJ11/RJ12/RJ45;8.06;11.0;Si;5;1.0
+51539;52;227;TP-Link TL-POE200 Power Over Ethernet Kit Adaptador;19.01;25.0;Si;16;0.4
+53196;151;32;Brigmton W-410 Radio CD+USB Blanco;34.67;45.0;Si;11;1.5
+41075;62;165;Cable USB 3.0 AM/AH Macho/Hembra 3m;5.58;8.0;Si;3;0.4
+53829;86;43;Corsair Force Series GS 128GB SSD SATA3;93.39;117.0;No;0;0.5
+21347;161;92;Hp Ultrium De 800 Gb Cartucho De Datos Regrabable;19.83;26.0;Si;12;1.0
+59157;185;92;HP 650 Intel 1000M/4GB/500GB/15.6;268.6;322.0;Si;9;5.0
+47803;149;193;SanDisk Cruzer Blade 16GB USB;9.88;13.0;Si;13;0.3
+52946;101;152;Funda Smart Cover Blanca Samsung Galaxy Tab 10.1;9.88;13.0;Si;21;0.3
+14011;117;121;Logitech Extreme 3D Pro Joystick;35.54;46.0;No;0;0.7
+57247;238;121;Logitech Gaming Keyboard G105s;43.8;57.0;Si;2;2.5
+11647;91;152;Epson Compatible T0482 Cian Series RX/R;1.45;2.0;Si;7;0.2
+56525;208;152;Conector Dock Negro Repuesto para iPhone 4S;10.54;14.0;Si;8;0.3
+36015;197;121;Logitech Bluetooth Mouse M555b;35.54;46.0;No;0;0.5
+58193;1;152;Pack Accesorios básico para Galaxy S2;8.88;12.0;Si;18;0.5
+56262;185;192;Samsung NP300E5E-S01ES B997/4GB/500GB/HD 8750M/15.6;329.75;396.0;Si;1;5.0
+55821;218;206;Sony Xperia Z Negro Libre;371.07;445.0;Si;12;0.5
+54186;247;201;Sharkoon MS120;29.75;39.0;Si;18;6.0
+50168;198;47;D-Link DHP-1565 Wireless N Gigabit Router PowerLine;49.59;64.0;Si;6;1.0
+49376;87;214;Synology DiskStation DS412+ SATA 4HD;443.8;533.0;No;0;5.0
+47423;206;152;Brigmton BDVD-1092 DVD+TDT 9;77.69;97.0;Si;12;3.0
+46077;227;241;Wacom Bamboo Fun Pen&Touch Small;72.73;91.0;No;0;2.0
+29637;76;125;Metrologic Voyager MS-9520 Lector Código Barras USB Negro;95.04;119.0;Si;6;1.5
+54124;97;152;Funda Smart Cover Negra iPad Mini;11.36;15.0;Si;3;0.2
+47267;247;150;NZXT Source 220;43.8;57.0;Si;13;8.0
+51682;247;215;Tacens Orum;17.36;23.0;Si;25;10.0
+10254;91;78;Epson Compatible T0443 Magenta  C64/C66/C82/C84/CX3650;1.45;2.0;No;0;0.2
+56009;218;206;Sony Xperia J Libre Negro;144.63;181.0;No;0;0.5
+55031;218;31;Bq Aquaris 4.5 Blanco;146.28;183.0;Si;20;0.8
+56402;22;152;Convertidor Cargador de Red con Salida 12V Mechero;4.75;7.0;Si;25;0.2
+50055;238;210;Steelseries 6G v2 versión Española;63.6;79.0;Si;8;1.0
+55516;178;17;Asus F2A85-V;71.07;89.0;No;0;1.5
+58791;158;238;PcCom Studio Lite i5-4570/8GB/1TB+120GB SSD/GT 610;528.1;634.0;Si;12;30.0
+56728;238;114;Leotec Teclado Multimedia Negro-Rojo USB/PS2;10.12;13.0;Si;17;1.0
+50466;40;136;Natec Hummingbird Auricular+Microfono;8.22;11.0;Si;17;1.2
+58539;185;131;MSI GX60 1AC-025ES A10-4600M/8GB/750GB/HD7970M/15.6;825.62;991.0;No;0;3.5
+58511;14;152;Cargador Nintendo 3DS XL;4.92;7.0;Si;1;0.3
+54845;1;152;Funda Rígida Negra Samsung Galaxy Mini 2;2.69;4.0;Si;16;0.2

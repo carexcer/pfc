@@ -10,6 +10,8 @@ public class LoteRecibido {
 	private Calendar fechaRecepcion;
 	private Integer cantidadRecibida;
 	private Float precioCompraUnitario;
+	private Integer stockProductoAux;
+	
 	
 	public LoteRecibido(){
 		
@@ -75,5 +77,13 @@ public class LoteRecibido {
 		this.precioCompraUnitario = precioCompraUnitario;
 	}
 	
+	public Integer getStockProductoAux() {
+		return stockProductoAux;
+	}
+
+	public void setStockProductoAux(Integer stockProductoAux) {
+		this.stockProductoAux = stockProductoAux;
+	}
+
 
 }

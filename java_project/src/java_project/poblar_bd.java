@@ -216,7 +216,7 @@ public class poblar_bd {
 					int numProdEscritos = gen.escribirProductos(null);
 					textArea.append("Escritos " + numProdEscritos + " productos.\n");
 					textArea.append("Tiempo ejecucion: " + Temporizador.pararTemporizador("Generacion de productos") + " segundos.\n");
-					textArea.append("****** Terminado. Productos generados. ******\n");
+					textArea.append("********************** GENERACION DE PRODUCTOS TERMINADA *******************\n");
 //					gen.flushAll();
 				}
 				catch (IOException e1) {
@@ -232,7 +232,23 @@ public class poblar_bd {
 		btnPruebas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				
+				try {
+					Temporizador.iniciarTemporizador();
+					textArea.append("Leyendo ubicaciones-producto...\n");
+					gen.leerUbicaciones(null);
+					textArea.append("Generando ubicaciones-producto...\n");
+					textArea.append("Numero de ubicaciones-producto generadas: " + gen.generarUbicacionProducto() +"\n");
+					textArea.append("Numero de ubicaciones-producto escritas: " + gen.escribirUbicacionProducto(null) + "\n");
+					textArea.append("Generando movimientos...\n");
+					textArea.append("Número de movimientos generados: " + gen.generarMovimientos() + "\n");
+					textArea.append("Escribiendo movimientos...\n");
+					textArea.append("Número de movimientos escritos: " + gen.escribirMovimientos(null) + "\n");
+					textArea.append("Tiempo ejecucion: " + Temporizador.pararTemporizador("Generacion de movimientos") + "\n");
+					textArea.append("******************* GENERACION DE MOVIMIENTOS TERMINADA **********************\n");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				gen.flushAll();
 			}
 
@@ -281,7 +297,7 @@ public class poblar_bd {
 							}
 //							gen.flushAll();
 							textArea.append("Tiempo ejecucion: " + Temporizador.pararTemporizador("Generación de lotes") + " segundos.\n");
-							textArea.append("[Fechas variables] **************Generación de lotes completada.**************\n" );
+							textArea.append("*********************** GENERACION DE LOTES COMPLETADA *******************\n" );
 					
 						}catch(IOException e){
 							System.out.println("Error ejecutando en generacion lotes.");
@@ -335,7 +351,7 @@ public class poblar_bd {
 							int numProdEscritos = gen.escribirProductos(null);
 							textArea.append("Se ha modificado y escrito en fichero la cantidad de stock (tabla producto).\n");
 							textArea.append("Número de productos escritos: " + numProdEscritos + "\n");
-							textArea.append("**************Generación de ventas completada.**************\n" );
+							textArea.append("*********************** GENERACION DE VENTAS COMPLETADA *******************\n" );
 //							gen.flushAll();
 						}catch(IOException e){
 							System.out.println("Error ejecutando generar ventas.");
@@ -367,7 +383,7 @@ public class poblar_bd {
 		btnFlushAll.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				gen.flushAll();
-				textArea.append("====================BORRADOS TODOS LOS DATOS EN MEMORIA====================");
+				textArea.append("===========================BORRADOS TODOS LOS DATOS EN MEMORIA=======================");
 			}
 		});
 		btnFlushAll.setBounds(806, 152, 100, 27);

@@ -30,6 +30,9 @@ public class GeneradorCSV {
 	ArrayList<Proveedor> listaProveedores;
 	ArrayList<Almacen> listaAlmacenes;	
 	ArrayList<Venta> listaVentas;
+	ArrayList<Ubicacion> listaUbicaciones;
+	ArrayList<UbicacionProducto> listaUbicacionProducto;
+	ArrayList<Movimiento> listaMovimientos;
 	static public Calendar fechaLimite = Calendar.getInstance();		//Fecha limite para lotes y ventas
 	static public int stockMedioInicial = 12;											//Cantidad de Stock Medio Inicial de producto (osea en la tabla producto)
 	
@@ -41,6 +44,9 @@ public class GeneradorCSV {
 		this.listaProveedores = new ArrayList<Proveedor>();
 		this.listaAlmacenes= new ArrayList<Almacen>();
 		this.listaVentas = new ArrayList<Venta>();
+		this.listaUbicaciones = new ArrayList<Ubicacion>();
+		this.listaUbicacionProducto = new ArrayList<UbicacionProducto>();
+		this.listaMovimientos = new ArrayList<Movimiento>();
 		fechaLimite.set(2013, Calendar.JUNE, 30);
 	}
 	
@@ -52,6 +58,9 @@ public class GeneradorCSV {
 		this.listaProveedores = new ArrayList<Proveedor>();
 		this.listaAlmacenes= new ArrayList<Almacen>();
 		this.listaVentas = new ArrayList<Venta>();
+		this.listaUbicaciones = new ArrayList<Ubicacion>();
+		this.listaUbicacionProducto = new ArrayList<UbicacionProducto>();
+		this.listaMovimientos = new ArrayList<Movimiento>();
 	}
 	public void flushCategorias(){
 		this.listaCategorias = new ArrayList<Categoria>();
@@ -73,6 +82,15 @@ public class GeneradorCSV {
 	}
 	public void flushVentas(){
 		this.listaVentas = new ArrayList<Venta>();
+	}
+	public void flushUbicaciones(){
+		this.listaUbicaciones = new ArrayList<Ubicacion>();
+	}
+	public void flushUbicacionProducto(){
+		this.listaUbicacionProducto = new ArrayList<UbicacionProducto>();
+	}
+	public void flushMovimientos(){
+		this.listaMovimientos = new ArrayList<Movimiento>();
 	}
 	
 	/**Aplica el principio de pareto o regla del 20-80. El 20% de las veces devuelve true y el 80% false
@@ -264,35 +282,7 @@ public class GeneradorCSV {
 		System.out.println("Cantidad total generada de productos: " + cantidadGenerada);
 		return cantidadGenerada;
 	}
-	/*
-	public void ejemploProductos() throws IOException{
-		
-		GenerarProductos();
-		String ruta = rutaDefectoSalida+"ejemplo_productos.csv" ;
-		File file = new File(ruta);
-		FileOutputStream fsal = new FileOutputStream(file);
-		OutputStreamWriter osw = new OutputStreamWriter(fsal);
-		Writer w = new BufferedWriter(osw);
-		int numProd = listaProductos.size();
-		Random r = new Random();
-		w.write("id_producto;id_categoria;id_marca;nombre_producto;precio_compra;precio_venta;stock;cantidad_stock;peso\n");
-		for(int i=0; i<55;i++){
-			int index = r.nextInt(numProd);
-			w.write(listaProductos.get(index).getIdProducto() + ";"
-					+ listaProductos.get(index).getIdCategoria() + ";"
-					+ listaProductos.get(index).getIdMarca() + ";" 
-					+ listaProductos.get(index).getNombreProducto() + ";"
-					+ listaProductos.get(index).getPrecioMedioCompraUnitario() + ";"
-					+ listaProductos.get(index).getPrecioMedioVentaUnitario() + ";"
-					+ listaProductos.get(index).getStock() + ";"
-					+ listaProductos.get(index).getCantidadStock() + ";"
-					+ listaProductos.get(index).getPeso() + "\n"
-			);
-		}
-		w.close();
-
-	}
-	*/
+	
 	
 	/*****************************LOTES RECIBIDOS
 	 * @throws IOException 
@@ -1008,6 +998,235 @@ public class GeneradorCSV {
 		return numVentasEscritas;
 		
 		
+	}
+	/*------------------------------------------------UBICACION-PRODUCTO----------------------------------------------------------*/
+	
+	public int leerAlmacenes(String ruta) throws IOException{
+		
+		if(ruta==null)
+			ruta=rutaDefectoEntrada+"almacenes_entrada.csv"; //Leemos de la ruta por defecto de salida
+		
+		int numAlmacenes=0;
+		File file = new File(ruta);
+		FileInputStream fent = new FileInputStream(file);
+		InputStreamReader isr = new InputStreamReader(fent);
+		BufferedReader r = new BufferedReader(isr);
+		String linea;
+		
+		while((linea = r.readLine()) != null){			
+			String[] campos = linea.split(";");			
+			System.out.println("Campo[0]: " + campos[0] + "; Campo[1]: " + campos[1]);
+			Almacen a = new Almacen();
+			a.setIdAlmacen(Integer.valueOf(campos[0]));
+			a.setNombreAlmacen(campos[1]);
+			a.setCiudad(campos[2]);
+			a.setDireccion(campos[3]);
+			a.setDetalles(campos[4]);
+			listaAlmacenes.add(a);			
+			numAlmacenes++;
+		}
+		r.close();
+		
+		return numAlmacenes;
+	}
+	
+	public int leerUbicaciones(String ruta) throws IOException{
+		
+		if(ruta==null)
+			ruta=rutaDefectoEntrada+"ubicaciones_entrada.csv"; //Leemos de la ruta por defecto de salida
+		
+		int numUbicaciones=0;
+		File file = new File(ruta);
+		FileInputStream fent = new FileInputStream(file);
+		InputStreamReader isr = new InputStreamReader(fent);
+		BufferedReader r = new BufferedReader(isr);
+		String linea;
+		
+		while((linea = r.readLine()) != null){			
+			String[] campos = linea.split(";");			
+			System.out.println("Campo[0]: " + campos[0] + "; Campo[1]: " + campos[1] + "; Campo[2]: " + campos[2]);
+			Ubicacion u = new Ubicacion();
+			u.setIdUbicacion(Integer.valueOf(campos[0]));
+			u.setIdAlmacen(Integer.valueOf(campos[1]));
+			u.setZona(campos[2]);
+			u.setEstante(Integer.valueOf(campos[3]));
+			listaUbicaciones.add(u);			
+			numUbicaciones++;
+		}
+		r.close();
+		
+		return numUbicaciones;
+	}
+	
+	/**Genera una ubicación para cada producto. Tal y como está, un producto solo tiene una ubicación y esa ubicación tiene toda la cantidad del producto.
+	 * @return numero de producto-ubicacion generados
+	 * @throws IOException */
+	public int generarUbicacionProducto() throws IOException{
+		
+		if(listaUbicaciones.size()==0)
+			leerUbicaciones(null);
+		if(listaProductos.size()==0){
+			System.out.println("ERROR. NO HAY LISTA DE PRODUCTOS.");
+			return -1;
+		}
+		int numProd = listaProductos.size();
+		int numUbi = listaUbicaciones.size();
+		int numUbiProdGeneradas = 0;
+		
+		for(int i=0; i<numProd; i++){
+			
+			Integer idProd = listaProductos.get(i).getIdProducto();
+			Integer cantProd = listaProductos.get(i).getCantidadStock();
+			Random randUbi = new Random();
+			
+			UbicacionProducto up = new UbicacionProducto();
+			up.setIdProducto(idProd);
+			Integer idUbi = randUbi.nextInt(numUbi)+1;
+			up.setIdUbicacion(idUbi); //Así, un producto solo va a estar en una ubicación, o sea que no todos los almacenes tendrán de todo
+			up.setCantidad(cantProd);
+			listaUbicacionProducto.add(up);
+			numUbiProdGeneradas++;
+		}
+		return numUbiProdGeneradas;
+	}
+	
+	public int escribirUbicacionProducto(String ruta) throws IOException{
+		
+		if(ruta==null)
+			ruta = rutaDefectoSalida+"ubicacion_producto_salida.csv" ;
+		int numUbiProdEscritas=0;
+		File file = new File(ruta);
+		FileOutputStream fsal = new FileOutputStream(file);
+		OutputStreamWriter osw = new OutputStreamWriter(fsal);
+		Writer w = new BufferedWriter(osw);
+		int numUbiProd= listaUbicacionProducto.size();
+		for(int i=0; i<numUbiProd;i++){
+			w.write(listaUbicacionProducto.get(i).getIdUbicacion() + ";"
+					+ listaUbicacionProducto.get(i).getIdProducto() + ";"
+					+ listaUbicacionProducto.get(i).getCantidad() + "\n"
+			);
+			numUbiProdEscritas++;
+		}
+		w.close();
+		return numUbiProdEscritas;
+		
+	}
+	
+	/*------------------------------------------------MOVIMIENTOS----------------------------------------------------------*/
+	
+	public int generarMovimientos(){
+		
+		int numMovimientos=0;
+		
+		if(listaLotesRecibidos.size()==0){
+//			leerLotesRecibidos(null);
+			System.out.println("No hay lotes generados");
+			return -1;
+		}
+		if(listaVentas.size()==0){
+			System.out.println("No hay ventas generadas");
+			return -1;
+		}
+		if(listaUbicacionProducto.size()==0){
+			System.out.println("No hay ubicacion-producto generadas");
+			return -1;
+		}
+		//Movimientos de entrada
+		int numLotes = listaLotesRecibidos.size();
+		for(int i=0; i<numLotes; i++){
+			
+			Movimiento mov = new Movimiento();
+			LoteRecibido lote = listaLotesRecibidos.get(i);
+
+			mov.setIdMovimiento(numMovimientos);
+			mov.setIdProducto(lote.getIdProducto());
+			
+			int numUbiProd = listaUbicacionProducto.size();
+			for(int j=0; j<numUbiProd; j++){
+				if(listaUbicacionProducto.get(j).getIdProducto()==lote.getIdProducto()){
+					mov.setIdUbicacion(listaUbicacionProducto.get(j).getIdUbicacion());
+					break;
+				}
+			}
+			mov.setIdLoteRecibido(lote.getIdLoteRecibido());
+			mov.setIdVenta(null);
+			mov.setES("E");
+			mov.setCantidad(lote.getCantidadRecibida());
+			mov.setFechaMovimiento(lote.getFechaRecepcion());
+			
+			numMovimientos++;
+			listaMovimientos.add(mov);
+		}
+		
+		//Movimientos de salida
+		int numVentas = listaVentas.size();
+		for(int i=0; i<numVentas; i++){
+			
+			Movimiento mov = new Movimiento();
+			Venta v = listaVentas.get(i);
+			
+			mov.setIdMovimiento(numMovimientos);
+			mov.setIdProducto(v.getIdProducto());
+			
+			int numUbiProd = listaUbicacionProducto.size();
+			for(int j=0; j<numUbiProd; j++){
+				if(listaUbicacionProducto.get(j).getIdProducto()==v.getIdProducto()){
+					mov.setIdUbicacion(listaUbicacionProducto.get(j).getIdUbicacion());
+					break;
+				}
+			}
+			mov.setIdLoteRecibido(null);
+			mov.setIdVenta(v.getIdVenta());
+			mov.setES("S");
+			mov.setCantidad(v.getCantidadVendida());
+			mov.setFechaMovimiento(v.getFechaVenta());
+			
+			numMovimientos++;
+			listaMovimientos.add(mov);
+		}
+		
+		return numMovimientos;
+		
+	}
+	
+	
+	public int escribirMovimientos(String ruta) throws IOException{
+		
+		int numMovEscritos=0;
+		
+		if(ruta==null)
+			ruta = rutaDefectoSalida+"movimientos_salida.csv" ;
+		File file = new File(ruta);
+		FileOutputStream fsal = new FileOutputStream(file);
+		OutputStreamWriter osw = new OutputStreamWriter(fsal);
+		Writer w = new BufferedWriter(osw);
+		int numMov= listaMovimientos.size();
+		for(int i=0; i<numMov;i++){
+			if(listaMovimientos.get(i).getES().equals("S")){
+				System.out.println("Ventaa");
+			}
+			Calendar fechaAux = listaMovimientos.get(i).getFechaMovimiento();
+			int dia = fechaAux.get(Calendar.DAY_OF_MONTH);
+			int mes = fechaAux.get(Calendar.MONTH)+1;
+			int año = fechaAux.get(Calendar.YEAR);
+			System.out.println("Fecha: " + dia + "-" + mes + "-" + año +" Elemento[" + i + "]; " + " IdMovimiento: " + listaMovimientos.get(i).getIdMovimiento() 
+																				+ " E/S: " + listaMovimientos.get(i).getES() 
+																				+ " IdLote: " + listaMovimientos.get(i).getIdLoteRecibido()
+																				+ " IdVenta: " + listaMovimientos.get(i).getIdVenta());
+			w.write(listaMovimientos.get(i).getIdMovimiento() + ";"
+					+ listaMovimientos.get(i).getIdProducto() + ";"
+					+ listaMovimientos.get(i).getIdUbicacion() + ";"
+					+ listaMovimientos.get(i).getIdLoteRecibido() + ";"
+					+ listaMovimientos.get(i).getIdVenta() + ";"
+					+ listaMovimientos.get(i).getES() + ";"
+					+ listaMovimientos.get(i).getCantidad()+ ";"
+					+ dia + "-" + mes +"-" + año + "\n"
+			);
+			numMovEscritos++;
+		}
+		w.close();
+		
+		return numMovEscritos;
 	}
 	/*------------------------------------------------OTROS----------------------------------------------------------*/
 	public void leerMarcas(String ruta) throws IOException{

@@ -55,6 +55,11 @@ public class poblar_bd {
 	 * Create the application.
 	 */
 	public poblar_bd() {
+		System.out.println("Sistema Operativo: " + System.getProperty("os.name"));
+		if(System.getProperty("os.name").contains("indows")){
+			rutaSalida= "C:\\Users\\Carlos\\Documents\\pfc\\pfc\\salidas_app\\" ;
+			rutaEntrada = "C:\\Users\\Carlos\\Documents\\pfc\\pfc\\entradas_app\\" ;
+		}
 		initialize();
 	}
 
@@ -375,9 +380,9 @@ public class poblar_bd {
 		separatorLotes.setBounds(6, 86, 696, 81);
 		frmPobladorDeTablas.getContentPane().add(separatorLotes);
 		
-		JLabel labelLotesAñoFijas = new JLabel("Lotes/año");
-		labelLotesAñoFijas.setBounds(259, 135, 114, 15);
-		frmPobladorDeTablas.getContentPane().add(labelLotesAñoFijas);
+		JLabel labelLotesAnyoFijas = new JLabel("Lotes/año");
+		labelLotesAnyoFijas.setBounds(259, 135, 114, 15);
+		frmPobladorDeTablas.getContentPane().add(labelLotesAnyoFijas);
 		
 		JButton btnFlushAll = new JButton("FLUSH ALL");
 		btnFlushAll.addActionListener(new ActionListener() {

@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Fecha {
 
-	private Integer año;
+	private Integer ao;
 	private Integer mes;
 	private Integer dia;
 	private ArrayList<Integer> probabilidadesMes;
@@ -79,17 +79,17 @@ public class Fecha {
 		}while(ret > maxMes);		
 		return ret;
 	}
-	public int obtenerDiaAleatorio(Integer anyo){
+	public int obtenerDiaAleatorio(Integer anyo1){
 		
-		int año;
+		int anyo;
 		int dia;
 		int mes = randMes.nextInt(12);
-		if(anyo==null)
-			año=2012;
+		if(anyo1==null)
+			anyo=2012;
 		else
-			año = anyo;
+			anyo = anyo1;
 		if (mes == 2) {//Mes de febrero
-            if (año % 400 == 0 || año % 4 == 0) {//es bisiesto
+            if (anyo % 400 == 0 || anyo % 4 == 0) {//es bisiesto
                 dia = randDia.nextInt(28)+1;
             } else {//No es año bisiesto
                 dia = randDia.nextInt(27)+1;
@@ -106,16 +106,16 @@ public class Fecha {
 		
 	}
 	
-	public Calendar generarFechaAleatoriaCalendar(Integer añoMin, Integer añoMax){
+	public Calendar generarFechaAleatoriaCalendar(Integer anyoMin, Integer anyoMax){
 		
 		Calendar calendario = Calendar.getInstance();
-		Integer año, mes;
+		Integer anyo, mes;
 		Integer dia=0;
 		
-		año = (int) ((añoMax - añoMin + 1) * Math.random()) + añoMin;
+		anyo = (int) ((anyoMax - anyoMin + 1) * Math.random()) + anyoMin;
         mes = (int) (12 * Math.random());
         if (mes == 2) {//Mes de febrero
-            if (año % 400 == 0 || año % 4 == 0) {//es bisiesto
+            if (anyo % 400 == 0 || anyo % 4 == 0) {//es bisiesto
                 dia = (int) (29 * Math.random());
             } else {//No es año bisiesto
                 dia = (int) (28 * Math.random());
@@ -128,7 +128,7 @@ public class Fecha {
                 dia = (int) Math.random();
             }
         }
-        calendario.set(Calendar.YEAR, año);
+        calendario.set(Calendar.YEAR, anyo);
         calendario.set(Calendar.MONTH, mes);
         calendario.set(Calendar.DAY_OF_MONTH, dia);
         

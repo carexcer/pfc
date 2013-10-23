@@ -48,6 +48,10 @@ public class GeneradorCSV {
 		this.listaUbicacionProducto = new ArrayList<UbicacionProducto>();
 		this.listaMovimientos = new ArrayList<Movimiento>();
 		fechaLimite.set(2013, Calendar.JUNE, 30);
+		if(System.getProperty("os.name").contains("indows")){
+			rutaDefectoSalida= "C:\\Users\\Carlos\\Documents\\pfc\\pfc\\salidas_app\\" ;
+			rutaDefectoEntrada = "C:\\Users\\Carlos\\Documents\\pfc\\pfc\\entradas_app\\" ;
+		}
 	}
 	
 	public void flushAll(){
@@ -315,7 +319,7 @@ public class GeneradorCSV {
 	 * @param cantidadMinima es la cantidad minima recibida en cada lote
 	 * @param cantidadMinima es la cantidad máxima recibida en cada lote
 	 * @return Devuelve el numero de lotes_recibidos generados en total (para todos los productos y años)*/
-	public int GenerarLotesRecibidosFechaFijaCantidadVariable(Integer lotesPorProductoAlAño, Integer cantidadMinima, Integer cantidadMaxima) throws NumberFormatException, IOException{
+	public int GenerarLotesRecibidosFechaFijaCantidadVariable(Integer lotesPorProductoAlAnyo, Integer cantidadMinima, Integer cantidadMaxima) throws NumberFormatException, IOException{
 		/*-------------- ATENCIÓN: EL MES EN CALENDAR VA DEL 0=ENERO AL 11=DICIEMBRE -----------------*/
 		if(listaProductos.size()==0){
 			leerProductos(null);
@@ -329,9 +333,9 @@ public class GeneradorCSV {
 		System.out.println("Intervalo de cantidades: [" + cantidadMinima + ", " + cantidadMaxima + "]\n");
 		int numProductos = listaProductos.size();
 		int numLotesPorProducto;
-		if(lotesPorProductoAlAño==null)
+		if(lotesPorProductoAlAnyo==null)
 			numLotesPorProducto = 15;	//Numero de lotes por producto/año por defecto
-		else numLotesPorProducto = lotesPorProductoAlAño;
+		else numLotesPorProducto = lotesPorProductoAlAnyo;
 
 		int numLotesPorProductoPrimario = (int) Math.round(numLotesPorProducto*0.8);
 		int numLotesPorProductoSecundario = numLotesPorProducto - numLotesPorProductoPrimario;
@@ -355,7 +359,7 @@ public class GeneradorCSV {
 
 				numPrimarios++;
 
-				for(int añoActual=2011; añoActual <= 2013; añoActual++){			//PARA CADA AÑO
+				for(int anyoActual=2011; anyoActual <= 2013; anyoActual++){			//PARA CADA AÑO
 
 					int lotesMes = numLotesPorProductoPrimario/12;
 
@@ -368,8 +372,8 @@ public class GeneradorCSV {
 							Calendar fecha1 = Calendar.getInstance();
 							Calendar fecha2 = Calendar.getInstance();
 
-							fecha1.set(añoActual, mesActual, 1);						//ESTABLEZCO LA FECHA DE LOS LOTES
-							fecha2.set(añoActual, mesActual, 15);
+							fecha1.set(anyoActual, mesActual, 1);						//ESTABLEZCO LA FECHA DE LOS LOTES
+							fecha2.set(anyoActual, mesActual, 15);
 							
 							lote1.setFechaRecepcion(fecha1);
 							lote2.setFechaRecepcion(fecha2);
@@ -446,7 +450,7 @@ public class GeneradorCSV {
 
 							Calendar fecha1 = Calendar.getInstance();
 
-							fecha1.set(añoActual, mesActual, 1);						//ESTABLEZCO LA FECHA DE LOS LOTES
+							fecha1.set(anyoActual, mesActual, 1);						//ESTABLEZCO LA FECHA DE LOS LOTES
 							lote1.setFechaRecepcion(fecha1);
 
 							int cantidad1=0;											//ESTABLEZCO LA CANTIDAD DE LOS LOTES
@@ -492,7 +496,7 @@ public class GeneradorCSV {
 
 				numSecundarios++;
 
-				for(int añoActual=2011; añoActual <= 2013; añoActual++){			//PARA CADA AÑO
+				for(int anyoActual=2011; anyoActual <= 2013; anyoActual++){			//PARA CADA AÑO
 
 					int mesesLote = 12/numLotesPorProductoSecundario;
 
@@ -501,7 +505,7 @@ public class GeneradorCSV {
 						LoteRecibido lote = new LoteRecibido();
 
 						Calendar fecha = Calendar.getInstance();
-						fecha.set(añoActual, mesActual, 1);						//ESTABLEZCO LA FECHA DEL LOTE
+						fecha.set(anyoActual, mesActual, 1);						//ESTABLEZCO LA FECHA DEL LOTE
 						lote.setFechaRecepcion(fecha);
 
 						int cantidad=0;
@@ -559,7 +563,7 @@ public class GeneradorCSV {
 	 * @param cantidadMinima es la cantidad minima recibida en cada lote
 	 * @param cantidadMinima es la cantidad máxima recibida en cada lote
 	 * @return Devuelve el numero de lotes_recibidos generados en total (para todos los productos y años)*/
-	public int GenerarLotesRecibidosFechaVariableCantidadVariable(Integer lotesPorProductoAlAño, Integer cantidadMinima, Integer cantidadMaxima) throws NumberFormatException, IOException{
+	public int GenerarLotesRecibidosFechaVariableCantidadVariable(Integer lotesPorProductoAlAnyo, Integer cantidadMinima, Integer cantidadMaxima) throws NumberFormatException, IOException{
 		if(listaProductos.size()==0){
 			leerProductos(null);
 		}
@@ -572,9 +576,9 @@ public class GeneradorCSV {
 		System.out.println("Intervalo de cantidades: [" + cantidadMinima + ", " + cantidadMaxima + "]\n");
 		int numProductos = listaProductos.size();
 		int numLotesPorProducto;
-		if(lotesPorProductoAlAño==null)
+		if(lotesPorProductoAlAnyo==null)
 			numLotesPorProducto = 30;	//Numero de lotes por producto/año por defecto
-		else numLotesPorProducto = lotesPorProductoAlAño;
+		else numLotesPorProducto = lotesPorProductoAlAnyo;
 
 		int numLotesPorProductoPrimario = (int) Math.round(numLotesPorProducto*0.8);
 		int numLotesPorProductoSecundario = numLotesPorProducto - numLotesPorProductoPrimario;
@@ -738,11 +742,11 @@ public class GeneradorCSV {
 			Calendar fechaAux = listaLotesRecibidos.get(i).getFechaRecepcion();
 			int dia = fechaAux.get(Calendar.DAY_OF_MONTH);
 			int mes = fechaAux.get(Calendar.MONTH)+1;
-			int año = fechaAux.get(Calendar.YEAR);
+			int anyo = fechaAux.get(Calendar.YEAR);
 			w.write(listaLotesRecibidos.get(i).getIdLoteRecibido() + ";"
 					+ listaLotesRecibidos.get(i).getIdProveedor() + ";"
 					+ listaLotesRecibidos.get(i).getIdProducto() + ";" 
-					+ dia + "-" + mes +"-" + año + ";"
+					+ dia + "-" + mes +"-" + anyo + ";"
 					+ listaLotesRecibidos.get(i).getCantidadRecibida() + ";"
 					+ listaLotesRecibidos.get(i).getPrecioCompraUnitario() + "\n"
 					);
@@ -985,12 +989,12 @@ public class GeneradorCSV {
 			Calendar fechaAux = listaVentas.get(i).getFechaVenta();
 			int dia = fechaAux.get(Calendar.DAY_OF_MONTH);
 			int mes = fechaAux.get(Calendar.MONTH)+1;
-			int año = fechaAux.get(Calendar.YEAR);
+			int anyo = fechaAux.get(Calendar.YEAR);
 			w.write(listaVentas.get(i).getIdVenta() + ";"
 					+ listaVentas.get(i).getIdProducto() + ";"
 					+ listaVentas.get(i).getCantidadVendida() + ";" 
 					+ listaVentas.get(i).getPrecioVentaUnitario() + ";"
-					+ dia + "-" + mes +"-" + año + "\n"
+					+ dia + "-" + mes +"-" + anyo + "\n"
 			);
 			numVentasEscritas++;
 		}
@@ -1170,7 +1174,7 @@ public class GeneradorCSV {
 			
 			int numUbiProd = listaUbicacionProducto.size();
 			for(int j=0; j<numUbiProd; j++){
-				if(listaUbicacionProducto.get(j).getIdProducto()==v.getIdProducto()){
+				if(listaUbicacionProducto.get(j).getIdProducto().equals(v.getIdProducto())){
 					mov.setIdUbicacion(listaUbicacionProducto.get(j).getIdUbicacion());
 					break;
 				}
@@ -1208,9 +1212,10 @@ public class GeneradorCSV {
 			Calendar fechaAux = listaMovimientos.get(i).getFechaMovimiento();
 			int dia = fechaAux.get(Calendar.DAY_OF_MONTH);
 			int mes = fechaAux.get(Calendar.MONTH)+1;
-			int año = fechaAux.get(Calendar.YEAR);
-			System.out.println("Fecha: " + dia + "-" + mes + "-" + año +" Elemento[" + i + "]; " + " IdMovimiento: " + listaMovimientos.get(i).getIdMovimiento() 
-																				+ " E/S: " + listaMovimientos.get(i).getES() 
+			int anyo = fechaAux.get(Calendar.YEAR);
+			System.out.println("Fecha: " + dia + "-" + mes + "-" + anyo +" Elemento[" + i + "]; " + " IdMovimiento: " + listaMovimientos.get(i).getIdMovimiento() 
+																				+ " E/S: " + listaMovimientos.get(i).getES()
+																				+ " IdUbicacion: " + listaMovimientos.get(i).getIdUbicacion()
 																				+ " IdLote: " + listaMovimientos.get(i).getIdLoteRecibido()
 																				+ " IdVenta: " + listaMovimientos.get(i).getIdVenta());
 			w.write(listaMovimientos.get(i).getIdMovimiento() + ";"
@@ -1220,7 +1225,7 @@ public class GeneradorCSV {
 					+ listaMovimientos.get(i).getIdVenta() + ";"
 					+ listaMovimientos.get(i).getES() + ";"
 					+ listaMovimientos.get(i).getCantidad()+ ";"
-					+ dia + "-" + mes +"-" + año + "\n"
+					+ dia + "-" + mes +"-" + anyo + "\n"
 			);
 			numMovEscritos++;
 		}

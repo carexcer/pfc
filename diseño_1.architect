@@ -4,10 +4,10 @@
  <print-settings numCopies="1" zoom="1.0" pageNumbersPrinted="true" orientation="1" paperWidth="612.0" paperHeight="792.0" leftBorder="50.0" rightBorder="50.0" topBorder="50.0" bottomBorder="50.0" />
  <project-data-sources>
   <data-source id="DS0">
-   <property key="Logical" value="con-buena1-bd_original_pfc" />
+   <property key="Logical" value="conexion-bd-almacen" />
    <property key="Connection Type" value="PostgreSQL" />
-   <property key="JDBC URL" value="jdbc:postgresql://localhost:5433/bd_original_pfc" />
-   <property key="UID" value="postgres" />
+   <property key="JDBC URL" value="jdbc:postgresql://localhost:5432/bd_almacen" />
+   <property key="UID" value="carexcer" />
    <property key="PWD" value="29031988" />
    <property key="ca.sqlpower.architect.etl.kettle.database" value="" />
    <property key="ca.sqlpower.architect.etl.kettle.port" value="" />
@@ -329,10 +329,10 @@
     <column id="COL83" populated="true" UUID="3c8075c1-aa27-40e4-8316-208a2d029352" autoIncrement="false" autoIncrementSequenceName="Ubicacion_Id_Ubicacion_seq" defaultValue="" name="Id_Ubicacion" nullable="0" physicalName="Id_Ubicacion" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL84" populated="true" UUID="9384359b-e71f-4f8b-9c0e-a8b2a5a262e4" autoIncrement="false" autoIncrementSequenceName="Lote_recibido_New Column_seq" defaultValue="" name="Id_Lote_Recibido" nullable="0" physicalName="Id_Lote_Recibido" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL84" populated="true" UUID="cd569778-9451-400c-bf96-57c8f049b15e" autoIncrement="false" autoIncrementSequenceName="Lote_recibido_Id_Lote_Recibido_seq" defaultValue="" name="Id_Lote_Recibido" nullable="0" physicalName="Id_Lote_Recibido" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL85" populated="true" UUID="7144e7e2-c213-4e87-9910-7cc9c9c645b4" autoIncrement="false" autoIncrementSequenceName="Venta_Id_Venta_seq" defaultValue="" name="Id_Venta" nullable="0" physicalName="Id_Venta" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL85" populated="true" UUID="fb05828e-58be-4b19-9a01-2409fb44e689" autoIncrement="false" autoIncrementSequenceName="Venta_Id_Venta_seq" defaultValue="" name="Id_Venta" nullable="0" physicalName="Id_Venta" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     <column id="COL86" populated="true" UUID="37802c29-c028-4b43-aee5-e4cf0a323f65" autoIncrement="false" autoIncrementSequenceName="Movimiento_E_S_seq" defaultValue="" name="E_S" nullable="1" physicalName="E_S" precision="1" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
@@ -377,8 +377,8 @@
    <relationship id="REL103" populated="true" UUID="bb09b3ad-7a42-4bb0-b75b-6cccb10c8fae" deferrability="5" deleteRule="3" fk-table-ref="TAB51" fkCardinality="7" identifying="true" name="Proveedor_Proveedor-producto_fk" physicalName="proveedor_proveedor_producto_fk" pk-table-ref="TAB41" pkCardinality="2" updateRule="3" >
     <column-mapping id="CMP104" populated="true" UUID="2f715cd2-bd81-4001-b142-b0fc0489f577" fk-column-ref="COL53" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL42" />
    </relationship>
-   <relationship id="REL105" populated="true" UUID="da135c03-e590-450d-99d0-a7fa6c81a6c2" deferrability="5" deleteRule="3" fk-table-ref="TAB80" fkCardinality="7" identifying="false" name="Lote_recibido_Movimiento_fk" physicalName="lote_recibido_movimiento_fk" pk-table-ref="TAB51" pkCardinality="3" updateRule="3" >
-    <column-mapping id="CMP106" populated="true" UUID="173f8dd9-2faf-4254-ac81-b72aa844f764" fk-column-ref="COL84" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL52" />
+   <relationship id="REL105" populated="true" UUID="cd4d5cf2-c67b-4a46-99c9-313883f4faa6" deferrability="5" deleteRule="3" fk-table-ref="TAB80" fkCardinality="3" identifying="false" name="Lote_recibido_Movimiento_fk" physicalName="lote_recibido_movimiento_fk" pk-table-ref="TAB51" pkCardinality="3" updateRule="3" >
+    <column-mapping id="CMP106" populated="true" UUID="ff78465f-1dc3-4c5b-b8e2-e42fc420e343" fk-column-ref="COL84" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL52" />
    </relationship>
    <relationship id="REL107" populated="true" UUID="6c54eb9b-63ac-4dae-a484-aaad767e35d9" deferrability="5" deleteRule="3" fk-table-ref="TAB5" fkCardinality="7" identifying="false" name="Categoria_Producto_fk" physicalName="categoria_producto_fk" pk-table-ref="TAB60" pkCardinality="2" updateRule="3" >
     <column-mapping id="CMP108" populated="true" UUID="e0415045-6e93-4152-a565-14f7ec0ac8fb" fk-column-ref="COL7" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL61" />
@@ -387,8 +387,8 @@
     <column-mapping id="CMP110" populated="true" UUID="017be271-9f78-46be-af86-32776c0a1e14" fk-column-ref="COL83" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL66" />
     <column-mapping id="CMP111" populated="true" UUID="2f1b90ad-6ecf-47ee-a180-577dd9ad14b8" fk-column-ref="COL82" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL67" />
    </relationship>
-   <relationship id="REL112" populated="true" UUID="2bc713ed-a050-453b-b73b-ca8e784b5fdf" deferrability="5" deleteRule="3" fk-table-ref="TAB80" fkCardinality="7" identifying="false" name="Venta_Movimiento_fk" physicalName="venta_movimiento_fk" pk-table-ref="TAB72" pkCardinality="3" updateRule="3" >
-    <column-mapping id="CMP113" populated="true" UUID="96b925c7-2e5d-4c52-859b-a88d6561e085" fk-column-ref="COL85" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL73" />
+   <relationship id="REL112" populated="true" UUID="343fa291-6408-4939-9d2a-1b5e8b6fe295" deferrability="5" deleteRule="3" fk-table-ref="TAB80" fkCardinality="3" identifying="false" name="Venta_Movimiento_fk" physicalName="venta_movimiento_fk" pk-table-ref="TAB72" pkCardinality="3" updateRule="3" >
+    <column-mapping id="CMP113" populated="true" UUID="4a23b8fe-a90f-4afd-a77d-46ae38f88bdd" fk-column-ref="COL85" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL73" />
    </relationship>
   </relationships>
  </target-database>
@@ -415,8 +415,8 @@
   <table-link relationship-ref="REL93" pkConnection="1.0" fkConnection="0.56" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="33"/>
   <table-link relationship-ref="REL95" pkConnection="0.2568306010928962" fkConnection="0.6083333333333333" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="40"/>
   <table-link relationship-ref="REL109" pkConnection="0.43157894736842106" fkConnection="0.5625" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="72"/>
-  <table-link relationship-ref="REL112" pkConnection="0.9418604651162791" fkConnection="0.13227513227513227" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="132"/>
-  <table-link relationship-ref="REL105" pkConnection="0.7" fkConnection="0.6285714285714286" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="33"/>
+  <table-link relationship-ref="REL105" pkConnection="0.30973451327433627" fkConnection="0.0" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
+  <table-link relationship-ref="REL112" pkConnection="0.6153846153846154" fkConnection="0.34444444444444444" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
  </play-pen>
  <critic-manager>
   <critic-grouping platformType="Generic" enabled="true">
@@ -505,8 +505,8 @@
      <dimension-pane id="DP1" model-ref="2" x="468" y="83"/>
      <dimension-pane id="DP2" model-ref="5" x="213" y="488"/>
      <dimension-pane id="DP3" model-ref="8" x="100" y="250"/>
-     <usage-comp model-ref="16" pane1-ref="DP3" pane2-ref="CP0"/>
      <usage-comp model-ref="15" pane1-ref="DP1" pane2-ref="CP0"/>
+     <usage-comp model-ref="16" pane1-ref="DP3" pane2-ref="CP0"/>
     </play-pen>
    </olap-edit-session>
   </olap-gui>

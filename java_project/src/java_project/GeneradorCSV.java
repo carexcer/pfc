@@ -1,5 +1,7 @@
 package java_project;
 
+import igu.BarraProgreso;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -17,6 +19,7 @@ import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Random;
 
+import javax.swing.JProgressBar;
 import javax.swing.JTextArea;
 
 public class GeneradorCSV {
@@ -35,6 +38,7 @@ public class GeneradorCSV {
 	ArrayList<Movimiento> listaMovimientos;
 	static public Calendar fechaLimite = Calendar.getInstance();		//Fecha limite para lotes y ventas
 	static public int stockMedioInicial = 12;											//Cantidad de Stock Medio Inicial de producto (osea en la tabla producto)
+	static public BarraProgreso progreso = new BarraProgreso();
 	
 	public GeneradorCSV(){
 		this.listaCategorias = new ArrayList<Categoria>();
@@ -128,6 +132,8 @@ public class GeneradorCSV {
 		if(ruta==null)
 			ruta=rutaDefectoEntrada+"productos_entrada.csv";
 		
+		
+		
 		int numProdLeidos=0;
 		File file = new File(ruta);
 		FileInputStream fent = new FileInputStream(file);
@@ -158,9 +164,10 @@ public class GeneradorCSV {
 //				p.setCantidadStock(999);
 //			}
 			p.setPeso(Float.valueOf(campos[8]));
-			p.setPrimario(aplicarPareto());
+			p.setPrimario(aplicarPareto());		
 			listaProductos.add(p);			
 			numProdLeidos++;
+			progreso.incrementar();
 		}
 		r.close();
 		return numProdLeidos;
@@ -191,9 +198,12 @@ public class GeneradorCSV {
 					+ listaProductos.get(i).getPeso() + "\n"
 			);
 			numProdEscritos++;
+			
 		}
 		w.close();
 		escribirProductosPrimarios(null);
+		
+		progreso.setTextStopped();
 		return numProdEscritos;
 		
 	}
@@ -232,9 +242,10 @@ public class GeneradorCSV {
 	
 	/**@return devuelve el número de precios generados, es decir, uno por cada producto*/
 	public int generarPreciosVentaProducto(){
-
+		
 		int numPreciosGenerados = 0;
 		int numProd = listaProductos.size();
+		progreso.setMaximo(5972*2);
 		for(int i=0; i<numProd; i++){
 			float precioCompra = listaProductos.get(i).getPrecioMedioCompraUnitario();
 			if(precioCompra <= 5){
@@ -249,6 +260,7 @@ public class GeneradorCSV {
 				listaProductos.get(i).setPrecioMedioVentaUnitario((float) java.lang.Math.round(precioCompra*1.20));
 			}
 			numPreciosGenerados++;
+			progreso.incrementar();
 		}
 		return numPreciosGenerados;
 		
@@ -353,6 +365,8 @@ public class GeneradorCSV {
 		int numPrimarios = 0;
 		int numSecundarios = 0;
 
+		progreso.setMaximo(numProductos * numLotesPorProducto);
+		
 		for(int i=0; i < numProductos; i++){ //Para cada producto			
 
 			if(listaProductos.get(i).isPrimario()){ /////SI EL PRODUCTO ES PRIMARIO, ES DECIR, ES DEL 20% DE LOS IMPORTANTES
@@ -444,6 +458,8 @@ public class GeneradorCSV {
 								numLotes++;
 							}
 
+							progreso.incrementar();
+							
 						}else if(lotesMes==1){			//////////////////////// 1 LOTE/MES
 
 							LoteRecibido lote1 = new LoteRecibido();
@@ -487,7 +503,7 @@ public class GeneradorCSV {
 								indiceLote++;
 								numLotes++;	
 							}
-
+							progreso.incrementar();
 						}else{return -1;}		//ERROR
 					}						
 				}
@@ -542,6 +558,7 @@ public class GeneradorCSV {
 							numLotesTotalSecundario++;
 							indiceLote++;
 							numLotes++;	
+							progreso.incrementar();
 						}
 						
 					}
@@ -600,8 +617,11 @@ public class GeneradorCSV {
 		int numPrimarios = 0;
 		int numSecundarios = 0;
 
+		progreso.setMaximo(numProductos * numLotesPorProducto);
+		
 		for(int i=0; i < numProductos; i++){ //Para cada producto			
 
+			progreso.incrementar();
 			if(listaProductos.get(i).isPrimario()){ /////SI EL PRODUCTO ES PRIMARIO, ES DECIR, ES DEL 20% DE LOS IMPORTANTES
 
 				numPrimarios++;
@@ -657,6 +677,7 @@ public class GeneradorCSV {
 						listaProductos.get(i).setCantidadStock(cantAux);
 						listaLotesRecibidos.add(lote);								//AÑADO LOTE A LA LISTA SI TIENE FECHA ANTERIOR A FECHA_LIMITE
 						numLotes++;	
+						progreso.incrementar();
 					}
 				}			
 			}else{////////////////SI EL PRODUCTO NO ES PRIMARIO, ES DECIR, ES DEL 80% DE LOS NO-IMPORTANTES
@@ -714,6 +735,7 @@ public class GeneradorCSV {
 						listaProductos.get(i).setCantidadStock(cantAux);
 						listaLotesRecibidos.add(lote);								//AÑADO LOTE A LA LISTA SI TIENE FECHA ANTERIOR A FECHA_LIMITE
 						numLotes++;	
+						progreso.incrementar();
 					}
 				}	
 			}
@@ -753,6 +775,7 @@ public class GeneradorCSV {
 			numLotesEscritos++;
 		}
 		w.close();
+		progreso.setTextStopped();
 		return numLotesEscritos;
 
 	}
@@ -846,12 +869,16 @@ public class GeneradorCSV {
 	/**Genera las ventas a partir de los lotes recibidos
 	 * @param maxCantPorVenta - número máximo de cantidad vendida en cada venta
 	 * @return numero de ventas generadas*/
-	public int generarVentas(int maxCantPorVenta, int maxDiasVendiendose, boolean ventas1Ud) throws IOException{
+	public int generarVentas(int maxCantPorVenta, int maxDiasVendiendose, boolean boolVentas1Ud, int ventas1Ud) throws IOException{
 		
+		Float porcentVentas1Ud = Float.valueOf(ventas1Ud);
+		porcentVentas1Ud = porcentVentas1Ud/100;
 		if(listaLotesRecibidos==null || listaLotesRecibidos.size()==0)
 			leerLotesRecibidos(null);
 		if(listaProductos==null)
 			leerProductos(null);
+				
+		progreso.setMaximo(listaLotesRecibidos.size());
 		
 		int numVentasGeneradas = 0;
 		int numLotes = listaLotesRecibidos.size();
@@ -864,6 +891,7 @@ public class GeneradorCSV {
 		
 		for(int i=0; i<numLotes; i++){		
 			
+			progreso.incrementar();
 			int acumuladoVenta = 0;
 //			cantStock = listaLotesRecibidos.get(i).getStockProductoAux();				//cantidad de stock del producto asociado al lote
 //			int cantidadLote = listaLotesRecibidos.get(i).getCantidadRecibida() - cantStock; //Cantidad a repartir entre las ventas del producto
@@ -886,14 +914,18 @@ public class GeneradorCSV {
 				v.setIdVenta(indiceVenta);									//id de la venta
 
 				do{
-					if(ventas1Ud==true){
-						if(aplicarProbabilidad((float) 0.7)==true){//El 70% de las ventas deben ser de cantidad 1 unidad
-							cantidadVendida=1;
-						}else{//El 30% de las ventas será de cantidad > 1 y <= maxCantPorVenta
-							cantidadVendida = randCant.nextInt(maxCantPorVenta-1)+2;
-						}
-					}else{//La cantidad de las ventas estará entre 1 y maxCantPorVenta
+					if(boolVentas1Ud==false){//La cantidad de las ventas estara entre 1 y maxCantPorVenta
 						cantidadVendida = randCant.nextInt(maxCantPorVenta)+1;
+					}else{
+						if(porcentVentas1Ud==1){//Si todas las ventas tienen que ser de 1 unidad. SOLO PARA OPTIMIZAR EL CASO DEL 100% DE VENTAS DE 1 UD.
+							cantidadVendida=1;
+						}else{
+							if(aplicarProbabilidad(porcentVentas1Ud)==true){//El porcentVentas1Ud% de las ventas deben ser de cantidad 1 unidad
+								cantidadVendida=1;
+							}else{//El resto de las ventas sera de cantidad > 1 y <= maxCantPorVenta
+								cantidadVendida = randCant.nextInt(maxCantPorVenta-1)+2;
+							}
+						}
 					}
 				}while(cantidadVendida > cantidadLote);		//Mientras la cantidadVendida generada sea superior a la cantidad que queda, genero otra cantidadVendida
 
@@ -935,6 +967,7 @@ public class GeneradorCSV {
 					listaVentas.add(v);
 					indiceVenta++;
 					numVentasGeneradas++;
+					
 				}
 				//Precio de la venta
 				/*TODO*/
@@ -948,7 +981,7 @@ public class GeneradorCSV {
 		 * la cantidad vendida (acumuladoVenta) que tengo guardada en un hashmap para cada id del producto*/
 		int numProd = listaProductos.size();
 		for(int i=0; i<numProd; i++){
-			
+						
 			Integer cantVend = mapAuxProductos.get(listaProductos.get(i).getIdProducto());
 			if(cantVend!=null){
 				int cantStock = listaProductos.get(i).getCantidadStock();
@@ -999,6 +1032,7 @@ public class GeneradorCSV {
 			numVentasEscritas++;
 		}
 		w.close();
+		progreso.setTextStopped();
 		return numVentasEscritas;
 		
 		
@@ -1358,5 +1392,117 @@ public class GeneradorCSV {
 		
 	}
 
-	
+	public String getRutaDefectoEntrada() {
+		return rutaDefectoEntrada;
+	}
+
+	public void setRutaDefectoEntrada(String rutaDefectoEntrada) {
+		this.rutaDefectoEntrada = rutaDefectoEntrada;
+	}
+
+	public String getRutaDefectoSalida() {
+		return rutaDefectoSalida;
+	}
+
+	public void setRutaDefectoSalida(String rutaDefectoSalida) {
+		this.rutaDefectoSalida = rutaDefectoSalida;
+	}
+
+	public ArrayList<Marca> getListaMarcas() {
+		return listaMarcas;
+	}
+
+	public void setListaMarcas(ArrayList<Marca> listaMarcas) {
+		this.listaMarcas = listaMarcas;
+	}
+
+	public ArrayList<Categoria> getListaCategorias() {
+		return listaCategorias;
+	}
+
+	public void setListaCategorias(ArrayList<Categoria> listaCategorias) {
+		this.listaCategorias = listaCategorias;
+	}
+
+	public ArrayList<Producto> getListaProductos() {
+		return listaProductos;
+	}
+
+	public void setListaProductos(ArrayList<Producto> listaProductos) {
+		this.listaProductos = listaProductos;
+	}
+
+	public ArrayList<LoteRecibido> getListaLotesRecibidos() {
+		return listaLotesRecibidos;
+	}
+
+	public void setListaLotesRecibidos(ArrayList<LoteRecibido> listaLotesRecibidos) {
+		this.listaLotesRecibidos = listaLotesRecibidos;
+	}
+
+	public ArrayList<Proveedor> getListaProveedores() {
+		return listaProveedores;
+	}
+
+	public void setListaProveedores(ArrayList<Proveedor> listaProveedores) {
+		this.listaProveedores = listaProveedores;
+	}
+
+	public ArrayList<Almacen> getListaAlmacenes() {
+		return listaAlmacenes;
+	}
+
+	public void setListaAlmacenes(ArrayList<Almacen> listaAlmacenes) {
+		this.listaAlmacenes = listaAlmacenes;
+	}
+
+	public ArrayList<Venta> getListaVentas() {
+		return listaVentas;
+	}
+
+	public void setListaVentas(ArrayList<Venta> listaVentas) {
+		this.listaVentas = listaVentas;
+	}
+
+	public ArrayList<Ubicacion> getListaUbicaciones() {
+		return listaUbicaciones;
+	}
+
+	public void setListaUbicaciones(ArrayList<Ubicacion> listaUbicaciones) {
+		this.listaUbicaciones = listaUbicaciones;
+	}
+
+	public ArrayList<UbicacionProducto> getListaUbicacionProducto() {
+		return listaUbicacionProducto;
+	}
+
+	public void setListaUbicacionProducto(
+			ArrayList<UbicacionProducto> listaUbicacionProducto) {
+		this.listaUbicacionProducto = listaUbicacionProducto;
+	}
+
+	public ArrayList<Movimiento> getListaMovimientos() {
+		return listaMovimientos;
+	}
+
+	public void setListaMovimientos(ArrayList<Movimiento> listaMovimientos) {
+		this.listaMovimientos = listaMovimientos;
+	}
+
+	public static Calendar getFechaLimite() {
+		return fechaLimite;
+	}
+
+	public static void setFechaLimite(Calendar fechaLimite) {
+		GeneradorCSV.fechaLimite = fechaLimite;
+	}
+
+	public static int getStockMedioInicial() {
+		return stockMedioInicial;
+	}
+
+	public static void setStockMedioInicial(int stockMedioInicial) {
+		GeneradorCSV.stockMedioInicial = stockMedioInicial;
+	}
+
 }

@@ -1,5 +1,6 @@
 package java_project;
 
+import igu.ConfiguracionEntradasSalidas;
 import igu.informeProductos;
 
 import java.awt.BorderLayout;
@@ -29,15 +30,19 @@ import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.BoxLayout;
+import net.miginfocom.swing.MigLayout;
 
 public class poblar_bd {
 
 	private JFrame frmPobladorDeTablas;
-	private JTextField textFieldRutaEntrada;
-	private String rutaEntrada = "/home/carlos/pfc/pfc/entradas_app/";
-	private String rutaSalida = "/home/carlos/pfc/pfc/salidas_app/";
-	private JTextField textFieldRutaSalida;
+	static public String rutaEntrada = "/home/carlos/pfc/pfc/entradas_app/";
+	static public String rutaSalida = "/home/carlos/pfc/pfc/salidas_app/";
 	static JTextArea textArea;
+
 	JTextArea textAreaEstado;
 	static public JProgressBar progressBar;
 	GeneradorCSV gen = new GeneradorCSV();
@@ -94,9 +99,9 @@ public class poblar_bd {
 		panel.setBounds(6, 6, 968, 320);
 		frmPobladorDeTablas.getContentPane().add(panel);
 		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[] {200, 200, 200, 200, 200};
+		gbl_panel.columnWidths = new int[] {100, 100, 100, 100, 100, 100, 100, 100, 100, 100};
 		gbl_panel.rowHeights = new int[] {94, 93, 82};
-		gbl_panel.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panel.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0};
 		gbl_panel.rowWeights = new double[]{1.0, 1.0, 1.0};
 		panel.setLayout(gbl_panel);
 
@@ -106,7 +111,7 @@ public class poblar_bd {
 		panelProductos.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Productos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		GridBagConstraints gbc_panelProductos = new GridBagConstraints();
 		gbc_panelProductos.fill = GridBagConstraints.BOTH;
-		gbc_panelProductos.gridwidth = 2;
+		gbc_panelProductos.gridwidth = 5;
 		gbc_panelProductos.insets = new Insets(0, 0, 5, 5);
 		gbc_panelProductos.gridx = 0;
 		gbc_panelProductos.gridy = 0;
@@ -156,6 +161,7 @@ public class poblar_bd {
 					textArea.append("Escritos " + numProdEscritos + " productos.\n");
 					textArea.append("Tiempo ejecucion: " + Temporizador.pararTemporizador("Generacion de productos") + " segundos.\n");
 					textArea.append("********************** GENERACION DE PRODUCTOS TERMINADA *******************\n");
+					actualizarEstado();
 					//					gen.flushAll();
 				}
 				catch (IOException e1) {
@@ -187,94 +193,99 @@ public class poblar_bd {
 		gbc_lblStockMedioInicial.gridy = 1;
 		panelProductos.add(lblStockMedioInicial, gbc_lblStockMedioInicial);
 				
-				JPanel panelUbicacionProducto = new JPanel();
-				panelUbicacionProducto.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Ubicacion-producto", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				GridBagConstraints gbc_panelUbicacionProducto = new GridBagConstraints();
-				gbc_panelUbicacionProducto.fill = GridBagConstraints.BOTH;
-				gbc_panelUbicacionProducto.insets = new Insets(0, 0, 5, 5);
-				gbc_panelUbicacionProducto.gridx = 3;
-				gbc_panelUbicacionProducto.gridy = 0;
-				panel.add(panelUbicacionProducto, gbc_panelUbicacionProducto);
-				GridBagLayout gbl_panelUbicacionProducto = new GridBagLayout();
-				gbl_panelUbicacionProducto.columnWidths = new int[]{0, 0};
-				gbl_panelUbicacionProducto.rowHeights = new int[]{87, 0};
-				gbl_panelUbicacionProducto.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-				gbl_panelUbicacionProducto.rowWeights = new double[]{1.0, Double.MIN_VALUE};
-				panelUbicacionProducto.setLayout(gbl_panelUbicacionProducto);
-				
-				JButton btnGenerarUbicacionproducto = new JButton("Generar ubicacion-producto");
-				GridBagConstraints gbc_btnGenerarUbicacionproducto = new GridBagConstraints();
-				gbc_btnGenerarUbicacionproducto.gridx = 0;
-				gbc_btnGenerarUbicacionproducto.gridy = 0;
-				panelUbicacionProducto.add(btnGenerarUbicacionproducto, gbc_btnGenerarUbicacionproducto);
-		
-				JPanel panelFicheros = new JPanel();
-				panelFicheros.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Ficheros", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				GridBagConstraints gbc_panelFicheros = new GridBagConstraints();
-				gbc_panelFicheros.insets = new Insets(0, 0, 5, 5);
-				gbc_panelFicheros.fill = GridBagConstraints.HORIZONTAL;
-				gbc_panelFicheros.gridheight = 2;
-				gbc_panelFicheros.gridx = 4;
-				gbc_panelFicheros.gridy = 0;
-				panel.add(panelFicheros, gbc_panelFicheros);
-				GridBagLayout gbl_panelFicheros = new GridBagLayout();
-				gbl_panelFicheros.columnWidths = new int[]{243, 0};
-				gbl_panelFicheros.rowHeights = new int[]{15, 27, 15, 27, 23, 0};
-				gbl_panelFicheros.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-				gbl_panelFicheros.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-				panelFicheros.setLayout(gbl_panelFicheros);
-				
-						JLabel lblRutaEnt = new JLabel("Ruta entrada");
-						GridBagConstraints gbc_lblRutaEnt = new GridBagConstraints();
-						gbc_lblRutaEnt.anchor = GridBagConstraints.WEST;
-						gbc_lblRutaEnt.fill = GridBagConstraints.VERTICAL;
-						gbc_lblRutaEnt.insets = new Insets(0, 0, 5, 0);
-						gbc_lblRutaEnt.gridx = 0;
-						gbc_lblRutaEnt.gridy = 0;
-						panelFicheros.add(lblRutaEnt, gbc_lblRutaEnt);
+						JPanel panelUbicacionProducto = new JPanel();
+						panelUbicacionProducto.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Ubicacion-producto", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+						GridBagConstraints gbc_panelUbicacionProducto = new GridBagConstraints();
+						gbc_panelUbicacionProducto.fill = GridBagConstraints.HORIZONTAL;
+						gbc_panelUbicacionProducto.insets = new Insets(0, 0, 5, 5);
+						gbc_panelUbicacionProducto.gridx = 8;
+						gbc_panelUbicacionProducto.gridy = 0;
+						panel.add(panelUbicacionProducto, gbc_panelUbicacionProducto);
+						GridBagLayout gbl_panelUbicacionProducto = new GridBagLayout();
+						gbl_panelUbicacionProducto.columnWidths = new int[]{0, 0};
+						gbl_panelUbicacionProducto.rowHeights = new int[]{87, 0};
+						gbl_panelUbicacionProducto.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+						gbl_panelUbicacionProducto.rowWeights = new double[]{1.0, Double.MIN_VALUE};
+						panelUbicacionProducto.setLayout(gbl_panelUbicacionProducto);
 						
-								textFieldRutaEntrada = new JTextField();
-								GridBagConstraints gbc_textFieldRutaEntrada = new GridBagConstraints();
-								gbc_textFieldRutaEntrada.fill = GridBagConstraints.BOTH;
-								gbc_textFieldRutaEntrada.insets = new Insets(0, 0, 5, 0);
-								gbc_textFieldRutaEntrada.gridx = 0;
-								gbc_textFieldRutaEntrada.gridy = 1;
-								panelFicheros.add(textFieldRutaEntrada, gbc_textFieldRutaEntrada);
-								textFieldRutaEntrada.setColumns(10);
-								textFieldRutaEntrada.setText(rutaEntrada);
+								JButton btnGenerarUbicacionproducto = new JButton("Generar ubicacion-producto");
+								GridBagConstraints gbc_btnGenerarUbicacionproducto = new GridBagConstraints();
+								gbc_btnGenerarUbicacionproducto.gridx = 0;
+								gbc_btnGenerarUbicacionproducto.gridy = 0;
+								panelUbicacionProducto.add(btnGenerarUbicacionproducto, gbc_btnGenerarUbicacionproducto);
+		
+		
+				////////////////////////////////////////////////////////////////////////////// PANEL OTROS
+				JPanel panelOtros = new JPanel();
+				panelOtros.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Otros", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				GridBagConstraints gbc_panelOtros = new GridBagConstraints();
+				gbc_panelOtros.insets = new Insets(0, 0, 5, 0);
+				gbc_panelOtros.fill = GridBagConstraints.BOTH;
+				gbc_panelOtros.gridx = 9;
+				gbc_panelOtros.gridy = 0;
+				panel.add(panelOtros, gbc_panelOtros);
+				GridBagLayout gbl_panelOtros = new GridBagLayout();
+				gbl_panelOtros.columnWidths = new int[]{83, 0};
+				gbl_panelOtros.rowHeights = new int[]{23, 23, 0};
+				gbl_panelOtros.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+				gbl_panelOtros.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+				panelOtros.setLayout(gbl_panelOtros);
+				
+						JButton btnFlushAll = new JButton("FLUSH ALL");
+						GridBagConstraints gbc_btnFlushAll = new GridBagConstraints();
+						gbc_btnFlushAll.anchor = GridBagConstraints.NORTHWEST;
+						gbc_btnFlushAll.insets = new Insets(0, 0, 5, 0);
+						gbc_btnFlushAll.gridx = 0;
+						gbc_btnFlushAll.gridy = 0;
+						panelOtros.add(btnFlushAll, gbc_btnFlushAll);
+						
+								btnFlushAll.addActionListener(new ActionListener() {
+									public void actionPerformed(ActionEvent arg0) {
+										gen.flushAll();
+										textArea.append("===========================BORRADOS TODOS LOS DATOS EN MEMORIA=======================");
+										actualizarEstado();
+									}
+								});
 								
-										JLabel lblRutaSal = new JLabel("Ruta salida");
-										GridBagConstraints gbc_lblRutaSal = new GridBagConstraints();
-										gbc_lblRutaSal.anchor = GridBagConstraints.WEST;
-										gbc_lblRutaSal.fill = GridBagConstraints.VERTICAL;
-										gbc_lblRutaSal.insets = new Insets(0, 0, 5, 0);
-										gbc_lblRutaSal.gridx = 0;
-										gbc_lblRutaSal.gridy = 2;
-										panelFicheros.add(lblRutaSal, gbc_lblRutaSal);
-										
-												textFieldRutaSalida = new JTextField();
-												GridBagConstraints gbc_textFieldRutaSalida = new GridBagConstraints();
-												gbc_textFieldRutaSalida.fill = GridBagConstraints.BOTH;
-												gbc_textFieldRutaSalida.insets = new Insets(0, 0, 5, 0);
-												gbc_textFieldRutaSalida.gridx = 0;
-												gbc_textFieldRutaSalida.gridy = 3;
-												panelFicheros.add(textFieldRutaSalida, gbc_textFieldRutaSalida);
-												textFieldRutaSalida.setColumns(10);
-												textFieldRutaSalida.setText(rutaSalida);
-												
-														JButton btnGuardarRuta = new JButton("Guardar Ruta");
-														GridBagConstraints gbc_btnGuardarRuta = new GridBagConstraints();
-														gbc_btnGuardarRuta.anchor = GridBagConstraints.NORTHWEST;
-														gbc_btnGuardarRuta.gridx = 0;
-														gbc_btnGuardarRuta.gridy = 4;
-														panelFicheros.add(btnGuardarRuta, gbc_btnGuardarRuta);
-														btnGuardarRuta.addActionListener(new ActionListener() {
-															public void actionPerformed(ActionEvent e) {
-																rutaEntrada = textFieldRutaEntrada.getText();
-																rutaSalida = textFieldRutaSalida.getText();
-																textArea.append("Guardadas nuevas rutas:\n" + "Entrada: " + rutaEntrada + "\n" + "Salida: " + rutaSalida + "\n");
-															}
-														});
+										JButton btnPruebas = new JButton("Pruebas");
+										GridBagConstraints gbc_btnPruebas = new GridBagConstraints();
+										gbc_btnPruebas.anchor = GridBagConstraints.NORTHWEST;
+										gbc_btnPruebas.gridx = 0;
+										gbc_btnPruebas.gridy = 1;
+										panelOtros.add(btnPruebas, gbc_btnPruebas);
+										btnPruebas.addActionListener(new ActionListener() {
+											public void actionPerformed(ActionEvent arg0) {
+
+												try {
+													progressBar.setMaximum(4);
+													progressBar.setValue(0);
+													Temporizador.iniciarTemporizador();
+													textArea.append("Leyendo ubicaciones-producto...\n");
+													gen.leerUbicaciones(null);
+													textArea.append("Generando ubicaciones-producto...\n");
+													textArea.append("Numero de ubicaciones-producto generadas: " + gen.generarUbicacionProducto() +"\n");
+													progressBar.setValue(1);
+													textArea.append("Numero de ubicaciones-producto escritas: " + gen.escribirUbicacionProducto(null) + "\n");
+													textArea.append("Generando movimientos...\n");
+													progressBar.setValue(2);
+													textArea.append("Número de movimientos generados: " + gen.generarMovimientos() + "\n");
+													textArea.append("Escribiendo movimientos...\n");
+
+													textArea.append("Número de movimientos escritos: " + gen.escribirMovimientos(null) + "\n");
+													textArea.append("Tiempo ejecucion: " + Temporizador.pararTemporizador("Generacion de movimientos") + "\n");
+
+													textArea.append("******************* GENERACION DE MOVIMIENTOS TERMINADA **********************\n");
+													actualizarEstado();
+												} catch (IOException e) {
+													// TODO Auto-generated catch block
+													e.printStackTrace();
+												}
+												gen.flushAll();
+											}
+
+
+
+										});
 
 		////////////////////////////////////////////////////////////////////////////// PANEL LOTES
 
@@ -282,15 +293,15 @@ public class poblar_bd {
 		panelLotes.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Lotes recibidos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		GridBagConstraints gbc_panelLotes = new GridBagConstraints();
 		gbc_panelLotes.fill = GridBagConstraints.BOTH;
-		gbc_panelLotes.gridwidth = 3;
+		gbc_panelLotes.gridwidth = 7;
 		gbc_panelLotes.insets = new Insets(0, 0, 5, 5);
 		gbc_panelLotes.gridx = 0;
 		gbc_panelLotes.gridy = 1;
 		panel.add(panelLotes, gbc_panelLotes);
 		GridBagLayout gbl_panelLotes = new GridBagLayout();
-		gbl_panelLotes.columnWidths = new int[]{56, 47, 50, 47, 63, 39, 63, 39, 0};
+		gbl_panelLotes.columnWidths = new int[]{100,100, 100, 100, 100, 100, 100, 100, 100, 100};
 		gbl_panelLotes.rowHeights = new int[]{35, 21, 0};
-		gbl_panelLotes.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panelLotes.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
 		gbl_panelLotes.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		panelLotes.setLayout(gbl_panelLotes);
 
@@ -449,6 +460,7 @@ public class poblar_bd {
 							//							gen.flushAll();
 							textArea.append("Tiempo ejecucion: " + Temporizador.pararTemporizador("GeneraciÃ³n de lotes") + " segundos.\n");
 							textArea.append("*********************** GENERACION DE LOTES COMPLETADA *******************\n" );
+							actualizarEstado();
 
 						}catch(IOException e){
 							System.out.println("Error ejecutando en generacion lotes.");
@@ -459,78 +471,6 @@ public class poblar_bd {
 			}
 
 		});
-		
-		
-				////////////////////////////////////////////////////////////////////////////// PANEL OTROS
-				JPanel panelOtros = new JPanel();
-				panelOtros.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Otros", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				GridBagConstraints gbc_panelOtros = new GridBagConstraints();
-				gbc_panelOtros.fill = GridBagConstraints.BOTH;
-				gbc_panelOtros.insets = new Insets(0, 0, 5, 5);
-				gbc_panelOtros.gridx = 3;
-				gbc_panelOtros.gridy = 1;
-				panel.add(panelOtros, gbc_panelOtros);
-				GridBagLayout gbl_panelOtros = new GridBagLayout();
-				gbl_panelOtros.columnWidths = new int[]{83, 0};
-				gbl_panelOtros.rowHeights = new int[]{23, 23, 0};
-				gbl_panelOtros.columnWeights = new double[]{0.0, Double.MIN_VALUE};
-				gbl_panelOtros.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-				panelOtros.setLayout(gbl_panelOtros);
-				
-						JButton btnFlushAll = new JButton("FLUSH ALL");
-						GridBagConstraints gbc_btnFlushAll = new GridBagConstraints();
-						gbc_btnFlushAll.anchor = GridBagConstraints.NORTHWEST;
-						gbc_btnFlushAll.insets = new Insets(0, 0, 5, 0);
-						gbc_btnFlushAll.gridx = 0;
-						gbc_btnFlushAll.gridy = 0;
-						panelOtros.add(btnFlushAll, gbc_btnFlushAll);
-						
-								//////////////////////////////////////////////////// LISTENERS ///////////////////////////////////////////////////////////////////////
-								btnFlushAll.addActionListener(new ActionListener() {
-									public void actionPerformed(ActionEvent arg0) {
-										gen.flushAll();
-										textArea.append("===========================BORRADOS TODOS LOS DATOS EN MEMORIA=======================");
-									}
-								});
-								
-										JButton btnPruebas = new JButton("Pruebas");
-										GridBagConstraints gbc_btnPruebas = new GridBagConstraints();
-										gbc_btnPruebas.anchor = GridBagConstraints.NORTHWEST;
-										gbc_btnPruebas.gridx = 0;
-										gbc_btnPruebas.gridy = 1;
-										panelOtros.add(btnPruebas, gbc_btnPruebas);
-										btnPruebas.addActionListener(new ActionListener() {
-											public void actionPerformed(ActionEvent arg0) {
-
-												try {
-													progressBar.setMaximum(4);
-													progressBar.setValue(0);
-													Temporizador.iniciarTemporizador();
-													textArea.append("Leyendo ubicaciones-producto...\n");
-													gen.leerUbicaciones(null);
-													textArea.append("Generando ubicaciones-producto...\n");
-													textArea.append("Numero de ubicaciones-producto generadas: " + gen.generarUbicacionProducto() +"\n");
-													progressBar.setValue(1);
-													textArea.append("Numero de ubicaciones-producto escritas: " + gen.escribirUbicacionProducto(null) + "\n");
-													textArea.append("Generando movimientos...\n");
-													progressBar.setValue(2);
-													textArea.append("Número de movimientos generados: " + gen.generarMovimientos() + "\n");
-													textArea.append("Escribiendo movimientos...\n");
-
-													textArea.append("Número de movimientos escritos: " + gen.escribirMovimientos(null) + "\n");
-													textArea.append("Tiempo ejecucion: " + Temporizador.pararTemporizador("Generacion de movimientos") + "\n");
-
-													textArea.append("******************* GENERACION DE MOVIMIENTOS TERMINADA **********************\n");
-												} catch (IOException e) {
-													// TODO Auto-generated catch block
-													e.printStackTrace();
-												}
-												gen.flushAll();
-											}
-
-
-
-										});
 
 
 		///////////////////////////////////////////////////////////////////// PANEL VENTAS
@@ -540,7 +480,7 @@ public class poblar_bd {
 		panelVentas.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Ventas", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		GridBagConstraints gbc_panelVentas = new GridBagConstraints();
 		gbc_panelVentas.fill = GridBagConstraints.BOTH;
-		gbc_panelVentas.gridwidth = 3;
+		gbc_panelVentas.gridwidth = 6;
 		gbc_panelVentas.insets = new Insets(0, 0, 0, 5);
 		gbc_panelVentas.gridx = 0;
 		gbc_panelVentas.gridy = 2;
@@ -551,7 +491,7 @@ public class poblar_bd {
 		gbl_panelVentas.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panelVentas.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 		panelVentas.setLayout(gbl_panelVentas);
-		
+
 		final JSpinner spinnerPorcent1Ud = new JSpinner();
 		spinnerPorcent1Ud.setEnabled(false);
 		spinnerPorcent1Ud.setModel(new SpinnerNumberModel(70, 0, 100, 1));
@@ -614,42 +554,81 @@ public class poblar_bd {
 		gbc_btnGenerarVentas.gridx = 0;
 		gbc_btnGenerarVentas.gridy = 0;
 		panelVentas.add(btnGenerarVentas, gbc_btnGenerarVentas);
+																		
+																		
+																		
+																				///////////////////////////////////////////////////////////////////////////PANEL ESTADO
+																		
+																				JPanel panelEstado = new JPanel();
+																				panelEstado.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Estado", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+																				GridBagConstraints gbc_panelEstado = new GridBagConstraints();
+																				gbc_panelEstado.gridwidth = 2;
+																				gbc_panelEstado.fill = GridBagConstraints.HORIZONTAL;
+																				gbc_panelEstado.insets = new Insets(0, 0, 0, 5);
+																				gbc_panelEstado.gridx = 8;
+																				gbc_panelEstado.gridy = 2;
+																				panel.add(panelEstado, gbc_panelEstado);
+																				panelEstado.setLayout(null);
+																				GridBagLayout gbl_panelEstado = new GridBagLayout();
+																				gbl_panelEstado.columnWidths = new int[]{174, 0};
+																				gbl_panelEstado.rowHeights = new int[]{22, 35, 22, 0};
+																				gbl_panelEstado.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+																				gbl_panelEstado.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+																				panelEstado.setLayout(gbl_panelEstado);
+																				
+
+																				progressBar = new JProgressBar(0, 100);
+																				progressBar.addPropertyChangeListener(new PropertyChangeListener() {
+																					public void propertyChange(PropertyChangeEvent evt) {
+																						progressBar.repaint();
+																					}
+																				});
+																				progressBar.setValue(0);
+																				progressBar.setStringPainted(true);
+																				progressBar.setString("Nada en ejecución");
+																				progressBar.setVisible(true);
+																				GridBagConstraints gbc_progressBar = new GridBagConstraints();
+																				gbc_progressBar.fill = GridBagConstraints.BOTH;
+																				gbc_progressBar.insets = new Insets(0, 0, 5, 0);
+																				gbc_progressBar.gridx = 0;
+																				gbc_progressBar.gridy = 0;
+																				panelEstado.add(progressBar, gbc_progressBar);
+																				
+																						textAreaEstado = new JTextArea();
+																						textAreaEstado.setText("En memoria: ");
+																						textAreaEstado.setEditable(false);
+																						textAreaEstado.setBackground(Color.LIGHT_GRAY);
+																						GridBagConstraints gbc_textAreaEstado = new GridBagConstraints();
+																						gbc_textAreaEstado.gridheight = 2;
+																						gbc_textAreaEstado.insets = new Insets(0, 0, 5, 0);
+																						gbc_textAreaEstado.fill = GridBagConstraints.BOTH;
+																						gbc_textAreaEstado.gridx = 0;
+																						gbc_textAreaEstado.gridy = 1;
+																						panelEstado.add(textAreaEstado, gbc_textAreaEstado);
+
+		JMenuBar menuBar = new JMenuBar();
+		frmPobladorDeTablas.setJMenuBar(menuBar);
+
+		JMenu mnArchivo = new JMenu("Archivo");
+		menuBar.add(mnArchivo);
+
+		JMenu mnConfiguracion = new JMenu("Configuracion");
+		menuBar.add(mnConfiguracion);
 		
-	
-		
-				///////////////////////////////////////////////////////////////////////////PANEL ESTADO
-		
-				JPanel panelEstado = new JPanel();
-				panelEstado.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Estado", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				GridBagConstraints gbc_panelEstado = new GridBagConstraints();
-				gbc_panelEstado.fill = GridBagConstraints.BOTH;
-				gbc_panelEstado.gridwidth = 2;
-				gbc_panelEstado.gridx = 4;
-				gbc_panelEstado.gridy = 2;
-				panel.add(panelEstado, gbc_panelEstado);
-				panelEstado.setLayout(new BorderLayout(0, 0));
+		JMenuItem mntmEntradasalida = new JMenuItem("Entrada/Salida");
+		mntmEntradasalida.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ConfiguracionEntradasSalidas configES = new ConfiguracionEntradasSalidas();
+			}
+		});
+		mnConfiguracion.add(mntmEntradasalida);
 
-				progressBar = new JProgressBar(0, 100);					
-				progressBar.addPropertyChangeListener(new PropertyChangeListener() {
-					public void propertyChange(PropertyChangeEvent evt) {
-						progressBar.repaint();
-					}
-				});
-				panelEstado.add(progressBar);
-				progressBar.setValue(0);
-				progressBar.setStringPainted(true);
-				progressBar.setString("Nada en ejecución");
-				progressBar.setVisible(true);
-
-				textAreaEstado = new JTextArea();
-				textAreaEstado.setText("En memoria: ");
-				textAreaEstado.setEditable(false);
-				textAreaEstado.setBackground(Color.LIGHT_GRAY);
-				panelEstado.add(textAreaEstado, BorderLayout.SOUTH);
+		JMenu mnAyuda = new JMenu("Ayuda");
+		menuBar.add(mnAyuda);
 
 
-				btnGenerarVentas.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
+		btnGenerarVentas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 
 				final int maxCantVenta = (int) spinnerMaxCantVenta.getValue();
 				textArea.append("Maxima cantidad por venta: " + maxCantVenta + "\n");
@@ -659,7 +638,7 @@ public class poblar_bd {
 
 				final boolean ventas1Ud = chckbxVentas1Ud.isSelected();
 				final int porcentVentas1Ud = (int) spinnerPorcent1Ud.getValue();
-				
+
 				Thread hilo = new Thread(new Runnable() {
 
 					@Override
@@ -680,6 +659,7 @@ public class poblar_bd {
 							textArea.append("Se ha modificado y escrito en fichero la cantidad de stock (tabla producto).\n");
 							textArea.append("NÃºmero de productos escritos: " + numProdEscritos + "\n");
 							textArea.append("*********************** GENERACION DE VENTAS COMPLETADA *******************\n" );
+							actualizarEstado();
 							//							gen.flushAll();
 						}catch(IOException e){
 							System.out.println("Error ejecutando generar ventas.");
@@ -691,9 +671,50 @@ public class poblar_bd {
 			}
 		});
 
+	}
 
+	/**Actualiza el textAreaEstado con las listas y el numero de elementos de cada una que estan en memoria*/
+	public void actualizarEstado(){
+		textAreaEstado.setText(null);
+		if(gen.listaProductos.size()>0){
+			textAreaEstado.append("[Productos - " + gen.listaProductos.size() + "]\n");
+		}
+		if(gen.listaLotesRecibidos.size()>0){
+			textAreaEstado.append("[Lotes recibidos - " + gen.listaLotesRecibidos.size() + "]\n");
+		}
+		if(gen.listaVentas.size()>0){
+			textAreaEstado.append("[Ventas - " + gen.listaVentas.size() + "]\n");
+		}
+		if(gen.listaUbicacionProducto.size()>0){
+			textAreaEstado.append("[Ubicacion-producto - " + gen.listaUbicacionProducto.size() + "]\n");
+		}
+		if(gen.listaMovimientos.size()>0){
+			textAreaEstado.append("[Movimientos - " + gen.listaMovimientos.size() + "]\n");
+		}
+		
+	}
+	
+	public static JTextArea getTextArea() {
+		return textArea;
+	}
 
+	public static void setTextArea(JTextArea textArea) {
+		poblar_bd.textArea = textArea;
+	}
 
+	public static String getRutaEntrada() {
+		return rutaEntrada;
+	}
 
+	public static void setRutaEntrada(String rutaEntrada) {
+		poblar_bd.rutaEntrada = rutaEntrada;
+	}
+
+	public static String getRutaSalida() {
+		return rutaSalida;
+	}
+
+	public static void setRutaSalida(String rutaSalida) {
+		poblar_bd.rutaSalida = rutaSalida;
 	}
 }

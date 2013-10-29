@@ -24,8 +24,6 @@ import javax.swing.JTextArea;
 
 public class GeneradorCSV {
 
-	String rutaDefectoEntrada = "/home/carlos/pfc/pfc/entradas_app/";
-	String rutaDefectoSalida = "/home/carlos/pfc/pfc/salidas_app/";
 	ArrayList<Marca> listaMarcas ;
 	ArrayList<Categoria> listaCategorias ;
 	ArrayList<Producto> listaProductos ;
@@ -52,10 +50,10 @@ public class GeneradorCSV {
 		this.listaUbicacionProducto = new ArrayList<UbicacionProducto>();
 		this.listaMovimientos = new ArrayList<Movimiento>();
 		fechaLimite.set(2013, Calendar.JUNE, 30);
-		if(System.getProperty("os.name").contains("indows")){
-			rutaDefectoSalida= "C:\\Users\\Carlos\\Documents\\pfc\\pfc\\salidas_app\\" ;
-			rutaDefectoEntrada = "C:\\Users\\Carlos\\Documents\\pfc\\pfc\\entradas_app\\" ;
-		}
+//		if(System.getProperty("os.name").contains("indows")){
+//			rutaDefectoSalida= "C:\\Users\\Carlos\\Documents\\pfc\\pfc\\salidas_app\\" ;
+//			rutaDefectoEntrada = "C:\\Users\\Carlos\\Documents\\pfc\\pfc\\entradas_app\\" ;
+//		}
 	}
 	
 	public void flushAll(){
@@ -130,7 +128,7 @@ public class GeneradorCSV {
 	public int leerProductos(String ruta) throws NumberFormatException, IOException{
 		
 		if(ruta==null)
-			ruta=rutaDefectoEntrada+"productos_entrada.csv";
+			ruta=poblar_bd.getRutaEntrada()+"productos_entrada.csv";
 		
 		
 		
@@ -178,7 +176,7 @@ public class GeneradorCSV {
 	public int escribirProductos(String ruta) throws IOException{
 		
 		if(ruta==null)
-			ruta = rutaDefectoSalida+"productos_salida.csv" ;
+			ruta = poblar_bd.getRutaSalida()+"productos_salida.csv" ;
 		int numProdEscritos=0;
 		generarPreciosVentaProducto();
 		File file = new File(ruta);
@@ -212,7 +210,7 @@ public class GeneradorCSV {
 	public int escribirProductosPrimarios(String ruta) throws IOException{
 		
 		if(ruta==null)
-			ruta = rutaDefectoSalida+"productos_primarios_salida.csv" ;
+			ruta = poblar_bd.getRutaSalida()+"productos_primarios_salida.csv" ;
 		int numProdEscritos=0;
 		generarPreciosVentaProducto();
 		File file = new File(ruta);
@@ -753,7 +751,7 @@ public class GeneradorCSV {
 	public int escribirLotesRecibidos(String ruta) throws IOException{
 
 		if(ruta==null)
-			ruta = rutaDefectoSalida+"lotes_recibidos_salida.csv" ;
+			ruta = poblar_bd.getRutaSalida()+"lotes_recibidos_salida.csv" ;
 		int numLotesEscritos=0;
 		File file = new File(ruta);
 		FileOutputStream fsal = new FileOutputStream(file);
@@ -786,7 +784,7 @@ public class GeneradorCSV {
 	public int leerProveedores(String ruta) throws IOException{
 		
 		if(ruta==null)
-			ruta=rutaDefectoEntrada+"proveedores_entrada.csv";
+			ruta=poblar_bd.getRutaEntrada()+"proveedores_entrada.csv";
 		
 		int numProvLeidos=0;
 		File file = new File(ruta);
@@ -818,7 +816,7 @@ public class GeneradorCSV {
 	public int leerLotesRecibidos(String ruta) throws IOException{
 		
 		if(ruta==null)
-			ruta=rutaDefectoSalida+"lotes_recibidos_salida.csv"; //Leemos de la ruta por defecto de salida
+			ruta=poblar_bd.getRutaSalida()+"lotes_recibidos_salida.csv"; //Leemos de la ruta por defecto de salida
 		
 		int numLotesLeidos=0;
 		File file = new File(ruta);
@@ -1011,7 +1009,7 @@ public class GeneradorCSV {
 	public int escribirVentas(String ruta) throws IOException{
 		
 		if(ruta==null)
-			ruta = rutaDefectoSalida+"ventas_salida.csv" ;
+			ruta = poblar_bd.getRutaSalida()+"ventas_salida.csv" ;
 		int numVentasEscritas=0;
 		File file = new File(ruta);
 		FileOutputStream fsal = new FileOutputStream(file);
@@ -1042,7 +1040,7 @@ public class GeneradorCSV {
 	public int leerAlmacenes(String ruta) throws IOException{
 		
 		if(ruta==null)
-			ruta=rutaDefectoEntrada+"almacenes_entrada.csv"; //Leemos de la ruta por defecto de salida
+			ruta=poblar_bd.getRutaEntrada()+"almacenes_entrada.csv"; //Leemos de la ruta por defecto de salida
 		
 		int numAlmacenes=0;
 		File file = new File(ruta);
@@ -1071,7 +1069,7 @@ public class GeneradorCSV {
 	public int leerUbicaciones(String ruta) throws IOException{
 		
 		if(ruta==null)
-			ruta=rutaDefectoEntrada+"ubicaciones_entrada.csv"; //Leemos de la ruta por defecto de salida
+			ruta=poblar_bd.getRutaEntrada()+"ubicaciones_entrada.csv"; //Leemos de la ruta por defecto de salida
 		
 		int numUbicaciones=0;
 		File file = new File(ruta);
@@ -1131,7 +1129,7 @@ public class GeneradorCSV {
 	public int escribirUbicacionProducto(String ruta) throws IOException{
 		
 		if(ruta==null)
-			ruta = rutaDefectoSalida+"ubicacion_producto_salida.csv" ;
+			ruta = poblar_bd.getRutaSalida()+"ubicacion_producto_salida.csv" ;
 		int numUbiProdEscritas=0;
 		File file = new File(ruta);
 		FileOutputStream fsal = new FileOutputStream(file);
@@ -1233,7 +1231,7 @@ public class GeneradorCSV {
 		int numMovEscritos=0;
 		
 		if(ruta==null)
-			ruta = rutaDefectoSalida+"movimientos_salida.csv" ;
+			ruta = poblar_bd.getRutaSalida()+"movimientos_salida.csv" ;
 		File file = new File(ruta);
 		FileOutputStream fsal = new FileOutputStream(file);
 		OutputStreamWriter osw = new OutputStreamWriter(fsal);
@@ -1271,7 +1269,7 @@ public class GeneradorCSV {
 	public void leerMarcas(String ruta) throws IOException{
 		
 		if(ruta==null)
-			ruta=rutaDefectoEntrada+"marcas_entrada.csv";
+			ruta=poblar_bd.getRutaEntrada()+"marcas_entrada.csv";
 		
 		File file = new File(ruta);
 		FileInputStream fent = new FileInputStream(file);
@@ -1293,7 +1291,7 @@ public class GeneradorCSV {
 	public void leerCategorias(String ruta) throws IOException{
 		
 		if(ruta==null)
-			ruta=rutaDefectoEntrada+"categorias_entrada.csv";
+			ruta=poblar_bd.getRutaEntrada()+"categorias_entrada.csv";
 		
 		File file = new File(ruta);
 		FileInputStream fent = new FileInputStream(file);
@@ -1368,7 +1366,7 @@ public class GeneradorCSV {
 	public void leerProductosConNombreEnCategoriaYMarca(String ruta) throws IOException{
 		
 		if(ruta==null)
-			ruta=rutaDefectoEntrada+"productos_entrada.csv";//esta linea esta mal la ruta
+			ruta=poblar_bd.getRutaEntrada()+"productos_entrada.csv";//esta linea esta mal la ruta
 		
 		File file = new File(ruta);
 		FileInputStream fent = new FileInputStream(file);
@@ -1390,22 +1388,6 @@ public class GeneradorCSV {
 		}
 		r.close();
 		
-	}
-
-	public String getRutaDefectoEntrada() {
-		return rutaDefectoEntrada;
-	}
-
-	public void setRutaDefectoEntrada(String rutaDefectoEntrada) {
-		this.rutaDefectoEntrada = rutaDefectoEntrada;
-	}
-
-	public String getRutaDefectoSalida() {
-		return rutaDefectoSalida;
-	}
-
-	public void setRutaDefectoSalida(String rutaDefectoSalida) {
-		this.rutaDefectoSalida = rutaDefectoSalida;
 	}
 
 	public ArrayList<Marca> getListaMarcas() {

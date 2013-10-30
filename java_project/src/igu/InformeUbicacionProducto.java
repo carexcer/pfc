@@ -4,7 +4,9 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import java_project.GeneradorCSV;
-import java_project.Producto;
+import java_project.LoteRecibido;
+import java_project.UbicacionProducto;
+import java_project.Venta;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -16,7 +18,7 @@ import javax.swing.border.LineBorder;
 
 import net.miginfocom.swing.MigLayout;
 
-public class InformeProductos extends JFrame {
+public class InformeUbicacionProducto extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
@@ -24,10 +26,10 @@ public class InformeProductos extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public InformeProductos(GeneradorCSV gen) {
+	public InformeUbicacionProducto (GeneradorCSV gen) {
 				
 		this.setVisible(true);		
-		setTitle("Informe de productos");
+		setTitle("Informe de Ubicaciones-Producto");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -48,33 +50,24 @@ public class InformeProductos extends JFrame {
 		scrollPane.setAutoscrolls(true);
 		contentPane.add(scrollPane, "cell 0 1,grow");
 		
-		ModeloTablaProducto modelo = new ModeloTablaProducto();
+		ModeloTablaUbicacionProducto modelo = new ModeloTablaUbicacionProducto();
 		table = new JTable(modelo);
 		scrollPane.add(table);
 		scrollPane.setViewportView(table);
 		
 		//EL CODIGO QUE SE EJECUTA AL ABRIRSE LA VENTANA
-		ArrayList<Producto> lista = gen.getListaProductos();
+		ArrayList<UbicacionProducto> lista = gen.getListaUbicacionProducto();
 		textAreaAgregados.setText("Obteniendo informacion...");
 		
 		int numElementos=lista.size();
-		float pesoTotal=0;
-		int cantidadStockTotal=0;
-		float valorCompraTotal=0;
-		float valorVentaTotal=0;
+		int cantidadTotal=0;
 		
 		for(int i=0; i<numElementos; i++){
-			pesoTotal += lista.get(i).getPeso() * lista.get(i).getCantidadStock();
-			cantidadStockTotal += lista.get(i).getCantidadStock();
-			valorCompraTotal += lista.get(i).getPrecioMedioCompraUnitario() + lista.get(i).getCantidadStock();
-			valorVentaTotal += lista.get(i).getPrecioMedioVentaUnitario() + lista.get(i).getCantidadStock();			
+			cantidadTotal += lista.get(i).getCantidad();
 		}
-		textAreaAgregados.setText("======== INFORME DE PRODUCTOS ======\n");	
-		textAreaAgregados.append("Numero de productos: " + numElementos + ".\n");
-		textAreaAgregados.append("Cantidad Total en Stock: " + cantidadStockTotal + " unidades.\n");
-		textAreaAgregados.append("Valor Total de compra: " + valorCompraTotal + " euros.\n");
-		textAreaAgregados.append("Valor Total de venta: " +  valorVentaTotal + " euros.\n");
-		textAreaAgregados.append("Peso total: " +  pesoTotal + " kg.\n");
+		textAreaAgregados.setText("======== INFORME DE UBICACIONES-PRODUCTO ======\n");	
+		textAreaAgregados.append("Numero de ubicaciones-producto: " + numElementos + ".\n");
+		textAreaAgregados.append("Cantidad total (equivalente a Stock Total): " + cantidadTotal+ " unidades.\n");
 
 		modelo.cargarDatos(lista);
 		

@@ -129,9 +129,7 @@ public class GeneradorCSV {
 		
 		if(ruta==null)
 			ruta=poblar_bd.getRutaEntrada()+"productos_entrada.csv";
-		
-		
-		
+				
 		int numProdLeidos=0;
 		File file = new File(ruta);
 		FileInputStream fent = new FileInputStream(file);
@@ -139,6 +137,7 @@ public class GeneradorCSV {
 		BufferedReader r = new BufferedReader(isr);
 		String linea;
 		Random rand = new Random();
+		
 		while((linea = r.readLine()) != null){			
 			String[] campos = linea.split(";");
 			if(campos[0].equals("999"))
@@ -1167,10 +1166,12 @@ public class GeneradorCSV {
 			System.out.println("No hay ubicacion-producto generadas");
 			return -1;
 		}
+		progreso.setMaximo(listaLotesRecibidos.size()*2 + listaVentas.size()*2);
 		//Movimientos de entrada
 		int numLotes = listaLotesRecibidos.size();
 		for(int i=0; i<numLotes; i++){
 			
+			progreso.incrementar();
 			Movimiento mov = new Movimiento();
 			LoteRecibido lote = listaLotesRecibidos.get(i);
 
@@ -1196,10 +1197,12 @@ public class GeneradorCSV {
 		
 		//Movimientos de salida
 		int numVentas = listaVentas.size();
+		Venta v;
 		for(int i=0; i<numVentas; i++){
 			
+			progreso.incrementar();
 			Movimiento mov = new Movimiento();
-			Venta v = listaVentas.get(i);
+			v = listaVentas.get(i);
 			
 			mov.setIdMovimiento(numMovimientos);
 			mov.setIdProducto(v.getIdProducto());
@@ -1238,18 +1241,17 @@ public class GeneradorCSV {
 		Writer w = new BufferedWriter(osw);
 		int numMov= listaMovimientos.size();
 		for(int i=0; i<numMov;i++){
-			if(listaMovimientos.get(i).getES().equals("S")){
-				System.out.println("Ventaa");
-			}
+			progreso.incrementar();
+			
 			Calendar fechaAux = listaMovimientos.get(i).getFechaMovimiento();
 			int dia = fechaAux.get(Calendar.DAY_OF_MONTH);
 			int mes = fechaAux.get(Calendar.MONTH)+1;
 			int anyo = fechaAux.get(Calendar.YEAR);
-			System.out.println("Fecha: " + dia + "-" + mes + "-" + anyo +" Elemento[" + i + "]; " + " IdMovimiento: " + listaMovimientos.get(i).getIdMovimiento() 
-																				+ " E/S: " + listaMovimientos.get(i).getES()
-																				+ " IdUbicacion: " + listaMovimientos.get(i).getIdUbicacion()
-																				+ " IdLote: " + listaMovimientos.get(i).getIdLoteRecibido()
-																				+ " IdVenta: " + listaMovimientos.get(i).getIdVenta());
+//			System.out.println("Fecha: " + dia + "-" + mes + "-" + anyo +" Elemento[" + i + "]; " + " IdMovimiento: " + listaMovimientos.get(i).getIdMovimiento() 
+//																				+ " E/S: " + listaMovimientos.get(i).getES()
+//																				+ " IdUbicacion: " + listaMovimientos.get(i).getIdUbicacion()
+//																				+ " IdLote: " + listaMovimientos.get(i).getIdLoteRecibido()
+//																				+ " IdVenta: " + listaMovimientos.get(i).getIdVenta());
 			w.write(listaMovimientos.get(i).getIdMovimiento() + ";"
 					+ listaMovimientos.get(i).getIdProducto() + ";"
 					+ listaMovimientos.get(i).getIdUbicacion() + ";"
@@ -1262,7 +1264,7 @@ public class GeneradorCSV {
 			numMovEscritos++;
 		}
 		w.close();
-		
+		progreso.setTextStopped();
 		return numMovEscritos;
 	}
 	/*------------------------------------------------OTROS----------------------------------------------------------*/

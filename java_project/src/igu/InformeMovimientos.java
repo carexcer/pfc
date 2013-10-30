@@ -4,7 +4,8 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import java_project.GeneradorCSV;
-import java_project.Producto;
+import java_project.Movimiento;
+import java_project.Venta;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -16,7 +17,7 @@ import javax.swing.border.LineBorder;
 
 import net.miginfocom.swing.MigLayout;
 
-public class InformeProductos extends JFrame {
+public class InformeMovimientos extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
@@ -24,10 +25,10 @@ public class InformeProductos extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public InformeProductos(GeneradorCSV gen) {
+	public InformeMovimientos(GeneradorCSV gen) {
 				
 		this.setVisible(true);		
-		setTitle("Informe de productos");
+		setTitle("Informe de Movimientos");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -48,33 +49,45 @@ public class InformeProductos extends JFrame {
 		scrollPane.setAutoscrolls(true);
 		contentPane.add(scrollPane, "cell 0 1,grow");
 		
-		ModeloTablaProducto modelo = new ModeloTablaProducto();
+		ModeloTablaMovimientos modelo = new ModeloTablaMovimientos();
 		table = new JTable(modelo);
 		scrollPane.add(table);
 		scrollPane.setViewportView(table);
 		
 		//EL CODIGO QUE SE EJECUTA AL ABRIRSE LA VENTANA
-		ArrayList<Producto> lista = gen.getListaProductos();
+		ArrayList<Movimiento> lista = gen.getListaMovimientos();
 		textAreaAgregados.setText("Obteniendo informacion...");
 		
 		int numElementos=lista.size();
-		float pesoTotal=0;
-		int cantidadStockTotal=0;
-		float valorCompraTotal=0;
-		float valorVentaTotal=0;
+		int numVentas=0;
+		int numLotes=0;
+		int cantidadTotalVendida=0;
+		int cantidadTotalRecibida=0;
+		int diferencia=0;
+		int stock=0;
 		
 		for(int i=0; i<numElementos; i++){
-			pesoTotal += lista.get(i).getPeso() * lista.get(i).getCantidadStock();
-			cantidadStockTotal += lista.get(i).getCantidadStock();
-			valorCompraTotal += lista.get(i).getPrecioMedioCompraUnitario() + lista.get(i).getCantidadStock();
-			valorVentaTotal += lista.get(i).getPrecioMedioVentaUnitario() + lista.get(i).getCantidadStock();			
+			if(lista.get(i).getES().equals("E")){
+				cantidadTotalRecibida += lista.get(i).getCantidad();
+				numLotes++;
+			}else{
+				cantidadTotalVendida += lista.get(i).getCantidad();
+				numVentas++;
+			}
 		}
-		textAreaAgregados.setText("======== INFORME DE PRODUCTOS ======\n");	
-		textAreaAgregados.append("Numero de productos: " + numElementos + ".\n");
-		textAreaAgregados.append("Cantidad Total en Stock: " + cantidadStockTotal + " unidades.\n");
-		textAreaAgregados.append("Valor Total de compra: " + valorCompraTotal + " euros.\n");
-		textAreaAgregados.append("Valor Total de venta: " +  valorVentaTotal + " euros.\n");
-		textAreaAgregados.append("Peso total: " +  pesoTotal + " kg.\n");
+		diferencia = numElementos - numLotes - numVentas;
+		stock = cantidadTotalRecibida - cantidadTotalVendida;
+		
+		textAreaAgregados.setText("======== INFORME DE MOVIMIENTOS ======\n");	
+		textAreaAgregados.append("Numero de movimientos: " + numElementos + ".\n");
+		textAreaAgregados.append("Numero de lotes recibidos: " + numLotes + ".\n");
+		textAreaAgregados.append("Numero de ventas: " + numVentas + ".\n");
+		textAreaAgregados.append("Movimientos - Lotes - Ventas = " + diferencia + " ===> " + ((diferencia==0)?" OK":" ERROR") + ".\n");
+		
+		textAreaAgregados.append("Cantidad total recibida: " + cantidadTotalRecibida + " unidades.\n");
+		textAreaAgregados.append("Cantidad total vendida: " + cantidadTotalVendida + " unidades.\n");
+		textAreaAgregados.append("Cantidad en Stock: " + stock + ".\n");
+		
 
 		modelo.cargarDatos(lista);
 		

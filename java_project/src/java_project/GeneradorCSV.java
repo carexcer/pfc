@@ -6,7 +6,6 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,13 +13,10 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Random;
 
-import javax.swing.JProgressBar;
-import javax.swing.JTextArea;
+import javax.swing.JOptionPane;
 
 public class GeneradorCSV {
 
@@ -37,6 +33,8 @@ public class GeneradorCSV {
 	static public Calendar fechaLimite = Calendar.getInstance();		//Fecha limite para lotes y ventas
 	static public int stockMedioInicial = 12;											//Cantidad de Stock Medio Inicial de producto (osea en la tabla producto)
 	static public BarraProgreso progreso = new BarraProgreso();
+	int numLotesPrimarios=0;
+	int numLotesSecundarios=0;
 	
 	public GeneradorCSV(){
 		this.listaCategorias = new ArrayList<Categoria>();
@@ -49,7 +47,7 @@ public class GeneradorCSV {
 		this.listaUbicaciones = new ArrayList<Ubicacion>();
 		this.listaUbicacionProducto = new ArrayList<UbicacionProducto>();
 		this.listaMovimientos = new ArrayList<Movimiento>();
-		fechaLimite.set(2013, Calendar.JUNE, 30);
+		fechaLimite.set(2013, Calendar.JUNE, 30); //Fecha limite por defecto. NINGUNA FECHA NI DE RECEPCION NI DE VENTA SUPERAR� ESTA FECHA L�MITE
 //		if(System.getProperty("os.name").contains("indows")){
 //			rutaDefectoSalida= "C:\\Users\\Carlos\\Documents\\pfc\\pfc\\salidas_app\\" ;
 //			rutaDefectoEntrada = "C:\\Users\\Carlos\\Documents\\pfc\\pfc\\entradas_app\\" ;
@@ -57,6 +55,7 @@ public class GeneradorCSV {
 	}
 	
 	public void flushAll(){
+		
 		this.listaCategorias = new ArrayList<Categoria>();
 		this.listaMarcas = new ArrayList<Marca>();
 		this.listaProductos = new ArrayList<Producto>();
@@ -116,16 +115,19 @@ public class GeneradorCSV {
 	}
 	/******************************PRODUCTOS************************************************************************/
 	
-	public void GenerarProductos() throws IOException{
-		leerProductos(null);
-		generarPreciosVentaProducto();
-		generarCantidadStock();
-		escribirProductos(null);
-	}
+//	public void GenerarProductos() throws IOException{
+//		leerProductos(null);
+//		generarPreciosVentaProducto();
+//		generarCantidadStock();
+//		escribirProductos(null);
+//	}
 	
-	/**@param ruta del fichero de entrada que se abrirá para lectura
-	 * @return número de productos leidos del fichero de entrada*/
-	public int leerProductos(String ruta) throws NumberFormatException, IOException{
+	/**@param ruta del fichero de entrada que se abrira para lectura
+	 * @return numero de productos leidos del fichero de entrada*/
+	public int leerProductos(String ruta, int prodPrimarios) throws NumberFormatException, IOException{
+		
+		Float porcentProdPrimarios = Float.valueOf(prodPrimarios);
+		porcentProdPrimarios = porcentProdPrimarios/100;
 		
 		if(ruta==null)
 			ruta=poblar_bd.getRutaEntrada()+"productos_entrada.csv";
@@ -161,7 +163,7 @@ public class GeneradorCSV {
 //				p.setCantidadStock(999);
 //			}
 			p.setPeso(Float.valueOf(campos[8]));
-			p.setPrimario(aplicarPareto());		
+			p.setPrimario(aplicarProbabilidad(porcentProdPrimarios));	//Aplicar probabilidad de que sea primario. True primario. False secundario.
 			listaProductos.add(p);			
 			numProdLeidos++;
 			progreso.incrementar();
@@ -237,7 +239,7 @@ public class GeneradorCSV {
 		
 	}
 	
-	/**@return devuelve el número de precios generados, es decir, uno por cada producto*/
+	/**@return devuelve el numero de precios generados, es decir, uno por cada producto*/
 	public int generarPreciosVentaProducto(){
 		
 		int numPreciosGenerados = 0;
@@ -323,31 +325,45 @@ public class GeneradorCSV {
 		}
 		return suma;
 	}
-	/**Genera los lotes_recibidos con fechas fijas y cantidades variables (no los escribe en ningún fichero)
-	 * @param lotesPorProductoAlAño Recibe el numero de lotes recibidos al año por cada producto
+	/**Genera los lotes_recibidos con fechas fijas y cantidades variables (no los escribe en ningun fichero)
+	 * @param lotesPorProductoAlAnyo Recibe el numero de lotes recibidos al anyo por cada producto
 	 * @param cantidadMinima es la cantidad minima recibida en cada lote
-	 * @param cantidadMinima es la cantidad máxima recibida en cada lote
-	 * @return Devuelve el numero de lotes_recibidos generados en total (para todos los productos y años)*/
-	public int GenerarLotesRecibidosFechaFijaCantidadVariable(Integer lotesPorProductoAlAnyo, Integer cantidadMinima, Integer cantidadMaxima) throws NumberFormatException, IOException{
-		/*-------------- ATENCIÓN: EL MES EN CALENDAR VA DEL 0=ENERO AL 11=DICIEMBRE -----------------*/
+	 * @param cantidadMinima es la cantidad maxima recibida en cada lote
+	 * @return Devuelve el numero de lotes_recibidos generados en total (para todos los productos y anyos)*/
+	public int GenerarLotesRecibidosFechaFijaCantidadVariable(int numLotesPorProductoPrimarioAlMes, int numLotesSecundariosPorAnyo, Integer cantidadMinima, Integer cantidadMaxima, int movPrimarios) throws NumberFormatException, IOException{
+		/*-------------- ATENCION: EL MES EN CALENDAR VA DEL 0=ENERO AL 11=DICIEMBRE -----------------*/
+		
+//		Float porcentMovimientosPrimarios = Float.valueOf(movPrimarios);
+//		porcentMovimientosPrimarios = porcentMovimientosPrimarios/100;
+		
 		if(listaProductos.size()==0){
-			leerProductos(null);
+			throw new IOException();
 		}
-		if(listaProveedores.size()==0)
+		if(listaProveedores.size()==0){
 			leerProveedores(null);
+		}
 		if(cantidadMinima==null || cantidadMinima <=0 || cantidadMaxima==null || cantidadMaxima <=0  ||cantidadMinima > cantidadMaxima){//Cantidad minima por defecto
-			cantidadMinima=10;
-			cantidadMaxima=20;
+			JOptionPane.showMessageDialog(poblar_bd.getFrame(), "Error: Las cantidades minima y/o maxima no puede tomar ese valor.", null, JOptionPane.ERROR_MESSAGE);
+			return -1;
 		}
 		System.out.println("Intervalo de cantidades: [" + cantidadMinima + ", " + cantidadMaxima + "]\n");
 		int numProductos = listaProductos.size();
-		int numLotesPorProducto;
-		if(lotesPorProductoAlAnyo==null)
-			numLotesPorProducto = 15;	//Numero de lotes por producto/año por defecto
-		else numLotesPorProducto = lotesPorProductoAlAnyo;
-
-		int numLotesPorProductoPrimario = (int) Math.round(numLotesPorProducto*0.8);
-		int numLotesPorProductoSecundario = numLotesPorProducto - numLotesPorProductoPrimario;
+		int numLotesPorProducto = numLotesPorProductoPrimarioAlMes*12 + numLotesSecundariosPorAnyo;
+		
+		poblar_bd.getTextArea().append("Numero de lotes por producto primario (AL MES): " + numLotesPorProductoPrimarioAlMes + "\n");
+		poblar_bd.getTextArea().append("Numero de lotes por producto secundario (AL A�O): " + numLotesSecundariosPorAnyo + "\n");
+//TODO
+//		do{
+//			numLotesPorProductoPrimario = (int) Math.round(numLotesPorProducto*porcentMovimientosPrimarios);
+//			numLotesPorProductoSecundario = numLotesPorProducto - numLotesPorProductoPrimario;
+//			intentos--;
+//			if(intentos==0){
+//				JOptionPane.showMessageDialog(poblar_bd.getFrame(), "Excedido el numero de intentos para generar lotes con un " + movPrimarios + "% de movimientos. Por favor, elija otro porcentaje.");
+//			}
+//		}while((numLotesPorProductoPrimario!=15 || numLotesPorProductoPrimario!=30) && 
+//				((numLotesPorProductoSecundario%12!=1) || (numLotesPorProductoSecundario%12!=2) || (numLotesPorProductoSecundario%12!=3) || 
+//						(numLotesPorProductoSecundario%12!=4) || (numLotesPorProductoSecundario%12!=6) || (numLotesPorProductoSecundario%12!=0) ));
+		
 		int numLotesTotalPrimario = 0;
 		int numLotesTotalSecundario = 0;
 		int indiceLote = 0;
@@ -366,17 +382,15 @@ public class GeneradorCSV {
 		
 		for(int i=0; i < numProductos; i++){ //Para cada producto			
 
-			if(listaProductos.get(i).isPrimario()){ /////SI EL PRODUCTO ES PRIMARIO, ES DECIR, ES DEL 20% DE LOS IMPORTANTES
+			if(listaProductos.get(i).isPrimario()){ /////SI EL PRODUCTO ES PRIMARIO, ES DECIR, ES DE LOS IMPORTANTES
 
 				numPrimarios++;
 
-				for(int anyoActual=2011; anyoActual <= 2013; anyoActual++){			//PARA CADA AÑO
-
-					int lotesMes = numLotesPorProductoPrimario/12;
+				for(int anyoActual=2011; anyoActual <= getFechaLimite().get(Calendar.YEAR); anyoActual++){			//PARA CADA ANYO
 
 					for(int mesActual=0; mesActual <=11; mesActual++){			//PARA CADA MES
 
-						if(lotesMes==2){
+						if(numLotesPorProductoPrimarioAlMes==2){
 							LoteRecibido lote1 = new LoteRecibido();
 							LoteRecibido lote2 = new LoteRecibido();
 
@@ -431,7 +445,7 @@ public class GeneradorCSV {
 							lote1.setIdLoteRecibido(indiceLote);
 							lote2.setIdLoteRecibido(indiceLote);
 							
-							lote1.setStockProductoAux(listaProductos.get(i).getCantidadStock());	//ESTABLEZCO EL ATRIBUTO AUXILIAR stockProductoAux, que utilizaré para generar las ventas
+							lote1.setStockProductoAux(listaProductos.get(i).getCantidadStock());	//ESTABLEZCO EL ATRIBUTO AUXILIAR stockProductoAux, que utilizara para generar las ventas
 							lote2.setStockProductoAux(listaProductos.get(i).getCantidadStock());
 
 							if(lote1.getFechaRecepcion().before(fechaLimite)){
@@ -439,7 +453,7 @@ public class GeneradorCSV {
 								int cantAux = listaProductos.get(i).getCantidadStock();
 								cantAux += cantRecib;
 								listaProductos.get(i).setCantidadStock(cantAux);
-								listaLotesRecibidos.add(lote1);								//AÑADO LOS LOTES A LA LISTA SI TIENEN FECHA ANTERIOR A LA FECHA LIMITE
+								listaLotesRecibidos.add(lote1);								//ANYADO LOS LOTES A LA LISTA SI TIENEN FECHA ANTERIOR A LA FECHA LIMITE
 								numLotesTotalPrimario++;
 								indiceLote++;
 								numLotes++;	
@@ -457,7 +471,7 @@ public class GeneradorCSV {
 
 							progreso.incrementar();
 							
-						}else if(lotesMes==1){			//////////////////////// 1 LOTE/MES
+						}else if(numLotesPorProductoPrimarioAlMes==1){			//////////////////////// 1 LOTE/MES
 
 							LoteRecibido lote1 = new LoteRecibido();
 
@@ -488,14 +502,14 @@ public class GeneradorCSV {
 
 							lote1.setIdLoteRecibido(indiceLote);
 							
-							lote1.setStockProductoAux(listaProductos.get(i).getCantidadStock());	//ESTABLEZCO EL ATRIBUTO AUXILIAR stockProductoAux, que utilizaré para generar las ventas
+							lote1.setStockProductoAux(listaProductos.get(i).getCantidadStock());	//ESTABLEZCO EL ATRIBUTO AUXILIAR stockProductoAux, que utilizara para generar las ventas
 
 							if(lote1.getFechaRecepcion().before(fechaLimite)){
 								int cantRecib = lote1.getCantidadRecibida();				//Acumulo en cantidad_stock del producto la cantidad recibida
 								int cantAux = listaProductos.get(i).getCantidadStock();
 								cantAux += cantRecib;
 								listaProductos.get(i).setCantidadStock(cantAux);
-								listaLotesRecibidos.add(lote1);								//AÑADO LOTE A LA LISTA SI TIENE FECHA ANTERIOR A FECHA_LIMITE
+								listaLotesRecibidos.add(lote1);								//ANYADO LOTE A LA LISTA SI TIENE FECHA ANTERIOR A FECHA_LIMITE
 								numLotesTotalPrimario++;
 								indiceLote++;
 								numLotes++;	
@@ -504,14 +518,13 @@ public class GeneradorCSV {
 						}else{return -1;}		//ERROR
 					}						
 				}
-			}else{////////////////SI EL PRODUCTO NO ES PRIMARIO, ES DECIR, ES DEL 80% DE LOS NO-IMPORTANTES
-
+			}else{////////////////SI EL PRODUCTO NO ES PRIMARIO, ES DECIR, ES DE LOS NO-IMPORTANTES
 
 				numSecundarios++;
 
-				for(int anyoActual=2011; anyoActual <= 2013; anyoActual++){			//PARA CADA AÑO
+				for(int anyoActual=2011; anyoActual <= getFechaLimite().get(Calendar.YEAR); anyoActual++){			//PARA CADA ANYO
 
-					int mesesLote = 12/numLotesPorProductoSecundario;
+					int mesesLote = 12/numLotesSecundariosPorAnyo;
 
 					for(int mesActual=0; mesActual <=11; mesActual+=mesesLote){			//PARA CADA MES
 
@@ -544,14 +557,14 @@ public class GeneradorCSV {
 
 						lote.setIdLoteRecibido(indiceLote);
 						
-						lote.setStockProductoAux(listaProductos.get(i).getCantidadStock());	//ESTABLEZCO EL ATRIBUTO AUXILIAR stockProductoAux, que utilizaré para generar las ventas
+						lote.setStockProductoAux(listaProductos.get(i).getCantidadStock());	//ESTABLEZCO EL ATRIBUTO AUXILIAR stockProductoAux, que utilizara para generar las ventas
 
 						if(lote.getFechaRecepcion().before(fechaLimite)){
 							int cantRecib = lote.getCantidadRecibida();				//Acumulo en cantidad_stock del producto la cantidad recibida
 							int cantAux = listaProductos.get(i).getCantidadStock();
 							cantAux += cantRecib;
 							listaProductos.get(i).setCantidadStock(cantAux);
-							listaLotesRecibidos.add(lote);								//AÑADO LOTE A LA LISTA SI TIENE FECHA ANTERIOR A FECHA_LIMITE
+							listaLotesRecibidos.add(lote);								//ANYADO LOTE A LA LISTA SI TIENE FECHA ANTERIOR A FECHA_LIMITE
 							numLotesTotalSecundario++;
 							indiceLote++;
 							numLotes++;	
@@ -564,11 +577,13 @@ public class GeneradorCSV {
 				}
 			}
 		}
-
+		
 		System.out.println("Numero de productos primarios: " + numPrimarios);
 		System.out.println("Numero de productos secundarios: " + numSecundarios);
 		System.out.println("Numero de lotes primarios: " + numLotesTotalPrimario);
 		System.out.println("Numero de lotes secundarios: " + numLotesTotalSecundario);
+		setNumLotesPrimarios(numLotesTotalPrimario);
+		setNumLotesSecundarios(numLotesTotalSecundario);
 		return numLotes;	
 	}
 
@@ -577,52 +592,55 @@ public class GeneradorCSV {
 	 * @param cantidadMinima es la cantidad minima recibida en cada lote
 	 * @param cantidadMinima es la cantidad máxima recibida en cada lote
 	 * @return Devuelve el numero de lotes_recibidos generados en total (para todos los productos y años)*/
-	public int GenerarLotesRecibidosFechaVariableCantidadVariable(Integer lotesPorProductoAlAnyo, Integer cantidadMinima, Integer cantidadMaxima) throws NumberFormatException, IOException{
+	public int GenerarLotesRecibidosFechaVariableCantidadVariable(Integer lotesPorProductoAlAnyo, Integer cantidadMinima, Integer cantidadMaxima, int movPrimarios) throws NumberFormatException, IOException{
+		
+		Float porcentMovimientosPrimarios = Float.valueOf(movPrimarios);
+		porcentMovimientosPrimarios = porcentMovimientosPrimarios/100;
+		
 		if(listaProductos.size()==0){
-			leerProductos(null);
+			throw new IOException();
 		}
 		if(listaProveedores.size()==0)
 			leerProveedores(null);
 		if(cantidadMinima==null || cantidadMinima <=0 || cantidadMaxima==null || cantidadMaxima <=0  ||cantidadMinima > cantidadMaxima){//Cantidad minima por defecto
-			cantidadMinima=10;
-			cantidadMaxima=20;
+			JOptionPane.showMessageDialog(poblar_bd.getFrame(), "Error: Las cantidades minima y/o maxima no puede tomar ese valor.", null, JOptionPane.ERROR_MESSAGE);
+			return -1;
 		}
 		System.out.println("Intervalo de cantidades: [" + cantidadMinima + ", " + cantidadMaxima + "]\n");
 		int numProductos = listaProductos.size();
 		int numLotesPorProducto;
 		if(lotesPorProductoAlAnyo==null)
-			numLotesPorProducto = 30;	//Numero de lotes por producto/año por defecto
+			numLotesPorProducto = 30;	//Numero de lotes por producto/anyo por defecto
 		else numLotesPorProducto = lotesPorProductoAlAnyo;
 
-		int numLotesPorProductoPrimario = (int) Math.round(numLotesPorProducto*0.8);
+		int numLotesPorProductoPrimario = (int) Math.round(numLotesPorProducto*porcentMovimientosPrimarios);
 		int numLotesPorProductoSecundario = numLotesPorProducto - numLotesPorProductoPrimario;
 		
-		numLotesPorProductoPrimario = numLotesPorProductoPrimario * 3;					//POR 3 PORQUE SON 3 AÑOS
+		numLotesPorProductoPrimario = numLotesPorProductoPrimario * 3;					//POR 3 PORQUE SON 3 ANYOS
 		numLotesPorProductoSecundario = numLotesPorProductoSecundario * 3;
 		
 		int numLotesTotalPrimario = 0;
 		int numLotesTotalSecundario = 0;
 
 		int numProveedores = listaProveedores.size();
-		int numLotes = 0;	//se actualiza luego cuando se han añadido todos los lotes
+		int numLotes = 0;	//se actualiza luego cuando se han anyadido todos los lotes
 		Fecha fecha = new Fecha();			
 
 		Random randCantidad = new Random();
 		Random randPorcentaje = new Random();
 		Random randProveedor = new Random();
 
-		int numPrimarios = 0;
-		int numSecundarios = 0;
+		int numPrimarios = 0;	//numero de PRODUCTOS primarios
+		int numSecundarios = 0;	//numero de PRODUCTOS secundarios
 
 		progreso.setMaximo(numProductos * numLotesPorProducto);
 		
 		for(int i=0; i < numProductos; i++){ //Para cada producto			
 
 			progreso.incrementar();
-			if(listaProductos.get(i).isPrimario()){ /////SI EL PRODUCTO ES PRIMARIO, ES DECIR, ES DEL 20% DE LOS IMPORTANTES
+			if(listaProductos.get(i).isPrimario()==true){ /////SI EL PRODUCTO ES PRIMARIO, ES DECIR, ES DE LOS IMPORTANTES
 
 				numPrimarios++;
-				numLotesTotalPrimario+=numLotesPorProductoPrimario;		
 				
 				for(int j=0; j < numLotesPorProductoPrimario; j++){ //PARA CADA LOTE DE UN DETERMINADO PRODUCTO PRIMARIO
 
@@ -630,7 +648,7 @@ public class GeneradorCSV {
 					do{//Genero una cantidad entre cantidadMinima y cantidadMaxima para cada lote, siendo cantidad multiplo de 10
 						int max = cantidadMaxima/10;
 						cantidad = randCantidad.nextInt(max)+1;
-						cantidad = cantidad*10; //cantidad estará entre 10 y cantidadMinima y cantidadMaxima						
+						cantidad = cantidad*10; //cantidad estara entre 10 y cantidadMinima y cantidadMaxima						
 					}while(cantidad < cantidadMinima || cantidad > cantidadMaxima);
 
 					LoteRecibido lote = new LoteRecibido();
@@ -638,7 +656,7 @@ public class GeneradorCSV {
 					ajuste = (float) (ajuste * 0.01);
 					float porcent = (float) (0.94 + ajuste); // +/- 5% de variabilidad en el precio de compra unitario
 
-					//el idLoteRecibido se generará luego
+					//el idLoteRecibido se generara luego
 					int indexProveedor = randProveedor.nextInt(numProveedores);
 					lote.setIdProveedor(listaProveedores.get(indexProveedor).getIdProveedor());
 					lote.setIdProducto(listaProductos.get(i).getIdProducto());
@@ -646,13 +664,13 @@ public class GeneradorCSV {
 
 					int anyo;
 					double probabilidadAnyo = Math.random();
-					if(probabilidadAnyo <0.39){	//38% de probabilidad de que sea un lote del año 2011  
+					if(probabilidadAnyo <0.39){	//38% de probabilidad de que sea un lote del anyo 2011  
 						anyo=2011;
 						fechaRecepcion.set(anyo, fecha.obtenerMesAleatorioPonderado()-1, fecha.obtenerDiaAleatorio(anyo)); //OJO, EL MES EN CALENDAR VA DE 0 A 11
 					}else if(probabilidadAnyo >= 0.39 && probabilidadAnyo < 0.79){ //40% de probabilidad de que el lote sea de 2012
 						anyo=2012;
 						fechaRecepcion.set(anyo, fecha.obtenerMesAleatorioPonderado()-1, fecha.obtenerDiaAleatorio(anyo)); //OJO, EL MES EN CALENDAR VA DE 0 A 11
-					}else{//22% de probabilidad de que sea un lote del año 2013
+					}else{//22% de probabilidad de que sea un lote del anyo 2013
 						anyo=2013;
 						fechaRecepcion.set(anyo, fecha.obtenerMesAleatorioPonderado(6)-1, fecha.obtenerDiaAleatorio(anyo)); //OJO, EL MES EN CALENDAR VA DE 0 A 11
 					}
@@ -665,29 +683,29 @@ public class GeneradorCSV {
 					lote.setPrecioCompraUnitario(precioCompraAux);
 					
 					lote.setIdLoteRecibido(numLotes);
-					lote.setStockProductoAux(listaProductos.get(i).getCantidadStock());	//ESTABLEZCO EL ATRIBUTO AUXILIAR stockProductoAux, que utilizaré para generar las ventas
+					lote.setStockProductoAux(listaProductos.get(i).getCantidadStock());	//ESTABLEZCO EL ATRIBUTO AUXILIAR stockProductoAux, que utilizara para generar las ventas
 
 					if(lote.getFechaRecepcion().before(fechaLimite)){
 						int cantRecib = lote.getCantidadRecibida();				//Acumulo en cantidad_stock del producto la cantidad recibida
 						int cantAux = listaProductos.get(i).getCantidadStock();
 						cantAux += cantRecib;
 						listaProductos.get(i).setCantidadStock(cantAux);
-						listaLotesRecibidos.add(lote);								//AÑADO LOTE A LA LISTA SI TIENE FECHA ANTERIOR A FECHA_LIMITE
+						listaLotesRecibidos.add(lote);								//ANYADO LOTE A LA LISTA SI TIENE FECHA ANTERIOR A FECHA_LIMITE
+						numLotesTotalPrimario++;
 						numLotes++;	
 						progreso.incrementar();
 					}
 				}			
-			}else{////////////////SI EL PRODUCTO NO ES PRIMARIO, ES DECIR, ES DEL 80% DE LOS NO-IMPORTANTES
+			}else if(listaProductos.get(i).isPrimario()==false){////////////////SI EL PRODUCTO NO ES PRIMARIO, ES DECIR, ES DE LOS NO-IMPORTANTES
 
 				numSecundarios++;
-				numLotesTotalSecundario+=numLotesPorProductoSecundario;
 				for(int j=0; j < numLotesPorProductoSecundario; j++){ //PARA CADA LOTE DE UN DETERMINADO PRODUCTO SECUNDARIO
 
 					int cantidad=0;
 					do{//Genero una cantidad entre cantidadMinima y cantidadMaxima para cada lote, siendo cantidad multiplo de 10
 						int max = cantidadMaxima/10;
 						cantidad = randCantidad.nextInt(max)+1;
-						cantidad = cantidad*10; //cantidad estará entre 10 y 50						
+						cantidad = cantidad*10; //cantidad estara entre 10 y 50						
 					}while(cantidad < cantidadMinima || cantidad > cantidadMaxima);
 
 					LoteRecibido lote = new LoteRecibido();
@@ -695,7 +713,7 @@ public class GeneradorCSV {
 					ajuste = (float) (ajuste * 0.01);
 					float porcent = (float) (0.94 + ajuste); // +/- 5% de variabilidad en el precio de compra unitario
 
-					//el idLoteRecibido se generará luego
+					//el idLoteRecibido se generara luego
 					int indexProveedor = randProveedor.nextInt(numProveedores);
 					lote.setIdProveedor(listaProveedores.get(indexProveedor).getIdProveedor());
 					lote.setIdProducto(listaProductos.get(i).getIdProducto());
@@ -703,13 +721,13 @@ public class GeneradorCSV {
 
 					int anyo;
 					double probabilidadAnyo = Math.random();
-					if(probabilidadAnyo <0.39){	//38% de probabilidad de que sea un lote del año 2011  
+					if(probabilidadAnyo <0.39){	//38% de probabilidad de que sea un lote del anyo 2011  
 						anyo=2011;
 						fechaRecepcion.set(anyo, fecha.obtenerMesAleatorioPonderado()-1, fecha.obtenerDiaAleatorio(anyo)); //OJO, EL MES EN CALENDAR VA DE 0 A 11
 					}else if(probabilidadAnyo >= 0.39 && probabilidadAnyo < 0.79){ //40% de probabilidad de que el lote sea de 2012
 						anyo=2012;
 						fechaRecepcion.set(anyo, fecha.obtenerMesAleatorioPonderado()-1, fecha.obtenerDiaAleatorio(anyo)); //OJO, EL MES EN CALENDAR VA DE 0 A 11
-					}else{//22% de probabilidad de que sea un lote del año 2013
+					}else{//22% de probabilidad de que sea un lote del anyo 2013
 						anyo=2013;
 						fechaRecepcion.set(anyo, fecha.obtenerMesAleatorioPonderado(6)-1, fecha.obtenerDiaAleatorio(anyo)); //OJO, EL MES EN CALENDAR VA DE 0 A 11
 					}
@@ -723,18 +741,22 @@ public class GeneradorCSV {
 					
 					lote.setIdLoteRecibido(numLotes);
 					
-					lote.setStockProductoAux(listaProductos.get(i).getCantidadStock());	//ESTABLEZCO EL ATRIBUTO AUXILIAR stockProductoAux, que utilizaré para generar las ventas
+					lote.setStockProductoAux(listaProductos.get(i).getCantidadStock());	//ESTABLEZCO EL ATRIBUTO AUXILIAR stockProductoAux, que utilizara para generar las ventas
 
 					if(lote.getFechaRecepcion().before(fechaLimite)){
 						int cantRecib = lote.getCantidadRecibida();				//Acumulo en cantidad_stock del producto la cantidad recibida
 						int cantAux = listaProductos.get(i).getCantidadStock();
 						cantAux += cantRecib;
 						listaProductos.get(i).setCantidadStock(cantAux);
-						listaLotesRecibidos.add(lote);								//AÑADO LOTE A LA LISTA SI TIENE FECHA ANTERIOR A FECHA_LIMITE
+						listaLotesRecibidos.add(lote);								//ANYADO LOTE A LA LISTA SI TIENE FECHA ANTERIOR A FECHA_LIMITE
+						numLotesTotalSecundario++;
 						numLotes++;	
 						progreso.incrementar();
 					}
 				}	
+			}else{
+				JOptionPane.showMessageDialog(poblar_bd.getFrame(), "Se ha producido un error generando los lotes. Algun producto no es primario ni secundario.", null, JOptionPane.ERROR_MESSAGE);
+				return -1;
 			}
 		}
 		
@@ -742,6 +764,8 @@ public class GeneradorCSV {
 		System.out.println("Numero de productos secundarios: " + numSecundarios);
 		System.out.println("Numero de lotes primarios: " + numLotesTotalPrimario);
 		System.out.println("Numero de lotes secundarios: " + numLotesTotalSecundario);
+		setNumLotesPrimarios(numLotesTotalPrimario);
+		setNumLotesSecundarios(numLotesTotalSecundario);
 		return numLotes;	
 	}
 
@@ -870,11 +894,14 @@ public class GeneradorCSV {
 		
 		Float porcentVentas1Ud = Float.valueOf(ventas1Ud);
 		porcentVentas1Ud = porcentVentas1Ud/100;
-		if(listaLotesRecibidos==null || listaLotesRecibidos.size()==0)
-			leerLotesRecibidos(null);
-		if(listaProductos==null)
-			leerProductos(null);
-				
+		if(listaLotesRecibidos==null || listaLotesRecibidos.size()==0){
+			throw new IOException();
+//			leerLotesRecibidos(null);
+		}
+		if(listaProductos==null){
+			throw new IOException();
+//			leerProductos(null);
+		}
 		progreso.setMaximo(listaLotesRecibidos.size());
 		
 		int numVentasGeneradas = 0;
@@ -893,7 +920,7 @@ public class GeneradorCSV {
 //			cantStock = listaLotesRecibidos.get(i).getStockProductoAux();				//cantidad de stock del producto asociado al lote
 //			int cantidadLote = listaLotesRecibidos.get(i).getCantidadRecibida() - cantStock; //Cantidad a repartir entre las ventas del producto
 			int cantidadLote = listaLotesRecibidos.get(i).getCantidadRecibida(); //Cantidad a repartir entre las ventas del producto
-			//Así, después de generar los lotes y las ventas, la cantidad de producto sin vender será la suma(cantidad_recibida) - suma(cantidad_vendida) = cantStock
+			//Asi, despues de generar los lotes y las ventas, la cantidad de producto sin vender sera la suma(cantidad_recibida) - suma(cantidad_vendida) = cantStock
 
 			do{
 
@@ -903,7 +930,7 @@ public class GeneradorCSV {
 				Calendar fechaLote = listaLotesRecibidos.get(i).getFechaRecepcion();
 				Calendar fechaVenta = Calendar.getInstance();
 				
-				//Las ventas de un lote recibido se venden en los siguientes 'maxDiasVendiendose' días después de la fecha de recepción del lote				
+				//Las ventas de un lote recibido se venden en los siguientes 'maxDiasVendiendose' dias despues de la fecha de recepcion del lote				
 				fechaVenta.set(fechaLote.get(Calendar.YEAR), fechaLote.get(Calendar.MONTH), fechaLote.get(Calendar.DAY_OF_MONTH)+randDia.nextInt(maxDiasVendiendose+1));
 				
 				v.setFechaVenta(fechaVenta);										//fecha de la venta
@@ -926,9 +953,9 @@ public class GeneradorCSV {
 					}
 				}while(cantidadVendida > cantidadLote);		//Mientras la cantidadVendida generada sea superior a la cantidad que queda, genero otra cantidadVendida
 
-				/*Poniendo esta linea aquí conseguimos hacer como si no existieran las ventas que deberían haber sido despues de la fecha limite
+				/*Poniendo esta linea aqui conseguimos hacer como si no existieran las ventas que deberían haber sido despues de la fecha limite
 				con lo que obtenemos un stock del producto > 0 (CUANDO EL TIEMPO MAXIMO EN VENTA ES MAYOR QUE EL QUE HAY ENTRE RECEPCION Y RECEPCION), 
-				lo cual ocurre normalmente en los productos secundarios y también en los primarios cuando solo se recibe 1 al mes y el tiempo de venta son más de 30 días.*/										
+				lo cual ocurre normalmente en los productos secundarios y tambien en los primarios cuando solo se recibe 1 al mes y el tiempo de venta son mas de 30 dias.*/										
 				cantidadLote -= cantidadVendida;		
 				
 				if(v.getFechaVenta().before(fechaLimite)){
@@ -938,9 +965,9 @@ public class GeneradorCSV {
 					if(mapAuxProductos.containsKey(idProd)){			//Si el producto ya estaba en la lista auxiliar, actualizo el valor de la cantidad vendida
 						int cantVendidaAux = mapAuxProductos.get(idProd);
 						cantVendidaAux += cantidadVendida;
-						mapAuxProductos.put(idProd, cantVendidaAux);	//Añado el par (id_producto, acumuladoVenta) a una lista auxiliar
+						mapAuxProductos.put(idProd, cantVendidaAux);	//Anyado el par (id_producto, acumuladoVenta) a una lista auxiliar
 					}else{												//Si el producto no estaba en la lista, lo meto con el valor de cantidad directamente
-						mapAuxProductos.put(idProd, cantidadVendida);	//Añado el par (id_producto, acumuladoVenta) a una lista auxiliar
+						mapAuxProductos.put(idProd, cantidadVendida);	//Anyado el par (id_producto, acumuladoVenta) a una lista auxiliar
 					}
 
 					v.setIdProducto(idProd); //Id del producto vendido en la venta
@@ -970,7 +997,7 @@ public class GeneradorCSV {
 				/*TODO*/
 			}while(cantidadLote!=0);		//Cuando la suma de las cantidades vendidas sea igual a la cantidad del lote recibido, entonces paro.
 			
-//			mapAuxProductos.put(listaLotesRecibidos.get(i).getIdProducto(), acumuladoVenta);	//Añado el par (id_producto, acumuladoVenta) a una lista auxiliar
+//			mapAuxProductos.put(listaLotesRecibidos.get(i).getIdProducto(), acumuladoVenta);	//Anyado el par (id_producto, acumuladoVenta) a una lista auxiliar
 
 		}
 		
@@ -1093,14 +1120,15 @@ public class GeneradorCSV {
 		return numUbicaciones;
 	}
 	
-	/**Genera una ubicación para cada producto. Tal y como está, un producto solo tiene una ubicación y esa ubicación tiene toda la cantidad del producto.
+	/**Genera una ubicacion para cada producto. Tal y como esta, un producto solo tiene una ubicacion y esa ubicacion tiene toda la cantidad del producto.
 	 * @return numero de producto-ubicacion generados
 	 * @throws IOException */
 	public int generarUbicacionProducto() throws IOException{
 		
-		if(listaUbicaciones.size()==0)
+		if(listaUbicaciones==null || listaUbicaciones.size()==0){
 			leerUbicaciones(null);
-		if(listaProductos.size()==0){
+		}
+		if(listaProductos==null || listaProductos.size()==0){
 			System.out.println("ERROR. NO HAY LISTA DE PRODUCTOS.");
 			return -1;
 		}
@@ -1117,7 +1145,7 @@ public class GeneradorCSV {
 			UbicacionProducto up = new UbicacionProducto();
 			up.setIdProducto(idProd);
 			Integer idUbi = randUbi.nextInt(numUbi)+1;
-			up.setIdUbicacion(idUbi); //Así, un producto solo va a estar en una ubicación, o sea que no todos los almacenes tendrán de todo
+			up.setIdUbicacion(idUbi); //Asi, un producto solo va a estar en una ubicacion, o sea que no todos los almacenes tendran de todo
 			up.setCantidad(cantProd);
 			listaUbicacionProducto.add(up);
 			numUbiProdGeneradas++;
@@ -1149,22 +1177,22 @@ public class GeneradorCSV {
 	
 	/*------------------------------------------------MOVIMIENTOS----------------------------------------------------------*/
 	
-	public int generarMovimientos(){
+	public int generarMovimientos() throws IOException{
 		
 		int numMovimientos=0;
 		
-		if(listaLotesRecibidos.size()==0){
+		if(listaLotesRecibidos==null || listaLotesRecibidos.size()==0){
 //			leerLotesRecibidos(null);
 			System.out.println("No hay lotes generados");
-			return -1;
+			throw new IOException();
 		}
-		if(listaVentas.size()==0){
+		if(listaVentas==null ||listaVentas.size()==0){
 			System.out.println("No hay ventas generadas");
-			return -1;
+			throw new IOException();
 		}
-		if(listaUbicacionProducto.size()==0){
+		if(listaUbicacionProducto==null || listaUbicacionProducto.size()==0){
 			System.out.println("No hay ubicacion-producto generadas");
-			return -1;
+			throw new IOException();
 		}
 		progreso.setMaximo(listaLotesRecibidos.size()*2 + listaVentas.size()*2);
 		//Movimientos de entrada
@@ -1488,5 +1516,18 @@ public class GeneradorCSV {
 	public static void setStockMedioInicial(int stockMedioInicial) {
 		GeneradorCSV.stockMedioInicial = stockMedioInicial;
 	}
+	public int getNumLotesPrimarios() {
+		return numLotesPrimarios;
+	}
 
+	public void setNumLotesPrimarios(int numLotesPrimarios) {
+		this.numLotesPrimarios = numLotesPrimarios;
+	}
+	public int getNumLotesSecundarios() {
+		return numLotesSecundarios;
+	}
+
+	public void setNumLotesSecundarios(int numLotesSecundarios) {
+		this.numLotesSecundarios = numLotesSecundarios;
+	}
 }

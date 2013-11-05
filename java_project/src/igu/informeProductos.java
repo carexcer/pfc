@@ -62,15 +62,23 @@ public class InformeProductos extends JFrame {
 		int cantidadStockTotal=0;
 		float valorCompraTotal=0;
 		float valorVentaTotal=0;
+		int numPrimarios=0;
+		int numSecundarios=0;
 		
 		for(int i=0; i<numElementos; i++){
 			pesoTotal += lista.get(i).getPeso() * lista.get(i).getCantidadStock();
 			cantidadStockTotal += lista.get(i).getCantidadStock();
 			valorCompraTotal += lista.get(i).getPrecioMedioCompraUnitario() + lista.get(i).getCantidadStock();
-			valorVentaTotal += lista.get(i).getPrecioMedioVentaUnitario() + lista.get(i).getCantidadStock();			
+			valorVentaTotal += lista.get(i).getPrecioMedioVentaUnitario() + lista.get(i).getCantidadStock();
+			if(lista.get(i).isPrimario())
+				numPrimarios++;
+			else numSecundarios++;
+			
 		}
 		textAreaAgregados.setText("======== INFORME DE PRODUCTOS ======\n");	
 		textAreaAgregados.append("Numero de productos: " + numElementos + ".\n");
+		textAreaAgregados.append("Numero de productos primarios: " + numPrimarios + ".\n");
+		textAreaAgregados.append("Numero de productos secundarios: " + numSecundarios + ".\n");
 		textAreaAgregados.append("Cantidad Total en Stock: " + cantidadStockTotal + " unidades.\n");
 		textAreaAgregados.append("Valor Total de compra: " + valorCompraTotal + " euros.\n");
 		textAreaAgregados.append("Valor Total de venta: " +  valorVentaTotal + " euros.\n");

@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import java_project.GeneradorCSV;
-import java_project.LoteRecibido;
 import java_project.Venta;
 
 import javax.swing.JFrame;
@@ -72,6 +71,7 @@ public class InformeVentas extends JFrame {
 		textAreaAgregados.append("Valor total de ventas: " + valorTotalVendido + " euros.\n");
 
 		modelo.cargarDatos(lista);
+		
 		
 	}
 

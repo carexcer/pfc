@@ -6,6 +6,7 @@ import igu.InformeMovimientos;
 import igu.InformeProductos;
 import igu.InformeUbicacionProducto;
 import igu.InformeVentas;
+import igu.MenuTendencias;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -53,8 +54,7 @@ public class poblar_bd {
 
 	JTextArea textAreaEstado;
 	static public JProgressBar progressBar;
-	GeneradorCSV gen = new GeneradorCSV();
-
+	static GeneradorCSV gen = new GeneradorCSV();
 
 	/**
 	 * Launch the application.
@@ -349,9 +349,9 @@ public class poblar_bd {
 		panel.add(panelLotes, gbc_panelLotes);
 		GridBagLayout gbl_panelLotes = new GridBagLayout();
 		gbl_panelLotes.columnWidths = new int[] {140, 50, 90, 0, 0, 0, 0};
-		gbl_panelLotes.rowHeights = new int[]{35, 0, 21, 0};
+		gbl_panelLotes.rowHeights = new int[]{35, 0, 21, 0, 0};
 		gbl_panelLotes.columnWeights = new double[]{0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0};
-		gbl_panelLotes.rowWeights = new double[]{1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panelLotes.rowWeights = new double[]{1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
 		panelLotes.setLayout(gbl_panelLotes);
 
 		JButton btnGenerarLotesRecibidos = new JButton("Generar Lotes");
@@ -478,7 +478,7 @@ public class poblar_bd {
 
 		JLabel lblFechaLimite = new JLabel("Fecha Limite");
 		GridBagConstraints gbc_lblFechaLimite = new GridBagConstraints();
-		gbc_lblFechaLimite.insets = new Insets(0, 0, 0, 5);
+		gbc_lblFechaLimite.insets = new Insets(0, 0, 5, 5);
 		gbc_lblFechaLimite.gridx = 1;
 		gbc_lblFechaLimite.gridy = 2;
 		panelLotes.add(lblFechaLimite, gbc_lblFechaLimite);
@@ -487,7 +487,7 @@ public class poblar_bd {
 		final JDateChooser fechaLimiteChooser = new JDateChooser();
 		GridBagConstraints gbc_fechaLimiteChooser = new GridBagConstraints();
 		gbc_fechaLimiteChooser.fill = GridBagConstraints.HORIZONTAL;
-		gbc_fechaLimiteChooser.insets = new Insets(0, 0, 0, 5);
+		gbc_fechaLimiteChooser.insets = new Insets(0, 0, 5, 5);
 		gbc_fechaLimiteChooser.gridx = 2;
 		gbc_fechaLimiteChooser.gridy = 2;
 		panelLotes.add(fechaLimiteChooser, gbc_fechaLimiteChooser);
@@ -495,7 +495,7 @@ public class poblar_bd {
 
 		JLabel lblLotesSecundariosMes = new JLabel("Lotes Secundarios/A\u00F1o");
 		GridBagConstraints gbc_lblLotesSecundariosMes = new GridBagConstraints();
-		gbc_lblLotesSecundariosMes.insets = new Insets(0, 0, 0, 5);
+		gbc_lblLotesSecundariosMes.insets = new Insets(0, 0, 5, 5);
 		gbc_lblLotesSecundariosMes.gridx = 3;
 		gbc_lblLotesSecundariosMes.gridy = 2;
 		panelLotes.add(lblLotesSecundariosMes, gbc_lblLotesSecundariosMes);
@@ -503,24 +503,39 @@ public class poblar_bd {
 		final JSpinner spinnerNumLotesSecundariosAnyo = new JSpinner();
 		spinnerNumLotesSecundariosAnyo.setModel(new SpinnerNumberModel(4, 2, 6, 2));
 		GridBagConstraints gbc_spinnerNumLotesSecundariosAnyo = new GridBagConstraints();
-		gbc_spinnerNumLotesSecundariosAnyo.insets = new Insets(0, 0, 0, 5);
+		gbc_spinnerNumLotesSecundariosAnyo.insets = new Insets(0, 0, 5, 5);
 		gbc_spinnerNumLotesSecundariosAnyo.gridx = 4;
 		gbc_spinnerNumLotesSecundariosAnyo.gridy = 2;
 		panelLotes.add(spinnerNumLotesSecundariosAnyo, gbc_spinnerNumLotesSecundariosAnyo);
 
 		JLabel lblPorcentMovimientosPrimarios = new JLabel("% Mov. Primarios");
 		GridBagConstraints gbc_lblPorcentMovimientosPrimarios = new GridBagConstraints();
-		gbc_lblPorcentMovimientosPrimarios.insets = new Insets(0, 0, 0, 5);
+		gbc_lblPorcentMovimientosPrimarios.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPorcentMovimientosPrimarios.gridx = 5;
 		gbc_lblPorcentMovimientosPrimarios.gridy = 2;
 		panelLotes.add(lblPorcentMovimientosPrimarios, gbc_lblPorcentMovimientosPrimarios);
 
 		final JSpinner spinnerPorcentMovimientosPrimarios = new JSpinner();
 		GridBagConstraints gbc_spinnerPorcentMovimientosPrimarios = new GridBagConstraints();
+		gbc_spinnerPorcentMovimientosPrimarios.insets = new Insets(0, 0, 5, 0);
 		gbc_spinnerPorcentMovimientosPrimarios.gridx = 6;
 		gbc_spinnerPorcentMovimientosPrimarios.gridy = 2;
 		panelLotes.add(spinnerPorcentMovimientosPrimarios, gbc_spinnerPorcentMovimientosPrimarios);
 		spinnerPorcentMovimientosPrimarios.setModel(new SpinnerNumberModel(80, 0, 100, 1));
+		
+		JLabel lblCrecimientoAnual = new JLabel("% Crecimiento anual");
+		GridBagConstraints gbc_lblCrecimientoAnual = new GridBagConstraints();
+		gbc_lblCrecimientoAnual.insets = new Insets(0, 0, 0, 5);
+		gbc_lblCrecimientoAnual.gridx = 5;
+		gbc_lblCrecimientoAnual.gridy = 3;
+		panelLotes.add(lblCrecimientoAnual, gbc_lblCrecimientoAnual);
+		
+		final JSpinner spinnerCrecimiento = new JSpinner();
+		spinnerCrecimiento.setModel(new SpinnerNumberModel(3, -20, 50, 1));
+		GridBagConstraints gbc_spinnerCrecimiento = new GridBagConstraints();
+		gbc_spinnerCrecimiento.gridx = 6;
+		gbc_spinnerCrecimiento.gridy = 3;
+		panelLotes.add(spinnerCrecimiento, gbc_spinnerCrecimiento);
 		fechaLimiteChooser.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent arg0) {
 				GeneradorCSV.setFechaLimite(fechaLimiteChooser.getCalendar());
@@ -565,7 +580,7 @@ public class poblar_bd {
 								textArea.append("[Fechas variables] Generando lotes recibidos...\n" );
 								textArea.append("[Fechas variables] Lotes por producto/año: " + numLotesFechaVariable + "\n");
 								int numLotesGenerados = 0;
-								numLotesGenerados = gen.GenerarLotesRecibidosFechaVariableCantidadVariable(numLotesFechaVariable, (int)spinnerCantMin.getValue(), (int)spinnerCantMax.getValue(), (int)spinnerPorcentMovimientosPrimarios.getValue());
+								numLotesGenerados = gen.GenerarLotesRecibidosFechaVariableCantidadVariable(numLotesFechaVariable, (int)spinnerCantMin.getValue(), (int)spinnerCantMax.getValue(), (int)spinnerPorcentMovimientosPrimarios.getValue(), (int)spinnerCrecimiento.getValue());
 								textArea.append("[Fechas variables] Numero de lotes generados: " + numLotesGenerados + "\n");
 								progressBar.setValue(2);
 								int numLotesEscritos = 0;
@@ -767,7 +782,8 @@ public class poblar_bd {
 
 		JButton btnFlushAll = new JButton("FLUSH ALL");
 		GridBagConstraints gbc_btnFlushAll = new GridBagConstraints();
-		gbc_btnFlushAll.anchor = GridBagConstraints.NORTHWEST;
+		gbc_btnFlushAll.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnFlushAll.anchor = GridBagConstraints.NORTH;
 		gbc_btnFlushAll.insets = new Insets(0, 0, 5, 5);
 		gbc_btnFlushAll.gridx = 0;
 		gbc_btnFlushAll.gridy = 0;
@@ -788,21 +804,61 @@ public class poblar_bd {
 			}
 		});
 		GridBagConstraints gbc_btnBorrarLog = new GridBagConstraints();
+		gbc_btnBorrarLog.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnBorrarLog.insets = new Insets(0, 0, 5, 0);
 		gbc_btnBorrarLog.gridx = 1;
 		gbc_btnBorrarLog.gridy = 0;
 		panelOtros.add(btnBorrarLog, gbc_btnBorrarLog);
 
-		JButton btnPruebas = new JButton("Pruebas");
-		GridBagConstraints gbc_btnPruebas = new GridBagConstraints();
-		gbc_btnPruebas.insets = new Insets(0, 0, 0, 5);
-		gbc_btnPruebas.anchor = GridBagConstraints.NORTHWEST;
-		gbc_btnPruebas.gridx = 0;
-		gbc_btnPruebas.gridy = 1;
-		panelOtros.add(btnPruebas, gbc_btnPruebas);
-		btnPruebas.addActionListener(new ActionListener() {
+		JButton btnEjecutarTodo = new JButton("Ejecutar todo");
+		GridBagConstraints gbc_btnEjecutarTodo = new GridBagConstraints();
+		gbc_btnEjecutarTodo.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnEjecutarTodo.insets = new Insets(0, 0, 0, 5);
+		gbc_btnEjecutarTodo.anchor = GridBagConstraints.NORTH;
+		gbc_btnEjecutarTodo.gridx = 0;
+		gbc_btnEjecutarTodo.gridy = 1;
+		panelOtros.add(btnEjecutarTodo, gbc_btnEjecutarTodo);
+		btnEjecutarTodo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
+				try {
+
+					GeneradorCSV.stockMedioInicial = (int) spinnerStockMedioProducto.getValue();
+					Temporizador.iniciarTemporizador();
+					textArea.append("Leyendo productos...\n");
+					int numProdLeidos = gen.leerProductos(null, (int) spinnerPorcentajePrimarios.getValue());
+					textArea.append("Leidos " + numProdLeidos + " productos.\n");
+					textArea.append("Generando precios de venta...\n");
+					int numPreciosVentaGenerados = gen.generarPreciosVentaProducto();					
+					textArea.append("Numero de precios generados: " + numPreciosVentaGenerados + " (1 por producto).\n");
+
+					textArea.append("Escribiendo productos...\n");
+					int numProdEscritos = gen.escribirProductos(null);
+					textArea.append("Escritos " + numProdEscritos + " productos.\n");
+					textArea.append("Tiempo ejecucion: " + Temporizador.pararTemporizador("Generacion de productos") + " segundos.\n");
+					textArea.append("********************** GENERACION DE PRODUCTOS TERMINADA *******************\n");
+					actualizarEstado();
+					
+					//LOTES
+					
+					
+					//VENTAS
+
+					
+					
+					//UBICACION-PRODUCTO
+					
+					
+					
+					//MOVIMIENTOS
+					
+					
+					
+				}
+				catch (IOException e1) {
+					System.out.println("Error al leer/escribir productos");
+					e1.printStackTrace();
+				}
 
 			}
 
@@ -889,6 +945,14 @@ public class poblar_bd {
 			}
 		});
 		mnConfiguracion.add(mntmEntradasalida);
+		
+		JMenuItem mntmTendencias = new JMenuItem("Tendencias");
+		mntmTendencias.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new MenuTendencias();
+			}
+		});
+		mnConfiguracion.add(mntmTendencias);
 
 		JMenu mnAyuda = new JMenu("Ayuda");
 		menuBar.add(mnAyuda);
@@ -941,6 +1005,14 @@ public class poblar_bd {
 	}
 	static public JFrame getFrame(){
 		return frmPobladorDeTablas;
+	}
+
+	static public GeneradorCSV getGen() {
+		return gen;
+	}
+
+	public void setGen(GeneradorCSV gen) {
+		this.gen = gen;
 	}
 
 }

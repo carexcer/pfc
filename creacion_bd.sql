@@ -14,6 +14,7 @@ CREATE TABLE public.Proveedor (
                 Email VARCHAR(50),
                 Contacto VARCHAR(50),
                 Direccion VARCHAR(256) NOT NULL,
+                Provincia VARCHAR(50) NOT NULL,
                 CONSTRAINT proveedor_pk PRIMARY KEY (Id_Proveedor)
 );
 
@@ -75,6 +76,10 @@ CREATE TABLE public.Venta (
                 CONSTRAINT venta_pk PRIMARY KEY (Id_Venta)
 );
 
+
+CREATE INDEX fecha_venta_idx
+ ON public.Venta
+ ( Fecha_venta DESC );
 
 CREATE TABLE public.Ubicacion_producto (
                 Id_Ubicacion INTEGER NOT NULL,

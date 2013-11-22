@@ -25,10 +25,18 @@ public class InformeLotes extends JFrame {
 	 * Create the frame.
 	 */
 	public InformeLotes(GeneradorCSV gen) {
+//		addWindowListener(new WindowAdapter() {
+//			@Override
+//			public void windowClosing(WindowEvent arg0) {
+//				JOptionPane.showMessageDialog(contentPane, "Se va a cerrar la ventana");
+//				dispose();
+//			}
+//		});
 				
 		this.setVisible(true);		
 		setTitle("Informe de Lotes recibidos");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -67,11 +75,10 @@ public class InformeLotes extends JFrame {
 			cantidadTotalRecibida += lista.get(i).getCantidadRecibida();
 			valorTotalRecibido += lista.get(i).getCantidadRecibida() * lista.get(i).getPrecioCompraUnitario();
 		}
-		Float porcentLotesPrimarios=(float) ((gen.getNumLotesPrimarios()/numElementos)*100);
 		textAreaAgregados.setText("======== INFORME DE LOTES RECIBIDOS ======\n");	
 		textAreaAgregados.append("Numero de lotes: " + numElementos + ".\n");
-		textAreaAgregados.append("Numero de lotes de productos primarios: " + gen.getNumLotesPrimarios() + " [" +  porcentLotesPrimarios + "%].\n");
-		textAreaAgregados.append("Numero de lotes de productos secundarios: " + gen.getNumLotesSecundarios() + " [" + ((gen.getNumLotesSecundarios()/numElementos)*100) + "%].\n");
+		textAreaAgregados.append("Numero de lotes de productos primarios: " + gen.getNumLotesPrimarios() +".\n");
+		textAreaAgregados.append("Numero de lotes de productos secundarios: " + gen.getNumLotesSecundarios() + ".\n");
 		int diferencia = numElementos - gen.getNumLotesPrimarios() - gen.getNumLotesSecundarios();
 		textAreaAgregados.append("Total lotes - Lotes de primarios - Lotes secundarios = " + diferencia + ((diferencia==0)?"==> OK":"==> ERROR") + ".\n");
 		textAreaAgregados.append("Cantidad Total Recibida: " + cantidadTotalRecibida + " unidades.\n");
@@ -80,5 +87,6 @@ public class InformeLotes extends JFrame {
 		modelo.cargarDatos(lista);
 		
 	}
+		
 
 }

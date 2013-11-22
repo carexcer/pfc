@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import java_project.ProbabilidadEstacional;
-import java_project.poblar_bd;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;

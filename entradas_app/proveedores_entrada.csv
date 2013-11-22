@@ -1,14 +1,20 @@
-1;B11111111;Blanyai;914280919;logistica@blanyai.es;Departamento comercial;Calle Tortola 10, Bajo A, 28019 Madrid
-2;G22222222;Grupo INEC, SA;902883800;sales@inec.com;Departamento comercial;Ctra. Del Rio, 6, Villaralbo, 49159 Zamora
-3;M33333333;Magirus;917870600;informail.es@magirus.com;Patricia Peña;Via de los Poblados 1, Parque Empresarial Alvento Edificio D, Planta 6, 28033 Madrid
-4;V44444444;Valorista;976700073;comercial@valorista.com;Fernando Puente;Calle Bari, 28 Nave B, PLAZA, 50197, Zaragoza
-5;V55555555;Vinzeo Informática SL;902380480;comercial@vinzeoit.com;Departamento comercial;Avda. Bruselas 38, Alcobendas, 28108 Madrid
-6;T66666666;Tech Data;902332000;sales@techdata.es;Atención comercial;Acer 30-32, 8032 Barcelona
-7;B77777777;BlueStar;937279010;info.es@bluestarinc.com;Mercé Dalet;C/ Sant Vicenç 51, Sabadell, 8208 Barcelona
-8;E88888888;EuropeanRetail;937905217;sales@europeanretail.es;Guillermo Magnone;Vapor Gordils, 7 nave 4-1, Mataró, 8304 Barcelona
-9;H99999999;HM Hispamicro Sistemas Informáticos;968350123;hispamicro@hispamicro.com;Tomas Noguera;Avd. De las americas, 1-16 nave c-6, Alcantarilla, 30820 Murcia
-10;G10101010;Globomatik Informática SL;950081876;info@globomatik.net;Departamento ventas;Calle Sierra de Seguroa 17, Pol. Ind. La Juaida, Viator, 4240 Almeria
-11;E11111111;Exclusivas de seguridad Integral SL;952236199;exsi@exsi.es;Pepe Jimenez;Avenida Leo Delibes 6, 29004 Málaga
-12;D12121212;DIASA Informática SAU;917612151;departamentocomercial@diasa.es;Departamento comercial;Paseo Imperial 14, 28005 Madrid
-13;A13131313;Activa 2MIL;914349090;info@activa2mil.es;Juan A. Sanz;Resina, 29B, Plaza La Resina, 28021 Madrid
-14;A14141414;ACI Supplies;917480064;sergio.pozo@aci-supplies.com;Pilar Crego;Avda. Central s/n, Parque Logístico AMB, Nave C. Centro de carga aérea Madrid-Barajas, 28042 Madrid
+1;B11111111;Blanyai;914280919;logistica@blanyai.es;Departamento comercial;Calle Tortola 10, Bajo A, 28019 Madrid;Madrid
+2;G22222222;Grupo INEC, SA;902883800;sales@inec.com;Departamento comercial;Ctra. Del Rio, 6, Villaralbo, 49159 Zamora;Zamora
+3;M33333333;Magirus;917870600;informail.es@magirus.com;Patricia Penya;Via de los Poblados 1, Parque Empresarial Alvento Edificio D, Planta 6, 28033 Madrid;Madrid
+4;V44444444;Valorista;976700073;comercial@valorista.com;Fernando Puente;Calle Bari, 28 Nave B, PLAZA, 50197, Zaragoza;Zaragoza
+5;V55555555;Vinzeo Informatica SL;902380480;comercial@vinzeoit.com;Departamento comercial;Avda. Bruselas 38, Alcobendas, 28108 Madrid;Madrid
+6;T66666666;Tech Data;902332000;sales@techdata.es;Atencion comercial;Acer 30-32, 8032 Barcelona;Barcelona
+7;B77777777;BlueStar;937279010;info.es@bluestarinc.com;Merche Dalet;C/ Sant Vicent 51, Sabadell, 8208 Barcelona;Barcelona
+8;E88888888;EuropeanRetail;937905217;sales@europeanretail.es;Guillermo Magnone;Vapor Gordils, 7 nave 4-1, Mataro, 8304 Barcelona;Barcelona
+9;H99999999;HM Hispamicro Sistemas Informaticos;968350123;hispamicro@hispamicro.com;Tomas Noguera;Avd. De las americas, 1-16 nave c-6, Alcantarilla, 30820 Murcia;Murcia
+10;G10101010;Globomatik Informatica SL;950081876;info@globomatik.net;Departamento ventas;Calle Sierra de Seguroa 17, Pol. Ind. La Juaida, Viator, 4240 Almeria;Almeria
+11;E11111111;Exclusivas de seguridad Integral SL;952236199;exsi@exsi.es;Pepe Jimenez;Avenida Leo Delibes 6, 29004 Malaga;Malaga
+12;D12121212;DIASA Informatica SAU;917612151;departamentocomercial@diasa.es;Departamento comercial;Paseo Imperial 14, 28005 Madrid;Madrid
+13;A13131313;Activa 2MIL;914349090;info@activa2mil.es;Juan A. Sanz;Resina, 29B, Plaza La Resina, 28021 Madrid;Madrid
+14;A14141414;ACI Supplies;917480064;sergio.pozo@aci-supplies.com;Pilar Crego;Avda. Central s/n, Parque Logistico AMB, Nave C. Centro de carga aerea Madrid-Barajas, 28042 Madrid;Madrid
+15;V15151515;VideoKlima;881889161;info@videoklima.com;Santiago Collazo;C/ Monforte 13, 15007 A Corunya;A Corunya
+16;S16161616;Soluciones Del Hard SL;947474871;alberto@solucionesdelhard.com;Alberto Garcia Rivas;Pol. Gamonal Centro Emp. Antilla N-5, C/ La rivera S/N, 9007 Burgos;Burgos
+17;C17171717;Codine SL;963932821;info@codine.es;Manuel Del Rio Furio;C/ Guardia Civil 30, entr D, 46020 Valencia;Valencia
+18;C18181818;Copiadoras del Mediterraneo SCV;963852333;jvtorres@copimed.net;Jose Vicente Torres Monleon;RDA Augusto y Louis Lumiere 23, Nave 17, Parque Tecnologico Paterna, 46980, Valencia;Valencia
+19;M19191919;Megasur;958509010;afernandez@megasur.es;Antonio Fernandez;Parque Metropolitano. C/ Los Visos 14, Escuzar 18130 Granada;Granada
+20;E20202020;ENUC;959367746;info@e-nuc.com;Pedro Hernandez;Polg Exfasa 36, San Juan del Puerto, 21610 Huelva;Huelva

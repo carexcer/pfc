@@ -79,10 +79,11 @@ public class InformeProductos extends JFrame {
 		textAreaAgregados.append("Numero de productos: " + numElementos + ".\n");
 		textAreaAgregados.append("Numero de productos primarios: " + numPrimarios + ".\n");
 		textAreaAgregados.append("Numero de productos secundarios: " + numSecundarios + ".\n");
-		textAreaAgregados.append("Cantidad Total en Stock: " + cantidadStockTotal + " unidades.\n");
+		textAreaAgregados.append("Cantidad Total en Stock (AHORA MISMO): " + cantidadStockTotal + " unidades.\n");
 		textAreaAgregados.append("Valor Total de compra: " + valorCompraTotal + " euros.\n");
 		textAreaAgregados.append("Valor Total de venta: " +  valorVentaTotal + " euros.\n");
 		textAreaAgregados.append("Peso total: " +  pesoTotal + " kg.\n");
+		textAreaAgregados.append("NOTA: La cantidad en Stock que figura en este informe es la ACTUAL. Puede variar dependiendo de si se ejecuta al principio o al final.\n");
 
 		modelo.cargarDatos(lista);
 		

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import java_project.GeneradorCSV;
 import java_project.Movimiento;
-import java_project.Venta;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -86,9 +85,9 @@ public class InformeMovimientos extends JFrame {
 		
 		textAreaAgregados.append("Cantidad total recibida: " + cantidadTotalRecibida + " unidades.\n");
 		textAreaAgregados.append("Cantidad total vendida: " + cantidadTotalVendida + " unidades.\n");
-		textAreaAgregados.append("Cantidad en Stock: " + stock + ".\n");
+		textAreaAgregados.append("Cantidad extra en Stock: " + stock + " (Cantidad recibida - vendida). Esta cantidad es el incremento respecto a la cantidad de stock inicial.\n");
+		textAreaAgregados.append("Para consultar la CANTIDAD EN STOCK REAL en este momento CONSULTE LOS PRODUCTOS.\n");
 		
-
 		modelo.cargarDatos(lista);
 		
 	}

@@ -1,6 +1,5 @@
 package igu;
 
-import java_project.poblar_bd;
 
 public class BarraProgreso {
 

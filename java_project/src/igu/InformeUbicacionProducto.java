@@ -4,9 +4,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import java_project.GeneradorCSV;
-import java_project.LoteRecibido;
 import java_project.UbicacionProducto;
-import java_project.Venta;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;

@@ -17,8 +17,8 @@ import java.util.Calendar;
 import java_project.GeneradorCSV;
 import java_project.Temporizador;
 
+import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -182,7 +182,12 @@ public class poblar_bd {
 		panelProductos.add(spinnerStockMinimo, gbc_spinnerStockMinimo);
 
 		JButton btnConsultarProductos = new JButton("Consultar Productos");
-		btnConsultarProductos.setIcon(new ImageIcon("./src/images/look-for-icon.png"));
+		try {
+			btnConsultarProductos.setIcon(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/images/look-for-icon.png"))));
+		} catch (IOException e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
 		GridBagConstraints gbc_btnConsultarProductos = new GridBagConstraints();
 		gbc_btnConsultarProductos.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnConsultarProductos.insets = new Insets(0, 0, 5, 5);
@@ -196,7 +201,12 @@ public class poblar_bd {
 		});
 
 		JButton btnLeerProductos = new JButton("Generar productos");
-		btnLeerProductos.setIcon(new ImageIcon("./src/images/play-icon.png"));
+		try {
+			btnLeerProductos.setIcon(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/images/play-icon.png"))));
+		} catch (IOException e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
 		GridBagConstraints gbc_btnLeerProductos = new GridBagConstraints();
 		gbc_btnLeerProductos.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnLeerProductos.insets = new Insets(0, 0, 5, 5);
@@ -284,7 +294,12 @@ public class poblar_bd {
 		panelUbicacionProducto.setLayout(gbl_panelUbicacionProducto);
 
 		JButton btnGenerarUbicacionproducto = new JButton("Generar ubicacion-producto");
-		btnGenerarUbicacionproducto.setIcon(new ImageIcon("./src/images/play-icon.png"));
+		try {
+			btnGenerarUbicacionproducto.setIcon(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/images/play-icon.png"))));
+		} catch (IOException e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
 		btnGenerarUbicacionproducto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -326,7 +341,12 @@ public class poblar_bd {
 		panelUbicacionProducto.add(btnGenerarUbicacionproducto, gbc_btnGenerarUbicacionproducto);
 
 		JButton btnConsultarUbicacionproducto = new JButton("Consultar Ubicacion-producto");
-		btnConsultarUbicacionproducto.setIcon(new ImageIcon("./src/images/look-for-icon.png"));
+		try {
+			btnConsultarUbicacionproducto.setIcon(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/images/look-for-icon.png"))));
+		} catch (IOException e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
 		btnConsultarUbicacionproducto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new InformeUbicacionProducto(gen);
@@ -424,7 +444,12 @@ public class poblar_bd {
 		panelLotes.setLayout(gbl_panelLotes);
 
 		JButton btnGenerarLotesRecibidos = new JButton("Generar Lotes");
-		btnGenerarLotesRecibidos.setIcon(new ImageIcon("./src/images/play-icon.png"));
+		try {
+			btnGenerarLotesRecibidos.setIcon(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/images/play-icon.png"))));
+		} catch (IOException e4) {
+			// TODO Auto-generated catch block
+			e4.printStackTrace();
+		}
 		GridBagConstraints gbc_btnGenerarLotesRecibidos = new GridBagConstraints();
 		gbc_btnGenerarLotesRecibidos.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnGenerarLotesRecibidos.insets = new Insets(0, 0, 5, 5);
@@ -433,7 +458,12 @@ public class poblar_bd {
 		panelLotes.add(btnGenerarLotesRecibidos, gbc_btnGenerarLotesRecibidos);
 
 		JButton btnConsultarLotes = new JButton("Consultar Lotes");
-		btnConsultarLotes.setIcon(new ImageIcon("./src/images/look-for-icon.png"));
+		try {
+			btnConsultarLotes.setIcon(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/images/look-for-icon.png"))));
+		} catch (IOException e4) {
+			// TODO Auto-generated catch block
+			e4.printStackTrace();
+		}
 		btnConsultarLotes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new InformeLotes(gen);
@@ -694,7 +724,12 @@ public class poblar_bd {
 		panelMovimientos.setLayout(gbl_panelMovimientos);
 
 		JButton btnGenerarMovimientos = new JButton("Generar Movimientos");
-		btnGenerarMovimientos.setIcon(new ImageIcon("./src/images/play-icon.png"));
+		try {
+			btnGenerarMovimientos.setIcon(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/images/play-icon.png"))));
+		} catch (IOException e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
 		btnGenerarMovimientos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -735,7 +770,12 @@ public class poblar_bd {
 		panelMovimientos.add(btnGenerarMovimientos, gbc_btnGenerarMovimientos);
 
 		JButton btnConsultarMovimientos = new JButton("Consultar Movimientos");
-		btnConsultarMovimientos.setIcon(new ImageIcon("./src/images/look-for-icon.png"));
+		try {
+			btnConsultarMovimientos.setIcon(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/images/look-for-icon.png"))));
+		} catch (IOException e6) {
+			// TODO Auto-generated catch block
+			e6.printStackTrace();
+		}
 		btnConsultarMovimientos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new InformeMovimientos(gen);
@@ -767,7 +807,12 @@ public class poblar_bd {
 		panelVentas.setLayout(gbl_panelVentas);
 
 		JButton btnConsultarVentas = new JButton("Consultar Ventas");
-		btnConsultarVentas.setIcon(new ImageIcon("./src/images/look-for-icon.png"));
+		try {
+			btnConsultarVentas.setIcon(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/images/look-for-icon.png"))));
+		} catch (IOException e5) {
+			// TODO Auto-generated catch block
+			e5.printStackTrace();
+		}
 				btnConsultarVentas.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						new InformeVentas(gen);
@@ -845,7 +890,12 @@ public class poblar_bd {
 				spinnerMaxCantVenta.setModel(new SpinnerNumberModel(6, 1, 50, 1));
 
 				JButton btnGenerarVentas = new JButton("Generar Ventas");
-				btnGenerarVentas.setIcon(new ImageIcon("./src/images/play-icon.png"));
+				try {
+					btnGenerarVentas.setIcon(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/images/play-icon.png"))));
+				} catch (IOException e4) {
+					// TODO Auto-generated catch block
+					e4.printStackTrace();
+				}
 				GridBagConstraints gbc_btnGenerarVentas = new GridBagConstraints();
 				gbc_btnGenerarVentas.fill = GridBagConstraints.HORIZONTAL;
 				gbc_btnGenerarVentas.insets = new Insets(0, 0, 5, 5);
@@ -869,7 +919,12 @@ public class poblar_bd {
 				panelOtros.setLayout(gbl_panelOtros);
 
 				JButton btnFlushAll = new JButton("FLUSH ALL");
-				btnFlushAll.setIcon(new ImageIcon("./src/images/flush-all-icon.png"));
+				try {
+					btnFlushAll.setIcon(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/images/flush-all-icon.png"))));
+				} catch (IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
 				GridBagConstraints gbc_btnFlushAll = new GridBagConstraints();
 				gbc_btnFlushAll.fill = GridBagConstraints.HORIZONTAL;
 				gbc_btnFlushAll.anchor = GridBagConstraints.NORTH;
@@ -887,7 +942,12 @@ public class poblar_bd {
 				});
 
 				JButton btnBorrarLog = new JButton("Borrar LOG");
-				btnBorrarLog.setIcon(new ImageIcon("./src/images/delete-log-icon.png"));
+				try {
+					btnBorrarLog.setIcon(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/images/delete-log-icon.png"))));
+				} catch (IOException e3) {
+					// TODO Auto-generated catch block
+					e3.printStackTrace();
+				}
 				btnBorrarLog.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						textArea.setText(null);
@@ -901,7 +961,12 @@ public class poblar_bd {
 				panelOtros.add(btnBorrarLog, gbc_btnBorrarLog);
 
 				JButton btnEjecutarTodo = new JButton("Ejecutar todo");
-				btnEjecutarTodo.setIcon((Icon) poblar_bd.class.getResourceAsStream("run-all-icon.png"));
+				try {
+					btnEjecutarTodo.setIcon(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/images/run-all-icon.png"))));
+				} catch (IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
 				GridBagConstraints gbc_btnEjecutarTodo = new GridBagConstraints();
 				gbc_btnEjecutarTodo.fill = GridBagConstraints.HORIZONTAL;
 				gbc_btnEjecutarTodo.insets = new Insets(0, 0, 0, 5);

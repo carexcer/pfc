@@ -4,16 +4,7 @@
  <print-settings numCopies="1" zoom="1.0" pageNumbersPrinted="true" orientation="1" paperWidth="612.0" paperHeight="792.0" leftBorder="50.0" rightBorder="50.0" topBorder="50.0" bottomBorder="50.0" />
  <project-data-sources>
   <data-source id="DS0">
-   <property key="Logical" value="conexion-bd-almacen" />
-   <property key="Connection Type" value="PostgreSQL" />
-   <property key="JDBC URL" value="jdbc:postgresql://localhost:5432/bd_almacen" />
-   <property key="UID" value="carexcer" />
-   <property key="PWD" value="29031988" />
-   <property key="ca.sqlpower.architect.etl.kettle.database" value="" />
-   <property key="ca.sqlpower.architect.etl.kettle.port" value="" />
-   <property key="ca.sqlpower.architect.etl.kettle.hostname" value="" />
-   <property key="ca.sqlpower.architect.etl.kettle.repos.login" value="" />
-   <property key="ca.sqlpower.architect.etl.kettle.repos.password" value="" />
+   <property key="Logical" value="PlayPen Database" />
   </data-source>
   <data-source id="DS2">
    <property key="Connection Type" value="PostgreSQL" />
@@ -47,7 +38,7 @@
    <relationships>
    </relationships>
   </database>
-  <database id="DB2" populated="true" UUID="e2b41bf9-fcea-43dd-82f0-4f8d654a8c29" dbcs-ref="DS4" name="conexion-1" physicalName="conexion-1" sql-exception="ca.sqlpower.sqlobject.SQLObjectException: ca.sqlpower.sqlobject.SQLObjectException: Couldn&apos;t connect to database: Conexión rechazada. Verifique que el nombre del Host y el puerto sean correctos y que postmaster este aceptando conexiones TCP/IP." >
+  <database id="DB2" populated="true" UUID="e2b41bf9-fcea-43dd-82f0-4f8d654a8c29" dbcs-ref="DS4" name="conexion-1" physicalName="conexion-1" sql-exception="ca.sqlpower.sqlobject.SQLObjectException: ca.sqlpower.sqlobject.SQLObjectException: ca.sqlpower.sqlobject.SQLObjectException: ca.sqlpower.sqlobject.SQLObjectException: ca.sqlpower.sqlobject.SQLObjectException: Couldn&apos;t connect to database: Conexión rechazada. Verifique que el nombre del Host y el puerto sean correctos y que postmaster este aceptando conexiones TCP/IP." >
    <catalog id="CAT3" populated="true" UUID="11c4ca8c-74fd-4119-a6b5-79a6acbc1edd" name="bd_original_pfc" nativeTerm="database" physicalName="bd_original_pfc" >
    </catalog>
    <relationships>
@@ -362,158 +353,113 @@
    </folder>
   </table>
   <relationships>
-   <relationship id="REL94" populated="true" UUID="d03814b9-31d7-43db-874c-50817423374e" deferrability="5" deleteRule="3" fk-table-ref="TAB52" fkCardinality="7" identifying="true" name="Producto_Proveedor-producto_fk" physicalName="producto_proveedor_producto_fk" pk-table-ref="TAB5" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP95" populated="true" UUID="6f61b543-7a36-45bd-9228-fbace9a74db3" fk-column-ref="COL55" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL6" />
-   </relationship>
-   <relationship id="REL96" populated="true" UUID="a926b9f4-453b-41ad-a082-47e2abc4e8e0" deferrability="5" deleteRule="3" fk-table-ref="TAB66" fkCardinality="7" identifying="true" name="Producto_Ubicacion_producto_fk" physicalName="producto_ubicacion_producto_fk" pk-table-ref="TAB5" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP97" populated="true" UUID="bfe36a25-ddfe-4a5b-acd2-e47595d498d2" fk-column-ref="COL68" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL6" />
-   </relationship>
-   <relationship id="REL98" populated="true" UUID="51830b81-df10-4718-b769-49f2122e51ad" deferrability="5" deleteRule="3" fk-table-ref="TAB73" fkCardinality="7" identifying="false" name="Producto_Venta_fk" physicalName="producto_venta_fk" pk-table-ref="TAB5" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP99" populated="true" UUID="aafaec82-5579-44a1-8dec-427970228dc8" fk-column-ref="COL75" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL6" />
-   </relationship>
-   <relationship id="REL100" populated="true" UUID="d71d236c-f0e0-4548-8c2b-a55614021a11" deferrability="5" deleteRule="3" fk-table-ref="TAB66" fkCardinality="7" identifying="true" name="Ubicacion_Ubicacion_producto_fk" physicalName="ubicacion_ubicacion_producto_fk" pk-table-ref="TAB17" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP101" populated="true" UUID="56512ab5-6350-4f7d-a1db-79df7fe59497" fk-column-ref="COL67" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL18" />
-   </relationship>
-   <relationship id="REL102" populated="true" UUID="e2a949a4-efa0-465d-a07a-f8f9232e237f" deferrability="5" deleteRule="3" fk-table-ref="TAB17" fkCardinality="7" identifying="false" name="Almacen_Ubicacion_fk" physicalName="almacen_ubicacion_fk" pk-table-ref="TAB24" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP103" populated="true" UUID="af4bcd69-7931-41b4-ab2e-3cbd21086add" fk-column-ref="COL19" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL25" />
-   </relationship>
-   <relationship id="REL104" populated="true" UUID="7e9477fb-4d26-45da-9f84-0c9bd9a5ed27" deferrability="5" deleteRule="3" fk-table-ref="TAB5" fkCardinality="7" identifying="false" name="Marca_Producto_fk" physicalName="marca_producto_fk" pk-table-ref="TAB32" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP105" populated="true" UUID="f2df82c5-dc38-428c-a511-49fb4a643c0b" fk-column-ref="COL8" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL33" />
-   </relationship>
-   <relationship id="REL106" populated="true" UUID="bb09b3ad-7a42-4bb0-b75b-6cccb10c8fae" deferrability="5" deleteRule="3" fk-table-ref="TAB52" fkCardinality="7" identifying="true" name="Proveedor_Proveedor-producto_fk" physicalName="proveedor_proveedor_producto_fk" pk-table-ref="TAB41" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP107" populated="true" UUID="2f715cd2-bd81-4001-b142-b0fc0489f577" fk-column-ref="COL54" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL42" />
-   </relationship>
-   <relationship id="REL108" populated="true" UUID="cd4d5cf2-c67b-4a46-99c9-313883f4faa6" deferrability="5" deleteRule="3" fk-table-ref="TAB83" fkCardinality="3" identifying="false" name="Lote_recibido_Movimiento_fk" physicalName="lote_recibido_movimiento_fk" pk-table-ref="TAB52" pkCardinality="3" updateRule="3" >
-    <column-mapping id="CMP109" populated="true" UUID="ff78465f-1dc3-4c5b-b8e2-e42fc420e343" fk-column-ref="COL87" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL53" />
-   </relationship>
-   <relationship id="REL110" populated="true" UUID="6c54eb9b-63ac-4dae-a484-aaad767e35d9" deferrability="5" deleteRule="3" fk-table-ref="TAB5" fkCardinality="7" identifying="false" name="Categoria_Producto_fk" physicalName="categoria_producto_fk" pk-table-ref="TAB61" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP111" populated="true" UUID="e0415045-6e93-4152-a565-14f7ec0ac8fb" fk-column-ref="COL7" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL62" />
-   </relationship>
-   <relationship id="REL112" populated="true" UUID="cab4cdbb-fadc-463c-8d30-7fb99a6c4dcb" deferrability="5" deleteRule="3" fk-table-ref="TAB83" fkCardinality="7" identifying="false" name="Ubicacion_producto_Movimiento_fk" physicalName="ubicacion_producto_movimiento_fk" pk-table-ref="TAB66" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP113" populated="true" UUID="017be271-9f78-46be-af86-32776c0a1e14" fk-column-ref="COL86" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL67" />
-    <column-mapping id="CMP114" populated="true" UUID="2f1b90ad-6ecf-47ee-a180-577dd9ad14b8" fk-column-ref="COL85" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL68" />
-   </relationship>
-   <relationship id="REL115" populated="true" UUID="343fa291-6408-4939-9d2a-1b5e8b6fe295" deferrability="5" deleteRule="3" fk-table-ref="TAB83" fkCardinality="3" identifying="false" name="Venta_Movimiento_fk" physicalName="venta_movimiento_fk" pk-table-ref="TAB73" pkCardinality="3" updateRule="3" >
-    <column-mapping id="CMP116" populated="true" UUID="4a23b8fe-a90f-4afd-a77d-46ae38f88bdd" fk-column-ref="COL88" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL74" />
-   </relationship>
-  </relationships>
- </target-database>
- <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="false" target-schema="public"> </ddl-generator>
- <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
- <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
- <play-pen zoom="0.8408964152537146" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
-  <table-pane table-ref="TAB5" x="350" y="453" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB17" x="705" y="701" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB24" x="418" y="694" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB32" x="70" y="737" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB41" x="20" y="336" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB52" x="128" y="135" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB61" x="26" y="533" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB66" x="715" y="475" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB73" x="508" y="42" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB83" x="580" y="243" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-link relationship-ref="REL102" pkConnection="1.0" fkConnection="0.49523809523809526" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="33"/>
-  <table-link relationship-ref="REL104" pkConnection="0.68" fkConnection="0.07103825136612021" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="65"/>
-  <table-link relationship-ref="REL94" pkConnection="0.38181818181818183" fkConnection="0.8148148148148148" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="66"/>
-  <table-link relationship-ref="REL106" pkConnection="0.7096774193548387" fkConnection="0.3160621761658031" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="72"/>
-  <table-link relationship-ref="REL110" pkConnection="1.0" fkConnection="0.7090909090909091" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="33"/>
-  <table-link relationship-ref="REL100" pkConnection="0.0625" fkConnection="0.7978142076502732" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="72"/>
-  <table-link relationship-ref="REL96" pkConnection="1.0" fkConnection="0.56" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="33"/>
-  <table-link relationship-ref="REL98" pkConnection="0.2568306010928962" fkConnection="0.6083333333333333" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="40"/>
-  <table-link relationship-ref="REL112" pkConnection="0.43157894736842106" fkConnection="0.5625" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="72"/>
-  <table-link relationship-ref="REL108" pkConnection="0.30973451327433627" fkConnection="0.0" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
-  <table-link relationship-ref="REL115" pkConnection="0.6153846153846154" fkConnection="0.34444444444444444" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
- </play-pen>
- <critic-manager>
-  <critic-grouping platformType="Generic" enabled="true">
-   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.PrimaryKeyCritic" severity="ERROR"/>
-   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.RelationshipMappingTypeCritic" severity="ERROR"/>
-   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.EmptyRelationshipCritic" severity="ERROR"/>
-   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.AlphaNumericNameCritic" severity="WARNING"/>
-   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.AlphaNumericSequenceNameCritic" severity="WARNING"/>
-   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SetDefaultOnColumnWithNoDefaultCritic" severity="ERROR"/>
-   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SetNullOnNonNullableColumnCritic" severity="ERROR"/>
-   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.DuplicateNameCritic" severity="WARNING"/>
-  </critic-grouping>
-  <critic-grouping platformType="DB2" enabled="false">
-   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.DB2UnsupportedFeaturesCritic" severity="ERROR"/>
-  </critic-grouping>
-  <critic-grouping platformType="H2" enabled="false">
-   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.H2UnsupportedFeaturesCritic" severity="ERROR"/>
-  </critic-grouping>
-  <critic-grouping platformType="HSQLDB" enabled="false">
-   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.HSQLDBUnsupportedFeaturesCritic" severity="ERROR"/>
-  </critic-grouping>
-  <critic-grouping platformType="MySQL" enabled="true">
-   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.MySQLCommentCritic" severity="ERROR"/>
-   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.MySQLReservedWordsCritic" severity="ERROR"/>
-   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.MySQLUnsupportedFeaturesCritic" severity="ERROR"/>
-  </critic-grouping>
-  <critic-grouping platformType="Oracle" enabled="false">
-   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.OraclePhysicalNameCritic" severity="ERROR"/>
-   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.OracleReservedWordsCritic" severity="ERROR"/>
-   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.OracleUnsupportedFeaturesCritic" severity="ERROR"/>
-  </critic-grouping>
-  <critic-grouping platformType="PostgreSQL" enabled="true">
-   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.PostgreSQLReservedWordsCritic" severity="ERROR"/>
-  </critic-grouping>
-  <critic-grouping platformType="SQL Server" enabled="false">
-   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServerUnsupportedFeaturesCritic" severity="ERROR"/>
-   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServerReservedWordsCritic" severity="ERROR"/>
-  </critic-grouping>
-  <critic-grouping platformType="SQL Server 2000" enabled="false">
-   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServer2000UnsupportedFeaturesCritic" severity="ERROR"/>
-  </critic-grouping>
-  <critic-grouping platformType="SQL Server 2005" enabled="false">
-   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServer2005UnsupportedFeaturesCritic" severity="ERROR"/>
-  </critic-grouping>
- </critic-manager>
- <profiles topNCount="10">
-  </profiles>
-  <olap>
-   <olap-session id="0" db-ref="ppdb">
-    <Schema id="1" name="New OLAP Schema">
-     <Dimension id="2" name="New Dimension 1" type="StandardDimension">
-      <Hierarchy id="3" name="New Hierarchy 1" hasAll="true" allLevelName="All">
-       <Level id="4" name="New Level 1" uniqueMembers="false"/>
-      </Hierarchy>
-     </Dimension>
-     <Dimension id="5" name="New Dimension 2" type="StandardDimension">
-      <Hierarchy id="6" name="New Hierarchy 0" hasAll="true" allLevelName="All" primaryKey="Id_Marca">
-       <Table id="7" name="Marca"/>
-      </Hierarchy>
-     </Dimension>
-     <Dimension id="8" name="New Dimension 3" type="TimeDimension">
-      <Hierarchy id="9" name="New Dimension 3" hasAll="true">
-       <Level id="10" name="New Level 1" uniqueMembers="false" levelType="TimeDays">
-        <Property id="11" name="New Property"/>
-       </Level>
-      </Hierarchy>
-     </Dimension>
-     <Cube id="12" name="New Cube 1">
-      <View id="13" alias="">
-       <SQL id="14">
-        
-       </SQL>
-      </View>
-      <DimensionUsage id="15" source="New Dimension 1" name="New Dimension 1"/>
-      <DimensionUsage id="16" source="New Dimension 3" name="New Dimension 3"/>
-      <Measure id="17" name="New Measure 1"/>
-      <CalculatedMember id="18" name="New Calculated Member 1" formatString="" caption="" formula="" dimension="" visible="true"/>
-     </Cube>
-    </Schema>
-   </olap-session>
-  </olap>
-  <olap-gui>
-   <olap-edit-session osession-ref="0">
-    <play-pen zoom="1.0" viewportX="0" viewportY="0">
-     <cube-pane id="CP0" model-ref="12" x="288" y="270"/>
-     <dimension-pane id="DP1" model-ref="2" x="468" y="83"/>
-     <dimension-pane id="DP2" model-ref="5" x="213" y="488"/>
-     <dimension-pane id="DP3" model-ref="8" x="100" y="250"/>
-     <usage-comp model-ref="15" pane1-ref="DP1" pane2-ref="CP0"/>
-     <usage-comp model-ref="16" pane1-ref="DP3" pane2-ref="CP0"/>
-    </play-pen>
-   </olap-edit-session>
-  </olap-gui>
+<relationship id="REL94" populated="true" UUID="d03814b9-31d7-43db-874c-50817423374e" deferrability="5" deleteRule="3" fk-table-ref="TAB52" fkCardinality="6" identifying="true" name="Producto_Proveedor-producto_fk" physicalName="Producto_Proveedor-producto_fk" pk-table-ref="TAB5" pkCardinality="2" updateRule="3" >
+<column-mapping id="CMP95" populated="true" UUID="1e1bb605-781c-40aa-a815-398092e0c204" fk-column-ref="COL55" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL6" />
+</relationship>
+<relationship id="REL96" populated="true" UUID="a926b9f4-453b-41ad-a082-47e2abc4e8e0" deferrability="5" deleteRule="3" fk-table-ref="TAB66" fkCardinality="7" identifying="true" name="Producto_Ubicacion_producto_fk" physicalName="producto_ubicacion_producto_fk" pk-table-ref="TAB5" pkCardinality="2" updateRule="3" >
+<column-mapping id="CMP97" populated="true" UUID="bfe36a25-ddfe-4a5b-acd2-e47595d498d2" fk-column-ref="COL68" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL6" />
+</relationship>
+<relationship id="REL98" populated="true" UUID="51830b81-df10-4718-b769-49f2122e51ad" deferrability="5" deleteRule="3" fk-table-ref="TAB73" fkCardinality="7" identifying="false" name="Producto_Venta_fk" physicalName="producto_venta_fk" pk-table-ref="TAB5" pkCardinality="2" updateRule="3" >
+<column-mapping id="CMP99" populated="true" UUID="aafaec82-5579-44a1-8dec-427970228dc8" fk-column-ref="COL75" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL6" />
+</relationship>
+<relationship id="REL100" populated="true" UUID="d71d236c-f0e0-4548-8c2b-a55614021a11" deferrability="5" deleteRule="3" fk-table-ref="TAB66" fkCardinality="7" identifying="true" name="Ubicacion_Ubicacion_producto_fk" physicalName="ubicacion_ubicacion_producto_fk" pk-table-ref="TAB17" pkCardinality="2" updateRule="3" >
+<column-mapping id="CMP101" populated="true" UUID="56512ab5-6350-4f7d-a1db-79df7fe59497" fk-column-ref="COL67" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL18" />
+</relationship>
+<relationship id="REL102" populated="true" UUID="e2a949a4-efa0-465d-a07a-f8f9232e237f" deferrability="5" deleteRule="3" fk-table-ref="TAB17" fkCardinality="6" identifying="false" name="Almacen_Ubicacion_fk" physicalName="Almacen_Ubicacion_fk" pk-table-ref="TAB24" pkCardinality="2" updateRule="3" >
+<column-mapping id="CMP103" populated="true" UUID="9443377e-95a3-4578-9d6e-fc028acf6a81" fk-column-ref="COL19" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL25" />
+</relationship>
+<relationship id="REL104" populated="true" UUID="7e9477fb-4d26-45da-9f84-0c9bd9a5ed27" deferrability="5" deleteRule="3" fk-table-ref="TAB5" fkCardinality="6" identifying="false" name="Marca_Producto_fk" physicalName="Marca_Producto_fk" pk-table-ref="TAB32" pkCardinality="2" updateRule="3" >
+<column-mapping id="CMP105" populated="true" UUID="66b87aeb-3756-41fb-b30a-db19404d53cb" fk-column-ref="COL8" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL33" />
+</relationship>
+<relationship id="REL106" populated="true" UUID="bb09b3ad-7a42-4bb0-b75b-6cccb10c8fae" deferrability="5" deleteRule="3" fk-table-ref="TAB52" fkCardinality="7" identifying="true" name="Proveedor_Proveedor-producto_fk" physicalName="proveedor_proveedor_producto_fk" pk-table-ref="TAB41" pkCardinality="2" updateRule="3" >
+<column-mapping id="CMP107" populated="true" UUID="2f715cd2-bd81-4001-b142-b0fc0489f577" fk-column-ref="COL54" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL42" />
+</relationship>
+<relationship id="REL108" populated="true" UUID="cd4d5cf2-c67b-4a46-99c9-313883f4faa6" deferrability="5" deleteRule="3" fk-table-ref="TAB83" fkCardinality="3" identifying="false" name="Lote_recibido_Movimiento_fk" physicalName="lote_recibido_movimiento_fk" pk-table-ref="TAB52" pkCardinality="3" updateRule="3" >
+<column-mapping id="CMP109" populated="true" UUID="ff78465f-1dc3-4c5b-b8e2-e42fc420e343" fk-column-ref="COL87" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL53" />
+</relationship>
+<relationship id="REL110" populated="true" UUID="6c54eb9b-63ac-4dae-a484-aaad767e35d9" deferrability="5" deleteRule="3" fk-table-ref="TAB5" fkCardinality="6" identifying="false" name="Categoria_Producto_fk" physicalName="Categoria_Producto_fk" pk-table-ref="TAB61" pkCardinality="2" updateRule="3" >
+<column-mapping id="CMP111" populated="true" UUID="415b0322-14c7-4eae-b0fd-d3799a43b37b" fk-column-ref="COL7" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL62" />
+</relationship>
+<relationship id="REL112" populated="true" UUID="cab4cdbb-fadc-463c-8d30-7fb99a6c4dcb" deferrability="5" deleteRule="3" fk-table-ref="TAB83" fkCardinality="7" identifying="false" name="Ubicacion_producto_Movimiento_fk" physicalName="ubicacion_producto_movimiento_fk" pk-table-ref="TAB66" pkCardinality="2" updateRule="3" >
+<column-mapping id="CMP113" populated="true" UUID="017be271-9f78-46be-af86-32776c0a1e14" fk-column-ref="COL86" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL67" />
+<column-mapping id="CMP114" populated="true" UUID="2f1b90ad-6ecf-47ee-a180-577dd9ad14b8" fk-column-ref="COL85" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL68" />
+</relationship>
+<relationship id="REL115" populated="true" UUID="343fa291-6408-4939-9d2a-1b5e8b6fe295" deferrability="5" deleteRule="3" fk-table-ref="TAB83" fkCardinality="3" identifying="false" name="Venta_Movimiento_fk" physicalName="venta_movimiento_fk" pk-table-ref="TAB73" pkCardinality="3" updateRule="3" >
+<column-mapping id="CMP116" populated="true" UUID="4a23b8fe-a90f-4afd-a77d-46ae38f88bdd" fk-column-ref="COL88" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL74" />
+</relationship>
+</relationships>
+</target-database>
+<ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="true" target-schema="public"></ddl-generator>
+<liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
+<create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
+<play-pen zoom="0.8408964152537146" viewportX="0" viewportY="10" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
+<table-pane table-ref="TAB5" x="350" y="453" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+<table-pane table-ref="TAB17" x="705" y="701" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+<table-pane table-ref="TAB24" x="418" y="694" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+<table-pane table-ref="TAB32" x="70" y="737" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+<table-pane table-ref="TAB41" x="20" y="336" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+<table-pane table-ref="TAB52" x="128" y="135" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+<table-pane table-ref="TAB61" x="26" y="533" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+<table-pane table-ref="TAB66" x="715" y="475" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+<table-pane table-ref="TAB73" x="508" y="42" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+<table-pane table-ref="TAB83" x="580" y="243" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+<table-link relationship-ref="REL102" pkConnection="1.0" fkConnection="0.49523809523809526" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="33"/>
+<table-link relationship-ref="REL104" pkConnection="0.68" fkConnection="0.07103825136612021" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="65"/>
+<table-link relationship-ref="REL94" pkConnection="0.38181818181818183" fkConnection="0.8148148148148148" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="66"/>
+<table-link relationship-ref="REL106" pkConnection="0.7096774193548387" fkConnection="0.3160621761658031" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="72"/>
+<table-link relationship-ref="REL110" pkConnection="1.0" fkConnection="0.7090909090909091" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="33"/>
+<table-link relationship-ref="REL100" pkConnection="0.0625" fkConnection="0.7978142076502732" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="72"/>
+<table-link relationship-ref="REL96" pkConnection="1.0" fkConnection="0.56" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="33"/>
+<table-link relationship-ref="REL98" pkConnection="0.2568306010928962" fkConnection="0.6083333333333333" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="40"/>
+<table-link relationship-ref="REL112" pkConnection="0.43157894736842106" fkConnection="0.5625" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="72"/>
+<table-link relationship-ref="REL108" pkConnection="0.30973451327433627" fkConnection="0.0" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
+<table-link relationship-ref="REL115" pkConnection="0.6153846153846154" fkConnection="0.34444444444444444" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
+</play-pen>
+<critic-manager>
+<critic-grouping platformType="Generic" enabled="true">
+<critic-settings class="ca.sqlpower.architect.ddl.critic.impl.PrimaryKeyCritic" severity="ERROR"/>
+<critic-settings class="ca.sqlpower.architect.ddl.critic.impl.RelationshipMappingTypeCritic" severity="ERROR"/>
+<critic-settings class="ca.sqlpower.architect.ddl.critic.impl.EmptyRelationshipCritic" severity="ERROR"/>
+<critic-settings class="ca.sqlpower.architect.ddl.critic.impl.AlphaNumericNameCritic" severity="WARNING"/>
+<critic-settings class="ca.sqlpower.architect.ddl.critic.impl.AlphaNumericSequenceNameCritic" severity="WARNING"/>
+<critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SetDefaultOnColumnWithNoDefaultCritic" severity="ERROR"/>
+<critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SetNullOnNonNullableColumnCritic" severity="ERROR"/>
+<critic-settings class="ca.sqlpower.architect.ddl.critic.impl.DuplicateNameCritic" severity="WARNING"/>
+</critic-grouping>
+<critic-grouping platformType="DB2" enabled="false">
+<critic-settings class="ca.sqlpower.architect.ddl.critic.impl.DB2UnsupportedFeaturesCritic" severity="ERROR"/>
+</critic-grouping>
+<critic-grouping platformType="H2" enabled="false">
+<critic-settings class="ca.sqlpower.architect.ddl.critic.impl.H2UnsupportedFeaturesCritic" severity="ERROR"/>
+</critic-grouping>
+<critic-grouping platformType="HSQLDB" enabled="false">
+<critic-settings class="ca.sqlpower.architect.ddl.critic.impl.HSQLDBUnsupportedFeaturesCritic" severity="ERROR"/>
+</critic-grouping>
+<critic-grouping platformType="MySQL" enabled="true">
+<critic-settings class="ca.sqlpower.architect.ddl.critic.impl.MySQLCommentCritic" severity="ERROR"/>
+<critic-settings class="ca.sqlpower.architect.ddl.critic.impl.MySQLReservedWordsCritic" severity="ERROR"/>
+<critic-settings class="ca.sqlpower.architect.ddl.critic.impl.MySQLUnsupportedFeaturesCritic" severity="ERROR"/>
+</critic-grouping>
+<critic-grouping platformType="Oracle" enabled="false">
+<critic-settings class="ca.sqlpower.architect.ddl.critic.impl.OraclePhysicalNameCritic" severity="ERROR"/>
+<critic-settings class="ca.sqlpower.architect.ddl.critic.impl.OracleReservedWordsCritic" severity="ERROR"/>
+<critic-settings class="ca.sqlpower.architect.ddl.critic.impl.OracleUnsupportedFeaturesCritic" severity="ERROR"/>
+</critic-grouping>
+<critic-grouping platformType="PostgreSQL" enabled="true">
+<critic-settings class="ca.sqlpower.architect.ddl.critic.impl.PostgreSQLReservedWordsCritic" severity="ERROR"/>
+</critic-grouping>
+<critic-grouping platformType="SQL Server" enabled="false">
+<critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServerUnsupportedFeaturesCritic" severity="ERROR"/>
+<critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServerReservedWordsCritic" severity="ERROR"/>
+</critic-grouping>
+<critic-grouping platformType="SQL Server 2000" enabled="false">
+<critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServer2000UnsupportedFeaturesCritic" severity="ERROR"/>
+</critic-grouping>
+<critic-grouping platformType="SQL Server 2005" enabled="false">
+<critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServer2005UnsupportedFeaturesCritic" severity="ERROR"/>
+</critic-grouping>
+</critic-manager>
+<profiles topNCount="10">
+</profiles>
+
 </architect-project>

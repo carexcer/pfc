@@ -56,6 +56,7 @@ public class InformeMovimientos extends JFrame {
 		//EL CODIGO QUE SE EJECUTA AL ABRIRSE LA VENTANA
 		ArrayList<Movimiento> lista = gen.getListaMovimientos();
 		textAreaAgregados.setText("Obteniendo informacion...");
+		modelo.cargarDatos(lista);
 		
 		int numElementos=lista.size();
 		int numVentas=0;
@@ -64,6 +65,7 @@ public class InformeMovimientos extends JFrame {
 		int cantidadTotalRecibida=0;
 		int diferencia=0;
 		int stock=0;
+		
 		
 		for(int i=0; i<numElementos; i++){
 			if(lista.get(i).getES().equals("E")){
@@ -88,7 +90,6 @@ public class InformeMovimientos extends JFrame {
 		textAreaAgregados.append("Cantidad extra en Stock: " + stock + " (Cantidad recibida - vendida). Esta cantidad es el incremento respecto a la cantidad de stock inicial.\n");
 		textAreaAgregados.append("Para consultar la CANTIDAD EN STOCK REAL en este momento CONSULTE LOS PRODUCTOS.\n");
 		
-		modelo.cargarDatos(lista);
 		
 	}
 

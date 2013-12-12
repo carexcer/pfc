@@ -9,7 +9,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class ModeloTablaProducto extends DefaultTableModel{
 	
-	static String[] cols={"Id_Producto","Id_Categoria","Id_Marca","Nombre","Precio_compra","Precio_venta","Cantidad_Stock","Peso"};	
+	static String[] cols={"Id_Producto","Id_Categoria","Id_Marca","Nombre","¿Primario?","Precio_compra","Precio_venta","Cantidad_Stock","Peso"};	
 	/**
 	 * 
 	 */
@@ -25,6 +25,7 @@ public class ModeloTablaProducto extends DefaultTableModel{
 		fila.add(p.getNombreCategoria());
 		fila.add(p.getNombreMarca());
 		fila.add(p.getNombreProducto());
+		fila.add(p.isPrimario());
 		fila.add(p.getPrecioMedioCompraUnitario());
 		fila.add(p.getPrecioMedioVentaUnitario());
 		fila.add(p.getCantidadStock());
@@ -46,6 +47,7 @@ public class ModeloTablaProducto extends DefaultTableModel{
 			fila.add(lista.get(i).getIdCategoria());
 			fila.add(lista.get(i).getIdMarca());
 			fila.add(lista.get(i).getNombreProducto());
+			fila.add(lista.get(i).isPrimario());
 			fila.add(lista.get(i).getPrecioMedioCompraUnitario());
 			fila.add(lista.get(i).getPrecioMedioVentaUnitario());
 			fila.add(lista.get(i).getCantidadStock());

@@ -64,6 +64,8 @@ public class InformeLotes extends JFrame {
 		//EL CODIGO QUE SE EJECUTA AL ABRIRSE LA VENTANA
 		ArrayList<LoteRecibido> lista = gen.getListaLotesRecibidos();
 		textAreaAgregados.setText("Obteniendo informacion...");
+
+		modelo.cargarDatos(lista);
 		
 		int numElementos=lista.size();
 		int cantidadTotalRecibida=0;
@@ -84,7 +86,6 @@ public class InformeLotes extends JFrame {
 		textAreaAgregados.append("Cantidad Total Recibida: " + cantidadTotalRecibida + " unidades.\n");
 		textAreaAgregados.append("Valor Total de compra: " + valorTotalRecibido + " euros.\n");
 
-		modelo.cargarDatos(lista);
 		
 	}
 		

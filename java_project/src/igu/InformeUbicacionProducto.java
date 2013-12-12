@@ -56,6 +56,7 @@ public class InformeUbicacionProducto extends JFrame {
 		//EL CODIGO QUE SE EJECUTA AL ABRIRSE LA VENTANA
 		ArrayList<UbicacionProducto> lista = gen.getListaUbicacionProducto();
 		textAreaAgregados.setText("Obteniendo informacion...");
+		modelo.cargarDatos(lista);
 		
 		int numElementos=lista.size();
 		int cantidadTotal=0;
@@ -67,7 +68,6 @@ public class InformeUbicacionProducto extends JFrame {
 		textAreaAgregados.append("Numero de ubicaciones-producto: " + numElementos + ".\n");
 		textAreaAgregados.append("Cantidad total (equivalente a Stock Total): " + cantidadTotal+ " unidades.\n");
 
-		modelo.cargarDatos(lista);
 		
 	}
 

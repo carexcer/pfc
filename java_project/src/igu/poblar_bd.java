@@ -677,6 +677,8 @@ public class poblar_bd {
 								numLotesEscritos = gen.escribirLotesRecibidos(null);
 								textArea.append("[Fechas fijas] Escribiendo lotes recibidos...\n");
 								textArea.append("[Fechas fijas] Numero de lotes escritos: " + numLotesEscritos + "\n");
+								gen.escribirProductos(null);
+								textArea.append("ATENCION: se ha actualizado el precio_medio_compra en productos (tanto en memoria como en el fichero de salida).");
 							}
 							else{
 								progressBar.setMaximum(3);
@@ -690,6 +692,8 @@ public class poblar_bd {
 								numLotesEscritos = gen.escribirLotesRecibidos(null);
 								textArea.append("[Fechas variables] Escribiendo lotes recibidos...\n");
 								textArea.append("[Fechas variables] Numero de lotes escritos: " + numLotesEscritos + "\n");
+								gen.escribirProductos(null);
+								textArea.append("ATENCION: se ha actualizado el precio_medio_compra en productos (tanto en memoria como en el fichero de salida).");								
 								progressBar.setValue(3);
 							}
 							//							gen.flushAll();
@@ -1046,10 +1050,10 @@ public class poblar_bd {
 									int numVentasGeneradas = 0;
 
 									numVentasGeneradas = gen.generarVentas(maxCantVenta,maxDiasVendiendose, ventas1Ud, porcentVentas1Ud,chckbxMinimizarMemoria.isSelected());
-									textArea.append("Numero de ventas generadas: "
+									textArea.append("Numero de ventas generadas (y escritas durante la generacion): "
 											+ numVentasGeneradas + "\n");
 									int numVentasEscritas = 0;
-									if(chckbxMinimizarMemoria.isEnabled()==false){
+									if(chckbxMinimizarMemoria.isSelected()==false){
 										numVentasEscritas = gen.escribirVentas(null);
 										textArea.append("Escribiendo ventas...\n");
 										textArea.append("Numero de ventas escritas: "

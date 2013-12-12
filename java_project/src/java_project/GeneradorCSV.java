@@ -171,8 +171,11 @@ public class GeneradorCSV {
 			p.setNombreProducto(campos[3]);
 			p.setPrecioMedioCompraUnitario(Float.valueOf(campos[4]));
 			p.setPrecioMedioVentaUnitario(Float.valueOf(campos[5]));
-			p.setStock(campos[6]);
-			p.setCantidadStock(Math.max(stockMinimo, rand.nextInt(stockMaximoInicial)+1));										//Ponemos una cantidad de stock aleatoria "inicial"
+			p.setCantidadStock(Math.max(stockMinimo, rand.nextInt(stockMaximoInicial+1)));										//Ponemos una cantidad de stock aleatoria "inicial"
+			if(p.getCantidadStock()==0)
+				p.setStock("No");
+			else p.setStock("Si");
+			//p.setStock(campos[6]);
 //			p.setCantidadStock(rand.nextInt(stockMedioInicial));										//Ponemos una cantidad de stock aleatoria "inicial"
 			//			if(campos[6].equals("No"))
 			//				p.setCantidadStock(0);
@@ -199,7 +202,6 @@ public class GeneradorCSV {
 		if(ruta==null)
 			ruta = poblar_bd.getRutaSalida()+"productos_salida.csv" ;
 		int numProdEscritos=0;
-		generarPreciosVentaProducto();
 		File file = new File(ruta);
 		FileOutputStream fsal = new FileOutputStream(file);
 		OutputStreamWriter osw = new OutputStreamWriter(fsal);
@@ -212,6 +214,7 @@ public class GeneradorCSV {
 					+ listaProductos.get(i).getNombreProducto() + ";"
 					+ listaProductos.get(i).getPrecioMedioCompraUnitario() + ";"
 					+ listaProductos.get(i).getPrecioMedioVentaUnitario() + ";"
+					+ listaProductos.get(i).isPrimario() + ";"
 					+ listaProductos.get(i).getStock() + ";"
 					+ listaProductos.get(i).getCantidadStock() + ";"
 					+ listaProductos.get(i).getPeso() + "\n"
@@ -233,7 +236,7 @@ public class GeneradorCSV {
 		if(ruta==null)
 			ruta = poblar_bd.getRutaSalida()+"productos_primarios_salida.csv" ;
 		int numProdEscritos=0;
-		generarPreciosVentaProducto();
+		//generarPreciosVentaProducto();
 		File file = new File(ruta);
 		FileOutputStream fsal = new FileOutputStream(file);
 		OutputStreamWriter osw = new OutputStreamWriter(fsal);
@@ -258,7 +261,7 @@ public class GeneradorCSV {
 		return numProdEscritos;
 
 	}
-
+	
 	/**@return devuelve el numero de precios generados, es decir, uno por cada producto*/
 	public int generarPreciosVentaProducto(){
 
@@ -402,6 +405,9 @@ public class GeneradorCSV {
 
 		for(int i=0; i < numProductos; i++){ //Para cada producto			
 
+			Integer cantidadTotalRecibida=0;//estos dos campos se usan para calcular la cantidad total recibida y el valor total comprado de cada producto, para sacar luego la media
+			float valorTotalComprado= 0;
+			
 			if(listaProductos.get(i).isPrimario()){ /////SI EL PRODUCTO ES PRIMARIO, ES DECIR, ES DE LOS IMPORTANTES
 
 				numPrimarios++;
@@ -476,6 +482,9 @@ public class GeneradorCSV {
 								cantAux += cantRecib;
 								listaProductos.get(i).setCantidadStock(cantAux);
 								listaLotesRecibidos.add(lote1);								//ANYADO LOS LOTES A LA LISTA SI TIENEN FECHA ANTERIOR A LA FECHA LIMITE
+								cantidadTotalRecibida += cantRecib;//Acumulamos para despues calcular la cantidad
+								float auxValorTotalComprado =(cantRecib* precioCompraAux1); 
+								valorTotalComprado += auxValorTotalComprado;
 								numLotesTotalPrimario++;
 								indiceLote++;
 								numLotes++;	
@@ -485,7 +494,10 @@ public class GeneradorCSV {
 								int cantAux = listaProductos.get(i).getCantidadStock();
 								cantAux += cantRecib;
 								listaProductos.get(i).setCantidadStock(cantAux);
-								listaLotesRecibidos.add(lote2);								
+								listaLotesRecibidos.add(lote2);				
+								cantidadTotalRecibida += cantRecib;//Acumulamos para despues calcular la cantidad
+								float auxValorTotalComprado =(cantRecib* precioCompraAux2); 
+								valorTotalComprado += auxValorTotalComprado;
 								numLotesTotalPrimario++;
 								indiceLote++;
 								numLotes++;
@@ -533,6 +545,9 @@ public class GeneradorCSV {
 								cantAux += cantRecib;
 								listaProductos.get(i).setCantidadStock(cantAux);
 								listaLotesRecibidos.add(lote1);								//ANYADO LOTE A LA LISTA SI TIENE FECHA ANTERIOR A FECHA_LIMITE
+								cantidadTotalRecibida += cantRecib;//Acumulamos para despues calcular la cantidad
+								float auxValorTotalComprado =(cantRecib * precioCompraAux1); 
+								valorTotalComprado += auxValorTotalComprado;
 								numLotesTotalPrimario++;
 								indiceLote++;
 								numLotes++;	
@@ -589,6 +604,9 @@ public class GeneradorCSV {
 							cantAux += cantRecib;
 							listaProductos.get(i).setCantidadStock(cantAux);
 							listaLotesRecibidos.add(lote);								//ANYADO LOTE A LA LISTA SI TIENE FECHA ANTERIOR A FECHA_LIMITE
+							cantidadTotalRecibida += cantidad;//Acumulamos para despues calcular la cantidad
+							float auxValorTotalComprado =(cantidad * precioCompraAux); 
+							valorTotalComprado += auxValorTotalComprado;
 							numLotesTotalSecundario++;
 							indiceLote++;
 							numLotes++;	
@@ -600,12 +618,19 @@ public class GeneradorCSV {
 
 				}
 			}
-		}
+			
+			Float media_precio_compra = valorTotalComprado/cantidadTotalRecibida;
+			System.out.println("Precio medio compra antiguo: " + listaProductos.get(i).getPrecioMedioCompraUnitario() +
+					" --- Precio medio compra nuevo: " + media_precio_compra + 
+					" -> Diferencia: " + (Math.abs(listaProductos.get(i).getPrecioMedioCompraUnitario() - media_precio_compra)));
+			listaProductos.get(i).setPrecioMedioCompraUnitario(media_precio_compra);
+		}//fin bucle productos
 
 		System.out.println("Numero de productos primarios: " + numPrimarios);
 		System.out.println("Numero de productos secundarios: " + numSecundarios);
 		System.out.println("Numero de lotes primarios: " + numLotesTotalPrimario);
 		System.out.println("Numero de lotes secundarios: " + numLotesTotalSecundario);
+		
 		setNumLotesPrimarios(numLotesTotalPrimario);
 		setNumLotesSecundarios(numLotesTotalSecundario);
 		return numLotes;	
@@ -684,6 +709,9 @@ public class GeneradorCSV {
 
 		for(int i=0; i < numProductos; i++){ //Para cada producto			
 
+			Integer cantidadTotalRecibida=0;//estos dos campos se usan para calcular la cantidad total recibida y el valor total comprado de cada producto, para sacar luego la media
+			float valorTotalComprado= 0;
+			
 			progreso.incrementar();
 			if(listaProductos.get(i).isPrimario()==true){ /////SI EL PRODUCTO ES PRIMARIO, ES DECIR, ES DE LOS IMPORTANTES
 
@@ -722,7 +750,7 @@ public class GeneradorCSV {
 					float precioCompraAux = listaProductos.get(i).getPrecioMedioCompraUnitario()*porcent; //Aplica el porcentaje de variabilidad al precio
 					precioCompraAux = (float) (Math.rint(precioCompraAux*100)/100); //Formatea el precio a 2 decimales
 					lote.setPrecioCompraUnitario(precioCompraAux);
-
+					
 					lote.setIdLoteRecibido(numLotes);
 					lote.setStockProductoAux(listaProductos.get(i).getCantidadStock());	//ESTABLEZCO EL ATRIBUTO AUXILIAR stockProductoAux, que utilizara para generar las ventas
 
@@ -732,6 +760,9 @@ public class GeneradorCSV {
 						cantAux += cantRecib;
 						listaProductos.get(i).setCantidadStock(cantAux);
 						listaLotesRecibidos.add(lote);								//ANYADO LOTE A LA LISTA SI TIENE FECHA ANTERIOR A FECHA_LIMITE
+						cantidadTotalRecibida += cantidad;//Acumulamos para despues calcular la cantidad
+						float auxValorTotalComprado =(cantidad * precioCompraAux); 
+						valorTotalComprado += auxValorTotalComprado;
 						numLotesTotalPrimario++;
 						numLotes++;	
 						progreso.incrementar();
@@ -784,6 +815,9 @@ public class GeneradorCSV {
 						cantAux += cantRecib;
 						listaProductos.get(i).setCantidadStock(cantAux);
 						listaLotesRecibidos.add(lote);								//ANYADO LOTE A LA LISTA SI TIENE FECHA ANTERIOR A FECHA_LIMITE
+						cantidadTotalRecibida += cantidad;//Acumulamos para despues calcular la cantidad
+						float auxValorTotalComprado =(cantidad * precioCompraAux); 
+						valorTotalComprado += auxValorTotalComprado;
 						numLotesTotalSecundario++;
 						numLotes++;	
 						progreso.incrementar();
@@ -793,7 +827,12 @@ public class GeneradorCSV {
 				JOptionPane.showMessageDialog(poblar_bd.getFrame(), "Se ha producido un error generando los lotes. Algun producto no es primario ni secundario.", null, JOptionPane.ERROR_MESSAGE);
 				return -1;
 			}
-		}
+			Float media_precio_compra = valorTotalComprado/cantidadTotalRecibida;
+			System.out.println("Precio medio compra antiguo: " + listaProductos.get(i).getPrecioMedioCompraUnitario() +
+					" --- Precio medio compra nuevo: " + media_precio_compra + 
+					" -> Diferencia: " + (Math.abs(listaProductos.get(i).getPrecioMedioCompraUnitario() - media_precio_compra)));
+			listaProductos.get(i).setPrecioMedioCompraUnitario(media_precio_compra);
+		}//fin bucle productos
 
 		System.out.println("Numero de productos primarios: " + numPrimarios);
 		System.out.println("Numero de productos secundarios: " + numSecundarios);
@@ -961,7 +1000,8 @@ public class GeneradorCSV {
 		Random randDia = new Random();
 		//		int cantStock=0;
 		//		ArrayList listaAuxiliarProductos = new ArrayList<>();
-		HashMap<Integer, Integer> mapAuxProductos = new HashMap<Integer, Integer>();
+		HashMap<Integer, Integer> mapAuxCantidadProductos = new HashMap<Integer, Integer>();//HashMap para calcular la cantidad total vendida de cada producto
+		HashMap<Integer, Float> mapAuxCantidadPorPrecioProductos = new HashMap<Integer, Float>();//HashMap para calcular cantidadVendidad*PrecioVenta de cada producto, para luego calcular la media del precio de venta del producto
 
 		for(int i=0; i<numLotes; i++){		
 
@@ -1012,12 +1052,12 @@ public class GeneradorCSV {
 
 					v.setCantidadVendida(cantidadVendida);
 					int idProd = listaLotesRecibidos.get(i).getIdProducto();
-					if(mapAuxProductos.containsKey(idProd)){			//Si el producto ya estaba en la lista auxiliar, actualizo el valor de la cantidad vendida
-						int cantVendidaAux = mapAuxProductos.get(idProd);
+					if(mapAuxCantidadProductos.containsKey(idProd)){			//Si el producto ya estaba en la lista auxiliar, actualizo el valor de la cantidad vendida
+						int cantVendidaAux = mapAuxCantidadProductos.get(idProd);
 						cantVendidaAux += cantidadVendida;
-						mapAuxProductos.put(idProd, cantVendidaAux);	//Anyado el par (id_producto, acumuladoVenta) a una lista auxiliar
+						mapAuxCantidadProductos.put(idProd, cantVendidaAux);	//Anyado el par (id_producto, acumuladoVenta) a una lista auxiliar
 					}else{												//Si el producto no estaba en la lista, lo meto con el valor de cantidad directamente
-						mapAuxProductos.put(idProd, cantidadVendida);	//Anyado el par (id_producto, acumuladoVenta) a una lista auxiliar
+						mapAuxCantidadProductos.put(idProd, cantidadVendida);	//Anyado el par (id_producto, acumuladoVenta) a una lista auxiliar
 					}
 
 					v.setIdProducto(idProd); //Id del producto vendido en la venta
@@ -1038,6 +1078,16 @@ public class GeneradorCSV {
 					precioVenta -= 0.05;
 					v.setPrecioVentaUnitario(precioVenta);
 
+					//Para calcular el precio medio de venta, acumulamos el precioVenta*CantidadVendida de cada producto
+					Float auxCantidadPorPrecio = cantidadVendida * precioVenta;
+					if(mapAuxCantidadPorPrecioProductos.containsKey(idProd)){
+						Float acumuladoCantidadPorPrecio = mapAuxCantidadPorPrecioProductos.get(idProd);
+						acumuladoCantidadPorPrecio += auxCantidadPorPrecio;
+						mapAuxCantidadPorPrecioProductos.put(idProd, acumuladoCantidadPorPrecio);
+					}else{
+						mapAuxCantidadPorPrecioProductos.put(idProd, auxCantidadPorPrecio);
+					}
+					
 					listaVentas.add(v);
 					indiceVenta++;
 					numVentasGeneradas++;
@@ -1067,7 +1117,7 @@ public class GeneradorCSV {
 
 			}
 
-		}
+		}//fin bucle lotes
 		w.close();//cierro el fichero de ventas que he abierto en caso de minimizacion de memoria
 		if(minimizacionMemoria==true){
 			System.out.println("NUMERO DE VENTAS ESCRITAS CON MINIMIZACION DE MEMORIA: " + numVentasEscritas);
@@ -1079,7 +1129,7 @@ public class GeneradorCSV {
 		int numProd = listaProductos.size();
 		for(int i=0; i<numProd; i++){
 
-			Integer cantVend = mapAuxProductos.get(listaProductos.get(i).getIdProducto());
+			Integer cantVend = mapAuxCantidadProductos.get(listaProductos.get(i).getIdProducto());
 			if(cantVend!=null){
 				int cantStock = listaProductos.get(i).getCantidadStock();
 				cantStock -= cantVend;
@@ -1088,7 +1138,17 @@ public class GeneradorCSV {
 					listaProductos.get(i).setStock("No");
 				else listaProductos.get(i).setStock("Si");
 			}
-		}
+			//Actualizamos el precioMedioVenta unitario...
+			Float cantPorPrecio = mapAuxCantidadPorPrecioProductos.get(listaProductos.get(i).getIdProducto());
+			if(cantPorPrecio!=null){
+				Float mediaPrecioVenta = cantPorPrecio/cantVend;
+				System.out.println("Precio medio venta antiguo: " + listaProductos.get(i).getPrecioMedioVentaUnitario() + 
+						" --- Precio medio venta nuevo: " + mediaPrecioVenta + 
+						" --- Diferencia: " + (listaProductos.get(i).getPrecioMedioVentaUnitario()-mediaPrecioVenta));
+				
+				listaProductos.get(i).setPrecioMedioVentaUnitario(mediaPrecioVenta);
+			}
+		}//fin bucle productos
 
 		if(minimizacionMemoria==true)
 			progreso.setTextStopped();
@@ -1214,6 +1274,8 @@ public class GeneradorCSV {
 
 		for(int i=0; i<numProd; i++){
 
+			ArrayList<Integer> integridadUbicaciones = new ArrayList<Integer>(); /*Array con los idUbicacion del producto para que no haya dos ubicaciones iguales 
+			para el mismo producto, ya que no cumpliria la restriccion de integridad porque en la BD la clave primara es el par (idProd, idUbi)*/
 			Integer idProd = listaProductos.get(i).getIdProducto();
 			Integer cantProd = listaProductos.get(i).getCantidadStock();
 			Random randUbi = new Random();
@@ -1250,6 +1312,10 @@ public class GeneradorCSV {
 				UbicacionProducto up = new UbicacionProducto();
 				up.setIdProducto(idProd);
 				Integer idUbi = randUbi.nextInt(numUbi)+1;
+				while(integridadUbicaciones.contains(idUbi)==true){ //Comprobamos que el idUbi no se haya generado ya para este producto
+					idUbi = randUbi.nextInt(numUbi)+1;
+				}
+				integridadUbicaciones.add(idUbi);
 				up.setIdUbicacion(idUbi); //Asi, un producto solo va a estar en una ubicacion, o sea que no todos los almacenes tendran de todo
 				up.setCantidad(cantidades.get(j));
 				listaUbicacionProducto.add(up);

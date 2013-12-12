@@ -56,6 +56,7 @@ public class InformeVentas extends JFrame {
 		//EL CODIGO QUE SE EJECUTA AL ABRIRSE LA VENTANA
 		ArrayList<Venta> lista = gen.getListaVentas();
 		textAreaAgregados.setText("Obteniendo informacion...");
+		modelo.cargarDatos(lista);
 		
 		int numElementos=lista.size();
 		int cantidadTotalVendida=0;
@@ -70,7 +71,6 @@ public class InformeVentas extends JFrame {
 		textAreaAgregados.append("Cantidad total vendida: " + cantidadTotalVendida + " unidades.\n");
 		textAreaAgregados.append("Valor total de ventas: " + valorTotalVendido + " euros.\n");
 
-		modelo.cargarDatos(lista);
 		
 		
 	}

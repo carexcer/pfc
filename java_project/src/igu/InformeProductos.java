@@ -56,6 +56,7 @@ public class InformeProductos extends JFrame {
 		//EL CODIGO QUE SE EJECUTA AL ABRIRSE LA VENTANA
 		ArrayList<Producto> lista = gen.getListaProductos();
 		textAreaAgregados.setText("Obteniendo informacion...");
+		modelo.cargarDatos(lista);
 		
 		int numElementos=lista.size();
 		float pesoTotal=0;
@@ -64,6 +65,7 @@ public class InformeProductos extends JFrame {
 		float valorVentaTotal=0;
 		int numPrimarios=0;
 		int numSecundarios=0;
+		
 		
 		for(int i=0; i<numElementos; i++){
 			pesoTotal += lista.get(i).getPeso() * lista.get(i).getCantidadStock();
@@ -85,7 +87,6 @@ public class InformeProductos extends JFrame {
 		textAreaAgregados.append("Peso total: " +  pesoTotal + " kg.\n");
 		textAreaAgregados.append("NOTA: La cantidad en Stock que figura en este informe es la ACTUAL. Puede variar dependiendo de si se ejecuta al principio o al final.\n");
 
-		modelo.cargarDatos(lista);
 		
 	}
 

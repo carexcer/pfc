@@ -60,6 +60,7 @@ CREATE TABLE public.Producto (
                 Nombre_Producto VARCHAR(128) NOT NULL,
                 Precio_medio_compra_unitario REAL,
                 Precio_medio_venta_unitario REAL NOT NULL,
+                Es_primario BOOLEAN NOT NULL,
                 Stock VARCHAR(2) NOT NULL,
                 Cantidad_stock INTEGER,
                 Peso REAL,

@@ -1290,13 +1290,17 @@ public class GeneradorCSV {
 					prodEnAlm=k;//Actualizo el numero de ubicaciones con las que finalmente han sido, es decir, el numero de ubicaciones real en las que esta el producto (+1 por la de fuera del bucle)
 					break;
 				}
-//				int auxSeed= (int) Math.rint(auxCantProd/2)+1;
+				//				int auxSeed= (int) Math.rint(auxCantProd/2)+1;
 				int cant = randCant.nextInt(auxCantProd)+1;//genero una cantidad aleatoria en función de la cantidad que queda
 				cantidades.add(cant);
 				auxCantProd-=cant;//resto la cantidad añadida al auxiliar de cantidad de producto total
 				k++;
 			}
-			
+
+			if(cantProd==0){//Si no hay stock del producto, hay que asignarle igualmente alguna ubicacion.
+				prodEnAlm=1;//Por lo que ponemos en prodEnAlm, que es el numero diferente de ubicaciones en las que está (o ha estado en este caso) el producto a 1
+			}
+
 			if(auxCantProd>0){
 				cantidades.add(auxCantProd);//El resto de la cantidad de producto lo añado en la ultima ubicacion
 				prodEnAlm++;
@@ -1317,7 +1321,10 @@ public class GeneradorCSV {
 				}
 				integridadUbicaciones.add(idUbi);
 				up.setIdUbicacion(idUbi); //Asi, un producto solo va a estar en una ubicacion, o sea que no todos los almacenes tendran de todo
-				up.setCantidad(cantidades.get(j));
+				if(cantProd==0)//Si es un producto que no tiene stock, se pone el stock a 0, pero tiene ubicacion asignada
+					up.setCantidad(0); 
+				else up.setCantidad(cantidades.get(j));
+
 				listaUbicacionProducto.add(up);
 				numUbiProdGeneradas++;
 				j++;

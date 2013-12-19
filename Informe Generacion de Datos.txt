@@ -1,11 +1,11 @@
 Probabilidades:
 10	7	7	7	7	7	10	8	7	8	10	12
 Años: 2011-2013 completos
-Stock min: 6. Stock Max. 12;
+Stock min: 0. Stock Max. 12;
 Max ubic-prod = 3.
 %prod primarios: 20%.
 %movimientos primarios: 80%.
-crecimiento anual: 6%.
+crecimiento anual: 7%.
 Max dias en venta: 45.
 Max Cant/venta: 6.
 %ventas 1 ud: 20%.
@@ -15,35 +15,35 @@ Generando precios de venta...
 Numero de precios generados: 5972 (1 por producto).
 Escribiendo productos...
 Escritos 5972 productos.
-Tiempo ejecucion: 0.624 segundos.
+Tiempo ejecucion: 0.211 segundos.
 ********************** GENERACION DE PRODUCTOS TERMINADA *******************
 [Fechas variables] Generando lotes recibidos...
 [Fechas variables] Lotes por producto/año: 30
-[Fechas variables] Numero de lotes generados: 68235
+[Fechas variables] Numero de lotes generados: 69911
 [Fechas variables] Escribiendo lotes recibidos...
-[Fechas variables] Numero de lotes escritos: 68235
-Tiempo ejecucion: 1.7 segundos.
+[Fechas variables] Numero de lotes escritos: 69911
+ATENCION: se ha actualizado el precio_medio_compra en productos (tanto en memoria como en el fichero de salida).Tiempo ejecucion: 1.33 segundos.
 *********************** GENERACION DE LOTES COMPLETADA *******************
 Maxima cantidad por venta: 6
 Max. dias vendiendose: 45
 Generando ventas... este proceso puede tardar unos minutos...
-Numero de ventas escritas (CON MINIMIZACION DE MEMORIA): 448042
-Numero de ventas generadas: 448042
-Tiempo ejecucion: 6.1 segundos.
+Numero de ventas generadas (y escritas durante la generacion): 444531
+Escribiendo ventas...
+Numero de ventas escritas: 444531
+Tiempo ejecucion: 5.584 segundos.
 Se ha modificado y escrito en fichero LA CANTIDAD DE STOCK (tabla producto).
 Numero de productos escritos: 5972
 *********************** GENERACION DE VENTAS COMPLETADA *******************
 Leyendo ubicaciones-producto...
 Generando ubicaciones-producto...
-Numero de ubicaciones-producto generadas: 10789
-Numero de ubicaciones-producto escritas: 10789
-Tiempo ejecucion: 0.063
+Numero de ubicaciones-producto generadas: 10217
+Numero de ubicaciones-producto escritas: 10217
+Tiempo ejecucion: 0.088
 ******************* GENERACION DE UBICACION-PRODUCTO TERMINADA **********************
 Leyendo ubicaciones-producto...
 Generando movimientos...
-[Con minimizacion memoria] Numero de ventas leidas de fichero: 448042
-[Con minimizacion memoria] Numero de movimientos generados: 516277
-[Con minimizacion memoria] Numero de movimientos escritos: 516277
-Número de movimientos generados: 516277
-Tiempo ejecucion: 82.588
+Número de movimientos generados: 514442
+Escribiendo movimientos...
+Número de movimientos escritos: 514442
+Tiempo ejecucion: 28.642
 ******************* GENERACION DE MOVIMIENTOS TERMINADA **********************

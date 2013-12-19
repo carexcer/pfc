@@ -115,12 +115,12 @@
       <yloc>422</yloc>
       </entry>
     <entry>
-      <name>Transformacion Dimension Tiempo</name>
+      <name>Transformacion Dimension Fecha</name>
       <description/>
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>${Internal.Job.Filename.Directory}&#47;Dimension Tiempo.ktr</filename>
+      <filename>${Internal.Job.Filename.Directory}&#47;Dimension Fecha.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -191,7 +191,7 @@
     </hop>
     <hop>
       <from>Transformacion Dimension Producto</from>
-      <to>Transformacion Dimension Tiempo</to>
+      <to>Transformacion Dimension Fecha</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -199,7 +199,7 @@
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>Transformacion Dimension Tiempo</from>
+      <from>Transformacion Dimension Fecha</from>
       <to>Transformation Dimension Almacen</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>

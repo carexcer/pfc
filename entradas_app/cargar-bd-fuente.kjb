@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>trabajo-prueba</name>
+  <name>cargar-bd-fuente</name>
     <description/>
     <extended_description/>
     <job_version/>
   <directory>&#47;</directory>
   <created_user>-</created_user>
-  <created_date>2013&#47;11&#47;29 20:54:34.124</created_date>
+  <created_date>2013&#47;12&#47;29 19:16:27.991</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2013&#47;11&#47;29 20:54:34.124</modified_date>
+  <modified_date>2013&#47;12&#47;29 19:16:27.991</modified_date>
     <parameters>
     </parameters>
   <connection>
@@ -28,6 +28,28 @@
       <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>500</attribute></attribute>
       <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
       <attribute><code>PORT_NUMBER</code><attribute>50006</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
+    <name>conexion-fuente</name>
+    <server>localhost</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>bd_almacen</database>
+    <port>5432</port>
+    <username>carexcer</username>
+    <password>Encrypted 2be98afc86aa7f2e4f940fe238fcbf782</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>5432</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>N</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
     </attributes>
   </connection>
     <slaveservers>
@@ -69,40 +91,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>71</xloc>
-      <yloc>60</yloc>
-      </entry>
-    <entry>
-      <name>Transformacion Dimension Producto</name>
-      <description/>
-      <type>TRANS</type>
-      <specification_method>filename</specification_method>
-      <trans_object_id/>
-      <filename>${Internal.Job.Filename.Directory}&#47;Dimension Producto.ktr</filename>
-      <transname/>
-      <arg_from_previous>N</arg_from_previous>
-      <params_from_previous>N</params_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <clear_rows>N</clear_rows>
-      <clear_files>N</clear_files>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <loglevel>Basic</loglevel>
-      <cluster>N</cluster>
-      <slave_server_name/>
-      <set_append_logfile>N</set_append_logfile>
-      <wait_until_finished>Y</wait_until_finished>
-      <follow_abort_remote>N</follow_abort_remote>
-      <create_parent_folder>N</create_parent_folder>
-      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>437</xloc>
-      <yloc>60</yloc>
+      <xloc>79</xloc>
+      <yloc>127</yloc>
       </entry>
     <entry>
       <name>Success</name>
@@ -111,16 +101,16 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>281</xloc>
-      <yloc>513</yloc>
+      <xloc>1031</xloc>
+      <yloc>123</yloc>
       </entry>
     <entry>
-      <name>Transformacion Dimension Fecha</name>
+      <name>Cargar marcas, categorias, proveedores y almacenes</name>
       <description/>
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>${Internal.Job.Filename.Directory}&#47;Dimension Fecha.ktr</filename>
+      <filename>C:\Users\Carlos\Documents\pfc\pfc\entradas_app\cargar-marcas-categorias-proveedores-almacenes-en-fuente.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -143,16 +133,16 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>283</xloc>
-      <yloc>173</yloc>
+      <xloc>293</xloc>
+      <yloc>220</yloc>
       </entry>
     <entry>
-      <name>Transformation Dimension Almacen</name>
+      <name>Cargar productos y ubicaciones</name>
       <description/>
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>${Internal.Job.Filename.Directory}&#47;Dimension Almacen.ktr</filename>
+      <filename>C:\Users\Carlos\Documents\pfc\pfc\entradas_app\cargar-productos-ubicaciones-en-fuente.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -175,16 +165,42 @@
       </parameters>      <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>281</xloc>
-      <yloc>289</yloc>
+      <xloc>507</xloc>
+      <yloc>89</yloc>
       </entry>
     <entry>
-      <name>Vaciar DW</name>
+      <name>Vaciar todas las tablas</name>
+      <description/>
+      <type>SQL</type>
+      <sql>TRUNCATE movimiento CASCADE ; 
+TRUNCATE lote_recibido CASCADE;
+TRUNCATE venta CASCADE;
+TRUNCATE ubicacion_producto CASCADE;
+TRUNCATE ubicacion CASCADE;
+TRUNCATE producto CASCADE;
+TRUNCATE categoria CASCADE;
+TRUNCATE marca CASCADE;
+TRUNCATE almacen CASCADE;
+TRUNCATE proveedor CASCADE;
+</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename>C:\Users\Carlos\Documents\pfc\pfc\borrar_tablas.sql</sqlfilename>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>conexion-fuente</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>244</xloc>
+      <yloc>83</yloc>
+      </entry>
+    <entry>
+      <name>Cargar lotes, ventas y ubicacion_producto</name>
       <description/>
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>${Internal.Job.Filename.Directory}&#47;Vaciar DW.ktr</filename>
+      <filename>${Internal.Job.Filename.Directory}&#47;cargar-lotes-ventas-ubicacion_producto-en-fuente.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -205,16 +221,57 @@
       <create_parent_folder>N</create_parent_folder>
       <parameters>        <pass_all_parameters>Y</pass_all_parameters>
       </parameters>      <parallel>N</parallel>
-      <draw>Y</draw>
+      <draw>N</draw>
       <nr>0</nr>
-      <xloc>186</xloc>
-      <yloc>62</yloc>
+      <xloc>652</xloc>
+      <yloc>230</yloc>
+      </entry>
+    <entry>
+      <name>Cargar movimientos</name>
+      <description/>
+      <type>TRANS</type>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>${Internal.Job.Filename.Directory}&#47;cargar-movimientos-en-fuente.ktr</filename>
+      <transname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <parameters>        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>      <parallel>N</parallel>
+      <draw>N</draw>
+      <nr>0</nr>
+      <xloc>851</xloc>
+      <yloc>172</yloc>
       </entry>
   </entries>
   <hops>
     <hop>
-      <from>Transformacion Dimension Producto</from>
-      <to>Transformacion Dimension Fecha</to>
+      <from>Cargar marcas, categorias, proveedores y almacenes</from>
+      <to>Cargar productos y ubicaciones</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>START</from>
+      <to>Vaciar todas las tablas</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -222,8 +279,8 @@
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>Transformacion Dimension Fecha</from>
-      <to>Transformation Dimension Almacen</to>
+      <from>Vaciar todas las tablas</from>
+      <to>Cargar marcas, categorias, proveedores y almacenes</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -231,31 +288,13 @@
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>Transformation Dimension Almacen</from>
+      <from>Cargar productos y ubicaciones</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
-      <unconditional>Y</unconditional>
-    </hop>
-    <hop>
-      <from>START</from>
-      <to>Vaciar DW</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>Y</unconditional>
-    </hop>
-    <hop>
-      <from>Vaciar DW</from>
-      <to>Transformacion Dimension Producto</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>Y</unconditional>
+      <unconditional>N</unconditional>
     </hop>
   </hops>
   <notepads>

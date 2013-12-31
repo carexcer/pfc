@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -40,6 +41,7 @@ public class GeneradorCSV {
 	int numLotesPrimarios=0;
 	int numLotesSecundarios=0;
 	ProbabilidadEstacional probabilidades = new ProbabilidadEstacional();
+	
 
 	public GeneradorCSV(){
 		this.listaCategorias = new ArrayList<Categoria>();
@@ -1387,6 +1389,7 @@ public class GeneradorCSV {
 			mov.setIdMovimiento(numMovimientos);
 			mov.setIdProducto(lote.getIdProducto());
 
+			//TODO
 			int numUbiProd = listaUbicacionProducto.size();
 			for(int j=0; j<numUbiProd; j++){
 				if(listaUbicacionProducto.get(j).getIdProducto()==lote.getIdProducto()){
@@ -1694,6 +1697,87 @@ public class GeneradorCSV {
 		return numMovEscritos;
 	}
 
+	
+	public boolean guardarProyecto(String rutaProyecto){
+		
+		progreso.setTextRunning("Guardando...");
+		ArrayList proyecto = new ArrayList<>();
+			proyecto.add(listaProductos.size());
+		proyecto.addAll(listaProductos);
+			proyecto.add(listaLotesRecibidos.size());
+		proyecto.addAll(listaLotesRecibidos);
+			proyecto.add(listaVentas.size());
+		proyecto.addAll(listaVentas);
+			proyecto.add(listaUbicacionProducto.size());
+		proyecto.addAll(listaUbicacionProducto);
+			proyecto.add(listaMovimientos.size());
+		proyecto.addAll(listaMovimientos);
+		DatosProyecto datosProyecto = new DatosProyecto();
+		try {
+			datosProyecto.escribirDatosXML(proyecto, rutaProyecto);
+			progreso.setTextStopped();
+		} catch (FileNotFoundException e) {
+			return false;
+		}
+		
+		return true;
+		
+	}
+public boolean cargarProyecto(String rutaProyecto){
+		
+		progreso.setTextRunning("Cargando...");
+		ArrayList proyecto = new ArrayList<>();
+		DatosProyecto datosProyecto = new DatosProyecto();
+		try {
+			proyecto = datosProyecto.leerDatosXML(rutaProyecto);
+		} catch (FileNotFoundException e) {
+			return false;
+		} catch (IOException e) {
+			progreso.setTextStopped();
+			return false;
+		}
+		int numProd = (int) proyecto.remove(0);
+		while(numProd!=0){
+			listaProductos.add((Producto) proyecto.remove(0));
+			numProd--;
+		}
+		poblar_bd.actualizarEstado();
+		poblar_bd.getTextArea().append("Cargada la lista de productos.\n");
+		int numLotes= (int) proyecto.remove(0);
+		while(numLotes!=0){
+			listaLotesRecibidos.add((LoteRecibido) proyecto.remove(0));
+			numLotes--;
+		}
+		poblar_bd.actualizarEstado();
+		poblar_bd.getTextArea().append("Cargada la lista de lotes recibidos.\n");
+		int numVentas= (int) proyecto.remove(0);
+		while(numVentas!=0){
+			listaVentas.add((Venta) proyecto.remove(0));
+			numVentas--;
+		}
+		poblar_bd.actualizarEstado();
+		poblar_bd.getTextArea().append("Cargada la lista de ventas.\n");
+		int numUbiProd= (int) proyecto.remove(0);
+		while(numUbiProd!=0){
+			listaUbicacionProducto.add((UbicacionProducto) proyecto.remove(0));
+			numUbiProd--;
+		}
+		poblar_bd.actualizarEstado();
+		poblar_bd.getTextArea().append("Cargada la lista de ubicacion-producto.\n");
+		int numMov= (int) proyecto.remove(0);
+		while(numMov!=0){
+			listaMovimientos.add((Movimiento) proyecto.remove(0));
+			numMov--;
+		}
+		poblar_bd.actualizarEstado();
+		poblar_bd.getTextArea().append("Cargada la lista de movimientos.\n");
+		progreso.setTextStopped();
+		
+		return true;
+		
+	}
+	
+	
 	/*------------------------------------------------OTROS----------------------------------------------------------*/
 
 	public void leerMarcas(String ruta) throws IOException{

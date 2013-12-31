@@ -11,6 +11,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
 
@@ -22,6 +23,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -38,6 +40,7 @@ import javax.swing.JTextArea;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.toedter.calendar.JDateChooser;
 
@@ -50,10 +53,11 @@ public class poblar_bd {
 	Calendar fechaLimiteDefecto;
 	static String comandoAmpliacionMemoria;
 	JCheckBox chckbxMinimizarMemoria;
-	JTextArea textAreaEstado;
+	static JTextArea textAreaEstado;
 	JSpinner spinnerMaxUbicacionesDistintas;
 	static public JProgressBar progressBar;
 	static GeneradorCSV gen = new GeneradorCSV();
+
 
 	/**
 	 * Launch the application.
@@ -119,17 +123,17 @@ public class poblar_bd {
 		gridBagLayout.rowWeights = new double[]{0.0, 1.0, 1.0, Double.MIN_VALUE};
 		frmPobladorDeTablas.getContentPane().setLayout(gridBagLayout);
 
-			
+
 		fechaLimiteDefecto = Calendar.getInstance();
 		fechaLimiteDefecto.set(2013, Calendar.JUNE, 30);
 
 		final JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setAutoscrolls(true);
-//		scrollPane.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {  
-//			public void adjustmentValueChanged(AdjustmentEvent e) {  
-//				e.getAdjustable().setValue(e.getAdjustable().getMaximum());  
-//			}
-//		});
+		//		scrollPane.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {  
+		//			public void adjustmentValueChanged(AdjustmentEvent e) {  
+		//				e.getAdjustable().setValue(e.getAdjustable().getMaximum());  
+		//			}
+		//		});
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		GridBagConstraints gbc_tabbedPane = new GridBagConstraints();
@@ -164,14 +168,14 @@ public class poblar_bd {
 		gbl_panelProductos.columnWeights = new double[]{1.0, 1.0, 0.0};
 		gbl_panelProductos.rowWeights = new double[]{1.0, 0.0, 1.0, Double.MIN_VALUE};
 		panelProductos.setLayout(gbl_panelProductos);
-		
+
 		JLabel lblStockMinimo = new JLabel("Stock Minimo");
 		GridBagConstraints gbc_lblStockMinimo = new GridBagConstraints();
 		gbc_lblStockMinimo.insets = new Insets(0, 0, 5, 5);
 		gbc_lblStockMinimo.gridx = 1;
 		gbc_lblStockMinimo.gridy = 0;
 		panelProductos.add(lblStockMinimo, gbc_lblStockMinimo);
-		
+
 		final JSpinner spinnerStockMinimo = new JSpinner();
 		spinnerStockMinimo.setModel(new SpinnerNumberModel(0, 0, 100, 1));
 		GridBagConstraints gbc_spinnerStockMinimo = new GridBagConstraints();
@@ -213,37 +217,37 @@ public class poblar_bd {
 		gbc_btnLeerProductos.gridx = 0;
 		gbc_btnLeerProductos.gridy = 0;
 		panelProductos.add(btnLeerProductos, gbc_btnLeerProductos);
-						
-								JLabel lblStockMaximoInicial = new JLabel("Stock Maximo ");
-								GridBagConstraints gbc_lblStockMaximoInicial = new GridBagConstraints();
-								gbc_lblStockMaximoInicial.insets = new Insets(0, 0, 5, 5);
-								gbc_lblStockMaximoInicial.gridx = 1;
-								gbc_lblStockMaximoInicial.gridy = 1;
-								panelProductos.add(lblStockMaximoInicial, gbc_lblStockMaximoInicial);
-				
-						final JSpinner spinnerStockMaximoProducto = new JSpinner();
-						GridBagConstraints gbc_spinnerStockMaximoProducto = new GridBagConstraints();
-						gbc_spinnerStockMaximoProducto.fill = GridBagConstraints.HORIZONTAL;
-						gbc_spinnerStockMaximoProducto.insets = new Insets(0, 0, 5, 0);
-						gbc_spinnerStockMaximoProducto.gridx = 2;
-						gbc_spinnerStockMaximoProducto.gridy = 1;
-						panelProductos.add(spinnerStockMaximoProducto, gbc_spinnerStockMaximoProducto);
-						spinnerStockMaximoProducto.setModel(new SpinnerNumberModel(12, 1, 100, 1));
-		
-				JLabel lblPorcentajeProdPrimarios = new JLabel("% Prod. Primarios");
-				GridBagConstraints gbc_lblPorcentajeProdPrimarios = new GridBagConstraints();
-				gbc_lblPorcentajeProdPrimarios.insets = new Insets(0, 0, 0, 5);
-				gbc_lblPorcentajeProdPrimarios.gridx = 1;
-				gbc_lblPorcentajeProdPrimarios.gridy = 2;
-				panelProductos.add(lblPorcentajeProdPrimarios, gbc_lblPorcentajeProdPrimarios);
-				
-						final JSpinner spinnerPorcentajePrimarios = new JSpinner();
-						spinnerPorcentajePrimarios.setModel(new SpinnerNumberModel(20, 0, 100, 1));
-						GridBagConstraints gbc_spinnerPorcentajePrimarios = new GridBagConstraints();
-						gbc_spinnerPorcentajePrimarios.fill = GridBagConstraints.HORIZONTAL;
-						gbc_spinnerPorcentajePrimarios.gridx = 2;
-						gbc_spinnerPorcentajePrimarios.gridy = 2;
-						panelProductos.add(spinnerPorcentajePrimarios, gbc_spinnerPorcentajePrimarios);
+
+		JLabel lblStockMaximoInicial = new JLabel("Stock Maximo ");
+		GridBagConstraints gbc_lblStockMaximoInicial = new GridBagConstraints();
+		gbc_lblStockMaximoInicial.insets = new Insets(0, 0, 5, 5);
+		gbc_lblStockMaximoInicial.gridx = 1;
+		gbc_lblStockMaximoInicial.gridy = 1;
+		panelProductos.add(lblStockMaximoInicial, gbc_lblStockMaximoInicial);
+
+		final JSpinner spinnerStockMaximoProducto = new JSpinner();
+		GridBagConstraints gbc_spinnerStockMaximoProducto = new GridBagConstraints();
+		gbc_spinnerStockMaximoProducto.fill = GridBagConstraints.HORIZONTAL;
+		gbc_spinnerStockMaximoProducto.insets = new Insets(0, 0, 5, 0);
+		gbc_spinnerStockMaximoProducto.gridx = 2;
+		gbc_spinnerStockMaximoProducto.gridy = 1;
+		panelProductos.add(spinnerStockMaximoProducto, gbc_spinnerStockMaximoProducto);
+		spinnerStockMaximoProducto.setModel(new SpinnerNumberModel(12, 1, 100, 1));
+
+		JLabel lblPorcentajeProdPrimarios = new JLabel("% Prod. Primarios");
+		GridBagConstraints gbc_lblPorcentajeProdPrimarios = new GridBagConstraints();
+		gbc_lblPorcentajeProdPrimarios.insets = new Insets(0, 0, 0, 5);
+		gbc_lblPorcentajeProdPrimarios.gridx = 1;
+		gbc_lblPorcentajeProdPrimarios.gridy = 2;
+		panelProductos.add(lblPorcentajeProdPrimarios, gbc_lblPorcentajeProdPrimarios);
+
+		final JSpinner spinnerPorcentajePrimarios = new JSpinner();
+		spinnerPorcentajePrimarios.setModel(new SpinnerNumberModel(20, 0, 100, 1));
+		GridBagConstraints gbc_spinnerPorcentajePrimarios = new GridBagConstraints();
+		gbc_spinnerPorcentajePrimarios.fill = GridBagConstraints.HORIZONTAL;
+		gbc_spinnerPorcentajePrimarios.gridx = 2;
+		gbc_spinnerPorcentajePrimarios.gridy = 2;
+		panelProductos.add(spinnerPorcentajePrimarios, gbc_spinnerPorcentajePrimarios);
 		btnLeerProductos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -352,14 +356,14 @@ public class poblar_bd {
 				new InformeUbicacionProducto(gen);
 			}
 		});
-		
+
 		JLabel lblMaxUbicDistintas = new JLabel("Max. Ubic. Distintas");
 		GridBagConstraints gbc_lblMaxUbicDistintas = new GridBagConstraints();
 		gbc_lblMaxUbicDistintas.insets = new Insets(0, 0, 5, 5);
 		gbc_lblMaxUbicDistintas.gridx = 1;
 		gbc_lblMaxUbicDistintas.gridy = 0;
 		panelUbicacionProducto.add(lblMaxUbicDistintas, gbc_lblMaxUbicDistintas);
-		
+
 		spinnerMaxUbicacionesDistintas = new JSpinner();
 		spinnerMaxUbicacionesDistintas.setModel(new SpinnerNumberModel(3, 1, 5, 1));
 		GridBagConstraints gbc_spinnerMaxUbicacionesDistintas = new GridBagConstraints();
@@ -817,361 +821,440 @@ public class poblar_bd {
 			// TODO Auto-generated catch block
 			e5.printStackTrace();
 		}
-				btnConsultarVentas.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						new InformeVentas(gen);
-					}
-				});
+		btnConsultarVentas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new InformeVentas(gen);
+			}
+		});
 
-				JLabel lblMaxDasVendindose = new JLabel("Max dias en venta");
-				GridBagConstraints gbc_lblMaxDasVendindose = new GridBagConstraints();
-				gbc_lblMaxDasVendindose.insets = new Insets(0, 0, 5, 5);
-				gbc_lblMaxDasVendindose.gridx = 1;
-				gbc_lblMaxDasVendindose.gridy = 0;
-				panelVentas.add(lblMaxDasVendindose, gbc_lblMaxDasVendindose);
+		JLabel lblMaxDasVendindose = new JLabel("Max dias en venta");
+		GridBagConstraints gbc_lblMaxDasVendindose = new GridBagConstraints();
+		gbc_lblMaxDasVendindose.insets = new Insets(0, 0, 5, 5);
+		gbc_lblMaxDasVendindose.gridx = 1;
+		gbc_lblMaxDasVendindose.gridy = 0;
+		panelVentas.add(lblMaxDasVendindose, gbc_lblMaxDasVendindose);
 
-				final JSpinner spinnerMaxDiasVendiendose = new JSpinner();
-				GridBagConstraints gbc_spinnerMaxDiasVendiendose = new GridBagConstraints();
-				gbc_spinnerMaxDiasVendiendose.anchor = GridBagConstraints.WEST;
-				gbc_spinnerMaxDiasVendiendose.insets = new Insets(0, 0, 5, 5);
-				gbc_spinnerMaxDiasVendiendose.gridx = 2;
-				gbc_spinnerMaxDiasVendiendose.gridy = 0;
-				panelVentas.add(spinnerMaxDiasVendiendose, gbc_spinnerMaxDiasVendiendose);
-				spinnerMaxDiasVendiendose.setModel(new SpinnerNumberModel(45, 30, 180, 1));
+		final JSpinner spinnerMaxDiasVendiendose = new JSpinner();
+		GridBagConstraints gbc_spinnerMaxDiasVendiendose = new GridBagConstraints();
+		gbc_spinnerMaxDiasVendiendose.anchor = GridBagConstraints.WEST;
+		gbc_spinnerMaxDiasVendiendose.insets = new Insets(0, 0, 5, 5);
+		gbc_spinnerMaxDiasVendiendose.gridx = 2;
+		gbc_spinnerMaxDiasVendiendose.gridy = 0;
+		panelVentas.add(spinnerMaxDiasVendiendose, gbc_spinnerMaxDiasVendiendose);
+		spinnerMaxDiasVendiendose.setModel(new SpinnerNumberModel(45, 30, 180, 1));
 
-				chckbxMinimizarMemoria = new JCheckBox("Minimizar memoria");
-				GridBagConstraints gbc_chckbxMinimizarMemoria = new GridBagConstraints();
-				gbc_chckbxMinimizarMemoria.insets = new Insets(0, 0, 5, 0);
-				gbc_chckbxMinimizarMemoria.gridx = 4;
-				gbc_chckbxMinimizarMemoria.gridy = 0;
-				panelVentas.add(chckbxMinimizarMemoria, gbc_chckbxMinimizarMemoria);
+		chckbxMinimizarMemoria = new JCheckBox("Minimizar memoria");
+		GridBagConstraints gbc_chckbxMinimizarMemoria = new GridBagConstraints();
+		gbc_chckbxMinimizarMemoria.insets = new Insets(0, 0, 5, 0);
+		gbc_chckbxMinimizarMemoria.gridx = 4;
+		gbc_chckbxMinimizarMemoria.gridy = 0;
+		panelVentas.add(chckbxMinimizarMemoria, gbc_chckbxMinimizarMemoria);
 
-				final JSpinner spinnerPorcent1Ud = new JSpinner();
-				spinnerPorcent1Ud.setEnabled(false);
-				spinnerPorcent1Ud.setModel(new SpinnerNumberModel(70, 0, 100, 1));
-				GridBagConstraints gbc_spinnerPorcent1Ud = new GridBagConstraints();
-				gbc_spinnerPorcent1Ud.insets = new Insets(0, 0, 0, 5);
-				gbc_spinnerPorcent1Ud.anchor = GridBagConstraints.WEST;
-				gbc_spinnerPorcent1Ud.gridx = 3;
-				gbc_spinnerPorcent1Ud.gridy = 1;
-				panelVentas.add(spinnerPorcent1Ud, gbc_spinnerPorcent1Ud);
+		final JSpinner spinnerPorcent1Ud = new JSpinner();
+		spinnerPorcent1Ud.setEnabled(false);
+		spinnerPorcent1Ud.setModel(new SpinnerNumberModel(70, 0, 100, 1));
+		GridBagConstraints gbc_spinnerPorcent1Ud = new GridBagConstraints();
+		gbc_spinnerPorcent1Ud.insets = new Insets(0, 0, 0, 5);
+		gbc_spinnerPorcent1Ud.anchor = GridBagConstraints.WEST;
+		gbc_spinnerPorcent1Ud.gridx = 3;
+		gbc_spinnerPorcent1Ud.gridy = 1;
+		panelVentas.add(spinnerPorcent1Ud, gbc_spinnerPorcent1Ud);
 
-				final JCheckBox chckbxVentas1Ud = new JCheckBox("% ventas 1 Ud.");
-				chckbxVentas1Ud.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						if(chckbxVentas1Ud.isSelected()==true)
-							spinnerPorcent1Ud.setEnabled(true);
-						else spinnerPorcent1Ud.setEnabled(false);
-					}
-				});
-				GridBagConstraints gbc_chckbxVentas1Ud = new GridBagConstraints();
-				gbc_chckbxVentas1Ud.insets = new Insets(0, 0, 5, 5);
-				gbc_chckbxVentas1Ud.anchor = GridBagConstraints.WEST;
-				gbc_chckbxVentas1Ud.gridx = 3;
-				gbc_chckbxVentas1Ud.gridy = 0;
-				panelVentas.add(chckbxVentas1Ud, gbc_chckbxVentas1Ud);
-				GridBagConstraints gbc_btnConsultarVentas = new GridBagConstraints();
-				gbc_btnConsultarVentas.fill = GridBagConstraints.HORIZONTAL;
-				gbc_btnConsultarVentas.insets = new Insets(0, 0, 0, 5);
-				gbc_btnConsultarVentas.gridx = 0;
-				gbc_btnConsultarVentas.gridy = 1;
-				panelVentas.add(btnConsultarVentas, gbc_btnConsultarVentas);
+		final JCheckBox chckbxVentas1Ud = new JCheckBox("% ventas 1 Ud.");
+		chckbxVentas1Ud.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(chckbxVentas1Ud.isSelected()==true)
+					spinnerPorcent1Ud.setEnabled(true);
+				else spinnerPorcent1Ud.setEnabled(false);
+			}
+		});
+		GridBagConstraints gbc_chckbxVentas1Ud = new GridBagConstraints();
+		gbc_chckbxVentas1Ud.insets = new Insets(0, 0, 5, 5);
+		gbc_chckbxVentas1Ud.anchor = GridBagConstraints.WEST;
+		gbc_chckbxVentas1Ud.gridx = 3;
+		gbc_chckbxVentas1Ud.gridy = 0;
+		panelVentas.add(chckbxVentas1Ud, gbc_chckbxVentas1Ud);
+		GridBagConstraints gbc_btnConsultarVentas = new GridBagConstraints();
+		gbc_btnConsultarVentas.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnConsultarVentas.insets = new Insets(0, 0, 0, 5);
+		gbc_btnConsultarVentas.gridx = 0;
+		gbc_btnConsultarVentas.gridy = 1;
+		panelVentas.add(btnConsultarVentas, gbc_btnConsultarVentas);
 
-				JLabel lblMaxCantVenta = new JLabel("Max Cant/Venta");
-				GridBagConstraints gbc_lblMaxCantVenta = new GridBagConstraints();
-				gbc_lblMaxCantVenta.insets = new Insets(0, 0, 0, 5);
-				gbc_lblMaxCantVenta.gridx = 1;
-				gbc_lblMaxCantVenta.gridy = 1;
-				panelVentas.add(lblMaxCantVenta, gbc_lblMaxCantVenta);
+		JLabel lblMaxCantVenta = new JLabel("Max Cant/Venta");
+		GridBagConstraints gbc_lblMaxCantVenta = new GridBagConstraints();
+		gbc_lblMaxCantVenta.insets = new Insets(0, 0, 0, 5);
+		gbc_lblMaxCantVenta.gridx = 1;
+		gbc_lblMaxCantVenta.gridy = 1;
+		panelVentas.add(lblMaxCantVenta, gbc_lblMaxCantVenta);
 
-				final JSpinner spinnerMaxCantVenta = new JSpinner();
-				GridBagConstraints gbc_spinnerMaxCantVenta = new GridBagConstraints();
-				gbc_spinnerMaxCantVenta.anchor = GridBagConstraints.WEST;
-				gbc_spinnerMaxCantVenta.insets = new Insets(0, 0, 0, 5);
-				gbc_spinnerMaxCantVenta.gridx = 2;
-				gbc_spinnerMaxCantVenta.gridy = 1;
-				panelVentas.add(spinnerMaxCantVenta, gbc_spinnerMaxCantVenta);
-				spinnerMaxCantVenta.setModel(new SpinnerNumberModel(6, 1, 50, 1));
+		final JSpinner spinnerMaxCantVenta = new JSpinner();
+		GridBagConstraints gbc_spinnerMaxCantVenta = new GridBagConstraints();
+		gbc_spinnerMaxCantVenta.anchor = GridBagConstraints.WEST;
+		gbc_spinnerMaxCantVenta.insets = new Insets(0, 0, 0, 5);
+		gbc_spinnerMaxCantVenta.gridx = 2;
+		gbc_spinnerMaxCantVenta.gridy = 1;
+		panelVentas.add(spinnerMaxCantVenta, gbc_spinnerMaxCantVenta);
+		spinnerMaxCantVenta.setModel(new SpinnerNumberModel(6, 1, 50, 1));
 
-				JButton btnGenerarVentas = new JButton("Generar Ventas");
+		JButton btnGenerarVentas = new JButton("Generar Ventas");
+		try {
+			btnGenerarVentas.setIcon(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/images/play-icon.png"))));
+		} catch (IOException e4) {
+			// TODO Auto-generated catch block
+			e4.printStackTrace();
+		}
+		GridBagConstraints gbc_btnGenerarVentas = new GridBagConstraints();
+		gbc_btnGenerarVentas.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnGenerarVentas.insets = new Insets(0, 0, 5, 5);
+		gbc_btnGenerarVentas.gridx = 0;
+		gbc_btnGenerarVentas.gridy = 0;
+		panelVentas.add(btnGenerarVentas, gbc_btnGenerarVentas);
+
+		////////////////////////////////////////////////////////////////////////////// PANEL OTROS
+		JPanel panelOtros = new JPanel();
+		panelOtros.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Otros", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_panelOtros = new GridBagConstraints();
+		gbc_panelOtros.fill = GridBagConstraints.HORIZONTAL;
+		gbc_panelOtros.gridx = 5;
+		gbc_panelOtros.gridy = 2;
+		panel.add(panelOtros, gbc_panelOtros);
+		GridBagLayout gbl_panelOtros = new GridBagLayout();
+		gbl_panelOtros.columnWidths = new int[]{83, 0, 0};
+		gbl_panelOtros.rowHeights = new int[]{23, 23, 0};
+		gbl_panelOtros.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		gbl_panelOtros.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		panelOtros.setLayout(gbl_panelOtros);
+
+		JButton btnFlushAll = new JButton("FLUSH ALL");
+		try {
+			btnFlushAll.setIcon(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/images/flush-all-icon.png"))));
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		GridBagConstraints gbc_btnFlushAll = new GridBagConstraints();
+		gbc_btnFlushAll.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnFlushAll.anchor = GridBagConstraints.NORTH;
+		gbc_btnFlushAll.insets = new Insets(0, 0, 5, 5);
+		gbc_btnFlushAll.gridx = 0;
+		gbc_btnFlushAll.gridy = 0;
+		panelOtros.add(btnFlushAll, gbc_btnFlushAll);
+
+		btnFlushAll.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				gen.flushAll();
+				textArea.append("===========================BORRADOS TODOS LOS DATOS EN MEMORIA=======================\n");
+				actualizarEstado();
+			}
+		});
+
+		JButton btnBorrarLog = new JButton("Borrar LOG");
+		try {
+			btnBorrarLog.setIcon(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/images/delete-log-icon.png"))));
+		} catch (IOException e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
+		btnBorrarLog.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(null);
+			}
+		});
+		GridBagConstraints gbc_btnBorrarLog = new GridBagConstraints();
+		gbc_btnBorrarLog.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnBorrarLog.insets = new Insets(0, 0, 5, 0);
+		gbc_btnBorrarLog.gridx = 1;
+		gbc_btnBorrarLog.gridy = 0;
+		panelOtros.add(btnBorrarLog, gbc_btnBorrarLog);
+
+		JButton btnEjecutarTodo = new JButton("Ejecutar todo");
+		try {
+			btnEjecutarTodo.setIcon(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/images/run-all-icon.png"))));
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		GridBagConstraints gbc_btnEjecutarTodo = new GridBagConstraints();
+		gbc_btnEjecutarTodo.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnEjecutarTodo.insets = new Insets(0, 0, 0, 5);
+		gbc_btnEjecutarTodo.anchor = GridBagConstraints.NORTH;
+		gbc_btnEjecutarTodo.gridx = 0;
+		gbc_btnEjecutarTodo.gridy = 1;
+		panelOtros.add(btnEjecutarTodo, gbc_btnEjecutarTodo);
+
+		JPanel panel_2 = new JPanel();
+		tabbedPane.addTab("Informe", null, panel_2, null);
+		btnEjecutarTodo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
 				try {
-					btnGenerarVentas.setIcon(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/images/play-icon.png"))));
-				} catch (IOException e4) {
-					// TODO Auto-generated catch block
-					e4.printStackTrace();
+
+					GeneradorCSV.stockMaximoInicial = (int) spinnerStockMaximoProducto.getValue();
+					Temporizador.iniciarTemporizador();
+					textArea.append("Leyendo productos...\n");
+					int numProdLeidos = gen.leerProductos(null, (int) spinnerPorcentajePrimarios.getValue());
+					textArea.append("Leidos " + numProdLeidos + " productos.\n");
+					textArea.append("Generando precios de venta...\n");
+					int numPreciosVentaGenerados = gen.generarPreciosVentaProducto();					
+					textArea.append("Numero de precios generados: " + numPreciosVentaGenerados + " (1 por producto).\n");
+
+					textArea.append("Escribiendo productos...\n");
+					int numProdEscritos = gen.escribirProductos(null);
+					textArea.append("Escritos " + numProdEscritos + " productos.\n");
+					textArea.append("Tiempo ejecucion: " + Temporizador.pararTemporizador("Generacion de productos") + " segundos.\n");
+					textArea.append("********************** GENERACION DE PRODUCTOS TERMINADA *******************\n");
+					actualizarEstado();
+
+					//LOTES
+
+
+					//VENTAS
+
+
+
+					//UBICACION-PRODUCTO
+
+
+
+					//MOVIMIENTOS
+
+
+
 				}
-				GridBagConstraints gbc_btnGenerarVentas = new GridBagConstraints();
-				gbc_btnGenerarVentas.fill = GridBagConstraints.HORIZONTAL;
-				gbc_btnGenerarVentas.insets = new Insets(0, 0, 5, 5);
-				gbc_btnGenerarVentas.gridx = 0;
-				gbc_btnGenerarVentas.gridy = 0;
-				panelVentas.add(btnGenerarVentas, gbc_btnGenerarVentas);
-
-				////////////////////////////////////////////////////////////////////////////// PANEL OTROS
-				JPanel panelOtros = new JPanel();
-				panelOtros.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Otros", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-				GridBagConstraints gbc_panelOtros = new GridBagConstraints();
-				gbc_panelOtros.fill = GridBagConstraints.HORIZONTAL;
-				gbc_panelOtros.gridx = 5;
-				gbc_panelOtros.gridy = 2;
-				panel.add(panelOtros, gbc_panelOtros);
-				GridBagLayout gbl_panelOtros = new GridBagLayout();
-				gbl_panelOtros.columnWidths = new int[]{83, 0, 0};
-				gbl_panelOtros.rowHeights = new int[]{23, 23, 0};
-				gbl_panelOtros.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-				gbl_panelOtros.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-				panelOtros.setLayout(gbl_panelOtros);
-
-				JButton btnFlushAll = new JButton("FLUSH ALL");
-				try {
-					btnFlushAll.setIcon(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/images/flush-all-icon.png"))));
-				} catch (IOException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
+				catch (IOException e1) {
+					System.out.println("Error al leer/escribir productos");
+					e1.printStackTrace();
 				}
-				GridBagConstraints gbc_btnFlushAll = new GridBagConstraints();
-				gbc_btnFlushAll.fill = GridBagConstraints.HORIZONTAL;
-				gbc_btnFlushAll.anchor = GridBagConstraints.NORTH;
-				gbc_btnFlushAll.insets = new Insets(0, 0, 5, 5);
-				gbc_btnFlushAll.gridx = 0;
-				gbc_btnFlushAll.gridy = 0;
-				panelOtros.add(btnFlushAll, gbc_btnFlushAll);
 
-				btnFlushAll.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						gen.flushAll();
-						textArea.append("===========================BORRADOS TODOS LOS DATOS EN MEMORIA=======================\n");
-						actualizarEstado();
-					}
-				});
+			}
 
-				JButton btnBorrarLog = new JButton("Borrar LOG");
-				try {
-					btnBorrarLog.setIcon(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/images/delete-log-icon.png"))));
-				} catch (IOException e3) {
-					// TODO Auto-generated catch block
-					e3.printStackTrace();
-				}
-				btnBorrarLog.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						textArea.setText(null);
-					}
-				});
-				GridBagConstraints gbc_btnBorrarLog = new GridBagConstraints();
-				gbc_btnBorrarLog.fill = GridBagConstraints.HORIZONTAL;
-				gbc_btnBorrarLog.insets = new Insets(0, 0, 5, 0);
-				gbc_btnBorrarLog.gridx = 1;
-				gbc_btnBorrarLog.gridy = 0;
-				panelOtros.add(btnBorrarLog, gbc_btnBorrarLog);
+		});
 
-				JButton btnEjecutarTodo = new JButton("Ejecutar todo");
-				try {
-					btnEjecutarTodo.setIcon(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("/images/run-all-icon.png"))));
-				} catch (IOException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
-				}
-				GridBagConstraints gbc_btnEjecutarTodo = new GridBagConstraints();
-				gbc_btnEjecutarTodo.fill = GridBagConstraints.HORIZONTAL;
-				gbc_btnEjecutarTodo.insets = new Insets(0, 0, 0, 5);
-				gbc_btnEjecutarTodo.anchor = GridBagConstraints.NORTH;
-				gbc_btnEjecutarTodo.gridx = 0;
-				gbc_btnEjecutarTodo.gridy = 1;
-				panelOtros.add(btnEjecutarTodo, gbc_btnEjecutarTodo);
-				
-				JPanel panel_2 = new JPanel();
-				tabbedPane.addTab("Informe", null, panel_2, null);
-				btnEjecutarTodo.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
+		btnGenerarVentas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 
-						try {
+				final int maxCantVenta = (int) spinnerMaxCantVenta.getValue();
+				textArea.append("Maxima cantidad por venta: " + maxCantVenta + "\n");
 
-							GeneradorCSV.stockMaximoInicial = (int) spinnerStockMaximoProducto.getValue();
+				final int maxDiasVendiendose = (int) spinnerMaxDiasVendiendose.getValue();
+				textArea.append("Max. dias vendiendose: " + maxDiasVendiendose + "\n");	
+
+				final boolean ventas1Ud = chckbxVentas1Ud.isSelected();
+				final int porcentVentas1Ud = (int) spinnerPorcent1Ud.getValue();
+
+				Thread hilo = new Thread(new Runnable() {
+
+					@Override
+					public void run() {
+						try{
+
 							Temporizador.iniciarTemporizador();
-							textArea.append("Leyendo productos...\n");
-							int numProdLeidos = gen.leerProductos(null, (int) spinnerPorcentajePrimarios.getValue());
-							textArea.append("Leidos " + numProdLeidos + " productos.\n");
-							textArea.append("Generando precios de venta...\n");
-							int numPreciosVentaGenerados = gen.generarPreciosVentaProducto();					
-							textArea.append("Numero de precios generados: " + numPreciosVentaGenerados + " (1 por producto).\n");
+							textArea.append("Generando ventas... este proceso puede tardar unos minutos...\n" );
+							int numVentasGeneradas = 0;
 
-							textArea.append("Escribiendo productos...\n");
-							int numProdEscritos = gen.escribirProductos(null);
-							textArea.append("Escritos " + numProdEscritos + " productos.\n");
-							textArea.append("Tiempo ejecucion: " + Temporizador.pararTemporizador("Generacion de productos") + " segundos.\n");
-							textArea.append("********************** GENERACION DE PRODUCTOS TERMINADA *******************\n");
-							actualizarEstado();
-
-							//LOTES
-
-
-							//VENTAS
-
-
-
-							//UBICACION-PRODUCTO
-
-
-
-							//MOVIMIENTOS
-
-
-
-						}
-						catch (IOException e1) {
-							System.out.println("Error al leer/escribir productos");
-							e1.printStackTrace();
-						}
-
-					}
-
-				});
-
-				btnGenerarVentas.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-
-						final int maxCantVenta = (int) spinnerMaxCantVenta.getValue();
-						textArea.append("Maxima cantidad por venta: " + maxCantVenta + "\n");
-
-						final int maxDiasVendiendose = (int) spinnerMaxDiasVendiendose.getValue();
-						textArea.append("Max. dias vendiendose: " + maxDiasVendiendose + "\n");	
-
-						final boolean ventas1Ud = chckbxVentas1Ud.isSelected();
-						final int porcentVentas1Ud = (int) spinnerPorcent1Ud.getValue();
-
-						Thread hilo = new Thread(new Runnable() {
-
-							@Override
-							public void run() {
-								try{
-
-									Temporizador.iniciarTemporizador();
-									textArea.append("Generando ventas... este proceso puede tardar unos minutos...\n" );
-									int numVentasGeneradas = 0;
-
-									numVentasGeneradas = gen.generarVentas(maxCantVenta,maxDiasVendiendose, ventas1Ud, porcentVentas1Ud,chckbxMinimizarMemoria.isSelected());
-									textArea.append("Numero de ventas generadas (y escritas durante la generacion): "
-											+ numVentasGeneradas + "\n");
-									int numVentasEscritas = 0;
-									if(chckbxMinimizarMemoria.isSelected()==false){
-										numVentasEscritas = gen.escribirVentas(null);
-										textArea.append("Escribiendo ventas...\n");
-										textArea.append("Numero de ventas escritas: "
-												+ numVentasEscritas + "\n");
-									}
-									textArea.append("Tiempo ejecucion: " + Temporizador.pararTemporizador("Generacion de ventas") + " segundos.\n");
-									int numProdEscritos = gen.escribirProductos(null);
-									textArea.append("Se ha modificado y escrito en fichero LA CANTIDAD DE STOCK (tabla producto).\n");
-									textArea.append("Numero de productos escritos: "
-											+ numProdEscritos + "\n");
-									textArea.append("*********************** GENERACION DE VENTAS COMPLETADA *******************\n" );
-									actualizarEstado();
-									//							gen.flushAll();
-								}catch(IOException e){
-									JOptionPane.showMessageDialog(frmPobladorDeTablas, "Error generando ventas [Compruebe que se han generado productos y lotes previamente", null, JOptionPane.ERROR_MESSAGE);
-									System.out.println("Error ejecutando generar ventas.");
-								}
+							numVentasGeneradas = gen.generarVentas(maxCantVenta,maxDiasVendiendose, ventas1Ud, porcentVentas1Ud,chckbxMinimizarMemoria.isSelected());
+							textArea.append("Numero de ventas generadas (y escritas durante la generacion): "
+									+ numVentasGeneradas + "\n");
+							int numVentasEscritas = 0;
+							if(chckbxMinimizarMemoria.isSelected()==false){
+								numVentasEscritas = gen.escribirVentas(null);
+								textArea.append("Escribiendo ventas...\n");
+								textArea.append("Numero de ventas escritas: "
+										+ numVentasEscritas + "\n");
 							}
-						});			
-						hilo.start();
+							textArea.append("Tiempo ejecucion: " + Temporizador.pararTemporizador("Generacion de ventas") + " segundos.\n");
+							int numProdEscritos = gen.escribirProductos(null);
+							textArea.append("Se ha modificado y escrito en fichero LA CANTIDAD DE STOCK (tabla producto).\n");
+							textArea.append("Numero de productos escritos: "
+									+ numProdEscritos + "\n");
+							textArea.append("*********************** GENERACION DE VENTAS COMPLETADA *******************\n" );
+							actualizarEstado();
+							//							gen.flushAll();
+						}catch(IOException e){
+							JOptionPane.showMessageDialog(frmPobladorDeTablas, "Error generando ventas [Compruebe que se han generado productos y lotes previamente", null, JOptionPane.ERROR_MESSAGE);
+							System.out.println("Error ejecutando generar ventas.");
+						}
+					}
+				});			
+				hilo.start();
+
+			}
+		});
+		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
+		gbc_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane.gridx = 0;
+		gbc_scrollPane.gridy = 1;
+		frmPobladorDeTablas.getContentPane().add(scrollPane, gbc_scrollPane);
+
+		textArea = new JTextArea();
+		scrollPane.setViewportView(textArea);
+		textArea.setAutoscrolls(true);
+
+		JMenuBar menuBar = new JMenuBar();
+		frmPobladorDeTablas.setJMenuBar(menuBar);
+
+		JMenu mnArchivo = new JMenu("Archivo");
+		menuBar.add(mnArchivo);
+
+		//TODO
+		JMenuItem mntmGuardarProyecto = new JMenuItem("Guardar proyecto");
+		mntmGuardarProyecto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				Thread hilo = new Thread(new Runnable() {
+
+					@Override
+					public void run() {
+						
+						FileNameExtensionFilter filter = new FileNameExtensionFilter("Ficheros xml de proyectos","xml");
+						JFileChooser fileChooser = new JFileChooser();
+						fileChooser.setFileFilter(filter);
+						int seleccionado = fileChooser.showOpenDialog(frmPobladorDeTablas);
+						if(seleccionado ==  JFileChooser.APPROVE_OPTION){
+							File fichero = fileChooser.getSelectedFile();
+							String pathFichero = fichero.getAbsolutePath();
+							textArea.append("Guardando proyecto en fichero... (esto puede tardar un poco)\n");
+							Temporizador.iniciarTemporizador();
+							if(gen.guardarProyecto(pathFichero)){
+								JOptionPane.showMessageDialog(frmPobladorDeTablas, "Proyecto guardado correctamente en " + pathFichero );
+								textArea.append("Proyecto guardado correctamente en " + pathFichero + "\n");
+							}else{
+								JOptionPane.showMessageDialog(frmPobladorDeTablas, 
+										"Error guardando el proyecto en " + pathFichero, "Error", JOptionPane.ERROR_MESSAGE);
+								textArea.append("Error guardando el proyecto en " + pathFichero + "\n");
+
+							}
+						}
+						actualizarEstado();						
+						textArea.append("Tiempo empleado en guardar proyecto: " + Temporizador.pararTemporizador("Tiempo empleado en guardar proyecto") + " segundos\n");
+
 
 					}
-				});
-				GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-				gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
-				gbc_scrollPane.fill = GridBagConstraints.BOTH;
-				gbc_scrollPane.gridx = 0;
-				gbc_scrollPane.gridy = 1;
-				frmPobladorDeTablas.getContentPane().add(scrollPane, gbc_scrollPane);
+				});			
+				hilo.start();
 
-				textArea = new JTextArea();
-				scrollPane.setViewportView(textArea);
-				textArea.setAutoscrolls(true);
+			}
+		});
+		mnArchivo.add(mntmGuardarProyecto);
 
-				JMenuBar menuBar = new JMenuBar();
-				frmPobladorDeTablas.setJMenuBar(menuBar);
+		JMenuItem mntmCargarProyecto = new JMenuItem("Cargar proyecto");
+		mntmCargarProyecto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Thread hilo = new Thread(new Runnable() {
 
-				JMenu mnArchivo = new JMenu("Archivo");
-				menuBar.add(mnArchivo);
-
-				JMenu mnConfiguracion = new JMenu("Configuracion");
-				menuBar.add(mnConfiguracion);
-
-				JMenuItem mntmEntradasalida = new JMenuItem("Entrada/Salida");
-				mntmEntradasalida.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						ConfiguracionEntradasSalidas configES = new ConfiguracionEntradasSalidas();
+					@Override
+					public void run() {
+						FileNameExtensionFilter filter = new FileNameExtensionFilter("Ficheros xml de proyectos","xml");
+						JFileChooser fileChooser = new JFileChooser();
+						fileChooser.setFileFilter(filter);
+						int seleccionado = fileChooser.showOpenDialog(frmPobladorDeTablas);
+						if(seleccionado ==  JFileChooser.APPROVE_OPTION){
+							File fichero = fileChooser.getSelectedFile();
+							String pathFichero = fichero.getAbsolutePath();
+							gen.flushAll();
+							textArea.append("Vaciada la memoria antes de cargar el proyecto.\n");
+							textArea.append("Cargando proyecto desde fichero... (esto puede tardar un poco)\n");
+							Temporizador.iniciarTemporizador();
+							if(gen.cargarProyecto(pathFichero)){
+								JOptionPane.showMessageDialog(frmPobladorDeTablas, "Proyecto cargado correctamente en " + pathFichero);
+								textArea.append("Proyecto cargado correctamente en " + pathFichero + "\n");
+							}else{
+								JOptionPane.showMessageDialog(frmPobladorDeTablas, 
+													"Error cargando el proyecto en " + pathFichero, "Error", JOptionPane.ERROR_MESSAGE);
+								textArea.append("Error cargando el proyecto en " + pathFichero + "\n");
+							}
+						}
+						actualizarEstado();
+						textArea.append("Tiempo empleado en cargar proyecto: " + Temporizador.pararTemporizador("Tiempo empleado en cargar proyecto") + " segundos.\n");
 					}
-				});
-				mnConfiguracion.add(mntmEntradasalida);
+				});			
+				hilo.start();
+			}
+		});
+		mnArchivo.add(mntmCargarProyecto);
 
-				JMenuItem mntmTendencias = new JMenuItem("Tendencias");
-				mntmTendencias.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						new MenuTendencias();
-					}
-				});
-				mnConfiguracion.add(mntmTendencias);
+		JMenu mnConfiguracion = new JMenu("Configuracion");
+		menuBar.add(mnConfiguracion);
 
-				JMenu mnAyuda = new JMenu("Ayuda");
-				menuBar.add(mnAyuda);
+		JMenuItem mntmEntradasalida = new JMenuItem("Entrada/Salida");
+		mntmEntradasalida.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ConfiguracionEntradasSalidas configES = new ConfiguracionEntradasSalidas();
+			}
+		});
+		mnConfiguracion.add(mntmEntradasalida);
 
-	}
+		JMenuItem mntmTendencias = new JMenuItem("Tendencias");
+		mntmTendencias.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new MenuTendencias();
+			}
+		});
+		mnConfiguracion.add(mntmTendencias);
 
-	/**Actualiza el textAreaEstado con las listas y el numero de elementos de cada una que estan en memoria*/
-	public void actualizarEstado(){
-		textAreaEstado.setText(null);
-		if(gen.getListaProductos().size()>0){
-			textAreaEstado.append("[Productos - " + gen.getListaProductos().size() + "]\n");
-		}
-		if(gen.getListaLotesRecibidos().size()>0){
-			textAreaEstado.append("[Lotes recibidos - " + gen.getListaLotesRecibidos().size() + "]\n");
-		}
-		if(gen.getListaVentas().size()>0){
-			textAreaEstado.append("[Ventas - " + gen.getListaVentas().size() + "]\n");
-		}
-		if(gen.getListaUbicacionProducto().size()>0){
-			textAreaEstado.append("[Ubicacion-producto - " + gen.getListaUbicacionProducto().size() + "]\n");
-		}
-		if(gen.getListaMovimientos().size()>0){
-			textAreaEstado.append("[Movimientos - " + gen.getListaMovimientos().size() + "]\n");
+		JMenu mnAyuda = new JMenu("Ayuda");
+		menuBar.add(mnAyuda);
+
+		
 		}
 
-	}
+		/**Actualiza el textAreaEstado con las listas y el numero de elementos de cada una que estan en memoria*/
+		public static void actualizarEstado(){
+			textAreaEstado.setText(null);
+			if(gen.getListaProductos().size()>0){
+				textAreaEstado.append("[Productos - " + gen.getListaProductos().size() + "]\n");
+			}
+			if(gen.getListaLotesRecibidos().size()>0){
+				textAreaEstado.append("[Lotes recibidos - " + gen.getListaLotesRecibidos().size() + "]\n");
+			}
+			if(gen.getListaVentas().size()>0){
+				textAreaEstado.append("[Ventas - " + gen.getListaVentas().size() + "]\n");
+			}
+			if(gen.getListaUbicacionProducto().size()>0){
+				textAreaEstado.append("[Ubicacion-producto - " + gen.getListaUbicacionProducto().size() + "]\n");
+			}
+			if(gen.getListaMovimientos().size()>0){
+				textAreaEstado.append("[Movimientos - " + gen.getListaMovimientos().size() + "]\n");
+			}
 
-	public static JTextArea getTextArea() {
-		return textArea;
-	}
+		}
 
-	public static void setTextArea(JTextArea textArea) {
-		poblar_bd.textArea = textArea;
-	}
+		public static JTextArea getTextArea() {
+			return textArea;
+		}
 
-	public static String getRutaEntrada() {
-		return rutaEntrada;
-	}
+		public static void setTextArea(JTextArea textArea) {
+			poblar_bd.textArea = textArea;
+		}
 
-	public static void setRutaEntrada(String rutaEntrada) {
-		poblar_bd.rutaEntrada = rutaEntrada;
-	}
+		public static String getRutaEntrada() {
+			return rutaEntrada;
+		}
 
-	public static String getRutaSalida() {
-		return rutaSalida;
-	}
+		public static void setRutaEntrada(String rutaEntrada) {
+			poblar_bd.rutaEntrada = rutaEntrada;
+		}
 
-	public static void setRutaSalida(String rutaSalida) {
-		poblar_bd.rutaSalida = rutaSalida;
-	}
-	static public JFrame getFrame(){
-		return frmPobladorDeTablas;
-	}
+		public static String getRutaSalida() {
+			return rutaSalida;
+		}
 
-	static public GeneradorCSV getGen() {
-		return gen;
-	}
+		public static void setRutaSalida(String rutaSalida) {
+			poblar_bd.rutaSalida = rutaSalida;
+		}
+		static public JFrame getFrame(){
+			return frmPobladorDeTablas;
+		}
 
-	public void setGen(GeneradorCSV gen) {
-		this.gen = gen;
-	}
+		static public GeneradorCSV getGen() {
+			return gen;
+		}
 
-}
+		public void setGen(GeneradorCSV gen) {
+			this.gen = gen;
+		}
+
+	}

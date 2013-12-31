@@ -238,7 +238,7 @@ tengan alguna ubicación sigan en el flujo. Si tuvieramos en la tabla almacen 10
     </attributes>
   </connection>
   <order>
-  <hop> <from>Leer fichero municipios</from><to>Filtrar si es municipio</to><enabled>Y</enabled> </hop>  <hop> <from>Filtrar si es municipio</from><to>Renombrar provincia y municipio</to><enabled>Y</enabled> </hop>  <hop> <from>Filtrar si es municipio</from><to>Renombrar calle y ciudad</to><enabled>Y</enabled> </hop>  <hop> <from>Renombrar provincia y municipio</from><to>Ordenar por nombre_provincia</to><enabled>Y</enabled> </hop>  <hop> <from>Ordenar por nombre_provincia</from><to>Salida Excel</to><enabled>Y</enabled> </hop>  <hop> <from>Renombrar calle y ciudad</from><to>Ordenar por nombre_ciudad</to><enabled>Y</enabled> </hop>  <hop> <from>Ordenar por nombre_ciudad</from><to>Salida Excel 2</to><enabled>Y</enabled> </hop>  <hop> <from>Leer tabla ubicacion</from><to>Ordenar por id_almacen</to><enabled>Y</enabled> </hop>  <hop> <from>Leer tabla almacen</from><to>Ordenar por id_almacen 2</to><enabled>Y</enabled> </hop>  <hop> <from>Ordenar por id_almacen 2</from><to>Unión por id_almacen</to><enabled>Y</enabled> </hop>  <hop> <from>Ordenar por id_almacen</from><to>Unión por id_almacen</to><enabled>Y</enabled> </hop>  <hop> <from>Unión por id_almacen</from><to>Eliminar id_almacen_1 y renombrar ciudad a municipio</to><enabled>Y</enabled> </hop>  <hop> <from>Eliminar id_almacen_1 y renombrar ciudad a municipio</from><to>UPPER municipio</to><enabled>Y</enabled> </hop>  <hop> <from>Renombrar provincia y municipio</from><to>Ordenar por nombre_municipio</to><enabled>Y</enabled> </hop>  <hop> <from>UPPER municipio</from><to>Ordenar por municipio</to><enabled>Y</enabled> </hop>  <hop> <from>Ordenar por nombre_municipio</from><to>Unión por municipio</to><enabled>Y</enabled> </hop>  <hop> <from>Ordenar por municipio</from><to>Unión por municipio</to><enabled>Y</enabled> </hop>  <hop> <from>Unión por municipio</from><to>Filtrar filas correctas</to><enabled>Y</enabled> </hop>  <hop> <from>Filtrar filas correctas</from><to>Salida Error</to><enabled>Y</enabled> </hop>  <hop> <from>Filtrar filas correctas</from><to>Eliminar es_calle, nombre_municipio y codigo_provincia</to><enabled>Y</enabled> </hop>  <hop> <from>Eliminar es_calle, nombre_municipio y codigo_provincia</from><to>Ordenar por id_almacen 3</to><enabled>Y</enabled> </hop>  <hop> <from>Ordenar por id_almacen 3</from><to>Filas Unicas</to><enabled>Y</enabled> </hop>  <hop> <from>Filas Unicas</from><to>Añadir clave_almacen</to><enabled>Y</enabled> </hop>  <hop> <from>Añadir clave_almacen</from><to>Seleccion para DW</to><enabled>Y</enabled> </hop>  <hop> <from>Seleccion para DW</from><to>Insertar &#47; Actualizar</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Leer fichero municipios</from><to>Filtrar si es municipio</to><enabled>Y</enabled> </hop>  <hop> <from>Filtrar si es municipio</from><to>Renombrar provincia y municipio</to><enabled>Y</enabled> </hop>  <hop> <from>Filtrar si es municipio</from><to>Renombrar calle y ciudad</to><enabled>Y</enabled> </hop>  <hop> <from>Renombrar provincia y municipio</from><to>Ordenar por nombre_provincia</to><enabled>Y</enabled> </hop>  <hop> <from>Ordenar por nombre_provincia</from><to>Salida Excel</to><enabled>Y</enabled> </hop>  <hop> <from>Renombrar calle y ciudad</from><to>Ordenar por nombre_ciudad</to><enabled>Y</enabled> </hop>  <hop> <from>Ordenar por nombre_ciudad</from><to>Salida Excel 2</to><enabled>Y</enabled> </hop>  <hop> <from>Leer tabla ubicacion</from><to>Ordenar por id_almacen</to><enabled>Y</enabled> </hop>  <hop> <from>Leer tabla almacen</from><to>Ordenar por id_almacen 2</to><enabled>Y</enabled> </hop>  <hop> <from>Ordenar por id_almacen 2</from><to>Unión por id_almacen</to><enabled>Y</enabled> </hop>  <hop> <from>Ordenar por id_almacen</from><to>Unión por id_almacen</to><enabled>Y</enabled> </hop>  <hop> <from>Unión por id_almacen</from><to>Eliminar id_almacen_1 y renombrar ciudad a municipio</to><enabled>Y</enabled> </hop>  <hop> <from>Eliminar id_almacen_1 y renombrar ciudad a municipio</from><to>UPPER municipio</to><enabled>Y</enabled> </hop>  <hop> <from>Renombrar provincia y municipio</from><to>Ordenar por nombre_municipio</to><enabled>Y</enabled> </hop>  <hop> <from>UPPER municipio</from><to>Ordenar por municipio</to><enabled>Y</enabled> </hop>  <hop> <from>Ordenar por nombre_municipio</from><to>Unión por municipio</to><enabled>Y</enabled> </hop>  <hop> <from>Ordenar por municipio</from><to>Unión por municipio</to><enabled>Y</enabled> </hop>  <hop> <from>Unión por municipio</from><to>Filtrar filas correctas</to><enabled>Y</enabled> </hop>  <hop> <from>Filtrar filas correctas</from><to>Salida Error</to><enabled>Y</enabled> </hop>  <hop> <from>Filtrar filas correctas</from><to>Eliminar es_calle, nombre_municipio y codigo_provincia</to><enabled>Y</enabled> </hop>  <hop> <from>Eliminar es_calle, nombre_municipio y codigo_provincia</from><to>Ordenar por id_almacen 3</to><enabled>Y</enabled> </hop>  <hop> <from>Ordenar por id_almacen 3</from><to>Filas Unicas</to><enabled>Y</enabled> </hop>  <hop> <from>Filas Unicas</from><to>Añadir clave_almacen</to><enabled>Y</enabled> </hop>  <hop> <from>Añadir clave_almacen</from><to>Seleccion para DW</to><enabled>Y</enabled> </hop>  <hop> <from>Seleccion para DW</from><to>Insertar &#47; Actualizar</to><enabled>Y</enabled> </hop>  <hop> <from>Generar Fila Desconocido</from><to>Insertar &#47; Actualizar</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Añadir clave_almacen</name>
     <type>Sequence</type>
@@ -453,6 +453,67 @@ tengan alguna ubicación sigan en el flujo. Si tuvieramos en la tabla almacen 10
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>647</xloc>
       <yloc>197</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Insertar &#47; Actualizar</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>conexion-datawarehouse</connection>
+    <commit>500</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>public</schema>
+      <table>almacen</table>
+      <key>
+        <name>clave_almacen</name>
+        <field>clave_almacen</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>clave_almacen</name>
+        <rename>clave_almacen</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>id_almacen</name>
+        <rename>id_almacen</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>nombre_almacen</name>
+        <rename>nombre_almacen</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>municipio</name>
+        <rename>municipio</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>codigo_postal</name>
+        <rename>codigo_postal</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>provincia</name>
+        <rename>provincia</rename>
+        <update>N</update>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>367</xloc>
+      <yloc>925</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1557,8 +1618,8 @@ tengan alguna ubicación sigan en el flujo. Si tuvieramos en la tabla almacen 10
     </step>
 
   <step>
-    <name>Insertar &#47; Actualizar</name>
-    <type>InsertUpdate</type>
+    <name>Generar Fila Desconocido</name>
+    <type>RowGenerator</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -1566,53 +1627,79 @@ tengan alguna ubicación sigan en el flujo. Si tuvieramos en la tabla almacen 10
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>conexion-datawarehouse</connection>
-    <commit>100</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema>public</schema>
-      <table>almacen</table>
-      <key>
+    <fields>
+      <field>
         <name>clave_almacen</name>
-        <field>clave_almacen</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>clave_almacen</name>
-        <rename>clave_almacen</rename>
-        <update>N</update>
-      </value>
-      <value>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>0</nullif>
+        <length>-1</length>
+        <precision>0</precision>
+      </field>
+      <field>
         <name>id_almacen</name>
-        <rename>id_almacen</rename>
-        <update>N</update>
-      </value>
-      <value>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>0</nullif>
+        <length>9</length>
+        <precision>0</precision>
+      </field>
+      <field>
         <name>nombre_almacen</name>
-        <rename>nombre_almacen</rename>
-        <update>N</update>
-      </value>
-      <value>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>Desconocido</nullif>
+        <length>50</length>
+        <precision>-1</precision>
+      </field>
+      <field>
         <name>municipio</name>
-        <rename>municipio</rename>
-        <update>N</update>
-      </value>
-      <value>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>Desconocido</nullif>
+        <length>128</length>
+        <precision>-1</precision>
+      </field>
+      <field>
         <name>codigo_postal</name>
-        <rename>codigo_postal</rename>
-        <update>N</update>
-      </value>
-      <value>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>00000</nullif>
+        <length>15</length>
+        <precision>0</precision>
+      </field>
+      <field>
         <name>provincia</name>
-        <rename>provincia</rename>
-        <update>N</update>
-      </value>
-    </lookup>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>Desconocido</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <limit>1</limit>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>367</xloc>
-      <yloc>925</yloc>
+      <xloc>120</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

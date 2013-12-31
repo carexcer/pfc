@@ -281,7 +281,7 @@ Esta fila se usará para cualquier fecha NULL.</note>
     </attributes>
   </connection>
   <order>
-  <hop> <from>Add field inc_day</from><to>Calcular fecha_valor</to><enabled>Y</enabled> </hop>  <hop> <from>Generate Rows with Initial Date</from><to>Add field inc_day</to><enabled>Y</enabled> </hop>  <hop> <from>Calcular fecha_valor</from><to>Borrar campos auxiliares</to><enabled>Y</enabled> </hop>  <hop> <from>Borrar campos auxiliares</from><to>Calcular fechas y clave_fecha</to><enabled>Y</enabled> </hop>  <hop> <from>Calcular fechas y clave_fecha</from><to>Añadir campo anyo2_iso</to><enabled>Y</enabled> </hop>  <hop> <from>Añadir campo anyo2_iso</from><to>Calcular fecha_juliana</to><enabled>Y</enabled> </hop>  <hop> <from>Calcular es_primer_dia_de_semana</from><to>Calcular es_primer_dia_de_mes</to><enabled>Y</enabled> </hop>  <hop> <from>Calcular es_primer_dia_de_mes</from><to>Calcular es_ultimo_dia_de_semana</to><enabled>Y</enabled> </hop>  <hop> <from>Calcular es_ultimo_dia_de_semana</from><to>Calcular es_ultimo_dia_de_mes</to><enabled>Y</enabled> </hop>  <hop> <from>Calcular es_ultimo_dia_de_mes</from><to>Calcular es_fin_de_semana</to><enabled>Y</enabled> </hop>  <hop> <from>Calcular es_fin_de_semana</from><to>Calcular es_entresemana</to><enabled>Y</enabled> </hop>  <hop> <from>Calcular es_entresemana</from><to>Selecciona&#47;Renombra valores</to><enabled>Y</enabled> </hop>  <hop> <from>Calcular fecha_juliana</from><to>Corregir dia_de_semana</to><enabled>Y</enabled> </hop>  <hop> <from>Renombrar dia_de_semana y reordenar campos</from><to>Calcular es_primer_dia_de_semana</to><enabled>Y</enabled> </hop>  <hop> <from>Corregir dia_de_semana</from><to>Calculadora</to><enabled>Y</enabled> </hop>  <hop> <from>Calculadora</from><to>Renombrar dia_de_semana y reordenar campos</to><enabled>Y</enabled> </hop>  <hop> <from>Selecciona&#47;Renombra valores</from><to>Insertar &#47; Actualizar</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Add field inc_day</from><to>Calcular fecha_valor</to><enabled>Y</enabled> </hop>  <hop> <from>Generate Rows with Initial Date</from><to>Add field inc_day</to><enabled>Y</enabled> </hop>  <hop> <from>Calcular fecha_valor</from><to>Borrar campos auxiliares</to><enabled>Y</enabled> </hop>  <hop> <from>Borrar campos auxiliares</from><to>Calcular fechas y clave_fecha</to><enabled>Y</enabled> </hop>  <hop> <from>Calcular fechas y clave_fecha</from><to>Añadir campo anyo2_iso</to><enabled>Y</enabled> </hop>  <hop> <from>Añadir campo anyo2_iso</from><to>Calcular fecha_juliana</to><enabled>Y</enabled> </hop>  <hop> <from>Calcular es_primer_dia_de_semana</from><to>Calcular es_primer_dia_de_mes</to><enabled>Y</enabled> </hop>  <hop> <from>Calcular es_primer_dia_de_mes</from><to>Calcular es_ultimo_dia_de_semana</to><enabled>Y</enabled> </hop>  <hop> <from>Calcular es_ultimo_dia_de_semana</from><to>Calcular es_ultimo_dia_de_mes</to><enabled>Y</enabled> </hop>  <hop> <from>Calcular es_ultimo_dia_de_mes</from><to>Calcular es_fin_de_semana</to><enabled>Y</enabled> </hop>  <hop> <from>Calcular es_fin_de_semana</from><to>Calcular es_entresemana</to><enabled>Y</enabled> </hop>  <hop> <from>Calcular es_entresemana</from><to>Selecciona&#47;Renombra valores</to><enabled>Y</enabled> </hop>  <hop> <from>Calcular fecha_juliana</from><to>Corregir dia_de_semana</to><enabled>Y</enabled> </hop>  <hop> <from>Renombrar dia_de_semana y reordenar campos</from><to>Calcular es_primer_dia_de_semana</to><enabled>Y</enabled> </hop>  <hop> <from>Corregir dia_de_semana</from><to>Calculadora</to><enabled>Y</enabled> </hop>  <hop> <from>Calculadora</from><to>Renombrar dia_de_semana y reordenar campos</to><enabled>Y</enabled> </hop>  <hop> <from>Selecciona&#47;Renombra valores</from><to>Insertar &#47; Actualizar</to><enabled>Y</enabled> </hop>  <hop> <from>Missing Date</from><to>Insertar &#47; Actualizar</to><enabled>Y</enabled> </hop>  </order>
   <step>
     <name>Actualizar</name>
     <type>Update</type>
@@ -1705,7 +1705,7 @@ fecha_juliana++;</jsScript_script>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>387</xloc>
-      <yloc>126</yloc>
+      <yloc>129</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1721,7 +1721,7 @@ fecha_juliana++;</jsScript_script>
            <schema_name/>
            </partitioning>
     <connection>conexion-datawarehouse</connection>
-    <commit>100</commit>
+    <commit>500</commit>
     <update_bypassed>N</update_bypassed>
     <lookup>
       <schema>public</schema>
@@ -2096,385 +2096,385 @@ fecha_juliana++;</jsScript_script>
            </partitioning>
     <fields>
       <field>
-        <name>date_key</name>
+        <name>clave_fecha</name>
         <type>Integer</type>
         <format/>
         <currency/>
-        <decimal/>
+        <decimal>#</decimal>
         <group/>
-        <nullif>00010101</nullif>
-        <length>-1</length>
+        <nullif>00000101</nullif>
+        <length>0</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>date_value</name>
+        <name>fecha_valor</name>
         <type>Date</type>
         <format>dd-MM-yyyy</format>
         <currency/>
         <decimal/>
         <group/>
-        <nullif>01-01-0001</nullif>
+        <nullif>01-01-1900</nullif>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>date_julian</name>
+        <name>fecha_juliana</name>
         <type>Integer</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
-        <nullif>00000</nullif>
-        <length>-1</length>
+        <nullif>0</nullif>
+        <length>0</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>date_short</name>
+        <name>fecha_corta</name>
+        <type>String</type>
+        <format>d&#47;M&#47;yy</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>Desconocido</nullif>
+        <length>12</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>fecha_media</name>
         <type>String</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
+        <nullif>Desconocido</nullif>
+        <length>16</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>date_medium</name>
+        <name>fecha_larga</name>
         <type>String</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
+        <nullif>Desconocido</nullif>
+        <length>24</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>date_long</name>
+        <name>fecha_completa</name>
         <type>String</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
+        <nullif>Desconocido</nullif>
+        <length>32</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>dia_de_semana</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal>#</decimal>
+        <group/>
         <nullif>0</nullif>
+        <length>0</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>dia_de_mes</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal>#</decimal>
+        <group/>
+        <nullif>0</nullif>
+        <length>0</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>dia_de_anyo</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal>#</decimal>
+        <group/>
+        <nullif>0</nullif>
+        <length>0</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>es_primer_dia_de_mes</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal>#</decimal>
+        <group/>
+        <nullif>-1</nullif>
+        <length>0</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>es_primer_dia_de_semana</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal>#</decimal>
+        <group/>
+        <nullif>-1</nullif>
+        <length>0</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>es_ultimo_dia_de_mes</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal>#</decimal>
+        <group/>
+        <nullif>-1</nullif>
+        <length>0</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>es_ultimo_dia_de_semana</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal>#</decimal>
+        <group/>
+        <nullif>-1</nullif>
+        <length>0</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>dia_nombre</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>Desconocido</nullif>
         <length>-1</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>date_full</name>
+        <name>dia_abreviado</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>Des</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>semana_de_anyo</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal>#</decimal>
+        <group/>
+        <nullif>0</nullif>
+        <length>0</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>semana_de_mes</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal>#</decimal>
+        <group/>
+        <nullif>0</nullif>
+        <length>0</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>semana_de_anyo_iso</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal>#</decimal>
+        <group/>
+        <nullif>0</nullif>
+        <length>0</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>es_fin_de_semana</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>-1</nullif>
+        <length>0</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>es_entresemana</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>-1</nullif>
+        <length>0</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>mes_numero</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal>#</decimal>
+        <group/>
+        <nullif>0</nullif>
+        <length>0</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>mes_nombre</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal>#</decimal>
+        <group/>
+        <nullif>Desconocido</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>mes_abreviado</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal>#</decimal>
+        <group/>
+        <nullif>Des</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>anyo2</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal>yy</decimal>
+        <group/>
+        <nullif>00</nullif>
+        <length>2</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>anyo4</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal>#</decimal>
+        <group/>
+        <nullif>0000</nullif>
+        <length>4</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>anyo2_iso</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group>,</group>
+        <nullif>00</nullif>
+        <length>2</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>anyo4_iso</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal>#</decimal>
+        <group/>
+        <nullif>0000</nullif>
+        <length>4</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>trimestre_numero</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal>#</decimal>
+        <group/>
+        <nullif>0</nullif>
+        <length>0</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>trimestre_nombre</name>
         <type>String</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
         <nullif>00</nullif>
-        <length>-1</length>
+        <length>2</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>day_in_week</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>day_in_month</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>day_in_year</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>is_first_day_in_month</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>is_first_day_in_week</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>is_last_day_in_month</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>is_last_day_in_week</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>day_name</name>
+        <name>anyo_trimestre</name>
         <type>String</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
+        <nullif>0000-00</nullif>
+        <length>7</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>day_abbreviation</name>
+        <name>anyo_mes</name>
         <type>String</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
+        <nullif>0000-00</nullif>
+        <length>7</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>week_in_year</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>week_in_month</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>week_in_year_iso</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>is_weekend</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>is_weekday</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>month_number</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>month_name</name>
+        <name>anyo_semana</name>
         <type>String</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
+        <nullif>0000-00</nullif>
+        <length>7</length>
         <precision>-1</precision>
       </field>
       <field>
-        <name>month_abbreviation</name>
+        <name>anyo_semana_iso</name>
         <type>String</type>
         <format/>
         <currency/>
         <decimal/>
         <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>year2</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>year4</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>year2_iso</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>year4_iso</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>quarter_number</name>
-        <type>Integer</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>quarter_name</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>year_quarter</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>year_month</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>year_week</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>year_week_iso</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif>0</nullif>
-        <length>-1</length>
+        <nullif>0000-00</nullif>
+        <length>7</length>
         <precision>-1</precision>
       </field>
     </fields>
     <limit>1</limit>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>236</xloc>
-      <yloc>126</yloc>
+      <xloc>193</xloc>
+      <yloc>129</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

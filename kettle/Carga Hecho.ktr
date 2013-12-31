@@ -52,7 +52,7 @@
       <offset>0.0</offset>
       <maxdiff>0.0</maxdiff>
     </maxdate>
-    <size_rowset>10000</size_rowset>
+    <size_rowset>100000</size_rowset>
     <sleep_time_empty>50</sleep_time_empty>
     <sleep_time_full>50</sleep_time_full>
     <unique_connections>N</unique_connections>
@@ -60,7 +60,7 @@
     <feedback_size>50000</feedback_size>
     <using_thread_priorities>Y</using_thread_priorities>
     <shared_objects_file/>
-    <capture_step_performance>N</capture_step_performance>
+    <capture_step_performance>Y</capture_step_performance>
     <step_performance_capturing_delay>1000</step_performance_capturing_delay>
     <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
     <dependencies>
@@ -77,6 +77,69 @@
   <modified_date>2013&#47;12&#47;17 17:09:09.975</modified_date>
   </info>
   <notepads>
+    <notepad>
+      <note>ENTRADA</note>
+      <xloc>60</xloc>
+      <yloc>78</yloc>
+      <width>72</width>
+      <heigth>25</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>165</backgroundcolorgreen>
+      <backgroundcolorblue>0</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>TRANSFORMACIONES</note>
+      <xloc>53</xloc>
+      <yloc>181</yloc>
+      <width>151</width>
+      <heigth>25</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>165</backgroundcolorgreen>
+      <backgroundcolorblue>0</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>SALIDA</note>
+      <xloc>87</xloc>
+      <yloc>681</yloc>
+      <width>56</width>
+      <heigth>25</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>165</backgroundcolorgreen>
+      <backgroundcolorblue>0</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <connection>
     <name>AgileBI</name>
@@ -142,10 +205,10 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>Entrada Tabla Ventas</from><to>Unión por Clave</to><enabled>Y</enabled> </hop>  <hop> <from>Entrada Tabla Lotes</from><to>Unión por Clave</to><enabled>Y</enabled> </hop>  </order>
+  <hop> <from>Leer salidas</from><to>Unión por Clave</to><enabled>Y</enabled> </hop>  <hop> <from>Leer entradas</from><to>Unión por Clave</to><enabled>Y</enabled> </hop>  <hop> <from>Búsqueda en Dimension Producto</from><to>Búsqueda en Dimension Almacen</to><enabled>Y</enabled> </hop>  <hop> <from>Búsqueda en Dimension Almacen</from><to>Búsqueda en Dimension Fecha</to><enabled>Y</enabled> </hop>  <hop> <from>Búsqueda en Dimension Fecha</from><to>Seleccionar claves del hecho</to><enabled>Y</enabled> </hop>  <hop> <from>Unión por Clave</from><to>Poner a 0 cantidades nulas</to><enabled>Y</enabled> </hop>  <hop> <from>Poner a 0 cantidades nulas</from><to>Rellenar ids</to><enabled>Y</enabled> </hop>  <hop> <from>Rellenar ids</from><to>Seleccionar ids útiles</to><enabled>Y</enabled> </hop>  <hop> <from>Seleccionar ids útiles</from><to>Búsqueda en Dimension Producto</to><enabled>Y</enabled> </hop>  <hop> <from>Seleccionar claves del hecho</from><to>Salida Tabla</to><enabled>N</enabled> </hop>  <hop> <from>Seleccionar claves del hecho</from><to>Ordenar filas</to><enabled>Y</enabled> </hop>  <hop> <from>Ordenar filas</from><to>Calculadora</to><enabled>Y</enabled> </hop>  <hop> <from>Leer salidas [producto][almacen]</from><to>Unión por Clave 2</to><enabled>Y</enabled> </hop>  <hop> <from>Leer entradas [producto][almacen]</from><to>Unión por Clave 2</to><enabled>Y</enabled> </hop>  <hop> <from>Unión por Clave 2</from><to>Calculadora 2</to><enabled>Y</enabled> </hop>  <hop> <from>Calculadora 2</from><to>Valor Java Script Modificado</to><enabled>Y</enabled> </hop>  </order>
   <step>
-    <name>Entrada Tabla Lotes</name>
-    <type>TableInput</type>
+    <name>Block this step until steps finish</name>
+    <type>BlockUntilStepsFinish</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -153,85 +216,105 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>conexion-bd-fuente</connection>
-    <sql>SELECT p.id_producto,
-		p.id_categoria,
-		p.id_marca,
-		lote.fecha_recepcion,
-		lote.precio_compra_unitario,
-		sum(lote.cantidad_recibida) cantidad_recibida,
-		(sum(lote.cantidad_recibida) * lote.precio_compra_unitario) gastos_compras
-		
-FROM producto p,
-		lote_recibido lote
-WHERE p.id_producto = lote.id_producto
-		and lote.fecha_recepcion between &apos;${fecha_desde}&apos; and &apos;${fecha_hasta}&apos;	
-
-GROUP BY p.id_producto,
-		p.id_categoria,
-		p.id_marca,
-		lote.fecha_recepcion,
-		lote.precio_compra_unitario
-ORDER BY p.id_producto asc</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>Y</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
+    <steps>
+      <step>
+        <name>Salida Fichero de Texto</name>
+        <CopyNr>0</CopyNr>
+        </step>
+      </steps>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>485</xloc>
-      <yloc>116</yloc>
+      <xloc>430</xloc>
+      <yloc>583</yloc>
+      <draw>N</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Búsqueda en Dimension Almacen</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>conexion-datawarehouse</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>public</schema>
+      <table>almacen</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>id_almacen</name>
+        <field>id_almacen</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>clave_almacen</name>
+        <rename>clave_almacen</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>771</xloc>
+      <yloc>306</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Entrada Tabla Ventas</name>
-    <type>TableInput</type>
+    <name>Búsqueda en Dimension Fecha</name>
+    <type>DBLookup</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <copies>1</copies>
          <partitioning>
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>conexion-bd-fuente</connection>
-    <sql>SELECT p.id_producto,
-		p.id_categoria,
-		p.id_marca,
-		v.fecha_venta,
-		v.precio_venta_unitario,
-		sum(v.cantidad_vendida) cantidad_vendida,
-		(sum(v.cantidad_vendida) * v.precio_venta_unitario) ingresos_ventas
-		
-FROM producto p,
-		venta v
-WHERE p.id_producto = v.id_producto
-		and v.fecha_venta between &apos;${fecha_desde}&apos; and &apos;${fecha_hasta}&apos;	
-
-GROUP BY p.id_producto,
-		p.id_categoria,
-		p.id_marca,
-		v.fecha_venta,
-		v.precio_venta_unitario
-ORDER BY p.id_producto asc</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>Y</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
+    <connection>conexion-datawarehouse</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>public</schema>
+      <table>fecha</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>fecha_movimiento</name>
+        <field>fecha_valor</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>clave_fecha</name>
+        <rename>clave_fecha</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>277</xloc>
-      <yloc>116</yloc>
+      <xloc>359</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Transformación Simulada (no hace nada)</name>
-    <type>Dummy</type>
+    <name>Búsqueda en Dimension Producto</name>
+    <type>DBLookup</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -239,17 +322,40 @@ ORDER BY p.id_producto asc</sql>
            <method>none</method>
            <schema_name/>
            </partitioning>
+    <connection>conexion-datawarehouse</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>public</schema>
+      <table>producto</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>id_producto</name>
+        <field>id_producto</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>clave_producto</name>
+        <rename>clave_producto</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>452</xloc>
-      <yloc>444</yloc>
+      <xloc>548</xloc>
+      <yloc>306</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Entrada Tabla Movimientos</name>
-    <type>TableInput</type>
+    <name>Calculadora</name>
+    <type>Calculator</type>
     <description/>
     <distribute>Y</distribute>
     <copies>1</copies>
@@ -257,32 +363,24 @@ ORDER BY p.id_producto asc</sql>
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>conexion-bd-fuente</connection>
-    <sql>SELECT p.id_producto,
-		p.id_categoria,
-		p.id_marca,
-		m.id_ubicacion,
-		sum(m.cantidad) cantidad
-		
-FROM producto p,
-		movimiento m
-WHERE p.id_producto = m.id_producto
-		and m.fecha_movimiento between &apos;${fecha_desde}&apos; and &apos;${fecha_hasta}&apos;	
-
-GROUP BY p.id_producto,
-		p.id_categoria,
-		p.id_marca,
-		m.id_ubicacion
-ORDER BY p.id_producto asc</sql>
-    <limit>0</limit>
-    <lookup/>
-    <execute_each_row>N</execute_each_row>
-    <variables_active>Y</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
+       <calculation><field_name>diferencia_stock</field_name>
+<calc_type>SUBTRACT</calc_type>
+<field_a>cantidad_recibida</field_a>
+<field_b>cantidad_vendida</field_b>
+<field_c/>
+<value_type>-</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>N</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>692</xloc>
-      <yloc>116</yloc>
+      <xloc>905</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -323,7 +421,792 @@ ORDER BY up.id_producto asc</sql>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>883</xloc>
       <yloc>116</yloc>
+      <draw>N</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Entrada Tabla Movimientos</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>conexion-bd-fuente</connection>
+    <sql>SELECT m.id_producto,
+		m.fecha_movimiento,
+		m.E_S,
+		prod_alm.id_producto,
+		prod_alm.id_almacen,
+		prod_alm.cantidad_prod_almacen,
+		prod_alm.num_ubicaciones,
+		sum(m.cantidad) cantidad
+		
+FROM producto p,
+		movimiento m, 
+		(SELECT up.id_producto, a.id_almacen, SUM(up.cantidad) cantidad_prod_almacen,
+			count(up.id_ubicacion) num_ubicaciones 
+			FROM almacen a, ubicacion_producto up, ubicacion u, movimiento m
+			WHERE a.id_almacen=u.id_almacen and u.id_ubicacion=up.id_ubicacion
+			and up.id_ubicacion=m.id_ubicacion) as prod_alm
+WHERE p.id_producto = m.id_producto
+		and m.fecha_movimiento between &apos;${fecha_desde}&apos; and &apos;${fecha_hasta}&apos;	
+
+GROUP BY m.id_producto,
+		m.fecha_movimiento,
+		m.E_S,
+		prod_alm.id_producto,
+		prod_alm.id_almacen,
+		prod_alm.cantidad_prod_almacen,
+		prod_alm.num_ubicaciones
+ORDER BY m.id_producto asc</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>Y</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>637</xloc>
+      <yloc>126</yloc>
+      <draw>N</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Entrada Tabla Ventas</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>conexion-bd-fuente</connection>
+    <sql>SELECT p.id_producto,
+		p.id_categoria,
+		p.id_marca,
+		v.fecha_venta,
+		v.precio_venta_unitario,
+		sum(v.cantidad_vendida) cantidad_vendida,
+		(sum(v.cantidad_vendida) * v.precio_venta_unitario) ingresos_ventas
+		
+FROM producto p,
+		venta v
+WHERE p.id_producto = v.id_producto
+		and v.fecha_venta between &apos;${fecha_desde}&apos; and &apos;${fecha_hasta}&apos;	
+
+GROUP BY p.id_producto,
+		p.id_categoria,
+		p.id_marca,
+		v.fecha_venta,
+		v.precio_venta_unitario
+ORDER BY p.id_producto asc</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>Y</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>375</xloc>
+      <yloc>189</yloc>
+      <draw>N</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Insertar &#47; Actualizar</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>conexion-datawarehouse</connection>
+    <commit>50000</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>public</schema>
+      <table>snapshot</table>
+      <key>
+        <name>clave_producto</name>
+        <field>clave_producto</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>clave_almacen</name>
+        <field>clave_almacen</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>clave_fecha</name>
+        <field>clave_fecha</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>clave_producto</name>
+        <rename>clave_producto</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>clave_almacen</name>
+        <rename>clave_almacen</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>clave_fecha</name>
+        <rename>clave_fecha</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>cantidad_recibida</name>
+        <rename>cantidad_recibida</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>cantidad_vendida</name>
+        <rename>cantidad_vendida</rename>
+        <update>N</update>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>771</xloc>
+      <yloc>416</yloc>
+      <draw>N</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Leer entradas</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>conexion-bd-fuente</connection>
+    <sql>select 	tabla_1.id_producto, 
+		tabla_1.fecha_movimiento, 
+		tabla_2.id_almacen, 
+		sum(tabla_1.cantidad) cantidad_recibida 
+
+from (select u.id_ubicacion, u.id_almacen, a.nombre_almacen 
+		from almacen a, ubicacion u
+		where u.id_almacen = a.id_almacen) as tabla_2,
+
+	(select m.id_producto, m.id_ubicacion, m.fecha_movimiento, m.E_S, sum(m.cantidad) cantidad
+		from movimiento m 
+		where m.E_S=&apos;E&apos; and m.fecha_movimiento between &apos;${fecha_desde}&apos; and &apos;${fecha_hasta}&apos;
+		group by m.id_producto, m.id_ubicacion, m.fecha_movimiento, m.E_S) as tabla_1
+
+where tabla_1.id_ubicacion = tabla_2.id_ubicacion
+
+group by 	tabla_1.id_producto, 
+			tabla_1.fecha_movimiento, 
+			tabla_2.id_almacen
+
+order by id_producto asc</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>Y</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>279</xloc>
+      <yloc>81</yloc>
       <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Leer entradas [producto][almacen]</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>conexion-bd-fuente</connection>
+    <sql>select 	tabla_1.id_producto, 
+		tabla_2.id_almacen, 
+		sum(tabla_1.cantidad) cantidad_recibida
+
+from (select u.id_ubicacion, u.id_almacen, a.nombre_almacen 
+		from almacen a, ubicacion u
+		where u.id_almacen = a.id_almacen) as tabla_2,
+
+	(select m.id_producto, m.id_ubicacion, m.E_S, sum(m.cantidad) cantidad
+		from movimiento m 
+		where m.E_S=&apos;E&apos;
+		group by m.id_producto, m.id_ubicacion, m.E_S) as tabla_1
+
+where tabla_1.id_ubicacion = tabla_2.id_ubicacion
+
+group by 	tabla_1.id_producto, 
+			tabla_2.id_almacen
+
+order by id_producto, id_almacen asc</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>Y</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>994</xloc>
+      <yloc>115</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Leer salidas</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>conexion-bd-fuente</connection>
+    <sql>select 	tabla_1.id_producto, 
+		tabla_1.fecha_movimiento, 
+		tabla_2.id_almacen, 
+		sum(tabla_1.cantidad) cantidad_vendida 
+
+from (select u.id_ubicacion, u.id_almacen, a.nombre_almacen 
+		from almacen a, ubicacion u
+		where u.id_almacen = a.id_almacen) as tabla_2,
+
+	(select m.id_producto, m.id_ubicacion, m.fecha_movimiento, m.E_S, sum(m.cantidad) cantidad 
+		from movimiento m 
+		where m.E_S=&apos;S&apos; and m.fecha_movimiento between &apos;${fecha_desde}&apos; and &apos;${fecha_hasta}&apos;
+		group by m.id_producto, m.id_ubicacion, m.fecha_movimiento, m.E_S) as tabla_1
+
+where tabla_1.id_ubicacion = tabla_2.id_ubicacion
+
+group by 	tabla_1.id_producto, 
+			tabla_1.fecha_movimiento, 
+			tabla_2.id_almacen
+
+order by id_producto asc</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>Y</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>458</xloc>
+      <yloc>81</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Ordenar filas</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>%%java.io.tmpdir%%</directory>
+      <prefix>out</prefix>
+      <sort_size>1000000</sort_size>
+      <free_memory/>
+      <compress>N</compress>
+      <compress_variable/>
+      <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>clave_producto</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>737</xloc>
+      <yloc>416</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Poner a 0 cantidades nulas</name>
+    <type>IfNull</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <replaceAllByValue/>
+      <replaceAllMask/>
+      <selectFields>Y</selectFields>
+      <selectValuesType>N</selectValuesType>
+    <valuetypes>
+      </valuetypes>
+    <fields>
+      <field>
+        <name>id_producto</name>
+        <value/>
+        <mask/>
+        </field>
+      <field>
+        <name>fecha_movimiento</name>
+        <value/>
+        <mask/>
+        </field>
+      <field>
+        <name>id_almacen</name>
+        <value/>
+        <mask/>
+        </field>
+      <field>
+        <name>cantidad_recibida</name>
+        <value>0</value>
+        <mask/>
+        </field>
+      <field>
+        <name>id_producto_1</name>
+        <value/>
+        <mask/>
+        </field>
+      <field>
+        <name>fecha_movimiento_1</name>
+        <value/>
+        <mask/>
+        </field>
+      <field>
+        <name>id_almacen_1</name>
+        <value/>
+        <mask/>
+        </field>
+      <field>
+        <name>cantidad_vendida</name>
+        <value>0</value>
+        <mask/>
+        </field>
+      </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>548</xloc>
+      <yloc>189</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>PostgreSQL Bulk Loader</name>
+    <type>PGBulkLoader</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>conexion-datawarehouse</connection>
+    <schema/>
+    <table>snapshot</table>
+    <load_action>INSERT</load_action>
+    <PsqlPath>psql</PsqlPath>
+    <dbname_override/>
+    <enclosure>&quot;</enclosure>
+    <delimiter>;</delimiter>
+    <stop_on_error>Y</stop_on_error>
+      <mapping>
+        <stream_name>clave_producto</stream_name>
+        <field_name>clave_producto</field_name>
+        <date_mask/>
+      </mapping>
+      <mapping>
+        <stream_name>clave_almacen</stream_name>
+        <field_name>clave_almacen</field_name>
+        <date_mask/>
+      </mapping>
+      <mapping>
+        <stream_name>clave_fecha</stream_name>
+        <field_name>clave_fecha</field_name>
+        <date_mask/>
+      </mapping>
+      <mapping>
+        <stream_name>cantidad_recibida</stream_name>
+        <field_name>cantidad_recibida</field_name>
+        <date_mask/>
+      </mapping>
+      <mapping>
+        <stream_name>cantidad_vendida</stream_name>
+        <field_name>cantidad_vendida</field_name>
+        <date_mask/>
+      </mapping>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>816</xloc>
+      <yloc>593</yloc>
+      <draw>N</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Rellenar ids</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#47;&#47;Script here
+var id_producto;
+var id_producto_1;
+var id_almacen;
+var id_almacen_1;
+var fecha_movimiento;
+var fecha_movimiento_1;
+
+if(id_producto==null)
+	id_producto=id_producto_1;
+else id_producto_1=id_producto;
+if(id_almacen==null)
+	id_almacen=id_almacen_1;
+else id_almacen_1=id_almacen;
+if(fecha_movimiento==null)
+	fecha_movimiento=fecha_movimiento_1;
+else fecha_movimiento_1=fecha_movimiento;
+</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>id_producto</name>
+        <rename>id_producto</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>      <field>        <name>id_producto_1</name>
+        <rename>id_producto_1</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>      <field>        <name>id_almacen</name>
+        <rename>id_almacen</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>      <field>        <name>id_almacen_1</name>
+        <rename>id_almacen_1</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>      <field>        <name>fecha_movimiento</name>
+        <rename>fecha_movimiento</rename>
+        <type>Date</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>      <field>        <name>fecha_movimiento_1</name>
+        <rename>fecha_movimiento_1</rename>
+        <type>Date</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>771</xloc>
+      <yloc>189</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Salida Fichero de Texto</name>
+    <type>TextFileOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <separator>;</separator>
+    <enclosure>&quot;</enclosure>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>Y</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding/>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name>C:\Users\Carlos\Documents\pfc\pfc\kettle\snapshot_bulk_loading_prepared</name>
+      <is_command>N</is_command>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>N</do_not_open_new_file_init>
+      <extention>csv</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>clave_producto</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>9</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>clave_almacen</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>9</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>clave_fecha</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>9</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <name>cantidad_recibida</name>
+        <type>BigNumber</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>cantidad_vendida</name>
+        <type>BigNumber</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>864</xloc>
+      <yloc>416</yloc>
+      <draw>N</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Salida Tabla</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>conexion-datawarehouse</connection>
+    <schema>public</schema>
+    <table>snapshot</table>
+    <commit>100000</commit>
+    <truncate>Y</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>N</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>N</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+        <field>
+          <column_name>clave_producto</column_name>
+          <stream_name>clave_producto</stream_name>
+        </field>
+        <field>
+          <column_name>clave_almacen</column_name>
+          <stream_name>clave_almacen</stream_name>
+        </field>
+        <field>
+          <column_name>clave_fecha</column_name>
+          <stream_name>clave_fecha</stream_name>
+        </field>
+        <field>
+          <column_name>cantidad_recibida</column_name>
+          <stream_name>cantidad_recibida</stream_name>
+        </field>
+        <field>
+          <column_name>cantidad_vendida</column_name>
+          <stream_name>cantidad_vendida</stream_name>
+        </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>427</xloc>
+      <yloc>698</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Seleccionar claves del hecho</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>N</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>clave_producto</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>clave_almacen</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>clave_fecha</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>cantidad_recibida</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>cantidad_vendida</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>548</xloc>
+      <yloc>416</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Seleccionar ids útiles</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>id_producto</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>id_almacen</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>fecha_movimiento</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>cantidad_recibida</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>cantidad_vendida</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>359</xloc>
+      <yloc>306</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Transformación Simulada (no hace nada)</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>771</xloc>
+      <yloc>416</yloc>
+      <draw>N</draw>
       </GUI>
     </step>
 
@@ -338,30 +1221,163 @@ ORDER BY up.id_producto asc</sql>
            <schema_name/>
            </partitioning>
 <join_type>FULL OUTER</join_type>
-<step1>Entrada Tabla Ventas</step1>
-<step2>Entrada Tabla Lotes</step2>
+<step1>Leer entradas</step1>
+<step2>Leer salidas</step2>
     <keys_1>
       <key>id_producto</key>
-      <key>id_categoria</key>
-      <key>id_marca</key>
-      <key>fecha_venta</key>
-      <key>precio_venta_unitario</key>
-      <key>cantidad_vendida</key>
-      <key>ingresos_ventas</key>
+      <key>fecha_movimiento</key>
+      <key>id_almacen</key>
     </keys_1>
     <keys_2>
       <key>id_producto</key>
-      <key>id_categoria</key>
-      <key>id_marca</key>
-      <key>fecha_recepcion</key>
-      <key>precio_compra_unitario</key>
-      <key>cantidad_recibida</key>
-      <key>gastos_compras</key>
+      <key>fecha_movimiento</key>
+      <key>id_almacen</key>
     </keys_2>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>483</xloc>
-      <yloc>294</yloc>
+      <xloc>359</xloc>
+      <yloc>189</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Leer salidas [producto][almacen]</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>conexion-bd-fuente</connection>
+    <sql>select 	tabla_1.id_producto, 
+		tabla_2.id_almacen, 
+		sum(tabla_1.cantidad) cantidad_vendida
+
+from (select u.id_ubicacion, u.id_almacen, a.nombre_almacen 
+		from almacen a, ubicacion u
+		where u.id_almacen = a.id_almacen) as tabla_2,
+
+	(select m.id_producto, m.id_ubicacion, m.E_S, sum(m.cantidad) cantidad
+		from movimiento m 
+		where m.E_S=&apos;S&apos;
+		group by m.id_producto, m.id_ubicacion, m.E_S) as tabla_1
+
+where tabla_1.id_ubicacion = tabla_2.id_ubicacion
+
+group by 	tabla_1.id_producto, 
+			tabla_2.id_almacen
+
+order by id_producto, id_almacen asc</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>Y</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1218</xloc>
+      <yloc>111</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Calculadora 2</name>
+    <type>Calculator</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+       <calculation><field_name>diferencia</field_name>
+<calc_type>SUBTRACT</calc_type>
+<field_a>cantidad_recibida</field_a>
+<field_b>cantidad_vendida</field_b>
+<field_c/>
+<value_type>-</value_type>
+<value_length>-1</value_length>
+<value_precision>-1</value_precision>
+<remove>N</remove>
+<conversion_mask/>
+<decimal_symbol/>
+<grouping_symbol/>
+<currency_symbol/>
+</calculation>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1085</xloc>
+      <yloc>332</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Unión por Clave 2</name>
+    <type>MergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<join_type>INNER</join_type>
+<step1>Leer entradas [producto][almacen]</step1>
+<step2>Leer salidas [producto][almacen]</step2>
+    <keys_1>
+      <key>id_producto</key>
+      <key>id_almacen</key>
+    </keys_1>
+    <keys_2>
+      <key>id_producto</key>
+      <key>id_almacen</key>
+    </keys_2>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1078</xloc>
+      <yloc>200</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Valor Java Script Modificado</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#47;&#47;Script here
+
+
+cantidad_total += diferencia;</jsScript_script>
+      </jsScript>      <jsScript>        <jsScript_type>1</jsScript_type>
+        <jsScript_name>Item_0</jsScript_name>
+        <jsScript_script>&#47;&#47;Script here
+
+var cantidad_total=0;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>cantidad_total</name>
+        <rename>cantidad_total</rename>
+        <type>Number</type>
+        <length>16</length>
+        <precision>2</precision>
+        <replace>N</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1099</xloc>
+      <yloc>430</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
